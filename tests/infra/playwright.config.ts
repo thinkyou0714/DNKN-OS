@@ -29,24 +29,10 @@ const webDir = resolve(repoRoot, "web");
 const PORT = 4317;
 
 // 追加依存なしの静的サーバ（Node 標準のみ）。web/ を読み取り専用で配信する。
-const STATIC_SERVER = [
-  'node -e "',
-  "const http=require('http'),fs=require('fs'),path=require('path');",
-  `const root=${JSON.stringify(webDir)};`,
-  "const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.webmanifest':'application/manifest+json'};",
-  "http.createServer((req,res)=>{",
-  "  let p=decodeURIComponent((req.url||'/').split('?')[0]);",
-  "  if(p==='/')p='/index.html';",
-  "  const fp=path.join(root,p);",
-  "  if(!fp.startsWith(root)){res.writeHead(403).end();return;}",
-  "  fs.readFile(fp,(e,buf)=>{",
-  "    if(e){res.writeHead(404).end('not found');return;}",
-  "    res.writeHead(200,{'content-type':types[path.extname(fp)]||'application/octet-stream'});",
-  "    res.end(buf);",
-  "  });",
-  `}).listen(${PORT},()=>console.log('static web/ on ${PORT}'));`,
-  '"',
-].join("");
+// 実体は static-server.cjs。以前のインライン `node -e "..."` は JSON.stringify の
+// ダブルクォートが sh -c のダブルクォートに剥がされ、Node がパスを正規表現として
+// 解釈して常に SyntaxError で落ちていた。設定は env で渡しクォート入れ子をなくす。
+const STATIC_SERVER_PATH = resolve(__dirname, "static-server.cjs");
 
 export default defineConfig({
   testDir: resolve(__dirname, "e2e"),
@@ -67,7 +53,11 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: STATIC_SERVER,
+    command: `node ${JSON.stringify(STATIC_SERVER_PATH)}`,
+    env: {
+      E2E_WEB_ROOT: webDir,
+      E2E_PORT: String(PORT),
+    },
     url: `http://127.0.0.1:${PORT}/index.html`,
     reuseExistingServer: !process.env.CI,
     timeout: 30_000,
