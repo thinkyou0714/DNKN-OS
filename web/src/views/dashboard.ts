@@ -5,10 +5,12 @@
  */
 
 import { withUtm } from "../../../lib/analytics/utm.js";
+import { buildLearningPath, type LearningStep, nextUp } from "../../../lib/curriculum/path.js";
+import { getPrincipleCard } from "../../../lib/curriculum/principles.js";
 import { evaluateAchievements } from "../achievements.js";
 import { recordClick } from "../bridge.js";
 import { BRIDGE } from "../bridge-config.js";
-import { masteredConceptAreas, recommendNextConcepts } from "../concept-graph.js";
+import { CONCEPT_KEYWORDS, masteredConceptAreas } from "../concept-graph.js";
 import {
   accuracyTrend,
   allSubjectReadiness,
@@ -35,6 +37,7 @@ import { bar, emptyState, masteryChip, ringNode, sparklineNode } from "../ui/wid
 import { type levelInfo, xpByDay, xpBySubject } from "../xp.js";
 import { subjectNoteChip } from "./bridge-cards.js";
 import { currentLevel, freezeInfo, questsCard, weeklyQuestsCard } from "./practice.js";
+import { startDrill } from "./review.js";
 import { switchView } from "./router.js";
 
 /** レベルカード（XP・称号・次レベルへの進捗）— 成長の実感を最上段に。 */
@@ -233,32 +236,79 @@ function readinessSection(root: HTMLElement, logs: ReturnType<typeof progress.lo
 }
 
 /**
- * 学習順のおすすめセクション（前提コンセプトグラフ）。
- * 習得済みの論点から到達した概念領域を推定し、前提を満たした「次に学ぶおすすめ」と
- * まだ前提不足の領域を提示する。学習が進んでいない初期でも基礎領域を案内する。
+ * 体系学習ロードマップのセクション（旧「学習順のおすすめ」を拡張）。
+ * 前提グラフのトポロジカル順に全領域を段階表示し、習得状態（🎓/▶/🔒）を付ける。
+ * さらに「次はここから」の領域には原理カード（なぜ成り立つか・導出の筋道・納得チェック）を
+ * 開けるようにし、その領域の問題だけの演習を始める導線を置く。
+ * 「公式をそういうものだと受け入れて終わる」読み上げ学習に、原理→納得→演習の順序を与える。
  */
 function learningOrderSection(root: HTMLElement, logs: ReturnType<typeof progress.logs>): void {
   const masteredAreas = masteredConceptAreas(masteredTopics(logs));
-  const rec = recommendNextConcepts(masteredAreas);
-  if (rec.recommended.length === 0 && rec.blocked.length === 0) return;
+  const path = buildLearningPath(masteredAreas);
+  if (path.total === 0) return;
   root.append(
-    h("h2", {}, "学習順のおすすめ"),
-    h("p", { class: "muted small" }, "前提となる基礎から順に進めると効率的です（習得済みの論点から自動推定）。"),
+    h("h2", {}, "体系学習ロードマップ"),
+    h(
+      "p",
+      { class: "muted small" },
+      `基礎→応用の前提順で全${path.total}領域（習得 ${path.masteredCount}/${path.total}・習得済みの論点から自動推定）。` +
+        "「なぜ？」を開いて原理から納得してから演習に進むのがおすすめです。",
+    ),
   );
-  if (rec.recommended.length > 0) {
+  // 段階（体系深さ）ごとのチップ表示。🎓=習得済み ▶=着手可 🔒=前提不足。
+  path.stages.forEach((stage, i) => {
     const chips = h("div", { class: "concept-chips" });
-    for (const c of rec.recommended.slice(0, 8)) chips.append(h("span", { class: "concept-chip next" }, `▶ ${c}`));
-    root.append(h("div", { class: "muted small" }, "いま学ぶのにおすすめ:"), chips);
-  }
-  if (rec.blocked.length > 0) {
-    const chips = h("div", { class: "concept-chips" });
-    for (const b of rec.blocked.slice(0, 6)) {
-      chips.append(
-        h("span", { class: "concept-chip blocked", title: `前提: ${b.missingPrereqs.join("・")}` }, `🔒 ${b.topic}`),
-      );
+    for (const s of stage) {
+      if (s.status === "mastered") chips.append(h("span", { class: "concept-chip" }, `🎓 ${s.area}`));
+      else if (s.status === "ready") chips.append(h("span", { class: "concept-chip next" }, `▶ ${s.area}`));
+      else
+        chips.append(
+          h("span", { class: "concept-chip blocked", title: `前提: ${s.missingPrereqs.join("・")}` }, `🔒 ${s.area}`),
+        );
     }
-    root.append(h("div", { class: "muted small" }, "前提を固めてから（前提を習得すると解放）:"), chips);
+    root.append(h("div", { class: "muted small" }, `第${i + 1}段階`), chips);
+  });
+  // 「次はここから」の領域に原理カードを添える（多すぎると読まれないので2件まで）。
+  for (const step of nextUp(path, 2)) principleCardNode(root, step);
+}
+
+/** 原理カード1枚を <details> で描画し、その領域の問題プールで演習を始める導線を付ける。 */
+function principleCardNode(root: HTMLElement, step: LearningStep): void {
+  const card = getPrincipleCard(step.area);
+  if (!card) return;
+  const kws = CONCEPT_KEYWORDS[step.area] ?? [];
+  const pool = problems.filter((p) => kws.some((k) => p.topic.includes(k)));
+  const body = h(
+    "details",
+    { class: "card" },
+    h("summary", {}, `💡 ${card.area} — なぜそうなるのか？`),
+    h("p", {}, card.coreIdea),
+    h("p", { class: "muted" }, card.why),
+    h("div", { class: "muted small" }, "導出の筋道:"),
+    h("ol", {}, ...card.derivation.map((d) => h("li", {}, d))),
+    h("div", { class: "muted small" }, "「そういうもの」で流しがちな点:"),
+    h("ul", {}, ...card.pitfalls.map((p) => h("li", {}, p))),
+  );
+  if (card.checks.length > 0) {
+    body.append(h("div", { class: "muted small" }, "納得チェック（自分の言葉で答えてから開く）:"));
+    for (const c of card.checks) {
+      body.append(h("details", {}, h("summary", {}, `Q. ${c.question}`), h("p", { class: "muted" }, `A. ${c.answer}`)));
+    }
   }
+  if (pool.length > 0) {
+    body.append(
+      h(
+        "div",
+        { class: "drill-actions" },
+        h(
+          "button",
+          { class: "chip", type: "button", onclick: () => startDrill(pool) },
+          `▶ この領域を演習（${pool.length}問）`,
+        ),
+      ),
+    );
+  }
+  root.append(body);
 }
 
 /** 自分の記録・ゴーストレース・弱点論点・マスター済み論点のセクション。 */
