@@ -25,6 +25,8 @@ export const FORMULAS: FormulaGroup[] = [
       { name: "コンデンサ静電エネルギー", formula: "W = (1/2)·C·V^2", note: "" },
       { name: "最大電力伝送", formula: "P_max = E^2/(4R)", note: "負荷=内部抵抗で整合" },
       { name: "RC時定数", formula: "τ = R·C", note: "t=τ で63.2%" },
+      { name: "RLC直列インピーダンス", formula: "Z = √(R^2 + (ωL − 1/(ωC))^2)", note: "ω=2πf" },
+      { name: "直列共振周波数", formula: "f_0 = 1/(2π·√(L·C))", note: "ωL=1/(ωC) で虚部0" },
       { name: "ブリッジ平衡", formula: "R_1·R_x = R_2·R_3", note: "対辺の積が等しい" },
       { name: "オームの法則/合成", formula: "V = I·R, P = V·I = I^2·R", note: "" },
     ],

@@ -5,12 +5,14 @@
  */
 
 import { withUtm } from "../../../lib/analytics/utm.js";
-import { buildLearningPath, type LearningStep, nextUp } from "../../../lib/curriculum/path.js";
+import { foundationGaps } from "../../../lib/curriculum/gaps.js";
+import { buildLearningPath, nextUp } from "../../../lib/curriculum/path.js";
 import { getPrincipleCard } from "../../../lib/curriculum/principles.js";
+import { hashSeed } from "../../../lib/shared/rng.js";
 import { evaluateAchievements } from "../achievements.js";
 import { recordClick } from "../bridge.js";
 import { BRIDGE } from "../bridge-config.js";
-import { CONCEPT_KEYWORDS, masteredConceptAreas } from "../concept-graph.js";
+import { masteredConceptAreas } from "../concept-graph.js";
 import {
   accuracyTrend,
   allSubjectReadiness,
@@ -25,8 +27,10 @@ import {
   topicSubjectMap,
 } from "../dashboard.js";
 import { dayIndex, JST_OFFSET_MS, sameJstDay } from "../dates.js";
+import { buildDerivationDrill } from "../derivation.js";
 import { loadFreezeState } from "../freeze.js";
 import { buildStudyPlan } from "../plan.js";
+import { areaProblemPool, foundationGapHint, roadmapChipModel } from "../roadmap.js";
 import { getDailyGoal, getExamDate, isOnboarded } from "../settings.js";
 import { problems, progress, storage } from "../state/app.js";
 import { practice as practiceState } from "../state/practice.js";
@@ -36,6 +40,7 @@ import { showToast } from "../ui/toast.js";
 import { bar, emptyState, masteryChip, ringNode, sparklineNode } from "../ui/widgets.js";
 import { type levelInfo, xpByDay, xpBySubject } from "../xp.js";
 import { subjectNoteChip } from "./bridge-cards.js";
+import { renderOrderingDrillBody } from "./drills.js";
 import { currentLevel, freezeInfo, questsCard, weeklyQuestsCard } from "./practice.js";
 import { startDrill } from "./review.js";
 import { switchView } from "./router.js";
@@ -237,10 +242,11 @@ function readinessSection(root: HTMLElement, logs: ReturnType<typeof progress.lo
 
 /**
  * 体系学習ロードマップのセクション（旧「学習順のおすすめ」を拡張）。
- * 前提グラフのトポロジカル順に全領域を段階表示し、習得状態（🎓/▶/🔒）を付ける。
- * さらに「次はここから」の領域には原理カード（なぜ成り立つか・導出の筋道・納得チェック）を
- * 開けるようにし、その領域の問題だけの演習を始める導線を置く。
+ * 前提グラフのトポロジカル順に全領域を段階表示し、到達状態（🎓/▶/🔒）を付ける。
+ * 「次はここから」の領域には原理カード（なぜ成り立つか・導出の筋道・納得チェック）を
+ * 開けるようにし、全領域ぶんのカードも体系順で閲覧できる。
  * 「公式をそういうものだと受け入れて終わる」読み上げ学習に、原理→納得→演習の順序を与える。
+ * 表示モデルの分岐は roadmap.ts の純ロジック（テスト対象）に委譲する。
  */
 function learningOrderSection(root: HTMLElement, logs: ReturnType<typeof progress.logs>): void {
   const masteredAreas = masteredConceptAreas(masteredTopics(logs));
@@ -251,37 +257,51 @@ function learningOrderSection(root: HTMLElement, logs: ReturnType<typeof progres
     h(
       "p",
       { class: "muted small" },
-      `基礎→応用の前提順で全${path.total}領域（習得 ${path.masteredCount}/${path.total}・習得済みの論点から自動推定）。` +
+      `基礎→応用の前提順で全${path.total}領域（到達 ${path.masteredCount}/${path.total}・習得済みの論点からの推定）。` +
         "「なぜ？」を開いて原理から納得してから演習に進むのがおすすめです。",
     ),
   );
-  // 段階（体系深さ）ごとのチップ表示。🎓=習得済み ▶=着手可 🔒=前提不足。
+  // 段階（体系深さ）ごとのチップ表示。🎓=到達（推定） ▶=着手可 🔒=前提不足。
   path.stages.forEach((stage, i) => {
     const chips = h("div", { class: "concept-chips" });
     for (const s of stage) {
-      if (s.status === "mastered") chips.append(h("span", { class: "concept-chip" }, `🎓 ${s.area}`));
-      else if (s.status === "ready") chips.append(h("span", { class: "concept-chip next" }, `▶ ${s.area}`));
-      else
-        chips.append(
-          h("span", { class: "concept-chip blocked", title: `前提: ${s.missingPrereqs.join("・")}` }, `🔒 ${s.area}`),
-        );
+      const m = roadmapChipModel(s);
+      chips.append(h("span", { class: m.className, ...(m.title !== undefined ? { title: m.title } : {}) }, m.label));
     }
     root.append(h("div", { class: "muted small" }, `第${i + 1}段階`), chips);
   });
   // 「次はここから」の領域に原理カードを添える（多すぎると読まれないので2件まで）。
-  for (const step of nextUp(path, 2)) principleCardNode(root, step);
+  for (const step of nextUp(path, 2)) {
+    const node = principleCardDetails(step.area);
+    if (node) root.append(node);
+  }
+  // 全領域の原理カードを体系順で閲覧できるブラウザ（折りたたみ。到達状態のアイコンつき）。
+  const browser = h(
+    "details",
+    { class: "card" },
+    h("summary", {}, `📚 全${path.total}領域の原理カード（体系順）`),
+    h("p", { class: "muted small" }, "基礎から順に「なぜそうなるのか」をまとめています。復習の目次としても使えます。"),
+  );
+  for (const s of path.steps) {
+    const icon = s.status === "mastered" ? "🎓" : s.status === "ready" ? "▶" : "🔒";
+    const node = principleCardDetails(s.area, icon);
+    if (node) browser.append(node);
+  }
+  root.append(browser);
 }
 
-/** 原理カード1枚を <details> で描画し、その領域の問題プールで演習を始める導線を付ける。 */
-function principleCardNode(root: HTMLElement, step: LearningStep): void {
-  const card = getPrincipleCard(step.area);
-  if (!card) return;
-  const kws = CONCEPT_KEYWORDS[step.area] ?? [];
-  const pool = problems.filter((p) => kws.some((k) => p.topic.includes(k)));
+/**
+ * 原理カード1枚の <details> 要素を作る。導出の並べ替えドリル（原理の手続き記憶の確認）と、
+ * その領域の問題プールで演習を始める導線を付ける。カードが無い領域は null。
+ */
+function principleCardDetails(area: string, statusIcon = "💡"): HTMLElement | null {
+  const card = getPrincipleCard(area);
+  if (!card) return null;
+  const pool = areaProblemPool(area, problems);
   const body = h(
     "details",
     { class: "card" },
-    h("summary", {}, `💡 ${card.area} — なぜそうなるのか？`),
+    h("summary", {}, `${statusIcon} ${card.area} — なぜそうなるのか？`),
     h("p", {}, card.coreIdea),
     h("p", { class: "muted" }, card.why),
     h("div", { class: "muted small" }, "導出の筋道:"),
@@ -295,20 +315,36 @@ function principleCardNode(root: HTMLElement, step: LearningStep): void {
       body.append(h("details", {}, h("summary", {}, `Q. ${c.question}`), h("p", { class: "muted" }, `A. ${c.answer}`)));
     }
   }
+  // 原理導出ドリル（導出ステップの並べ替え）と演習導線。ドリルはボタンを押したときだけ描画する。
+  const drillHost = h("div", {});
+  const actions = h(
+    "div",
+    { class: "drill-actions" },
+    h(
+      "button",
+      {
+        class: "chip",
+        type: "button",
+        onclick: () => {
+          // seed は領域名から決定論的に作る（同じ領域なら毎回同じ提示順）。
+          const drill = buildDerivationDrill(card.derivation, hashSeed(card.area));
+          if (drill) renderOrderingDrillBody(drillHost, drill);
+        },
+      },
+      "🧩 導出を並べ替えで確認",
+    ),
+  );
   if (pool.length > 0) {
-    body.append(
+    actions.append(
       h(
-        "div",
-        { class: "drill-actions" },
-        h(
-          "button",
-          { class: "chip", type: "button", onclick: () => startDrill(pool) },
-          `▶ この領域を演習（${pool.length}問）`,
-        ),
+        "button",
+        { class: "chip", type: "button", onclick: () => startDrill(pool) },
+        `▶ この領域を演習（${pool.length}問）`,
       ),
     );
   }
-  root.append(body);
+  body.append(actions, drillHost);
+  return body;
 }
 
 /** 自分の記録・ゴーストレース・弱点論点・マスター済み論点のセクション。 */
@@ -384,6 +420,22 @@ function statsSection(
           h("span", { style: "white-space:nowrap;overflow:hidden;text-overflow:ellipsis" }, t.topic),
           bar(Math.round(t.accuracy * 100)),
           h("span", {}, `${Math.round(t.accuracy * 100)}%`),
+        ),
+      );
+    }
+    // 弱点の根っこ診断: 前提領域の不足が疑われるときだけ1件添える（乱発しない）。
+    // 「弱点＝その論点の演習不足」と決めつけず、体系の穴（前提の欠け）の可能性を示す。
+    const gap = foundationGaps(
+      weak.map((t) => t.topic),
+      masteredConceptAreas(masteredTopics(logs)),
+    )[0];
+    if (gap) {
+      root.append(
+        h(
+          "div",
+          { class: "card" },
+          h("strong", {}, "🧭 弱点の根っこ診断"),
+          h("div", { class: "muted" }, foundationGapHint(gap)),
         ),
       );
     }
