@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>DENKEN-OS</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>html,body{margin:0;background:#0a0f1f;color:#9fb1cd;font-family:system-ui,"Noto Sans JP",sans-serif}
+.wrap{min-height:100vh;display:grid;place-items:center;text-align:center;padding:24px}
+a{color:#22d3ee}</style>
+<script>
+/* DENKEN-OS LP A/B エントリ・ローテータ（クライアント側・sticky割当）
+   使い方: このページを入口URLにする。訪問者をa/b/cにランダム振り分けし、
+   localStorageで同一訪問者には同じ案を出し続ける（再訪の一貫性）。
+   ?v=a で強制、?reset=1 で割当リセット。
+   計測は各LPの data-lp-variant を GA4/Plausible イベントに乗せる（README参照）。
+   厳密なA/Bはサーバ側割当が理想。本実装は無料・静的ホスティング向けの簡易版。 */
+(function(){
+  var VARIANTS={a:'lp-a-efficiency.html',b:'lp-b-continuation.html',c:'lp-c-quality-free.html'};
+  var KEY='denken_lp_variant';
+  var ENDPOINT=''; // 計測ビーコンを使う場合はURLを設定（未設定なら送信しない）
+  var qs=new URLSearchParams(location.search);
+  if(qs.get('reset')){try{localStorage.removeItem(KEY);}catch(e){}}
+  var forced=qs.get('v');
+  var v=(forced&&VARIANTS[forced])?forced:null;
+  if(!v){try{v=localStorage.getItem(KEY);}catch(e){}}
+  if(!v||!VARIANTS[v]){var keys=Object.keys(VARIANTS);v=keys[Math.floor(Math.random()*keys.length)];}
+  try{localStorage.setItem(KEY,v);}catch(e){}
+  if(ENDPOINT){try{navigator.sendBeacon(ENDPOINT,JSON.stringify({event:'lp_assign',variant:v,t:Date.now()}));}catch(e){}}
+  location.replace(VARIANTS[v]+location.hash);
+})();
+</script>
+</head>
+<body>
+<div class="wrap">
+  <noscript>JavaScriptを有効にするか、<a href="index.html">index.html</a> から各LPをご覧ください。</noscript>
+  <p>読み込み中… 表示されない場合は <a href="index.html">index.html</a> へ。</p>
+</div>
+</body>
+</html>

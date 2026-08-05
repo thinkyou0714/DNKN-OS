@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="system-ui,'Noto Sans JP',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0f1f"/><stop offset="1" stop-color="#0d1428"/>
+    </linearGradient>
+    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1060" cy="110" r="280" fill="#22d3ee" opacity="0.08"/>
+  <circle cx="140" cy="560" r="220" fill="#38bdf8" opacity="0.06"/>
+  <g transform="translate(96,132)">
+    <rect width="76" height="76" rx="18" fill="url(#ac)"/>
+    <path d="M44 16 30 46h9l-3 16 15-24h-9z" fill="#04222c"/>
+    <text x="98" y="52" fill="#e8edf7" font-size="42" font-weight="800" letter-spacing="1">DENKEN-OS</text>
+  </g>
+  <text x="96" y="352" fill="#ffffff" font-size="64" font-weight="900">電験合格を、“再現性のある</text>
+  <text x="96" y="432" fill="#ffffff" font-size="64" font-weight="900">プロセス”に。</text>
+  <text x="96" y="506" fill="#9fb1cd" font-size="30">三種・二種／無料・オフライン／オープンソースの学習OS</text>
+  <text x="96" y="576" fill="#22d3ee" font-size="26" font-weight="700">thinkyou0714.github.io/denken-os</text>
+</svg>
