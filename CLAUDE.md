@@ -51,6 +51,7 @@ npm run build:web
 - `lib/README.md` documents the shared TypeScript domain layer.
 - `lib/engine/` owns problem schemas, templates, validation, narration, and generation.
 - `lib/scheduler/` owns review scheduling and diagnosis.
+- `lib/curriculum/` owns the systematic learning pipeline: prerequisite concept graph, principle cards, and learning-path generation. `web/src/concept-graph.ts` is a backward-compat re-export of `lib/curriculum/graph.ts`.
 - `lib/store/` owns persistence interfaces and implementations.
 - `lib/audit/` owns repository quality status and supervision helpers.
 - `web/` owns the offline PWA.
@@ -193,6 +194,7 @@ npm run build:web
 - Migration static checks live under `tests/infra/migrations.test.ts`.
 - Store tests live under `tests/store/`.
 - Scheduler tests live under `tests/scheduler/`.
+- Curriculum tests live under `tests/curriculum/`.
 - Web behavior tests live under `tests/web/`.
 - The main local gate is `npm run verify`.
 - `.claude/settings.json` is outside Biome's `files.includes`, so `biome check` on it is a no-op; validate it with the JSON parse one-liner below instead.
