@@ -135,6 +135,27 @@ export interface ConceptGraphAnalysis {
   depths: ReadonlyMap<string, number>;
   /** 深さ昇順、同深さは名前順の決定論的な体系順。 */
   order: readonly string[];
+  /** topic の直接・間接の全前提を遅延計算する。topic 自身は含まない。 */
+  ancestorsOf(topic: string): ReadonlySet<string>;
+}
+
+/** 直接前提索引から推移的な前提集合を必要時に計算・メモ化する。循環入力でも必ず停止する。 */
+function createAncestorLookup(prereqs: ReadonlyMap<string, readonly string[]>): (topic: string) => ReadonlySet<string> {
+  const cache = new Map<string, ReadonlySet<string>>();
+  return (topic) => {
+    const cached = cache.get(topic);
+    if (cached) return cached;
+    const found = new Set<string>();
+    const stack = [...(prereqs.get(topic) ?? [])];
+    while (stack.length > 0) {
+      const current = stack.pop() as string;
+      if (current === topic || found.has(current)) continue;
+      found.add(current);
+      for (const prerequisite of prereqs.get(current) ?? []) stack.push(prerequisite);
+    }
+    cache.set(topic, found);
+    return found;
+  };
 }
 
 /**
@@ -172,6 +193,7 @@ export function hasCycle(edges: readonly PrereqEdge[] = CONCEPT_EDGES): boolean 
  */
 export function analyzeConceptGraph(edges: readonly PrereqEdge[] = CONCEPT_EDGES): ConceptGraphAnalysis {
   const { adjacency, prereqs, nodes } = buildGraphIndex(edges);
+  const ancestorsOf = createAncestorLookup(prereqs);
   const remaining = new Map<string, number>(); // 未処理の直接前提数
   const depths = new Map<string, number>();
   const queue: string[] = [];
@@ -200,7 +222,7 @@ export function analyzeConceptGraph(edges: readonly PrereqEdge[] = CONCEPT_EDGES
   const order = [...depths.keys()].sort(
     (a, b) => (depths.get(a) ?? 0) - (depths.get(b) ?? 0) || a.localeCompare(b, "ja"),
   );
-  return { prereqs, depths, order };
+  return { prereqs, depths, order, ancestorsOf };
 }
 
 /** 各ノードの体系深さを返す。複数の派生情報が必要なら analyzeConceptGraph を使う。 */

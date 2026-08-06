@@ -56,7 +56,7 @@ describe("ancestorAreas", () => {
       { from: "A", to: "B" },
       { from: "B", to: "A" },
     ];
-    expect(ancestorAreas("A", edges)).toEqual(new Set(["B", "A"]));
+    expect(ancestorAreas("A", edges)).toEqual(new Set(["B"]));
   });
 });
 

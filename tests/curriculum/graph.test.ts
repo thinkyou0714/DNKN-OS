@@ -87,5 +87,18 @@ describe("analyzeConceptGraph", () => {
     expect(analysis.depths).toEqual(conceptDepths());
     expect(analysis.prereqs).toEqual(directPrereqs());
     expect(analysis.order).toEqual(topologicalOrder());
+    const ancestors = analysis.ancestorsOf("三相交流回路");
+    expect(ancestors).toEqual(new Set(["単相交流回路", "直流回路"]));
+    expect(analysis.ancestorsOf("三相交流回路")).toBe(ancestors);
+    expect(analysis.ancestorsOf("未知の領域")).toEqual(new Set());
+  });
+
+  it("循環入力の祖先集合からノード自身を除外する", () => {
+    const analysis = analyzeConceptGraph([
+      { from: "A", to: "B" },
+      { from: "B", to: "A" },
+    ]);
+    expect(analysis.ancestorsOf("A")).toEqual(new Set(["B"]));
+    expect(analysis.ancestorsOf("B")).toEqual(new Set(["A"]));
   });
 });
