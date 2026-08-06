@@ -160,6 +160,9 @@ npm run build:web
 - `scripts/supervision-status.ts`, `scripts/supervision-packet.ts`, and `scripts/supervision-mark.ts` support per-problem supervision of `data/problems/` (52 curated problems).
 - `lib/audit/template-supervision.ts` + `scripts/supervision-templates.ts` support per-template supervision, which covers the ~9,354 shipped problems generated from 151 templates (one template ≈ 62 problems). The ledger is `data/supervision/templates.json`.
 - Template supervision records a behavioral fingerprint (a hash of deterministically generated samples plus declared metadata), so editing a template's formula, `realistic_range`, difficulty, solution text, or choices automatically invalidates its supervision and surfaces it as 要再監修 (stale). Comment/identifier-only edits do not. Never weaken this — it is what stops the ledger from carrying false "supervised" claims.
+- Stale supervision and ledger orphans (entries whose topic no longer exists) are reported by `npm run audit:status` and fail `npm run audit:status:strict`, so they cannot sit unnoticed without running the dedicated command.
+- `scripts/build-problems.ts` reads the ledger and stamps `validation.supervisor_checked: true` on problems generated from supervised templates only. Editing a template therefore drops the flag on its generated problems at the next build. With an empty ledger the generated artifacts are byte-identical to before.
+- `scripts/supervision-io.ts` is the single owner of the ledger path and its read/write conventions (used by the supervision CLI, the audit script, and the problem build).
 - Tests include `tests/audit/status.test.ts`, `tests/audit/supervision.test.ts`, and `tests/audit/template-supervision.test.ts`.
 - The runbook for both layers is `docs/strategy/supervision-workflow.md`.
 

@@ -10,12 +10,29 @@ export interface InvalidProblemFile {
   reason: string;
 }
 
+/**
+ * テンプレ監修の要約（lib/audit/template-supervision.ts のレポートから必要分だけ受け取る）。
+ * status 監査が engine のテンプレレジストリを直接読まずに済むよう、呼び出し側が渡す。
+ */
+export interface TemplateSupervisionSummary {
+  /** 全テンプレ数。 */
+  total: number;
+  /** 監修済み（監修後に変更されていない）テンプレ数。 */
+  supervised: number;
+  /** 要再監修（監修後にテンプレが変更された）テンプレ数。 */
+  stale: number;
+  /** 台帳にあるが実在しない topic の数。 */
+  orphans: number;
+}
+
 export interface AuditInput {
   problems: Problem[];
   invalidSchema: number;
   testFiles: number;
   thresholds?: Partial<AuditThresholds>;
   invalidFiles?: InvalidProblemFile[];
+  /** テンプレ監修の状況（省略時はテンプレ監修に関する監査を行わない）。 */
+  templateSupervision?: TemplateSupervisionSummary;
 }
 
 export interface AuditCliOptions {
@@ -40,6 +57,8 @@ export interface AuditSummary {
   tests: {
     files: number;
   };
+  /** テンプレ監修の状況（入力に無ければ省略）。 */
+  templates?: TemplateSupervisionSummary & { coverage: number };
   recommendations: string[];
 }
 
@@ -106,6 +125,22 @@ export function auditStatus(input: AuditInput): AuditSummary {
       `記述式(descriptive)が少ないため、二次試験向けに最低${thresholds.minDescriptive}件を目標にしてください。`,
     );
 
+  // テンプレ監修の破れを品質ゲートに載せる。要再監修・孤児は「気づかないまま放置される」のが
+  // 最大の害なので、専用コマンドを叩かなくても audit に出るようにする（strict では失敗させる）。
+  const ts = input.templateSupervision;
+  if (ts) {
+    if (ts.stale > 0)
+      recommendations.push(
+        `テンプレ監修が無効化されたものが${ts.stale}件あります（監修後にテンプレが変更されました）。` +
+          "npm run supervision:templates で確認し、再監修してください。",
+      );
+    if (ts.orphans > 0)
+      recommendations.push(
+        `監修台帳に実在しない topic が${ts.orphans}件あります（テンプレの改名・削除）。` +
+          "data/supervision/templates.json を整理してください。",
+      );
+  }
+
   return {
     okForRelease: recommendations.length === 0,
     problems: {
@@ -120,6 +155,7 @@ export function auditStatus(input: AuditInput): AuditSummary {
       supervisorChecked,
     },
     tests: { files: input.testFiles },
+    ...(ts ? { templates: { ...ts, coverage: ts.total > 0 ? ts.supervised / ts.total : 0 } } : {}),
     recommendations,
   };
 }
@@ -134,6 +170,14 @@ export function formatAuditSummary(summary: AuditSummary): string {
     `- formats: ${JSON.stringify(summary.problems.byFormat)}`,
     `- test files: ${summary.tests.files}`,
   ];
+
+  if (summary.templates) {
+    const t = summary.templates;
+    lines.push(
+      `- templates supervised: ${t.supervised}/${t.total} (${(t.coverage * 100).toFixed(1)}%)` +
+        `${t.stale > 0 ? ` / stale: ${t.stale}` : ""}${t.orphans > 0 ? ` / orphans: ${t.orphans}` : ""}`,
+    );
+  }
 
   if (summary.problems.invalidFiles.length > 0) {
     lines.push("invalid problem files:");

@@ -244,6 +244,28 @@ describe("templateSupervisionReport", () => {
     expect(r.queue[0]?.entry?.supervisor).toBe("A");
   });
 
+  it("台帳にあって実在しない topic を孤児として報告する（テンプレの改名・削除）", () => {
+    const ledger = upsertLedgerEntry(
+      upsertLedgerEntry(emptyLedger(), {
+        topic: "消えた論点",
+        fingerprint: "x",
+        supervisor: "A",
+        at: "2026-08-06",
+      }),
+      { topic: "改名前の論点", fingerprint: "y", supervisor: "A", at: "2026-08-06" },
+    );
+    const r = templateSupervisionReport({ templates, ledger, problemCountByTopic: counts });
+    expect(r.orphans).toEqual(["改名前の論点", "消えた論点"]); // 辞書順
+    // 孤児はテンプレ側の集計には影響しない（分母は実在するテンプレのみ）。
+    expect(r.total).toBe(3);
+    expect(r.supervised).toBe(0);
+  });
+
+  it("孤児が無ければ空配列", () => {
+    const r = templateSupervisionReport({ templates, ledger: emptyLedger() });
+    expect(r.orphans).toEqual([]);
+  });
+
   it("科目別に集計する（科目名の辞書順）", () => {
     const r = templateSupervisionReport({ templates, ledger: emptyLedger(), problemCountByTopic: counts });
     expect(r.bySubject.map((s) => s.subject)).toEqual(["電力", "理論"]);
@@ -286,6 +308,19 @@ describe("formatTemplateSupervisionReport", () => {
     expect(text).toContain("要再監修");
     expect(text).toContain("⚠️");
     expect(text).toContain("🔁要再監修");
+  });
+
+  it("孤児があるときは警告行を出す（カバレッジの分母がずれたまま放置させない）", () => {
+    const t = fakeTemplate();
+    const ledger = upsertLedgerEntry(emptyLedger(), {
+      topic: "実在しない論点",
+      fingerprint: "x",
+      supervisor: "A",
+      at: "2026-08-06",
+    });
+    const text = formatTemplateSupervisionReport(templateSupervisionReport({ templates: [t], ledger }));
+    expect(text).toContain("実在しない topic");
+    expect(text).toContain("実在しない論点");
   });
 
   it("全件監修済みならキューなしと表示する", () => {

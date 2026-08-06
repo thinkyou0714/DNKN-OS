@@ -21,15 +21,12 @@
  *   npm run supervision:templates:packet -- --out out/template-packet.md
  *   npm run supervision:templates:mark -- --supervisor "山田太郎" 三相交流電力 力率改善
  */
-import { existsSync, mkdirSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
-  emptyLedger,
   formatTemplateSupervisionReport,
-  parseLedger,
   type TemplateReviewItem,
-  type TemplateSupervisionLedger,
   templateFingerprint,
   templateSupervisionReport,
   upsertLedgerEntry,
@@ -39,6 +36,7 @@ import { getTemplate, listTopics } from "../lib/engine/templates/index.js";
 import type { Template } from "../lib/engine/templates/types.js";
 import { hashSeed, seededRng } from "../lib/shared/rng.js";
 import { atomicWriteFileSync, printHelp } from "./shared.js";
+import { loadTemplateLedger, saveTemplateLedger } from "./supervision-io.js";
 
 const HELP = `\
 supervision-templates — テンプレ単位の監修カバレッジ管理
@@ -51,10 +49,19 @@ supervision-templates — テンプレ単位の監修カバレッジ管理
 オプション:
   --json                結果を JSON で出力（status のみ）
   --out <path>          出力先ファイル（packet のみ。既定: 標準出力）
+  --subject <科目>      科目で絞る（packet のみ。例: 法規／電力管理）
+  --limit <N>           先頭 N 件だけ出す（packet のみ。一度に見る量を絞る）
+  --stale-only          要再監修だけを出す（packet のみ）
   --supervisor <name>   監修者名（mark のみ。必須）
   --note <text>         監修コメント（mark のみ。任意）
   --date <YYYY-MM-DD>   監修日（mark のみ。既定: 実行日）
   --help, -h            このヘルプを表示して終了
+
+例:
+  # 法規から20件ずつ進める（推奨の進め方）
+  npm run supervision:templates:packet -- --subject 法規 --limit 20 --out out/houki.md
+  # 変更で無効化されたものだけ再監修する
+  npm run supervision:templates:packet -- --stale-only --out out/stale.md
 
 注意:
   監修済みの記録は「人間が監修した」という主張です。実行者が責任を負います。
@@ -63,7 +70,6 @@ supervision-templates — テンプレ単位の監修カバレッジ管理
 `;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const LEDGER_PATH = join(__dirname, "../data/supervision/templates.json");
 const WEB_PROBLEMS_PATH = join(__dirname, "../web/problems.json");
 
 /** パケットに載せる生成サンプルの数（監修者が式とレンジを確かめるのに十分な数）。 */
@@ -79,19 +85,6 @@ const CHECKLIST: readonly string[] = [
   "出題分野メタ(pastExam)の分野・頻度が実際の出題傾向と整合するか",
   "法規・制度を扱う場合、最新の改正に整合するか（古い基準を引いていないか）",
 ];
-
-/** 台帳を読む（無ければ空台帳）。 */
-function loadLedger(): TemplateSupervisionLedger {
-  if (!existsSync(LEDGER_PATH)) return emptyLedger();
-  return parseLedger(readFileSync(LEDGER_PATH, "utf8"));
-}
-
-/** 台帳を書く（項目は upsertLedgerEntry が topic 順に並べるので差分が読みやすい）。 */
-function saveLedger(ledger: TemplateSupervisionLedger): void {
-  // 初回実行時は data/supervision/ がまだ無いことがある。
-  mkdirSync(dirname(LEDGER_PATH), { recursive: true });
-  atomicWriteFileSync(LEDGER_PATH, `${JSON.stringify(ledger, null, 2)}\n`);
-}
 
 /** 全テンプレをレジストリ順（topic 昇順）で取り出す。 */
 function allTemplates(): Template[] {
@@ -148,7 +141,7 @@ function positionalArgs(argv: string[], valueOptions: readonly string[]): string
 function runStatus(argv: string[]): void {
   const report = templateSupervisionReport({
     templates: allTemplates(),
-    ledger: loadLedger(),
+    ledger: loadTemplateLedger(),
     problemCountByTopic: problemCountByTopic(),
   });
   if (argv.includes("--json")) console.log(JSON.stringify(report, null, 2));
@@ -242,9 +235,40 @@ function runPacket(argv: string[]): void {
   const byTopic = new Map(templates.map((t) => [t.topic, t]));
   const report = templateSupervisionReport({
     templates,
-    ledger: loadLedger(),
+    ledger: loadTemplateLedger(),
     problemCountByTopic: problemCountByTopic(),
   });
+
+  // 絞り込み（150件を一度に見るのは非現実的なので、科目・件数・要再監修で切れるようにする）。
+  const subject = getOption(argv, "--subject");
+  const staleOnly = argv.includes("--stale-only");
+  const limitRaw = getOption(argv, "--limit");
+  const limit = limitRaw !== undefined ? Number(limitRaw) : undefined;
+  if (limit !== undefined && (!Number.isInteger(limit) || limit <= 0)) {
+    console.error(`エラー: --limit は1以上の整数で指定してください（受け取った値: ${limitRaw}）。`);
+    process.exit(1);
+  }
+  let queue = report.queue;
+  if (subject !== undefined) queue = queue.filter((q) => q.subject === subject);
+  if (staleOnly) queue = queue.filter((q) => q.stage === "stale");
+  const filtered = queue.length;
+  if (limit !== undefined) queue = queue.slice(0, limit);
+  // 絞り込みの結果を必ず明示する（黙って切り詰めると「これで全部」と誤解される）。
+  const filterNote =
+    subject !== undefined || staleOnly || limit !== undefined
+      ? [
+          "",
+          `絞り込み: ${[
+            subject !== undefined ? `科目=${subject}` : "",
+            staleOnly ? "要再監修のみ" : "",
+            limit !== undefined ? `先頭${limit}件` : "",
+          ]
+            .filter((s) => s.length > 0)
+            .join(" ・ ")}` +
+            `（該当 ${filtered} 件中 ${queue.length} 件を出力。全体の監修待ちは ${report.queue.length} 件）`,
+        ].join("\n")
+      : "";
+
   const header = [
     "# DENKEN-OS テンプレ監修レビューパケット",
     "",
@@ -252,6 +276,7 @@ function runPacket(argv: string[]): void {
     `（うち要再監修 ${report.stale} 件・未監修 ${report.unsupervised} 件）`,
     `テンプレ監修カバレッジ: ${report.supervised}/${report.total}（${(report.coverage * 100).toFixed(1)}%）`,
     `担保できている問題数: ${report.problemsSupervised}/${report.problemsTotal} 問（${(report.problemCoverage * 100).toFixed(1)}%）`,
+    filterNote,
     "",
     "並びは「要再監修 → 担保できる問題数の多い順」です。上から進めるとカバレッジが最速で伸びます。",
     "",
@@ -266,9 +291,9 @@ function runPacket(argv: string[]): void {
   ].join("\n");
 
   const body =
-    report.queue.length === 0
-      ? "監修待ちのテンプレはありません。\n"
-      : `${report.queue
+    queue.length === 0
+      ? "該当する監修待ちのテンプレはありません。\n"
+      : `${queue
           .map((item) => {
             const t = byTopic.get(item.topic);
             return t ? templateReviewSection(item, t) : "";
@@ -309,7 +334,7 @@ function runMark(argv: string[]): void {
     process.exit(1);
   }
 
-  let ledger = loadLedger();
+  let ledger = loadTemplateLedger();
   let marked = 0;
   let failed = 0;
   for (const topic of topics) {
@@ -331,7 +356,7 @@ function runMark(argv: string[]): void {
     marked++;
   }
   if (marked > 0) {
-    saveLedger(ledger);
+    saveTemplateLedger(ledger);
     console.log(`\n台帳を更新しました: data/supervision/templates.json（${marked} 件）`);
   }
   if (failed > 0) process.exit(1);

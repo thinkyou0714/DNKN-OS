@@ -272,6 +272,13 @@ export interface TemplateSupervisionReport {
    * 未監修より危険度が高いため。次点を問題数順にするのは、1件あたりのレバレッジが最大になる順。
    */
   queue: TemplateReviewItem[];
+  /**
+   * 台帳にあるが現在のレジストリに存在しない topic（辞書順）。
+   *
+   * テンプレの改名・削除で発生する。放置すると「監修済みのはずの論点が実在しない」まま
+   * 気づかれず、カバレッジの分母がずれる。台帳から削除するか、topic を直す必要がある。
+   */
+  orphans: string[];
 }
 
 /** レポート生成の入力（テンプレ本体と、生成問題数の実測値）。 */
@@ -344,6 +351,13 @@ export function templateSupervisionReport(input: TemplateSupervisionInput): Temp
       return a.topic.localeCompare(b.topic, "ja");
     });
 
+  // 台帳にあるが実在しない topic（テンプレの改名・削除で取り残された記録）。
+  const known = new Set(input.templates.map((t) => t.topic));
+  const orphans = input.ledger.entries
+    .map((e) => e.topic)
+    .filter((topic) => !known.has(topic))
+    .sort((a, b) => a.localeCompare(b, "ja"));
+
   const total = items.length;
   return {
     total,
@@ -356,6 +370,7 @@ export function templateSupervisionReport(input: TemplateSupervisionInput): Temp
     problemCoverage: problemsTotal > 0 ? problemsSupervised / problemsTotal : 0,
     bySubject: [...bySubjectMap.values()].sort((a, b) => a.subject.localeCompare(b.subject, "ja")),
     queue,
+    orphans,
   };
 }
 
@@ -380,6 +395,11 @@ export function formatTemplateSupervisionReport(r: TemplateSupervisionReport, qu
   if (r.stale > 0) {
     lines.push(
       `⚠️ 要再監修が ${r.stale} 件あります。監修後にテンプレが変更されており、以前の監修は前提が崩れています。`,
+    );
+  }
+  if (r.orphans.length > 0) {
+    lines.push(
+      `⚠️ 台帳に実在しない topic が ${r.orphans.length} 件あります（テンプレの改名・削除）: ${r.orphans.join("・")}`,
     );
   }
   if (r.queue.length > 0) {
