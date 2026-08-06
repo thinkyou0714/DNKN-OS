@@ -33,7 +33,8 @@
 │   engine/index.ts … barrel（単一入口）                               │
 │                                                                      │
 │   scheduler/ … SM-2 + FSRS + 弱点診断 (独立)                        │
-│   curriculum/ … 体系学習 (前提DAG・原理カード・ロードマップ生成)     │
+│   curriculum/ … 体系学習 (前提DAG・原理カード・ロードマップ・       │
+│                  納得チェックの間隔反復・理解ギャップ検出)          │
 │   store/ ……… 永続化 (memory / file / Supabase)                     │
 │   aggregate / ingest / export / crosspost /                          │
 │   correction / notify / analytics / community / share-card           │
@@ -87,7 +88,7 @@ graph TD
 
     clients[lib/clients<br/>X API境界]
     scheduler[lib/scheduler<br/>SM-2/FSRS/診断]
-    curriculum[lib/curriculum<br/>前提DAG/原理カード/ロードマップ]
+    curriculum[lib/curriculum<br/>前提DAG/原理カード/ロードマップ<br/>納得チェック/理解ギャップ]
     store[lib/store]
     sharecard[lib/share-card]
     others[lib/aggregate · ingest · export<br/>crosspost · correction<br/>notify · analytics · community]
@@ -110,6 +111,7 @@ graph TD
     web --> schema
     web --> scheduler
     web --> curriculum
+    curriculum --> scheduler
     web --> sharecard
     web --> shared
 

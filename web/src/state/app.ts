@@ -6,11 +6,14 @@ import type { Problem } from "../../../lib/engine/schema.js";
 import { JST_OFFSET_MS } from "../dates.js";
 import { getExamDate, getTheme } from "../settings.js";
 import { LocalProgress } from "../store.js";
+import { WhyCheckStore } from "../why-store.js";
 
 export const storage = window.localStorage;
 // 試験日を渡して FSRS を試験日逆算モードで構築する（#34/#35）。試験日が変わったら
 // settings 側で progress.setExamDate を呼んで再構築する。
 export const progress = new LocalProgress(storage, JST_OFFSET_MS, getExamDate(storage));
+/** 原理の納得チェックの記憶状態（演習の progress とは別カード・別キーで管理する）。 */
+export const whyChecks = new WhyCheckStore(storage);
 
 /** 読み込み済みの問題リスト。 */
 export let problems: Problem[] = [];

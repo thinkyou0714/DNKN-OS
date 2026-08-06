@@ -51,7 +51,8 @@ npm run build:web
 - `lib/README.md` documents the shared TypeScript domain layer.
 - `lib/engine/` owns problem schemas, templates, validation, narration, and generation.
 - `lib/scheduler/` owns review scheduling and diagnosis.
-- `lib/curriculum/` owns the systematic learning pipeline: prerequisite concept graph, principle cards, and learning-path generation. `web/src/concept-graph.ts` is a backward-compat re-export of `lib/curriculum/graph.ts`.
+- `lib/curriculum/` owns the systematic learning pipeline: prerequisite concept graph, principle cards, learning-path generation, foundation-gap diagnosis, why-check spaced repetition, and explanation-gap detection. `web/src/concept-graph.ts` is a backward-compat re-export of `lib/curriculum/graph.ts`.
+- `web/src/why-store.ts` persists why-check review state under `denken:whyCards`, separate from the practice cards in `web/src/store.ts` so that accuracy, XP, and weakness diagnosis stay unaffected.
 - `lib/store/` owns persistence interfaces and implementations.
 - `lib/audit/` owns repository quality status and supervision helpers.
 - `web/` owns the offline PWA.
