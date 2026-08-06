@@ -26,7 +26,7 @@
 | コミュニティ儀式 | `lib/community/`（チェックイン・出戻り歓迎・卒業ロール） | `docs/automation/08` |
 | 通知計画 | `lib/notify/`（頻度制御・オプトアウト・ジッター・試験カウントダウン） | `docs/automation/12` |
 | シェアカード文言 / クロスポスト / 誤り訂正 / 週次KPI・UTM計測 | `lib/share-card` `lib/crosspost` `lib/correction` `lib/analytics`（`utm.ts`） | `docs/automation/06,07,10,11` |
-| **オフライン学習アプリ（学習OS）** | `web/`（PWA・タブ型: 学習/復習/模試/質問/進捗/公式/設定。**図解(回路図/ベクトル図/ブロック図のインラインSVG)＋構造化解説**・**FSRS＋4段階評価**・弱点優先＋科目ドリル・**間違いノート**・**時間制限模試(合格判定)**・科目別到達度・試験カウントダウン・数式整形・自動生成9354問。**試験日逆算スケジューリング（直前モード）・科目別合格予測・本番再現模試（科目別実時間・一次4科目/二次合算判定）・二次の問題選択式・年度別通し模試・公式導出ドリル・電卓速算ドリル・前提コンセプトグラフ（学習順）・一次5択マークシート**。esbuild・Service Worker） | README ビジョン |
+| **オフライン学習アプリ（学習OS）** | `web/`（PWA・タブ型: 学習/復習/模試/質問/進捗/公式/設定。**図解(回路図/ベクトル図/ブロック図のインラインSVG)＋構造化解説**・**FSRS＋4段階評価**・弱点優先＋科目ドリル・**間違いノート**・**時間制限模試(合格判定)**・科目別到達度・試験カウントダウン・数式整形・自動生成9802問。**試験日逆算スケジューリング（直前モード）・科目別合格予測・本番再現模試（科目別実時間・一次4科目/二次合算判定）・二次の問題選択式・年度別通し模試・公式導出ドリル・電卓速算ドリル・前提コンセプトグラフ（学習順）・一次5択マークシート**。esbuild・Service Worker） | README ビジョン |
 | **ゲーミフィケーション（継続の仕組み）** | `web/src/`（**XP/レベル/称号**=解答ログから完全導出・**日替わり/ウィークリークエスト**・**ストリークお守り**=7日ごと獲得で欠席日を自動カバー・**実績バッジ22種**・マスコット**「シンクウ」**=状況反応するインラインSVG・**自分の記録**統計・紙吹雪/効果音/XPフロートの祝賀演出） | `docs/strategy/ideas/13-gamification-duolingo-100.md` |
 | **AI質問チャット（質問タブ）** | `lib/chat/`（検証済みナレッジ60件＝出典必須＋日本語バイグラム検索＋RAGプロンプト）＋`web/src/chat.ts`（**オフラインは内蔵ナレッジで即答／APIキー設定時は Claude をブラウザ直結(BYOK)でストリーミング**。法規は改正注意を自動付与） | `docs/strategy/ideas/10-ai-chat-100.md` |
 | Obsidian/Markdown 書き出し | `lib/export/markdown.ts` ＋ `scripts/export-vault.ts`（vault レイアウト） | README ビジョン |
@@ -49,7 +49,7 @@ npm run gen -- --topic 誘導電動機の回転速度 --count 5     # 他: 直�
 npm run gen -- --topic 三相交流電力 --count 5 --xpost    # 朝/夜の投稿スレッドも表示
 npm run validate:data                                     # data/ の問題を schema 検証（CIと同じ）
 npm run export:vault -- --out out/vault                   # 問題を Obsidian Markdown に書き出し
-npm run build:problems                                    # 全151テンプレから web/problems.json＋科目別シャード(web/problems/)を再生成（9354問・出荷済みIDは温存＋新規は内容由来の安定ID）
+npm run build:problems                                    # 全158テンプレから web/problems.json＋科目別シャード(web/problems/)を再生成（9802問・出荷済みIDは温存＋新規は内容由来の安定ID）
 npm run coverage:pastexam                                 # 過去問20年分の出題分野カバレッジを集計（--json 対応）
 npm run build:web                                         # オフライン学習アプリをバンドル → web/dist/
 npm run lint                                              # Biome（lint + format チェック）
