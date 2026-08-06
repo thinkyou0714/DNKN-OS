@@ -7,7 +7,7 @@
  */
 import { describe, expect, it } from "vitest";
 import { CONCEPT_EDGES } from "../../lib/curriculum/graph.js";
-import { getPrincipleCard, PRINCIPLE_CARDS } from "../../lib/curriculum/principles.js";
+import { filterPrincipleCards, getPrincipleCard, PRINCIPLE_CARDS } from "../../lib/curriculum/principles.js";
 import { MIN_DERIVATION_STEPS } from "../../web/src/derivation.js";
 import { FORMULAS } from "../../web/src/formulas.js";
 
@@ -76,5 +76,31 @@ describe("getPrincipleCard", () => {
 
   it("未知の area は undefined", () => {
     expect(getPrincipleCard("存在しない領域")).toBeUndefined();
+  });
+});
+
+describe("filterPrincipleCards", () => {
+  it("空クエリは全件を返す", () => {
+    expect(filterPrincipleCards(PRINCIPLE_CARDS, "")).toEqual([...PRINCIPLE_CARDS]);
+    expect(filterPrincipleCards()).toEqual([...PRINCIPLE_CARDS]);
+  });
+
+  it("領域名で絞り込める", () => {
+    const hit = filterPrincipleCards(PRINCIPLE_CARDS, "変圧器");
+    expect(hit.map((c) => c.area)).toContain("変圧器");
+  });
+
+  it("カード本文（導出・落とし穴・Q&A）のキーワードでも絞り込める", () => {
+    const hit = filterPrincipleCards(PRINCIPLE_CARDS, "電圧時間積");
+    expect(hit.map((c) => c.area)).toEqual(["パワーエレクトロニクス"]);
+  });
+
+  it("全角・大文字小文字の表記ゆれを吸収する", () => {
+    const hit = filterPrincipleCards(PRINCIPLE_CARDS, "ＲＬＣ");
+    expect(hit.map((c) => c.area)).toContain("単相交流回路");
+  });
+
+  it("ヒットなしは空配列", () => {
+    expect(filterPrincipleCards(PRINCIPLE_CARDS, "存在しないキーワードXYZ")).toEqual([]);
   });
 });

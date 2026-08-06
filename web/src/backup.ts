@@ -47,6 +47,10 @@ export const BACKUP_KEYS: readonly string[] = [
   // 収益ナッジのオプトアウト。ユーザーの明示的な拒否設定を機種変更で黙って初期化しない
   // （非侵襲原則「消せる」の担保。計測台帳・既読フラグは演出用なので含めない）。
   "denken:bridgeOptOut",
+  // 原理の納得チェックの記憶状態（why-store.ts）。演習の cards と同じく積み上げた学習
+  // そのものなので、機種変更で失わないよう含める。末尾に足すのは既存キーの順序
+  // （cards→logs…）に依存するテスト・巻き戻し挙動を変えないため。
+  "denken:whyCards",
 ];
 
 export const BACKUP_VERSION = 1;
@@ -118,6 +122,18 @@ function validateBackupValue(key: string, raw: string): string | null {
     }
     if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
       return "記憶状態（denken:cards）の形式が不正です。";
+    }
+    return null;
+  }
+  if (key === "denken:whyCards") {
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(raw);
+    } catch {
+      return "納得チェックの記憶状態（denken:whyCards）が壊れています。";
+    }
+    if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
+      return "納得チェックの記憶状態（denken:whyCards）の形式が不正です。";
     }
     return null;
   }

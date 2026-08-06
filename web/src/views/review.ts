@@ -13,6 +13,7 @@ import { h, safeHtml } from "../ui/dom.js";
 import { emptyState, svgNode } from "../ui/widgets.js";
 import { cramBanner, usedFreezeDays } from "./practice.js";
 import { switchView } from "./router.js";
+import { whyCheckSection } from "./why-review.js";
 
 export function renderReview(root: HTMLElement): void {
   // 直前モードのバナー（試験が近いと集中復習を促す #34/#35）。
@@ -91,6 +92,9 @@ export function renderReview(root: HTMLElement): void {
     }
     root.append(list);
   }
+
+  // 「解けるか」の復習の隣に「なぜかを説明できるか」の復習を置く（原理も間隔反復に載せる）。
+  whyCheckSection(root);
 
   root.append(h("h2", {}, "間違いノート"));
   if (notebook.length === 0) {

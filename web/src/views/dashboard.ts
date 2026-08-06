@@ -8,6 +8,7 @@ import { withUtm } from "../../../lib/analytics/utm.js";
 import { foundationGaps } from "../../../lib/curriculum/gaps.js";
 import { buildLearningPath, nextUp } from "../../../lib/curriculum/path.js";
 import { getPrincipleCard } from "../../../lib/curriculum/principles.js";
+import { explanationGaps } from "../../../lib/curriculum/understanding.js";
 import { hashSeed } from "../../../lib/shared/rng.js";
 import { evaluateAchievements } from "../achievements.js";
 import { recordClick } from "../bridge.js";
@@ -32,7 +33,7 @@ import { loadFreezeState } from "../freeze.js";
 import { buildStudyPlan } from "../plan.js";
 import { areaProblemPool, foundationGapHint, roadmapChipModel } from "../roadmap.js";
 import { getDailyGoal, getExamDate, isOnboarded } from "../settings.js";
-import { problems, progress, storage } from "../state/app.js";
+import { problems, progress, storage, whyChecks } from "../state/app.js";
 import { practice as practiceState } from "../state/practice.js";
 import { ghostRace, masteredTopics, myStats } from "../stats.js";
 import { h } from "../ui/dom.js";
@@ -345,6 +346,40 @@ function principleCardDetails(area: string, statusIcon = "💡"): HTMLElement | 
   }
   body.append(actions, drillHost);
   return body;
+}
+
+/**
+ * 「解けるけど説明できる？」セクション（#理解ギャップ）。
+ * 演習の正答率は高いのに納得チェックがほとんど未着手の領域を1つだけ提示する。
+ * 正答率だけを見て安心し、原理が空白のまま進むのを防ぐための気づきであり、
+ * 推定なので断定はしない（乱発もしない）。
+ */
+function explanationGapSection(root: HTMLElement, logs: ReturnType<typeof progress.logs>): void {
+  const gap = explanationGaps(logs, whyChecks.startedIds())[0];
+  if (!gap) return;
+  root.append(
+    h(
+      "div",
+      { class: "card" },
+      h("strong", {}, "🔍 解けるけど、説明できる？"),
+      h(
+        "div",
+        { class: "muted" },
+        `「${gap.area}」は正答率 ${Math.round(gap.solveAccuracy * 100)}%（${gap.attempts}問）と得意な一方、` +
+          `原理の納得チェックは ${gap.whyStarted}/${gap.whyTotal} 件しか確認していません。` +
+          "解き方は身についても「なぜその式か」が空白だと、少し形を変えた出題で崩れやすくなります。",
+      ),
+      h(
+        "div",
+        { class: "drill-actions" },
+        h(
+          "button",
+          { class: "chip", type: "button", onclick: () => switchView("review") },
+          "🧠 納得チェックで確かめる →",
+        ),
+      ),
+    ),
+  );
 }
 
 /** 自分の記録・ゴーストレース・弱点論点・マスター済み論点のセクション。 */
@@ -750,6 +785,7 @@ export function renderDashboard(root: HTMLElement): void {
   masterySection(root, logs);
   readinessSection(root, logs, plan.daysLeft);
   learningOrderSection(root, logs);
+  explanationGapSection(root, logs);
   statsSection(root, logs, lv);
   badgesSection(root, logs, lv);
   recordExportButton(root, logs);

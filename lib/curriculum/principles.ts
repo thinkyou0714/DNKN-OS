@@ -528,3 +528,31 @@ export const PRINCIPLE_CARDS: readonly PrincipleCard[] = [
 export function getPrincipleCard(area: string): PrincipleCard | undefined {
   return PRINCIPLE_CARDS.find((c) => c.area === area);
 }
+
+/** 検索向け正規化（NFKC・小文字化・空白除去）。公式集の filterFormulas と同じ規則。 */
+function norm(s: string): string {
+  return s.normalize("NFKC").toLowerCase().replace(/\s+/g, "");
+}
+
+/** カード1枚の検索対象テキスト（領域名・要旨・理由・導出・落とし穴・公式参照・Q&A）。 */
+function searchableText(card: PrincipleCard): string {
+  return [
+    card.area,
+    card.coreIdea,
+    card.why,
+    ...card.derivation,
+    ...card.pitfalls,
+    ...card.formulaRefs,
+    ...card.checks.flatMap((c) => [c.question, c.answer]),
+  ].join("");
+}
+
+/**
+ * 原理カードをクエリで絞り込む。カード内のどこかに部分一致すれば残す。
+ * 空クエリは全件（公式集の `filterFormulas` と同じ挙動）。
+ */
+export function filterPrincipleCards(cards: readonly PrincipleCard[] = PRINCIPLE_CARDS, query = ""): PrincipleCard[] {
+  const q = norm(query);
+  if (q.length === 0) return [...cards];
+  return cards.filter((c) => norm(searchableText(c)).includes(q));
+}
