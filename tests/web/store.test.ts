@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { LocalProgress } from "../../web/src/store.js";
+import { CHOSEN_MAX_LEN, LocalProgress } from "../../web/src/store.js";
 import { MemoryStorage } from "../helpers/storage.js";
 
 const DAY = 86_400_000;
@@ -182,6 +182,30 @@ describe("LocalProgress（ブラウザ進捗・FSRS）", () => {
     const b = new LocalProgress(storage, undefined, far);
     expect(b.logs().length).toBe(1);
     expect(b.getCardView("機械")).toBeDefined();
+  });
+
+  it("誤答時だけ選んだ答えを記録する（誤概念分析の素材・正解時は残さない）", () => {
+    const p = new LocalProgress(new MemoryStorage());
+    p.record("三相交流電力", "again", Date.UTC(2026, 0, 10), 1000, "T-0001", "173.2");
+    p.record("三相交流電力", "good", Date.UTC(2026, 0, 10), 1000, "T-0002", "100");
+    const logs = p.logs();
+    expect(logs[0]?.chosen).toBe("173.2");
+    // 正解のログには chosen を持たせない（誤答の分析にしか使わないため）。
+    expect(logs[1]?.chosen).toBeUndefined();
+  });
+
+  it("選んだ答えは長さを切り詰めて保存する（ログの肥大で quota を潰さない）", () => {
+    const p = new LocalProgress(new MemoryStorage());
+    p.record("理論", false, Date.UTC(2026, 0, 10), 1000, "T-0001", "9".repeat(200));
+    expect((p.logs()[0]?.chosen ?? "").length).toBe(CHOSEN_MAX_LEN);
+  });
+
+  it("空文字・未指定の chosen は保存しない", () => {
+    const p = new LocalProgress(new MemoryStorage());
+    p.record("理論", false, Date.UTC(2026, 0, 10), 1000, "T-0001", "   ");
+    p.record("電力", false, Date.UTC(2026, 0, 10), 1000, "T-0002");
+    expect(p.logs()[0]?.chosen).toBeUndefined();
+    expect(p.logs()[1]?.chosen).toBeUndefined();
   });
 
   it("日境界は既定 JST（UTC 22時=JST翌07時の学習が『今日』に入る）", () => {

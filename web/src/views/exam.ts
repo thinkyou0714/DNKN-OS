@@ -4,6 +4,7 @@
  * startTimer / endExam
  */
 
+import { buildRubric, missingUnits } from "../../../lib/curriculum/rubric.js";
 import type { Problem, Subject } from "../../../lib/engine/schema.js";
 import {
   buildMockExam,
@@ -444,9 +445,22 @@ export function renderExamRunning(root: HTMLElement): void {
           class: "choice",
           type: "button",
           onclick: () => {
+            // 書いた答案に模範解答の単位が見当たらなければ指摘する（単位落としは二次の典型的な減点）。
+            // 模試の判定自体は本番再現の○×のままにし、気づきだけを足す。
+            const written = ta.value;
+            const lacking = written.trim() === "" ? [] : missingUnits(buildRubric(p.solution), written);
             answers.innerHTML = "";
+            answers.append(solutionNode(p, "模範解答"));
+            if (lacking.length > 0) {
+              answers.append(
+                h(
+                  "div",
+                  { class: "muted small" },
+                  `⚠️ 答案に見当たらない単位: ${lacking.join("・")}（単位落としは減点対象）`,
+                ),
+              );
+            }
             answers.append(
-              solutionNode(p, "模範解答"),
               h(
                 "div",
                 { class: "rate" },

@@ -7,6 +7,7 @@
  *   正解でも不正解になっていた。numeric は数値として許容誤差つきで比較する。
  *   multiple_choice / descriptive は選択肢・センチネルの厳密一致でよい。
  */
+import { ratingForScore } from "../../lib/curriculum/rubric.js";
 import type { Problem } from "../../lib/engine/schema.js";
 import type { Rating } from "../../lib/scheduler/types.js";
 
@@ -60,15 +61,17 @@ export function isAnswerCorrect(problem: Problem, given: string): boolean {
 }
 
 /**
- * 記述(二次)の部分点自己採点。模範解答の各ステップ（採点観点）のうち
+ * 記述(二次)の部分点自己採点（等重み版）。模範解答の各ステップのうち
  * 自分が書けた数 checked / 全 total から達成率と FSRS 評価を導く。
- *   全部=easy / 2/3以上=good / 1/3以上=hard / それ未満=again（やり直し）
- * 部分点の感覚を養い、二次の「途中点を確実に取る」戦略に繋げる。
+ *
+ * 学習タブの記述採点は配点重み付きの
+ * {@link import("../../lib/curriculum/rubric.js").scoreRubric} を使う。
+ * こちらは「ステップを等しく数えるだけでよい」呼び出し向けに残す簡易版で、
+ * 達成率→評価の閾値は `ratingForScore` に委譲して単一情報源を保つ。
  */
 export function partialScore(checked: number, total: number): { pct: number; rating: Rating } {
   if (total <= 0) return { pct: 0, rating: "again" };
   const c = Math.max(0, Math.min(total, checked));
   const pct = c / total;
-  const rating: Rating = c === total ? "easy" : pct >= 2 / 3 ? "good" : pct >= 1 / 3 ? "hard" : "again";
-  return { pct, rating };
+  return { pct, rating: ratingForScore(pct) };
 }
