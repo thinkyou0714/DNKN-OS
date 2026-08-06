@@ -130,6 +130,16 @@ export function directPrereqs(edges: readonly PrereqEdge[] = CONCEPT_EDGES): Map
   return m;
 }
 
+/** 前提グラフを一度走査して得られる、ロードマップ生成用の派生情報。 */
+export interface ConceptGraphAnalysis {
+  /** topic → 直接前提。 */
+  prereqs: Map<string, string[]>;
+  /** topic → 最長前提連鎖の長さ。循環部分は含まない。 */
+  depths: Map<string, number>;
+  /** 深さ昇順、同深さは名前順の決定論的な体系順。 */
+  order: string[];
+}
+
 /**
  * グラフに循環があるか（DFS の3色塗り）。DAG であることをテストで保証するために公開する。
  */
@@ -157,14 +167,14 @@ export function hasCycle(edges: readonly PrereqEdge[] = CONCEPT_EDGES): boolean 
 }
 
 /**
- * 各ノードの「体系深さ」＝最長前提連鎖の長さ（前提なし=0）を返す（Kahn 法の反復実装）。
- * 深さは学習段階（基礎→応用）のグルーピングに使う。エッジに沿って深さは必ず増えるので、
- * (深さ, 名前) の順で並べればトポロジカル順になる。
+ * 前提グラフを解析し、直接前提・体系深さ・トポロジカル順をまとめて返す。
+ * 複数の派生情報を使う呼び出し元が同じグラフを繰り返し解析せずに済むようにする。
+ * 体系深さは最長前提連鎖の長さ（前提なし=0）で、Kahn 法により反復的に算出する。
  *
  * 循環に巻き込まれたノードは深さを確定できないため結果に含めない
  * （CONCEPT_EDGES が DAG であることは hasCycle のテストで保証する。防御的挙動）。
  */
-export function conceptDepths(edges: readonly PrereqEdge[] = CONCEPT_EDGES): Map<string, number> {
+export function analyzeConceptGraph(edges: readonly PrereqEdge[] = CONCEPT_EDGES): ConceptGraphAnalysis {
   const adj = buildAdjacency(edges);
   const prereqMap = directPrereqs(edges);
   const nodes = collectNodes(edges);
@@ -193,7 +203,15 @@ export function conceptDepths(edges: readonly PrereqEdge[] = CONCEPT_EDGES): Map
   for (const n of nodes) {
     if ((remaining.get(n) ?? 0) > 0) depths.delete(n);
   }
-  return depths;
+  const order = [...depths.keys()].sort(
+    (a, b) => (depths.get(a) ?? 0) - (depths.get(b) ?? 0) || a.localeCompare(b, "ja"),
+  );
+  return { prereqs: prereqMap, depths, order };
+}
+
+/** 各ノードの体系深さを返す。複数の派生情報が必要なら analyzeConceptGraph を使う。 */
+export function conceptDepths(edges: readonly PrereqEdge[] = CONCEPT_EDGES): Map<string, number> {
+  return analyzeConceptGraph(edges).depths;
 }
 
 /**
@@ -201,8 +219,7 @@ export function conceptDepths(edges: readonly PrereqEdge[] = CONCEPT_EDGES): Map
  * 循環に巻き込まれたノードは含めない（conceptDepths と同じ防御的挙動）。
  */
 export function topologicalOrder(edges: readonly PrereqEdge[] = CONCEPT_EDGES): string[] {
-  const depths = conceptDepths(edges);
-  return [...depths.keys()].sort((a, b) => (depths.get(a) ?? 0) - (depths.get(b) ?? 0) || a.localeCompare(b, "ja"));
+  return analyzeConceptGraph(edges).order;
 }
 
 /** 学習順のおすすめ結果。 */
