@@ -30,7 +30,15 @@ import {
   setTheme,
   type ThemePref,
 } from "../settings.js";
-import { applyTheme, installPrompt, progress, setInstallPrompt, storage, whyChecks } from "../state/app.js";
+import {
+  applyTheme,
+  coeffDrills,
+  installPrompt,
+  progress,
+  setInstallPrompt,
+  storage,
+  whyChecks,
+} from "../state/app.js";
 import { SEEN_LEVEL_KEY, SEEN_STREAK_MILESTONE_KEY } from "../storage-keys.js";
 import { h } from "../ui/dom.js";
 import { showToast } from "../ui/toast.js";
@@ -84,8 +92,9 @@ export function renderSettings(root: HTMLElement): void {
   retSel.addEventListener("change", () => {
     const value = Number(retSel.value);
     progress.setDesiredRetention(value);
-    // 納得チェックも同じ目標保持率で回す（演習だけ設定が効く非対称を作らない）。
+    // 納得チェック・係数判断ドリルも同じ目標保持率で回す（演習だけ設定が効く非対称を作らない）。
     whyChecks.setDesiredRetention(progress.desiredRetention());
+    coeffDrills.setDesiredRetention(progress.desiredRetention());
   });
 
   const themeSel = h("select", {}) as HTMLSelectElement;

@@ -3,6 +3,7 @@
  * problems 配列・loadFailed・現在 view・progress インスタンス・テーマ。
  */
 import type { Problem } from "../../../lib/engine/schema.js";
+import { CoeffDrillStore } from "../coeff-store.js";
 import { JST_OFFSET_MS } from "../dates.js";
 import { getExamDate, getTheme } from "../settings.js";
 import { LocalProgress } from "../store.js";
@@ -14,6 +15,8 @@ export const storage = window.localStorage;
 export const progress = new LocalProgress(storage, JST_OFFSET_MS, getExamDate(storage));
 /** 原理の納得チェックの記憶状態（演習の progress とは別カード・別キーで管理する）。 */
 export const whyChecks = new WhyCheckStore(storage);
+/** 係数判断ドリルの記憶状態（同じく演習とは別カード・別キーで管理する）。 */
+export const coeffDrills = new CoeffDrillStore(storage);
 
 /** 読み込み済みの問題リスト。 */
 export let problems: Problem[] = [];

@@ -7,7 +7,9 @@
  * - gaps.ts:       弱点の根っこ診断（前提不足の検出）
  * - why-check.ts:  納得チェックの間隔反復（出題順・進捗集計）
  * - understanding.ts: 「解けるけど説明できない」領域の検出
+ * - coefficients.ts: 係数リーズニング（√3・1/2 等の適用判断ドリル。三種→二種ブリッジ）
  */
+export * from "./coefficients.js";
 export * from "./gaps.js";
 export * from "./graph.js";
 export * from "./path.js";

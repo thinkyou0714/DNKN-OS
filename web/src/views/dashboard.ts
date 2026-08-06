@@ -42,6 +42,7 @@ import { showToast } from "../ui/toast.js";
 import { bar, emptyState, masteryChip, ringNode, sparklineNode } from "../ui/widgets.js";
 import { type levelInfo, xpByDay, xpBySubject } from "../xp.js";
 import { subjectNoteChip } from "./bridge-cards.js";
+import { coeffBridgeSection } from "./coeff-drill.js";
 import { renderOrderingDrillBody } from "./drills.js";
 import { currentLevel, freezeInfo, questsCard, weeklyQuestsCard } from "./practice.js";
 import { startDrill } from "./review.js";
@@ -797,6 +798,7 @@ export function renderDashboard(root: HTMLElement): void {
   readinessSection(root, logs, plan.daysLeft);
   learningOrderSection(root, logs);
   explanationGapSection(root, logs);
+  coeffBridgeSection(root);
   statsSection(root, logs, lv);
   badgesSection(root, logs, lv);
   recordExportButton(root, logs);
