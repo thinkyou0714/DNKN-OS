@@ -8,7 +8,7 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const Q_SET: ReadonlyArray<number> = [7200, 7500, 8000, 9000, 9375, 9600, 10000];
+const Q_SET: ReadonlyArray<number> = [7200, 7500, 8000, 9000, 9375, 9600, 10000, 11250, 11520, 12000];
 
 type Params = {
   heat_rate: number;
@@ -21,7 +21,7 @@ export const thermalEfficiency = defineTemplate<Params>({
   difficulty: 4,
   pastExam: { area: "発電（水力・汽力）", frequency: "high", years: [2008, 2013, 2018, 2023] },
   paramSpecs: {
-    heat_rate: { unit: "kJ/kWh", realistic_range: [7000, 10000] },
+    heat_rate: { unit: "kJ/kWh", realistic_range: [7000, 12000] },
   },
   paramOrder: ["heat_rate"],
   draw(rng) {
@@ -38,7 +38,7 @@ export const thermalEfficiency = defineTemplate<Params>({
     return {
       format: "descriptive",
       params: {
-        heat_rate: { value: q, unit: "kJ/kWh", realistic_range: [7000, 10000] },
+        heat_rate: { value: q, unit: "kJ/kWh", realistic_range: [7000, 12000] },
       },
       answerValue: eta,
       answerUnit: "%",

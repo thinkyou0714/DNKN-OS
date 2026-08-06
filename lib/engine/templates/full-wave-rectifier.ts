@@ -6,7 +6,10 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const V_SET: ReadonlyArray<number> = [100, 110, 120, 200, 220, 240, 400, 440, 500, 600, 1000];
+const V_SET: ReadonlyArray<number> = [
+  100, 105, 110, 115, 120, 127, 140, 150, 160, 180, 200, 210, 220, 230, 240, 250, 277, 300, 320, 346, 380, 400, 415,
+  420, 440, 460, 480, 500, 550, 600, 660, 690, 700, 750, 800, 900, 1000,
+];
 
 type Params = {
   ac_voltage: number;

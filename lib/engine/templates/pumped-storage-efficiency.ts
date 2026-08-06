@@ -9,8 +9,8 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const PUMPING_SET: ReadonlyArray<number> = [1000, 1200, 1500, 2000]; // 〔MWh〕
-const RATIO_SET: ReadonlyArray<number> = [0.65, 0.7, 0.75, 0.8];
+const PUMPING_SET: ReadonlyArray<number> = [1000, 1200, 1250, 1400, 1500, 1600, 1750, 1800, 2000]; // 〔MWh〕
+const RATIO_SET: ReadonlyArray<number> = [0.65, 0.68, 0.7, 0.72, 0.75, 0.76, 0.78, 0.8];
 
 type Params = {
   pumping_energy: number;

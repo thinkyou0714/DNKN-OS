@@ -23,6 +23,7 @@ import { conductorLength } from "./conductor-length.js";
 import { coulombForce } from "./coulomb-force.js";
 import { coupledInductorConnection } from "./coupled-inductor-connection.js";
 import { currentLimitingReactor } from "./current-limiting-reactor.js";
+import { currentReductionFactor } from "./current-reduction-factor.js";
 import { currentTransformerRelay } from "./current-transformer-relay.js";
 import { dailyLoadFactor } from "./daily-load-factor.js";
 import { dcGeneratorEmf } from "./dc-generator-emf.js";
@@ -72,6 +73,7 @@ import { loopDistributionCurrent } from "./loop-distribution-current.js";
 import { lossFactor } from "./loss-factor.js";
 import { lossReductionPf } from "./loss-reduction-pf.js";
 import { magneticCircuit } from "./magnetic-circuit.js";
+import { mainLineAllowableCurrent } from "./main-line-allowable-current.js";
 import { massDefectEnergy } from "./mass-defect-energy.js";
 import { maxDemandComposite } from "./max-demand-composite.js";
 import { maxEfficiencyLoad } from "./max-efficiency-load.js";
@@ -275,6 +277,8 @@ const templates: Template[] = [
   hvInsulationTestVoltage,
   smallScaleElectricalFacility,
   groundFaultPotentialRise,
+  mainLineAllowableCurrent,
+  currentReductionFactor,
   // 機械制御（二次）
   transformerVoltageRegulation,
   synchronousGeneratorOutput,
@@ -374,6 +378,7 @@ export {
   coulombForce,
   coupledInductorConnection,
   currentLimitingReactor,
+  currentReductionFactor,
   currentTransformerRelay,
   dailyLoadFactor,
   dcGeneratorEmf,
@@ -422,6 +427,7 @@ export {
   lossFactor,
   lossReductionPf,
   magneticCircuit,
+  mainLineAllowableCurrent,
   massDefectEnergy,
   maxDemandComposite,
   maxEfficiencyLoad,

@@ -7,9 +7,11 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const PS_SET: ReadonlyArray<number> = [5000, 10000, 20000];
-const K_SET: ReadonlyArray<number> = [8, 10, 12];
-const DP_SET: ReadonlyArray<number> = [200, 300, 400, 500, 600];
+const PS_SET: ReadonlyArray<number> = [
+  3000, 4000, 5000, 6000, 8000, 10000, 12000, 15000, 20000, 25000, 30000, 40000, 50000,
+];
+const K_SET: ReadonlyArray<number> = [5, 6, 7.5, 8, 10, 12, 12.5, 15];
+const DP_SET: ReadonlyArray<number> = [100, 150, 200, 250, 300, 400, 450, 500, 600, 750, 800, 900, 1000, 1200, 1500];
 
 type Params = {
   system_capacity: number;

@@ -10,8 +10,10 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const THERMAL_SET: ReadonlyArray<number> = [1500, 2000, 2500, 3000, 3300]; // 〔MW〕
-const EFFICIENCY_SET: ReadonlyArray<number> = [0.32, 0.33, 0.34, 0.35];
+const THERMAL_SET: ReadonlyArray<number> = [
+  1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300,
+]; // 〔MW〕
+const EFFICIENCY_SET: ReadonlyArray<number> = [0.32, 0.325, 0.33, 0.335, 0.34, 0.345, 0.35];
 
 type Params = {
   thermal_output: number;
