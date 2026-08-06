@@ -84,7 +84,7 @@ describe("効果音の音量設定（オフ/小/中/大）", () => {
   });
 });
 
-describe("デンタマの成長（tier）とまめ知識", () => {
+describe("シンクウの成長（tier）とまめ知識", () => {
   it("レベル帯で成長段階が決まる", () => {
     expect(tierForLevel(1)).toBe(0);
     expect(tierForLevel(9)).toBe(0);
