@@ -5,7 +5,14 @@
  *   tests/web/concept-graph.test.ts が web 側の再エクスポート経由で担保する。）
  */
 import { describe, expect, it } from "vitest";
-import { CONCEPT_EDGES, conceptDepths, directPrereqs, hasCycle, topologicalOrder } from "../../lib/curriculum/graph.js";
+import {
+  analyzeConceptGraph,
+  CONCEPT_EDGES,
+  conceptDepths,
+  directPrereqs,
+  hasCycle,
+  topologicalOrder,
+} from "../../lib/curriculum/graph.js";
 
 const nodeNames = new Set(CONCEPT_EDGES.flatMap((e) => [e.from, e.to]));
 
@@ -71,5 +78,27 @@ describe("directPrereqs", () => {
     expect([...(m.get("回転機の制御") ?? [])].sort()).toEqual(["パワーエレクトロニクス", "同期機"].sort());
     expect(m.get("単相交流回路")).toEqual(["直流回路"]);
     expect(m.get("直流回路")).toBeUndefined();
+  });
+});
+
+describe("analyzeConceptGraph", () => {
+  it("1回の解析結果が個別 API と同じ派生情報を返す", () => {
+    const analysis = analyzeConceptGraph();
+    expect(analysis.depths).toEqual(conceptDepths());
+    expect(analysis.prereqs).toEqual(directPrereqs());
+    expect(analysis.order).toEqual(topologicalOrder());
+    const ancestors = analysis.ancestorsOf("三相交流回路");
+    expect(ancestors).toEqual(new Set(["単相交流回路", "直流回路"]));
+    expect(analysis.ancestorsOf("三相交流回路")).toBe(ancestors);
+    expect(analysis.ancestorsOf("未知の領域")).toEqual(new Set());
+  });
+
+  it("循環入力の祖先集合からノード自身を除外する", () => {
+    const analysis = analyzeConceptGraph([
+      { from: "A", to: "B" },
+      { from: "B", to: "A" },
+    ]);
+    expect(analysis.ancestorsOf("A")).toEqual(new Set(["B"]));
+    expect(analysis.ancestorsOf("B")).toEqual(new Set(["A"]));
   });
 });

@@ -12,7 +12,7 @@
  *
  * DOM 非依存・状態なし。
  */
-import { CONCEPT_EDGES, conceptDepths, directPrereqs, type PrereqEdge, topologicalOrder } from "./graph.js";
+import { analyzeConceptGraph, CONCEPT_EDGES, type PrereqEdge } from "./graph.js";
 
 /** ロードマップ上の1領域の状態。 */
 export type StepStatus = "mastered" | "ready" | "blocked";
@@ -52,14 +52,13 @@ export function buildLearningPath(
   edges: readonly PrereqEdge[] = CONCEPT_EDGES,
 ): LearningPath {
   const done = new Set(mastered);
-  const depths = conceptDepths(edges);
-  const prereqMap = directPrereqs(edges);
-  const steps: LearningStep[] = topologicalOrder(edges).map((area) => {
-    const missing = (prereqMap.get(area) ?? []).filter((p) => !done.has(p));
+  const graph = analyzeConceptGraph(edges);
+  const steps: LearningStep[] = graph.order.map((area) => {
+    const missing = (graph.prereqs.get(area) ?? []).filter((p) => !done.has(p));
     const status: StepStatus = done.has(area) ? "mastered" : missing.length === 0 ? "ready" : "blocked";
     return {
       area,
-      depth: depths.get(area) ?? 0,
+      depth: graph.depths.get(area) ?? 0,
       status,
       // mastered は「もう不足はない」扱いで空にする（UI で🔒理由を出すのは blocked のみ）。
       missingPrereqs: status === "blocked" ? missing : [],

@@ -12,7 +12,7 @@
  *
  * DOM 非依存・状態なし・決定論。
  */
-import { CONCEPT_EDGES, CONCEPT_KEYWORDS, conceptDepths, directPrereqs, type PrereqEdge } from "./graph.js";
+import { analyzeConceptGraph, CONCEPT_EDGES, CONCEPT_KEYWORDS, type PrereqEdge } from "./graph.js";
 
 /**
  * granular な topic 名が属する概念領域をキーワード部分一致で推定する（複数マッチ可）。
@@ -35,16 +35,7 @@ export function topicConceptAreas(
  * visited 集合で循環入力にも停止を保証する（CONCEPT_EDGES は DAG 前提）。
  */
 export function ancestorAreas(area: string, edges: readonly PrereqEdge[] = CONCEPT_EDGES): Set<string> {
-  const prereqMap = directPrereqs(edges);
-  const out = new Set<string>();
-  const stack = [...(prereqMap.get(area) ?? [])];
-  while (stack.length > 0) {
-    const cur = stack.pop() as string; // length>0 のため在中
-    if (out.has(cur)) continue;
-    out.add(cur);
-    for (const p of prereqMap.get(cur) ?? []) stack.push(p);
-  }
-  return out;
+  return new Set(analyzeConceptGraph(edges).ancestorsOf(area));
 }
 
 /** 弱点論点1つぶんの根っこ診断結果。 */
@@ -75,7 +66,7 @@ export function foundationGaps(
   keywords: Readonly<Record<string, readonly string[]>> = CONCEPT_KEYWORDS,
 ): FoundationGap[] {
   const done = new Set(masteredAreas);
-  const depths = conceptDepths(edges);
+  const graph = analyzeConceptGraph(edges);
   const gaps: FoundationGap[] = [];
   const seen = new Set<string>();
   for (const topic of weakTopics) {
@@ -85,13 +76,13 @@ export function foundationGaps(
     if (areas.length === 0) continue;
     const missing = new Set<string>();
     for (const a of areas) {
-      for (const anc of ancestorAreas(a, edges)) {
+      for (const anc of graph.ancestorsOf(a)) {
         if (!done.has(anc)) missing.add(anc);
       }
     }
     if (missing.size === 0) continue;
     const missingFoundations = [...missing].sort(
-      (x, y) => (depths.get(x) ?? 0) - (depths.get(y) ?? 0) || x.localeCompare(y, "ja"),
+      (x, y) => (graph.depths.get(x) ?? 0) - (graph.depths.get(y) ?? 0) || x.localeCompare(y, "ja"),
     );
     gaps.push({ topic, areas, missingFoundations });
   }
