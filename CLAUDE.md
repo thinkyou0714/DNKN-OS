@@ -157,8 +157,11 @@ npm run build:web
 - `scripts/audit-status.ts` is the audit command entrypoint.
 - `npm run audit:status` is advisory.
 - `npm run audit:status:strict` fails on warning-level audit items.
-- `scripts/supervision-status.ts`, `scripts/supervision-packet.ts`, and `scripts/supervision-mark.ts` support supervision workflows.
-- Tests include `tests/audit/status.test.ts` and `tests/audit/supervision.test.ts`.
+- `scripts/supervision-status.ts`, `scripts/supervision-packet.ts`, and `scripts/supervision-mark.ts` support per-problem supervision of `data/problems/` (52 curated problems).
+- `lib/audit/template-supervision.ts` + `scripts/supervision-templates.ts` support per-template supervision, which covers the ~9,354 shipped problems generated from 151 templates (one template ≈ 62 problems). The ledger is `data/supervision/templates.json`.
+- Template supervision records a behavioral fingerprint (a hash of deterministically generated samples plus declared metadata), so editing a template's formula, `realistic_range`, difficulty, solution text, or choices automatically invalidates its supervision and surfaces it as 要再監修 (stale). Comment/identifier-only edits do not. Never weaken this — it is what stops the ledger from carrying false "supervised" claims.
+- Tests include `tests/audit/status.test.ts`, `tests/audit/supervision.test.ts`, and `tests/audit/template-supervision.test.ts`.
+- The runbook for both layers is `docs/strategy/supervision-workflow.md`.
 
 ## 11. Commands
 
@@ -180,9 +183,12 @@ npm run build:web
 - `npm run verify`: run lint, typecheck, web typecheck, data validation, tests, and web build.
 - `npm run audit:status`: show repository quality audit.
 - `npm run audit:status:strict`: run strict repository quality audit.
-- `npm run supervision:status`: show supervision status.
-- `npm run supervision:packet`: create a supervision packet.
-- `npm run supervision:mark`: mark supervision state.
+- `npm run supervision:status`: show per-problem supervision status.
+- `npm run supervision:packet`: create a per-problem supervision packet.
+- `npm run supervision:mark`: mark a problem as supervised.
+- `npm run supervision:templates`: show per-template supervision coverage (leverage-ordered queue).
+- `npm run supervision:templates:packet`: create a per-template review packet.
+- `npm run supervision:templates:mark`: record a template as supervised (`-- --supervisor "name" <topic>`).
 - `npm run coverage:pastexam`: check past-exam template coverage.
 - `npm run release:check`: run release validation.
 - `npm run release:semver`: validate release version semantics.

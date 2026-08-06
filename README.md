@@ -59,6 +59,9 @@ npm run audit:status                                      # 問題数・形式�
 npm run supervision:status                                # 監修カバレッジ（合格者レビュー進捗・科目/論点別）。--json 対応
 npm run supervision:packet -- --out out/packet.md         # 監修待ち問題のレビューパケット(Markdown)を書き出し
 npm run supervision:mark -- T-0001                        # 合格者が監修合格と判断した問題のフラグを安全に立てる
+npm run supervision:templates                             # テンプレ単位の監修カバレッジ（1件で平均62問を担保）。--json 対応
+npm run supervision:templates:packet -- --out out/tp.md   # 監修待ちテンプレのレビューパケット（式・レンジ・生成サンプル3件）
+npm run supervision:templates:mark -- --supervisor "名前" 三相交流電力  # テンプレを監修済みとして台帳に記録
 npm run release:check                                     # 公開前の厳格チェック（audit strict含む）
 npm test                                                  # ユニットテスト（vitest）
 ```
