@@ -8951,6 +8951,47 @@
     "status": "draft"
   },
   {
+    "id": "D-0196",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の短絡比",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "percent_synchronous_impedance": {
+        "value": 125,
+        "unit": "%",
+        "realistic_range": [
+          50,
+          300
+        ]
+      }
+    },
+    "statement": "ある三相同期発電機のパーセント同期インピーダンスが %Zs=125% である。この発電機の短絡比 Ks は?",
+    "answer": "0.8",
+    "solution": [
+      "短絡比 Ks=1/(%Zs/100)=100/%Zs",
+      "Ks=100/125",
+      "Ks=0.8"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
     "id": "D-0192",
     "exam": "denken2_primary",
     "subject": "機械",
@@ -8973,6 +9014,47 @@
       "短絡比 Ks=1/(%Zs/100)=100/%Zs",
       "Ks=100/250",
       "Ks=0.4"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "D-0195",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の短絡比",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "percent_synchronous_impedance": {
+        "value": 80,
+        "unit": "%",
+        "realistic_range": [
+          50,
+          300
+        ]
+      }
+    },
+    "statement": "ある三相同期発電機のパーセント同期インピーダンスが %Zs=80% である。この発電機の短絡比 Ks は?",
+    "answer": "1.25",
+    "solution": [
+      "短絡比 Ks=1/(%Zs/100)=100/%Zs",
+      "Ks=100/80",
+      "Ks=1.25"
     ],
     "validation": {
       "solver_checked": true,
@@ -9074,7 +9156,7 @@
     "status": "draft"
   },
   {
-    "id": "D-0195",
+    "id": "G-F49130D6",
     "exam": "denken2_primary",
     "subject": "機械",
     "topic": "同期発電機の短絡比",
@@ -9082,7 +9164,7 @@
     "difficulty": 3,
     "params": {
       "percent_synchronous_impedance": {
-        "value": 80,
+        "value": 50,
         "unit": "%",
         "realistic_range": [
           50,
@@ -9090,53 +9172,12 @@
         ]
       }
     },
-    "statement": "ある三相同期発電機のパーセント同期インピーダンスが %Zs=80% である。この発電機の短絡比 Ks は?",
-    "answer": "1.25",
+    "statement": "ある三相同期発電機のパーセント同期インピーダンスが %Zs=50% である。この発電機の短絡比 Ks は?",
+    "answer": "2",
     "solution": [
       "短絡比 Ks=1/(%Zs/100)=100/%Zs",
-      "Ks=100/80",
-      "Ks=1.25"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "D-0196",
-    "exam": "denken2_primary",
-    "subject": "機械",
-    "topic": "同期発電機の短絡比",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "percent_synchronous_impedance": {
-        "value": 125,
-        "unit": "%",
-        "realistic_range": [
-          50,
-          300
-        ]
-      }
-    },
-    "statement": "ある三相同期発電機のパーセント同期インピーダンスが %Zs=125% である。この発電機の短絡比 Ks は?",
-    "answer": "0.8",
-    "solution": [
-      "短絡比 Ks=1/(%Zs/100)=100/%Zs",
-      "Ks=100/125",
-      "Ks=0.8"
+      "Ks=100/50",
+      "Ks=2"
     ],
     "validation": {
       "solver_checked": true,
@@ -29417,7 +29458,7 @@
     "status": "draft"
   },
   {
-    "id": "D-0237",
+    "id": "G-CB74F767",
     "exam": "denken2_primary",
     "subject": "機械",
     "topic": "変圧器の最大効率負荷率",
@@ -29425,28 +29466,28 @@
     "difficulty": 3,
     "params": {
       "iron_loss": {
-        "value": 4,
+        "value": 9,
         "unit": "kW",
         "realistic_range": [
           1,
-          50
+          100
         ]
       },
       "copper_loss": {
-        "value": 25,
+        "value": 36,
         "unit": "kW",
         "realistic_range": [
           1,
-          60
+          100
         ]
       }
     },
-    "statement": "変圧器の鉄損 P_i=4kW、全負荷銅損 P_c=25kW である。最大効率を与える負荷率 α は?",
-    "answer": "0.4",
+    "statement": "変圧器の鉄損 P_i=9kW、全負荷銅損 P_c=36kW である。最大効率を与える負荷率 α は?",
+    "answer": "0.5",
     "solution": [
       "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
-      "α²·P_c=P_i → α=√(P_i/P_c)=√(4/25)",
-      "α=0.4"
+      "α²·P_c=P_i → α=√(P_i/P_c)=√(9/36)",
+      "α=0.5"
     ],
     "validation": {
       "solver_checked": true,
@@ -29478,7 +29519,7 @@
         "unit": "kW",
         "realistic_range": [
           1,
-          50
+          100
         ]
       },
       "copper_loss": {
@@ -29486,7 +29527,7 @@
         "unit": "kW",
         "realistic_range": [
           1,
-          60
+          100
         ]
       }
     },
@@ -29496,6 +29537,447 @@
       "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
       "α²·P_c=P_i → α=√(P_i/P_c)=√(1/4)",
       "α=0.5"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-3361DC60",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "変圧器の最大効率負荷率",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "iron_loss": {
+        "value": 36,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "copper_loss": {
+        "value": 64,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      }
+    },
+    "statement": "変圧器の鉄損 P_i=36kW、全負荷銅損 P_c=64kW である。最大効率を与える負荷率 α は?",
+    "answer": "0.75",
+    "solution": [
+      "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
+      "α²·P_c=P_i → α=√(P_i/P_c)=√(36/64)",
+      "α=0.75"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-A165AB79",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "変圧器の最大効率負荷率",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "iron_loss": {
+        "value": 49,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "copper_loss": {
+        "value": 100,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      }
+    },
+    "statement": "変圧器の鉄損 P_i=49kW、全負荷銅損 P_c=100kW である。最大効率を与える負荷率 α は?",
+    "answer": "0.7",
+    "solution": [
+      "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
+      "α²·P_c=P_i → α=√(P_i/P_c)=√(49/100)",
+      "α=0.7"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-75815393",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "変圧器の最大効率負荷率",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "iron_loss": {
+        "value": 1,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "copper_loss": {
+        "value": 25,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      }
+    },
+    "statement": "変圧器の鉄損 P_i=1kW、全負荷銅損 P_c=25kW である。最大効率を与える負荷率 α は?",
+    "answer": "0.2",
+    "solution": [
+      "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
+      "α²·P_c=P_i → α=√(P_i/P_c)=√(1/25)",
+      "α=0.2"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "D-0237",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "変圧器の最大効率負荷率",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "iron_loss": {
+        "value": 4,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "copper_loss": {
+        "value": 25,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      }
+    },
+    "statement": "変圧器の鉄損 P_i=4kW、全負荷銅損 P_c=25kW である。最大効率を与える負荷率 α は?",
+    "answer": "0.4",
+    "solution": [
+      "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
+      "α²·P_c=P_i → α=√(P_i/P_c)=√(4/25)",
+      "α=0.4"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "D-0241",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "変圧器の最大効率負荷率",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "iron_loss": {
+        "value": 1,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "copper_loss": {
+        "value": 16,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      }
+    },
+    "statement": "変圧器の鉄損 P_i=1kW、全負荷銅損 P_c=16kW である。最大効率を与える負荷率 α は?",
+    "answer": "0.25",
+    "solution": [
+      "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
+      "α²·P_c=P_i → α=√(P_i/P_c)=√(1/16)",
+      "α=0.25"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-21485FE5",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "変圧器の最大効率負荷率",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "iron_loss": {
+        "value": 81,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "copper_loss": {
+        "value": 100,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      }
+    },
+    "statement": "変圧器の鉄損 P_i=81kW、全負荷銅損 P_c=100kW である。最大効率を与える負荷率 α は?",
+    "answer": "0.9",
+    "solution": [
+      "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
+      "α²·P_c=P_i → α=√(P_i/P_c)=√(81/100)",
+      "α=0.9"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "D-0242",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "変圧器の最大効率負荷率",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "iron_loss": {
+        "value": 9,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "copper_loss": {
+        "value": 16,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      }
+    },
+    "statement": "変圧器の鉄損 P_i=9kW、全負荷銅損 P_c=16kW である。最大効率を与える負荷率 α は?",
+    "answer": "0.75",
+    "solution": [
+      "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
+      "α²·P_c=P_i → α=√(P_i/P_c)=√(9/16)",
+      "α=0.75"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-29577707",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "変圧器の最大効率負荷率",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "iron_loss": {
+        "value": 25,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "copper_loss": {
+        "value": 100,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      }
+    },
+    "statement": "変圧器の鉄損 P_i=25kW、全負荷銅損 P_c=100kW である。最大効率を与える負荷率 α は?",
+    "answer": "0.5",
+    "solution": [
+      "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
+      "α²·P_c=P_i → α=√(P_i/P_c)=√(25/100)",
+      "α=0.5"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9C5EE7D5",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "変圧器の最大効率負荷率",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "iron_loss": {
+        "value": 16,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "copper_loss": {
+        "value": 100,
+        "unit": "kW",
+        "realistic_range": [
+          1,
+          100
+        ]
+      }
+    },
+    "statement": "変圧器の鉄損 P_i=16kW、全負荷銅損 P_c=100kW である。最大効率を与える負荷率 α は?",
+    "answer": "0.4",
+    "solution": [
+      "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
+      "α²·P_c=P_i → α=√(P_i/P_c)=√(16/100)",
+      "α=0.4"
     ],
     "validation": {
       "solver_checked": true,
@@ -29527,7 +30009,7 @@
         "unit": "kW",
         "realistic_range": [
           1,
-          50
+          100
         ]
       },
       "copper_loss": {
@@ -29535,7 +30017,7 @@
         "unit": "kW",
         "realistic_range": [
           1,
-          60
+          100
         ]
       }
     },
@@ -29576,7 +30058,7 @@
         "unit": "kW",
         "realistic_range": [
           1,
-          50
+          100
         ]
       },
       "copper_loss": {
@@ -29584,7 +30066,7 @@
         "unit": "kW",
         "realistic_range": [
           1,
-          60
+          100
         ]
       }
     },
@@ -29613,7 +30095,7 @@
     "status": "draft"
   },
   {
-    "id": "D-0241",
+    "id": "G-7AD65E4E",
     "exam": "denken2_primary",
     "subject": "機械",
     "topic": "変圧器の最大効率負荷率",
@@ -29621,11 +30103,11 @@
     "difficulty": 3,
     "params": {
       "iron_loss": {
-        "value": 1,
+        "value": 4,
         "unit": "kW",
         "realistic_range": [
           1,
-          50
+          100
         ]
       },
       "copper_loss": {
@@ -29633,65 +30115,16 @@
         "unit": "kW",
         "realistic_range": [
           1,
-          60
+          100
         ]
       }
     },
-    "statement": "変圧器の鉄損 P_i=1kW、全負荷銅損 P_c=16kW である。最大効率を与える負荷率 α は?",
-    "answer": "0.25",
+    "statement": "変圧器の鉄損 P_i=4kW、全負荷銅損 P_c=16kW である。最大効率を与える負荷率 α は?",
+    "answer": "0.5",
     "solution": [
       "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
-      "α²·P_c=P_i → α=√(P_i/P_c)=√(1/16)",
-      "α=0.25"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "D-0242",
-    "exam": "denken2_primary",
-    "subject": "機械",
-    "topic": "変圧器の最大効率負荷率",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "iron_loss": {
-        "value": 9,
-        "unit": "kW",
-        "realistic_range": [
-          1,
-          50
-        ]
-      },
-      "copper_loss": {
-        "value": 16,
-        "unit": "kW",
-        "realistic_range": [
-          1,
-          60
-        ]
-      }
-    },
-    "statement": "変圧器の鉄損 P_i=9kW、全負荷銅損 P_c=16kW である。最大効率を与える負荷率 α は?",
-    "answer": "0.75",
-    "solution": [
-      "銅損は負荷率の2乗に比例: P_c'=α²·P_c。鉄損=銅損 で最大効率",
-      "α²·P_c=P_i → α=√(P_i/P_c)=√(9/16)",
-      "α=0.75"
+      "α²·P_c=P_i → α=√(P_i/P_c)=√(4/16)",
+      "α=0.5"
     ],
     "validation": {
       "solver_checked": true,
@@ -31364,6 +31797,334 @@
     "status": "draft"
   },
   {
+    "id": "G-0742C12F",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相全波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 600,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=600V の交流を単相全波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.9V により求めよ。",
+    "answer": "540",
+    "solution": [
+      "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
+      "Vd=0.9×600",
+      "Vd=540V"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-64012AC7",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相全波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 240,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=240V の交流を単相全波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.9V により求めよ。",
+    "answer": "216",
+    "solution": [
+      "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
+      "Vd=0.9×240",
+      "Vd=216V"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-BE894DBC",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相全波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 120,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=120V の交流を単相全波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.9V により求めよ。",
+    "answer": "108",
+    "solution": [
+      "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
+      "Vd=0.9×120",
+      "Vd=108V"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-6DA4D861",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相全波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 440,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=440V の交流を単相全波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.9V により求めよ。",
+    "answer": "396",
+    "solution": [
+      "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
+      "Vd=0.9×440",
+      "Vd=396V"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "D-0253",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相全波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=110V の交流を単相全波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.9V により求めよ。",
+    "answer": "99",
+    "solution": [
+      "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
+      "Vd=0.9×110",
+      "Vd=99V"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-87175BDA",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相全波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 500,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=500V の交流を単相全波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.9V により求めよ。",
+    "answer": "450",
+    "solution": [
+      "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
+      "Vd=0.9×500",
+      "Vd=450V"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "D-0254",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相全波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=400V の交流を単相全波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.9V により求めよ。",
+    "answer": "360",
+    "solution": [
+      "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
+      "Vd=0.9×400",
+      "Vd=360V"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "D-0256",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相全波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=100V の交流を単相全波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.9V により求めよ。",
+    "answer": "90",
+    "solution": [
+      "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
+      "Vd=0.9×100",
+      "Vd=90V"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
     "id": "D-0251",
     "exam": "denken2_primary",
     "subject": "機械",
@@ -31446,88 +32207,6 @@
     "status": "draft"
   },
   {
-    "id": "D-0253",
-    "exam": "denken2_primary",
-    "subject": "機械",
-    "topic": "単相全波整流の直流電圧",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "ac_voltage": {
-        "value": 110,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          1000
-        ]
-      }
-    },
-    "statement": "実効値 V=110V の交流を単相全波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.9V により求めよ。",
-    "answer": "99",
-    "solution": [
-      "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
-      "Vd=0.9×110",
-      "Vd=99V"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "D-0254",
-    "exam": "denken2_primary",
-    "subject": "機械",
-    "topic": "単相全波整流の直流電圧",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "ac_voltage": {
-        "value": 400,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          1000
-        ]
-      }
-    },
-    "statement": "実効値 V=400V の交流を単相全波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.9V により求めよ。",
-    "answer": "360",
-    "solution": [
-      "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
-      "Vd=0.9×400",
-      "Vd=360V"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
     "id": "D-0255",
     "exam": "denken2_primary",
     "subject": "機械",
@@ -31550,47 +32229,6 @@
       "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
       "Vd=0.9×200",
       "Vd=180V"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "D-0256",
-    "exam": "denken2_primary",
-    "subject": "機械",
-    "topic": "単相全波整流の直流電圧",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "ac_voltage": {
-        "value": 100,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          1000
-        ]
-      }
-    },
-    "statement": "実効値 V=100V の交流を単相全波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.9V により求めよ。",
-    "answer": "90",
-    "solution": [
-      "単相全波整流の平均直流電圧 Vd=2√2·V/π≈0.9·V",
-      "Vd=0.9×100",
-      "Vd=90V"
     ],
     "validation": {
       "solver_checked": true,
@@ -120495,6 +121133,3240 @@
       "渦電流損: Pe2=250W（変わらない）",
       "鉄損合計=216+250=466W",
       "ポイント: 「渦電流損は周波数によらない（電圧一定のとき）」が最大の落とし穴。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D3295379",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.25,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.4p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.25p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "10",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.4×0.25=1.1p.u.",
+      "ε=(E0−V)/V×100=(1.1−1.0)/1.0×100",
+      "ε=10%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-32A807C0",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.6p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.4p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "24",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.6×0.4=1.24p.u.",
+      "ε=(E0−V)/V×100=(1.24−1.0)/1.0×100",
+      "ε=24%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-05A43607",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1.1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1.1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=1p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "110",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1.1×1=2.1p.u.",
+      "ε=(E0−V)/V×100=(2.1−1.0)/1.0×100",
+      "ε=110%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-AD4AB706",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.8p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.8p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "64",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.8×0.8=1.64p.u.",
+      "ε=(E0−V)/V×100=(1.64−1.0)/1.0×100",
+      "ε=64%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4A383ED0",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.2,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.4p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.2p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "8",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.4×0.2=1.08p.u.",
+      "ε=(E0−V)/V×100=(1.08−1.0)/1.0×100",
+      "ε=8%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DF29665D",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.25,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.8p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.25p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "20",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.8×0.25=1.2p.u.",
+      "ε=(E0−V)/V×100=(1.2−1.0)/1.0×100",
+      "ε=20%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-48819D6A",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=1p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "100",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1×1=2p.u.",
+      "ε=(E0−V)/V×100=(2−1.0)/1.0×100",
+      "ε=100%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-924FE956",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.5p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.5p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "25",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.5×0.5=1.25p.u.",
+      "ε=(E0−V)/V×100=(1.25−1.0)/1.0×100",
+      "ε=25%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-854B76D9",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.6p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "60",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1×0.6=1.6p.u.",
+      "ε=(E0−V)/V×100=(1.6−1.0)/1.0×100",
+      "ε=60%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-934FEAE9",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.4p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.5p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "20",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.4×0.5=1.2p.u.",
+      "ε=(E0−V)/V×100=(1.2−1.0)/1.0×100",
+      "ε=20%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-68B673F7",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.5p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.6p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "30",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.5×0.6=1.3p.u.",
+      "ε=(E0−V)/V×100=(1.3−1.0)/1.0×100",
+      "ε=30%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-35A80C79",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.5p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.4p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "20",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.5×0.4=1.2p.u.",
+      "ε=(E0−V)/V×100=(1.2−1.0)/1.0×100",
+      "ε=20%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-B74AC6C4",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.6p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.8p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "48",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.6×0.8=1.48p.u.",
+      "ε=(E0−V)/V×100=(1.48−1.0)/1.0×100",
+      "ε=48%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4B384063",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.2,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.5p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.2p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "10",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.5×0.2=1.1p.u.",
+      "ε=(E0−V)/V×100=(1.1−1.0)/1.0×100",
+      "ε=10%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-5CB66113",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.9,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.9p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.6p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "54",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.9×0.6=1.54p.u.",
+      "ε=(E0−V)/V×100=(1.54−1.0)/1.0×100",
+      "ε=54%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4B92A0F4",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.75,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.2,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.75p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.2p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "15",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.75×0.2=1.15p.u.",
+      "ε=(E0−V)/V×100=(1.15−1.0)/1.0×100",
+      "ε=15%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-B414A870",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1.1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.2,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1.1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.2p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "22",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1.1×0.2=1.22p.u.",
+      "ε=(E0−V)/V×100=(1.22−1.0)/1.0×100",
+      "ε=22%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-6E809E14",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.5p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=1p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "50",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.5×1=1.5p.u.",
+      "ε=(E0−V)/V×100=(1.5−1.0)/1.0×100",
+      "ε=50%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-AE4AB899",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.9,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.9p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.8p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "72",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.9×0.8=1.72p.u.",
+      "ε=(E0−V)/V×100=(1.72−1.0)/1.0×100",
+      "ε=72%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0B5FCBEF",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.4p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "40",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1×0.4=1.4p.u.",
+      "ε=(E0−V)/V×100=(1.4−1.0)/1.0×100",
+      "ε=40%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9E4FFC3A",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.9,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.9p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.5p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "45",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.9×0.5=1.45p.u.",
+      "ε=(E0−V)/V×100=(1.45−1.0)/1.0×100",
+      "ε=45%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9A888CB2",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1.1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1.1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.8p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "88",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1.1×0.8=1.88p.u.",
+      "ε=(E0−V)/V×100=(1.88−1.0)/1.0×100",
+      "ε=88%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9F4FFDCD",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.8p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.5p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "40",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.8×0.5=1.4p.u.",
+      "ε=(E0−V)/V×100=(1.4−1.0)/1.0×100",
+      "ε=40%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9B643720",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.5p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "50",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1×0.5=1.5p.u.",
+      "ε=(E0−V)/V×100=(1.5−1.0)/1.0×100",
+      "ε=50%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-B786CB92",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.75,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.75p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.4p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "30",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.75×0.4=1.3p.u.",
+      "ε=(E0−V)/V×100=(1.3−1.0)/1.0×100",
+      "ε=30%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-305A8515",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.2,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.2p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "20",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1×0.2=1.2p.u.",
+      "ε=(E0−V)/V×100=(1.2−1.0)/1.0×100",
+      "ε=20%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9DE6A3C6",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1.1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1.1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.4p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "44",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1.1×0.4=1.44p.u.",
+      "ε=(E0−V)/V×100=(1.44−1.0)/1.0×100",
+      "ε=44%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-2383A87D",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1.25,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1.25p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=1p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "125",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1.25×1=2.25p.u.",
+      "ε=(E0−V)/V×100=(2.25−1.0)/1.0×100",
+      "ε=125%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-40A81DCA",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.8p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.4p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "32",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.8×0.4=1.32p.u.",
+      "ε=(E0−V)/V×100=(1.32−1.0)/1.0×100",
+      "ε=32%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-62808B30",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.9,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.9p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=1p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "90",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.9×1=1.9p.u.",
+      "ε=(E0−V)/V×100=(1.9−1.0)/1.0×100",
+      "ε=90%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4C3841F6",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.2,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.6p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.2p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "12",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.6×0.2=1.12p.u.",
+      "ε=(E0−V)/V×100=(1.12−1.0)/1.0×100",
+      "ε=12%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-34A80AE6",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.4p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.4p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "16",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.4×0.4=1.16p.u.",
+      "ε=(E0−V)/V×100=(1.16−1.0)/1.0×100",
+      "ε=16%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-6F809FA7",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.4p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=1p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "40",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.4×1=1.4p.u.",
+      "ε=(E0−V)/V×100=(1.4−1.0)/1.0×100",
+      "ε=40%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DBF3131E",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1.25,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1.25p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.8p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "100",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1.25×0.8=2p.u.",
+      "ε=(E0−V)/V×100=(2−1.0)/1.0×100",
+      "ε=100%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-67B67264",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.4p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.6p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "24",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.4×0.6=1.24p.u.",
+      "ε=(E0−V)/V×100=(1.24−1.0)/1.0×100",
+      "ε=24%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-69B6758A",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.6p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.6p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "36",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.6×0.6=1.36p.u.",
+      "ε=(E0−V)/V×100=(1.36−1.0)/1.0×100",
+      "ε=36%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-BA4ACB7D",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.5p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.8p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "40",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.5×0.8=1.4p.u.",
+      "ε=(E0−V)/V×100=(1.4−1.0)/1.0×100",
+      "ε=40%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-7FB97246",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.75,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.75p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.8p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "60",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.75×0.8=1.6p.u.",
+      "ε=(E0−V)/V×100=(1.6−1.0)/1.0×100",
+      "ε=60%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-253D93F8",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.75,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.75p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.6p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "45",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.75×0.6=1.45p.u.",
+      "ε=(E0−V)/V×100=(1.45−1.0)/1.0×100",
+      "ε=45%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-914FE7C3",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.6p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.5p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "30",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.6×0.5=1.3p.u.",
+      "ε=(E0−V)/V×100=(1.3−1.0)/1.0×100",
+      "ε=30%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-499398EC",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1.1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1.1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.6p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "66",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1.1×0.6=1.66p.u.",
+      "ε=(E0−V)/V×100=(1.66−1.0)/1.0×100",
+      "ε=66%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-B94AC9EA",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.4p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.8p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "32",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.4×0.8=1.32p.u.",
+      "ε=(E0−V)/V×100=(1.32−1.0)/1.0×100",
+      "ε=32%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-63808CC3",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.8p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=1p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "80",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.8×1=1.8p.u.",
+      "ε=(E0−V)/V×100=(1.8−1.0)/1.0×100",
+      "ε=80%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-1C6109B0",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1.25,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1.25p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.6p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "75",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1.25×0.6=1.75p.u.",
+      "ε=(E0−V)/V×100=(1.75−1.0)/1.0×100",
+      "ε=75%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-31738DE1",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1.1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.5,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1.1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.5p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "55",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1.1×0.5=1.55p.u.",
+      "ε=(E0−V)/V×100=(1.55−1.0)/1.0×100",
+      "ε=55%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-41A81F5D",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.9,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.9p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.4p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "36",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.9×0.4=1.36p.u.",
+      "ε=(E0−V)/V×100=(1.36−1.0)/1.0×100",
+      "ε=36%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-563851B4",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.2,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.8p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.2p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "16",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.8×0.2=1.16p.u.",
+      "ε=(E0−V)/V×100=(1.16−1.0)/1.0×100",
+      "ε=16%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-7180A2CD",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.6p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=1p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "60",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.6×1=1.6p.u.",
+      "ε=(E0−V)/V×100=(1.6−1.0)/1.0×100",
+      "ε=60%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-AEC43C90",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.25,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.25p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "25",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1×0.25=1.25p.u.",
+      "ε=(E0−V)/V×100=(1.25−1.0)/1.0×100",
+      "ε=25%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-5BB65F80",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.8p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.6p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "48",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.8×0.6=1.48p.u.",
+      "ε=(E0−V)/V×100=(1.48−1.0)/1.0×100",
+      "ε=48%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-05110F72",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1.25,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.4,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1.25p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.4p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "50",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1.25×0.4=1.5p.u.",
+      "ε=(E0−V)/V×100=(1.5−1.0)/1.0×100",
+      "ε=50%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-297D8A9D",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.75,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.75p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=1p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "75",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.75×1=1.75p.u.",
+      "ε=(E0−V)/V×100=(1.75−1.0)/1.0×100",
+      "ε=75%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-57385347",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.9,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.2,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.9p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.2p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "18",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.9×0.2=1.18p.u.",
+      "ε=(E0−V)/V×100=(1.18−1.0)/1.0×100",
+      "ε=18%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-21963EA3",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.8,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.8p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "80",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1×0.8=1.8p.u.",
+      "ε=(E0−V)/V×100=(1.8−1.0)/1.0×100",
+      "ε=80%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-518C8314",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 1.25,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.2,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=1.25p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.2p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "25",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+1.25×0.2=1.25p.u.",
+      "ε=(E0−V)/V×100=(1.25−1.0)/1.0×100",
+      "ε=25%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D1295053",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "同期発電機の電圧変動率（零力率）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "synchronous_reactance": {
+        "value": 0.6,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.3,
+          1.5
+        ]
+      },
+      "load_current": {
+        "value": 0.25,
+        "unit": "p.u.",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      }
+    },
+    "statement": "同期リアクタンス xs=0.6p.u.（電機子抵抗は無視）の三相同期発電機が、端子電圧 1.0p.u. で零力率（遅れ）の負荷電流 I=0.25p.u. を流している。この運転状態から負荷を遮断したときの電圧変動率 ε〔%〕はいくらか。",
+    "answer": "15",
+    "solution": [
+      "零力率（遅れ）では同期リアクタンス降下 xs·I が端子電圧 V と同相 → E0=V+xs·I の算術和",
+      "E0=1.0+0.6×0.25=1.15p.u.",
+      "ε=(E0−V)/V×100=(1.15−1.0)/1.0×100",
+      "ε=15%",
+      "ポイント: 力率1の負荷ならベクトル和 E0=√(V²+(xs·I)²) となり変動率は小さくなる。零力率が最も大きい。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0161AB43",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相半波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=400V の交流を単相半波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.45V により求めよ。",
+    "answer": "180",
+    "solution": [
+      "単相半波整流の平均直流電圧 Vd=√2·V/π≈0.45·V",
+      "Vd=0.45×400",
+      "Vd=180V",
+      "ポイント: 全波整流の 0.9·V のちょうど半分（半周期しか導通しないため）。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-E4183F8D",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相半波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=110V の交流を単相半波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.45V により求めよ。",
+    "answer": "49.5",
+    "solution": [
+      "単相半波整流の平均直流電圧 Vd=√2·V/π≈0.45·V",
+      "Vd=0.45×110",
+      "Vd=49.5V",
+      "ポイント: 全波整流の 0.9·V のちょうど半分（半周期しか導通しないため）。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-996B94E7",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相半波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 440,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=440V の交流を単相半波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.45V により求めよ。",
+    "answer": "198",
+    "solution": [
+      "単相半波整流の平均直流電圧 Vd=√2·V/π≈0.45·V",
+      "Vd=0.45×440",
+      "Vd=198V",
+      "ポイント: 全波整流の 0.9·V のちょうど半分（半周期しか導通しないため）。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-5094F05C",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相半波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 1000,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=1000V の交流を単相半波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.45V により求めよ。",
+    "answer": "450",
+    "solution": [
+      "単相半波整流の平均直流電圧 Vd=√2·V/π≈0.45·V",
+      "Vd=0.45×1000",
+      "Vd=450V",
+      "ポイント: 全波整流の 0.9·V のちょうど半分（半周期しか導通しないため）。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-A5E11ED7",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相半波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 220,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=220V の交流を単相半波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.45V により求めよ。",
+    "answer": "99",
+    "solution": [
+      "単相半波整流の平均直流電圧 Vd=√2·V/π≈0.45·V",
+      "Vd=0.45×220",
+      "Vd=99V",
+      "ポイント: 全波整流の 0.9·V のちょうど半分（半周期しか導通しないため）。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-A18D42F8",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相半波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 500,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=500V の交流を単相半波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.45V により求めよ。",
+    "answer": "225",
+    "solution": [
+      "単相半波整流の平均直流電圧 Vd=√2·V/π≈0.45·V",
+      "Vd=0.45×500",
+      "Vd=225V",
+      "ポイント: 全波整流の 0.9·V のちょうど半分（半周期しか導通しないため）。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-19DBC545",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相半波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=200V の交流を単相半波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.45V により求めよ。",
+    "answer": "90",
+    "solution": [
+      "単相半波整流の平均直流電圧 Vd=√2·V/π≈0.45·V",
+      "Vd=0.45×200",
+      "Vd=90V",
+      "ポイント: 全波整流の 0.9·V のちょうど半分（半周期しか導通しないため）。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-5E415CD9",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相半波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 600,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=600V の交流を単相半波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.45V により求めよ。",
+    "answer": "270",
+    "solution": [
+      "単相半波整流の平均直流電圧 Vd=√2·V/π≈0.45·V",
+      "Vd=0.45×600",
+      "Vd=270V",
+      "ポイント: 全波整流の 0.9·V のちょうど半分（半周期しか導通しないため）。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DE15F784",
+    "exam": "denken2_primary",
+    "subject": "機械",
+    "topic": "単相半波整流の直流電圧",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "ac_voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          1000
+        ]
+      }
+    },
+    "statement": "実効値 V=100V の交流を単相半波整流する。平均直流電圧 Vd〔V〕を近似式 Vd≈0.45V により求めよ。",
+    "answer": "45",
+    "solution": [
+      "単相半波整流の平均直流電圧 Vd=√2·V/π≈0.45·V",
+      "Vd=0.45×100",
+      "Vd=45V",
+      "ポイント: 全波整流の 0.9·V のちょうど半分（半周期しか導通しないため）。"
     ],
     "validation": {
       "solver_checked": true,

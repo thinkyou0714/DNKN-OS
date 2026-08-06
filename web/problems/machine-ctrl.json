@@ -23288,7 +23288,7 @@
     "status": "draft"
   },
   {
-    "id": "D-0339",
+    "id": "D-0342",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "制御系の定常偏差",
@@ -23296,7 +23296,7 @@
     "difficulty": 4,
     "params": {
       "gain": {
-        "value": 1,
+        "value": 3,
         "unit": "",
         "realistic_range": [
           1,
@@ -23304,12 +23304,12 @@
         ]
       }
     },
-    "statement": "位置偏差定数 Kp=1 の単位フィードバック制御系に、単位ステップ入力を加える。定常位置偏差 ess を ess=1/(1+Kp) により導出過程とともに求めよ。",
-    "answer": "0.5",
+    "statement": "位置偏差定数 Kp=3 の単位フィードバック制御系に、単位ステップ入力を加える。定常位置偏差 ess を ess=1/(1+Kp) により導出過程とともに求めよ。",
+    "answer": "0.25",
     "solution": [
       "最終値の定理より定常位置偏差 ess=1/(1+Kp)",
-      "ess=1/(1+1)",
-      "ess=0.5",
+      "ess=1/(1+3)",
+      "ess=0.25",
       "ポイント: Kp を大きくすると定常偏差は小さくなる（精度向上）。"
     ],
     "validation": {
@@ -23372,7 +23372,7 @@
     "status": "draft"
   },
   {
-    "id": "D-0341",
+    "id": "G-0E52C4C7",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "制御系の定常偏差",
@@ -23380,7 +23380,7 @@
     "difficulty": 4,
     "params": {
       "gain": {
-        "value": 4,
+        "value": 49,
         "unit": "",
         "realistic_range": [
           1,
@@ -23388,96 +23388,12 @@
         ]
       }
     },
-    "statement": "位置偏差定数 Kp=4 の単位フィードバック制御系に、単位ステップ入力を加える。定常位置偏差 ess を ess=1/(1+Kp) により導出過程とともに求めよ。",
-    "answer": "0.2",
+    "statement": "位置偏差定数 Kp=49 の単位フィードバック制御系に、単位ステップ入力を加える。定常位置偏差 ess を ess=1/(1+Kp) により導出過程とともに求めよ。",
+    "answer": "0.02",
     "solution": [
       "最終値の定理より定常位置偏差 ess=1/(1+Kp)",
-      "ess=1/(1+4)",
-      "ess=0.2",
-      "ポイント: Kp を大きくすると定常偏差は小さくなる（精度向上）。"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "D-0342",
-    "exam": "denken2_secondary",
-    "subject": "機械制御",
-    "topic": "制御系の定常偏差",
-    "format": "descriptive",
-    "difficulty": 4,
-    "params": {
-      "gain": {
-        "value": 3,
-        "unit": "",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "位置偏差定数 Kp=3 の単位フィードバック制御系に、単位ステップ入力を加える。定常位置偏差 ess を ess=1/(1+Kp) により導出過程とともに求めよ。",
-    "answer": "0.25",
-    "solution": [
-      "最終値の定理より定常位置偏差 ess=1/(1+Kp)",
-      "ess=1/(1+3)",
-      "ess=0.25",
-      "ポイント: Kp を大きくすると定常偏差は小さくなる（精度向上）。"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "D-0343",
-    "exam": "denken2_secondary",
-    "subject": "機械制御",
-    "topic": "制御系の定常偏差",
-    "format": "descriptive",
-    "difficulty": 4,
-    "params": {
-      "gain": {
-        "value": 24,
-        "unit": "",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "位置偏差定数 Kp=24 の単位フィードバック制御系に、単位ステップ入力を加える。定常位置偏差 ess を ess=1/(1+Kp) により導出過程とともに求めよ。",
-    "answer": "0.04",
-    "solution": [
-      "最終値の定理より定常位置偏差 ess=1/(1+Kp)",
-      "ess=1/(1+24)",
-      "ess=0.04",
+      "ess=1/(1+49)",
+      "ess=0.02",
       "ポイント: Kp を大きくすると定常偏差は小さくなる（精度向上）。"
     ],
     "validation": {
@@ -23540,35 +23456,29 @@
     "status": "draft"
   },
   {
-    "id": "G-833DF7FC",
+    "id": "D-0343",
     "exam": "denken2_secondary",
     "subject": "機械制御",
-    "topic": "二次系の固有角周波数",
-    "format": "numeric",
+    "topic": "制御系の定常偏差",
+    "format": "descriptive",
     "difficulty": 4,
     "params": {
       "gain": {
-        "value": 4,
+        "value": 24,
+        "unit": "",
         "realistic_range": [
-          0.5,
-          200
-        ]
-      },
-      "time_constant": {
-        "value": 25,
-        "unit": "s",
-        "realistic_range": [
-          0.5,
+          1,
           50
         ]
       }
     },
-    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=4, T=25s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
-    "answer": "0.4",
+    "statement": "位置偏差定数 Kp=24 の単位フィードバック制御系に、単位ステップ入力を加える。定常位置偏差 ess を ess=1/(1+Kp) により導出過程とともに求めよ。",
+    "answer": "0.04",
     "solution": [
-      "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
-      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.05）",
-      "ωn=√(4/25)=0.4rad/s"
+      "最終値の定理より定常位置偏差 ess=1/(1+Kp)",
+      "ess=1/(1+24)",
+      "ess=0.04",
+      "ポイント: Kp を大きくすると定常偏差は小さくなる（精度向上）。"
     ],
     "validation": {
       "solver_checked": true,
@@ -23588,35 +23498,29 @@
     "status": "draft"
   },
   {
-    "id": "G-D0B62B42",
+    "id": "D-0339",
     "exam": "denken2_secondary",
     "subject": "機械制御",
-    "topic": "二次系の固有角周波数",
-    "format": "numeric",
+    "topic": "制御系の定常偏差",
+    "format": "descriptive",
     "difficulty": 4,
     "params": {
       "gain": {
-        "value": 25,
+        "value": 1,
+        "unit": "",
         "realistic_range": [
-          0.5,
-          200
-        ]
-      },
-      "time_constant": {
-        "value": 4,
-        "unit": "s",
-        "realistic_range": [
-          0.5,
+          1,
           50
         ]
       }
     },
-    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=25, T=4s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
-    "answer": "2.5",
+    "statement": "位置偏差定数 Kp=1 の単位フィードバック制御系に、単位ステップ入力を加える。定常位置偏差 ess を ess=1/(1+Kp) により導出過程とともに求めよ。",
+    "answer": "0.5",
     "solution": [
-      "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
-      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.05）",
-      "ωn=√(25/4)=2.5rad/s"
+      "最終値の定理より定常位置偏差 ess=1/(1+Kp)",
+      "ess=1/(1+1)",
+      "ess=0.5",
+      "ポイント: Kp を大きくすると定常偏差は小さくなる（精度向上）。"
     ],
     "validation": {
       "solver_checked": true,
@@ -23636,7 +23540,145 @@
     "status": "draft"
   },
   {
-    "id": "G-C7ABD0D1",
+    "id": "D-0341",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "制御系の定常偏差",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "gain": {
+        "value": 4,
+        "unit": "",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "位置偏差定数 Kp=4 の単位フィードバック制御系に、単位ステップ入力を加える。定常位置偏差 ess を ess=1/(1+Kp) により導出過程とともに求めよ。",
+    "answer": "0.2",
+    "solution": [
+      "最終値の定理より定常位置偏差 ess=1/(1+Kp)",
+      "ess=1/(1+4)",
+      "ess=0.2",
+      "ポイント: Kp を大きくすると定常偏差は小さくなる（精度向上）。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C19BC051",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "二次系の固有角周波数",
+    "format": "numeric",
+    "difficulty": 4,
+    "params": {
+      "gain": {
+        "value": 25,
+        "realistic_range": [
+          0.5,
+          200
+        ]
+      },
+      "time_constant": {
+        "value": 100,
+        "unit": "s",
+        "realistic_range": [
+          0.5,
+          100
+        ]
+      }
+    },
+    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=25, T=100s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "answer": "0.5",
+    "solution": [
+      "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
+      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.01）",
+      "ωn=√(25/100)=0.5rad/s"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-01B75B7F",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "二次系の固有角周波数",
+    "format": "numeric",
+    "difficulty": 4,
+    "params": {
+      "gain": {
+        "value": 25,
+        "realistic_range": [
+          0.5,
+          200
+        ]
+      },
+      "time_constant": {
+        "value": 25,
+        "unit": "s",
+        "realistic_range": [
+          0.5,
+          100
+        ]
+      }
+    },
+    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=25, T=25s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "answer": "1",
+    "solution": [
+      "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
+      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.02）",
+      "ωn=√(25/25)=1rad/s"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-47EA0DA3",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "二次系の固有角周波数",
@@ -23651,20 +23693,20 @@
         ]
       },
       "time_constant": {
-        "value": 25,
+        "value": 100,
         "unit": "s",
         "realistic_range": [
           0.5,
-          50
+          100
         ]
       }
     },
-    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=1, T=25s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
-    "answer": "0.2",
+    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=1, T=100s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "answer": "0.1",
     "solution": [
       "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
-      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.1）",
-      "ωn=√(1/25)=0.2rad/s"
+      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.05）",
+      "ωn=√(1/100)=0.1rad/s"
     ],
     "validation": {
       "solver_checked": true,
@@ -23703,7 +23745,7 @@
         "unit": "s",
         "realistic_range": [
           0.5,
-          50
+          100
         ]
       }
     },
@@ -23732,7 +23774,7 @@
     "status": "draft"
   },
   {
-    "id": "G-32F410E8",
+    "id": "G-833DF7FC",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "二次系の固有角周波数",
@@ -23747,20 +23789,68 @@
         ]
       },
       "time_constant": {
-        "value": 1,
+        "value": 25,
         "unit": "s",
         "realistic_range": [
           0.5,
-          50
+          100
         ]
       }
     },
-    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=4, T=1s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=4, T=25s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "answer": "0.4",
+    "solution": [
+      "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
+      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.05）",
+      "ωn=√(4/25)=0.4rad/s"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-62330FD9",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "二次系の固有角周波数",
+    "format": "numeric",
+    "difficulty": 4,
+    "params": {
+      "gain": {
+        "value": 100,
+        "realistic_range": [
+          0.5,
+          200
+        ]
+      },
+      "time_constant": {
+        "value": 25,
+        "unit": "s",
+        "realistic_range": [
+          0.5,
+          100
+        ]
+      }
+    },
+    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=100, T=25s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
     "answer": "2",
     "solution": [
       "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
-      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.25）",
-      "ωn=√(4/1)=2rad/s"
+      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.01）",
+      "ωn=√(100/25)=2rad/s"
     ],
     "validation": {
       "solver_checked": true,
@@ -23799,7 +23889,7 @@
         "unit": "s",
         "realistic_range": [
           0.5,
-          50
+          100
         ]
       }
     },
@@ -23847,7 +23937,7 @@
         "unit": "s",
         "realistic_range": [
           0.5,
-          50
+          100
         ]
       }
     },
@@ -23895,7 +23985,7 @@
         "unit": "s",
         "realistic_range": [
           0.5,
-          50
+          100
         ]
       }
     },
@@ -23924,7 +24014,151 @@
     "status": "draft"
   },
   {
-    "id": "G-B2CDEBED",
+    "id": "G-C7ABD0D1",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "二次系の固有角周波数",
+    "format": "numeric",
+    "difficulty": 4,
+    "params": {
+      "gain": {
+        "value": 1,
+        "realistic_range": [
+          0.5,
+          200
+        ]
+      },
+      "time_constant": {
+        "value": 25,
+        "unit": "s",
+        "realistic_range": [
+          0.5,
+          100
+        ]
+      }
+    },
+    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=1, T=25s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "answer": "0.2",
+    "solution": [
+      "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
+      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.1）",
+      "ωn=√(1/25)=0.2rad/s"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-32F410E8",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "二次系の固有角周波数",
+    "format": "numeric",
+    "difficulty": 4,
+    "params": {
+      "gain": {
+        "value": 4,
+        "realistic_range": [
+          0.5,
+          200
+        ]
+      },
+      "time_constant": {
+        "value": 1,
+        "unit": "s",
+        "realistic_range": [
+          0.5,
+          100
+        ]
+      }
+    },
+    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=4, T=1s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "answer": "2",
+    "solution": [
+      "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
+      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.25）",
+      "ωn=√(4/1)=2rad/s"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D0B62B42",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "二次系の固有角周波数",
+    "format": "numeric",
+    "difficulty": 4,
+    "params": {
+      "gain": {
+        "value": 25,
+        "realistic_range": [
+          0.5,
+          200
+        ]
+      },
+      "time_constant": {
+        "value": 4,
+        "unit": "s",
+        "realistic_range": [
+          0.5,
+          100
+        ]
+      }
+    },
+    "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=25, T=4s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "answer": "2.5",
+    "solution": [
+      "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
+      "標準形と比較して ωn=√(K/T), ζ=1/(2√(KT))（本問の ζ=0.05）",
+      "ωn=√(25/4)=2.5rad/s"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-45E72D21",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
@@ -23932,26 +24166,26 @@
     "difficulty": 3,
     "params": {
       "forward_gain": {
-        "value": 12,
+        "value": 30,
         "realistic_range": [
           1,
           200
         ]
       },
       "feedback_gain": {
-        "value": 0.25,
+        "value": 0.1,
         "realistic_range": [
           0.1,
           2
         ]
       }
     },
-    "statement": "前向き要素のゲイン G=12、フィードバック要素のゲイン H=0.25 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
-    "answer": "3",
+    "statement": "前向き要素のゲイン G=30、フィードバック要素のゲイン H=0.1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "7.5",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
-      "=12/(1+12×0.25)=12/4",
-      "=3"
+      "=30/(1+30×0.1)=30/4",
+      "=7.5"
     ],
     "validation": {
       "solver_checked": true,
@@ -24018,7 +24252,7 @@
     "status": "draft"
   },
   {
-    "id": "G-4B78AD76",
+    "id": "G-E7BC239A",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
@@ -24026,26 +24260,73 @@
     "difficulty": 3,
     "params": {
       "forward_gain": {
-        "value": 99,
+        "value": 8,
         "realistic_range": [
           1,
           200
         ]
       },
       "feedback_gain": {
-        "value": 1,
+        "value": 0.5,
         "realistic_range": [
           0.1,
           2
         ]
       }
     },
-    "statement": "前向き要素のゲイン G=99、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
-    "answer": "0.99",
+    "statement": "前向き要素のゲイン G=8、フィードバック要素のゲイン H=0.5 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "1.6",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
-      "=99/(1+99×1)=99/100",
-      "=0.99"
+      "=8/(1+8×0.5)=8/5",
+      "=1.6"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9CC46AAD",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "負帰還系の合成ゲイン",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "forward_gain": {
+        "value": 10,
+        "realistic_range": [
+          1,
+          200
+        ]
+      },
+      "feedback_gain": {
+        "value": 0.3,
+        "realistic_range": [
+          0.1,
+          2
+        ]
+      }
+    },
+    "statement": "前向き要素のゲイン G=10、フィードバック要素のゲイン H=0.3 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "2.5",
+    "solution": [
+      "負帰還系の合成伝達関数 W=G/(1+G·H)",
+      "=10/(1+10×0.3)=10/4",
+      "=2.5"
     ],
     "validation": {
       "solver_checked": true,
@@ -24112,7 +24393,7 @@
     "status": "draft"
   },
   {
-    "id": "G-D9BC0D90",
+    "id": "G-1EC885C3",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
@@ -24120,26 +24401,26 @@
     "difficulty": 3,
     "params": {
       "forward_gain": {
-        "value": 6,
+        "value": 36,
         "realistic_range": [
           1,
           200
         ]
       },
       "feedback_gain": {
-        "value": 0.5,
+        "value": 0.25,
         "realistic_range": [
           0.1,
           2
         ]
       }
     },
-    "statement": "前向き要素のゲイン G=6、フィードバック要素のゲイン H=0.5 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
-    "answer": "1.5",
+    "statement": "前向き要素のゲイン G=36、フィードバック要素のゲイン H=0.25 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "3.6",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
-      "=6/(1+6×0.5)=6/4",
-      "=1.5"
+      "=36/(1+36×0.25)=36/10",
+      "=3.6"
     ],
     "validation": {
       "solver_checked": true,
@@ -24159,7 +24440,7 @@
     "status": "draft"
   },
   {
-    "id": "G-DB869A09",
+    "id": "G-31EB8AD3",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
@@ -24167,26 +24448,26 @@
     "difficulty": 3,
     "params": {
       "forward_gain": {
-        "value": 20,
+        "value": 10,
         "realistic_range": [
           1,
           200
         ]
       },
       "feedback_gain": {
-        "value": 0.2,
+        "value": 0.1,
         "realistic_range": [
           0.1,
           2
         ]
       }
     },
-    "statement": "前向き要素のゲイン G=20、フィードバック要素のゲイン H=0.2 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
-    "answer": "4",
+    "statement": "前向き要素のゲイン G=10、フィードバック要素のゲイン H=0.1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "5",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
-      "=20/(1+20×0.2)=20/5",
-      "=4"
+      "=10/(1+10×0.1)=10/2",
+      "=5"
     ],
     "validation": {
       "solver_checked": true,
@@ -24206,7 +24487,7 @@
     "status": "draft"
   },
   {
-    "id": "G-E7BC239A",
+    "id": "G-AECDE5A1",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
@@ -24214,26 +24495,26 @@
     "difficulty": 3,
     "params": {
       "forward_gain": {
-        "value": 8,
+        "value": 16,
         "realistic_range": [
           1,
           200
         ]
       },
       "feedback_gain": {
-        "value": 0.5,
+        "value": 0.25,
         "realistic_range": [
           0.1,
           2
         ]
       }
     },
-    "statement": "前向き要素のゲイン G=8、フィードバック要素のゲイン H=0.5 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
-    "answer": "1.6",
+    "statement": "前向き要素のゲイン G=16、フィードバック要素のゲイン H=0.25 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "3.2",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
-      "=8/(1+8×0.5)=8/5",
-      "=1.6"
+      "=16/(1+16×0.25)=16/5",
+      "=3.2"
     ],
     "validation": {
       "solver_checked": true,
@@ -24253,7 +24534,7 @@
     "status": "draft"
   },
   {
-    "id": "G-CB645C3E",
+    "id": "G-4F6BE7CF",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
@@ -24261,7 +24542,7 @@
     "difficulty": 3,
     "params": {
       "forward_gain": {
-        "value": 19,
+        "value": 49,
         "realistic_range": [
           1,
           200
@@ -24275,12 +24556,12 @@
         ]
       }
     },
-    "statement": "前向き要素のゲイン G=19、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
-    "answer": "0.95",
+    "statement": "前向き要素のゲイン G=49、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "0.98",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
-      "=19/(1+19×1)=19/20",
-      "=0.95"
+      "=49/(1+49×1)=49/50",
+      "=0.98"
     ],
     "validation": {
       "solver_checked": true,
@@ -24300,7 +24581,7 @@
     "status": "draft"
   },
   {
-    "id": "G-E20C5E4B",
+    "id": "G-4B78AD76",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
@@ -24308,7 +24589,7 @@
     "difficulty": 3,
     "params": {
       "forward_gain": {
-        "value": 9,
+        "value": 99,
         "realistic_range": [
           1,
           200
@@ -24322,12 +24603,106 @@
         ]
       }
     },
-    "statement": "前向き要素のゲイン G=9、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
-    "answer": "0.9",
+    "statement": "前向き要素のゲイン G=99、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "0.99",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
-      "=9/(1+9×1)=9/10",
-      "=0.9"
+      "=99/(1+99×1)=99/100",
+      "=0.99"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C3F32C6E",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "負帰還系の合成ゲイン",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "forward_gain": {
+        "value": 40,
+        "realistic_range": [
+          1,
+          200
+        ]
+      },
+      "feedback_gain": {
+        "value": 0.1,
+        "realistic_range": [
+          0.1,
+          2
+        ]
+      }
+    },
+    "statement": "前向き要素のゲイン G=40、フィードバック要素のゲイン H=0.1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "8",
+    "solution": [
+      "負帰還系の合成伝達関数 W=G/(1+G·H)",
+      "=40/(1+40×0.1)=40/5",
+      "=8"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-46675C76",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "負帰還系の合成ゲイン",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "forward_gain": {
+        "value": 24,
+        "realistic_range": [
+          1,
+          200
+        ]
+      },
+      "feedback_gain": {
+        "value": 1,
+        "realistic_range": [
+          0.1,
+          2
+        ]
+      }
+    },
+    "statement": "前向き要素のゲイン G=24、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "0.96",
+    "solution": [
+      "負帰還系の合成伝達関数 W=G/(1+G·H)",
+      "=24/(1+24×1)=24/25",
+      "=0.96"
     ],
     "validation": {
       "solver_checked": true,
@@ -24394,7 +24769,242 @@
     "status": "draft"
   },
   {
-    "id": "G-AC9D49E4",
+    "id": "G-E20C5E4B",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "負帰還系の合成ゲイン",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "forward_gain": {
+        "value": 9,
+        "realistic_range": [
+          1,
+          200
+        ]
+      },
+      "feedback_gain": {
+        "value": 1,
+        "realistic_range": [
+          0.1,
+          2
+        ]
+      }
+    },
+    "statement": "前向き要素のゲイン G=9、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "0.9",
+    "solution": [
+      "負帰還系の合成伝達関数 W=G/(1+G·H)",
+      "=9/(1+9×1)=9/10",
+      "=0.9"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D9BC0D90",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "負帰還系の合成ゲイン",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "forward_gain": {
+        "value": 6,
+        "realistic_range": [
+          1,
+          200
+        ]
+      },
+      "feedback_gain": {
+        "value": 0.5,
+        "realistic_range": [
+          0.1,
+          2
+        ]
+      }
+    },
+    "statement": "前向き要素のゲイン G=6、フィードバック要素のゲイン H=0.5 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "1.5",
+    "solution": [
+      "負帰還系の合成伝達関数 W=G/(1+G·H)",
+      "=6/(1+6×0.5)=6/4",
+      "=1.5"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-B2CDEBED",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "負帰還系の合成ゲイン",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "forward_gain": {
+        "value": 12,
+        "realistic_range": [
+          1,
+          200
+        ]
+      },
+      "feedback_gain": {
+        "value": 0.25,
+        "realistic_range": [
+          0.1,
+          2
+        ]
+      }
+    },
+    "statement": "前向き要素のゲイン G=12、フィードバック要素のゲイン H=0.25 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "3",
+    "solution": [
+      "負帰還系の合成伝達関数 W=G/(1+G·H)",
+      "=12/(1+12×0.25)=12/4",
+      "=3"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DB869A09",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "負帰還系の合成ゲイン",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "forward_gain": {
+        "value": 20,
+        "realistic_range": [
+          1,
+          200
+        ]
+      },
+      "feedback_gain": {
+        "value": 0.2,
+        "realistic_range": [
+          0.1,
+          2
+        ]
+      }
+    },
+    "statement": "前向き要素のゲイン G=20、フィードバック要素のゲイン H=0.2 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "4",
+    "solution": [
+      "負帰還系の合成伝達関数 W=G/(1+G·H)",
+      "=20/(1+20×0.2)=20/5",
+      "=4"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-CB645C3E",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "負帰還系の合成ゲイン",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "forward_gain": {
+        "value": 19,
+        "realistic_range": [
+          1,
+          200
+        ]
+      },
+      "feedback_gain": {
+        "value": 1,
+        "realistic_range": [
+          0.1,
+          2
+        ]
+      }
+    },
+    "statement": "前向き要素のゲイン G=19、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "answer": "0.95",
+    "solution": [
+      "負帰還系の合成伝達関数 W=G/(1+G·H)",
+      "=19/(1+19×1)=19/20",
+      "=0.95"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-A69B01DB",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "三相全波整流回路の直流電圧",
@@ -24402,7 +25012,7 @@
     "difficulty": 4,
     "params": {
       "line_voltage": {
-        "value": 230,
+        "value": 240,
         "unit": "V",
         "realistic_range": [
           100,
@@ -24418,12 +25028,12 @@
         ]
       }
     },
-    "statement": "線間電圧 230V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=60° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
-    "answer": "155.25",
+    "statement": "線間電圧 240V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=60° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "162",
     "solution": [
       "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
       "cosα=cos60°=0.5",
-      "Ed=1.35×230×0.5=155.25V",
+      "Ed=1.35×240×0.5=162V",
       "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
     ],
     "validation": {
@@ -24444,7 +25054,7 @@
     "status": "draft"
   },
   {
-    "id": "G-45852FFF",
+    "id": "G-E3593913",
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "三相全波整流回路の直流電圧",
@@ -24452,7 +25062,7 @@
     "difficulty": 4,
     "params": {
       "line_voltage": {
-        "value": 460,
+        "value": 600,
         "unit": "V",
         "realistic_range": [
           100,
@@ -24468,412 +25078,12 @@
         ]
       }
     },
-    "statement": "線間電圧 460V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=60° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
-    "answer": "310.5",
+    "statement": "線間電圧 600V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=60° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "405",
     "solution": [
       "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
       "cosα=cos60°=0.5",
-      "Ed=1.35×460×0.5=310.5V",
-      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-7F925981",
-    "exam": "denken2_secondary",
-    "subject": "機械制御",
-    "topic": "三相全波整流回路の直流電圧",
-    "format": "descriptive",
-    "difficulty": 4,
-    "params": {
-      "line_voltage": {
-        "value": 220,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          600
-        ]
-      },
-      "firing_angle": {
-        "value": 0,
-        "unit": "°",
-        "realistic_range": [
-          0,
-          60
-        ]
-      }
-    },
-    "statement": "線間電圧 220V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
-    "answer": "297",
-    "solution": [
-      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
-      "cosα=cos0°=1",
-      "Ed=1.35×220×1=297V",
-      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-1EA4B91F",
-    "exam": "denken2_secondary",
-    "subject": "機械制御",
-    "topic": "三相全波整流回路の直流電圧",
-    "format": "descriptive",
-    "difficulty": 4,
-    "params": {
-      "line_voltage": {
-        "value": 200,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          600
-        ]
-      },
-      "firing_angle": {
-        "value": 60,
-        "unit": "°",
-        "realistic_range": [
-          0,
-          60
-        ]
-      }
-    },
-    "statement": "線間電圧 200V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=60° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
-    "answer": "135",
-    "solution": [
-      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
-      "cosα=cos60°=0.5",
-      "Ed=1.35×200×0.5=135V",
-      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-8D4517F1",
-    "exam": "denken2_secondary",
-    "subject": "機械制御",
-    "topic": "三相全波整流回路の直流電圧",
-    "format": "descriptive",
-    "difficulty": 4,
-    "params": {
-      "line_voltage": {
-        "value": 440,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          600
-        ]
-      },
-      "firing_angle": {
-        "value": 0,
-        "unit": "°",
-        "realistic_range": [
-          0,
-          60
-        ]
-      }
-    },
-    "statement": "線間電圧 440V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
-    "answer": "594",
-    "solution": [
-      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
-      "cosα=cos0°=1",
-      "Ed=1.35×440×1=594V",
-      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-D98008CD",
-    "exam": "denken2_secondary",
-    "subject": "機械制御",
-    "topic": "三相全波整流回路の直流電圧",
-    "format": "descriptive",
-    "difficulty": 4,
-    "params": {
-      "line_voltage": {
-        "value": 440,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          600
-        ]
-      },
-      "firing_angle": {
-        "value": 60,
-        "unit": "°",
-        "realistic_range": [
-          0,
-          60
-        ]
-      }
-    },
-    "statement": "線間電圧 440V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=60° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
-    "answer": "297",
-    "solution": [
-      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
-      "cosα=cos60°=0.5",
-      "Ed=1.35×440×0.5=297V",
-      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-EB9780B3",
-    "exam": "denken2_secondary",
-    "subject": "機械制御",
-    "topic": "三相全波整流回路の直流電圧",
-    "format": "descriptive",
-    "difficulty": 4,
-    "params": {
-      "line_voltage": {
-        "value": 200,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          600
-        ]
-      },
-      "firing_angle": {
-        "value": 0,
-        "unit": "°",
-        "realistic_range": [
-          0,
-          60
-        ]
-      }
-    },
-    "statement": "線間電圧 200V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
-    "answer": "270",
-    "solution": [
-      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
-      "cosα=cos0°=1",
-      "Ed=1.35×200×1=270V",
-      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-054ECF35",
-    "exam": "denken2_secondary",
-    "subject": "機械制御",
-    "topic": "三相全波整流回路の直流電圧",
-    "format": "descriptive",
-    "difficulty": 4,
-    "params": {
-      "line_voltage": {
-        "value": 400,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          600
-        ]
-      },
-      "firing_angle": {
-        "value": 0,
-        "unit": "°",
-        "realistic_range": [
-          0,
-          60
-        ]
-      }
-    },
-    "statement": "線間電圧 400V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
-    "answer": "540",
-    "solution": [
-      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
-      "cosα=cos0°=1",
-      "Ed=1.35×400×1=540V",
-      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-FC4C8273",
-    "exam": "denken2_secondary",
-    "subject": "機械制御",
-    "topic": "三相全波整流回路の直流電圧",
-    "format": "descriptive",
-    "difficulty": 4,
-    "params": {
-      "line_voltage": {
-        "value": 415,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          600
-        ]
-      },
-      "firing_angle": {
-        "value": 0,
-        "unit": "°",
-        "realistic_range": [
-          0,
-          60
-        ]
-      }
-    },
-    "statement": "線間電圧 415V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
-    "answer": "560.25",
-    "solution": [
-      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
-      "cosα=cos0°=1",
-      "Ed=1.35×415×1=560.25V",
-      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-F94A3F23",
-    "exam": "denken2_secondary",
-    "subject": "機械制御",
-    "topic": "三相全波整流回路の直流電圧",
-    "format": "descriptive",
-    "difficulty": 4,
-    "params": {
-      "line_voltage": {
-        "value": 460,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          600
-        ]
-      },
-      "firing_angle": {
-        "value": 0,
-        "unit": "°",
-        "realistic_range": [
-          0,
-          60
-        ]
-      }
-    },
-    "statement": "線間電圧 460V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
-    "answer": "621",
-    "solution": [
-      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
-      "cosα=cos0°=1",
-      "Ed=1.35×460×1=621V",
+      "Ed=1.35×600×0.5=405V",
       "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
     ],
     "validation": {
@@ -24994,6 +25204,656 @@
     "status": "draft"
   },
   {
+    "id": "G-1EA4B91F",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 60,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 200V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=60° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "135",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos60°=0.5",
+      "Ed=1.35×200×0.5=135V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-153B60AD",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 480,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 0,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 480V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "648",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos0°=1",
+      "Ed=1.35×480×1=648V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-5189C011",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 480,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 60,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 480V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=60° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "324",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos60°=0.5",
+      "Ed=1.35×480×0.5=324V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-EB9780B3",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 0,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 200V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "270",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos0°=1",
+      "Ed=1.35×200×1=270V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-FC4C8273",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 415,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 0,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 415V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "560.25",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos0°=1",
+      "Ed=1.35×415×1=560.25V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-8D4517F1",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 440,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 0,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 440V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "594",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos0°=1",
+      "Ed=1.35×440×1=594V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-7F925981",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 220,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 0,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 220V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "297",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos0°=1",
+      "Ed=1.35×220×1=297V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-AC9D49E4",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 230,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 60,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 230V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=60° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "155.25",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos60°=0.5",
+      "Ed=1.35×230×0.5=155.25V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-054ECF35",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 0,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 400V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "540",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos0°=1",
+      "Ed=1.35×400×1=540V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-F94A3F23",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 460,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 0,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 460V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "621",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos0°=1",
+      "Ed=1.35×460×1=621V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-83A16A57",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 240,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 0,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 240V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "324",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos0°=1",
+      "Ed=1.35×240×1=324V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-2820353F",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 600,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 0,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 600V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=0° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "810",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos0°=1",
+      "Ed=1.35×600×1=810V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-45852FFF",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 460,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 60,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 460V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=60° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "310.5",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos60°=0.5",
+      "Ed=1.35×460×0.5=310.5V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
     "id": "G-32A05B6D",
     "exam": "denken2_secondary",
     "subject": "機械制御",
@@ -25024,6 +25884,56 @@
       "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
       "cosα=cos60°=0.5",
       "Ed=1.35×220×0.5=148.5V",
+      "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D98008CD",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "三相全波整流回路の直流電圧",
+    "format": "descriptive",
+    "difficulty": 4,
+    "params": {
+      "line_voltage": {
+        "value": 440,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          600
+        ]
+      },
+      "firing_angle": {
+        "value": 60,
+        "unit": "°",
+        "realistic_range": [
+          0,
+          60
+        ]
+      }
+    },
+    "statement": "線間電圧 440V の三相交流電源にサイリスタ三相ブリッジ整流回路を接続し、制御角 α=60° で運転する。転流重なりを無視し、平均直流電圧は Ed=1.35·V·cosα で与えられるものとして、Ed〔V〕を求めよ。",
+    "answer": "297",
+    "solution": [
+      "着眼点: 三相ブリッジの無制御時 Ed0=(3√2/π)·V≒1.35·V。位相制御では cosα 倍になる。",
+      "cosα=cos60°=0.5",
+      "Ed=1.35×440×0.5=297V",
       "ポイント: 単相全波の 0.9·V と混同しない。三相ブリッジは脈動も小さく係数は 1.35。"
     ],
     "validation": {

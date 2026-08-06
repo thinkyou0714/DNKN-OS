@@ -76104,5 +76104,2205 @@
       "correct_rate": 0
     },
     "status": "draft"
+  },
+  {
+    "id": "G-16009401",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.85,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.45,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.96,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.85、タービン室効率（熱サイクル効率を含む）が 0.45、発電機効率が 0.96 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "36.72",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.85×0.45×0.96×100",
+      "ηP=36.72%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-23ED4A87",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.88,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.99,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.88、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.99 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "43.56",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.88×0.5×0.99×100",
+      "ηP=43.56%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-56BC4493",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.44,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.44、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "37.62",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.44×0.95×100",
+      "ηP=37.62%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4200186B",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.92,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.98,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.92、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.98 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "45.08",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.92×0.5×0.98×100",
+      "ηP=45.08%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0AB9FC5A",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.92,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.92、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "43.7",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.92×0.5×0.95×100",
+      "ηP=43.7%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0DC8231D",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.96,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.96 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "43.2",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.5×0.96×100",
+      "ηP=43.2%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-88BAD2C6",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.86,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.96,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.86、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.96 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "41.28",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.86×0.5×0.96×100",
+      "ηP=41.28%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-95F4A2A0",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.88,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.4,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.88、タービン室効率（熱サイクル効率を含む）が 0.4、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "33.44",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.88×0.4×0.95×100",
+      "ηP=33.44%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-6D9DA2BC",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.85,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.4,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.98,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.85、タービン室効率（熱サイクル効率を含む）が 0.4、発電機効率が 0.98 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "33.32",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.85×0.4×0.98×100",
+      "ηP=33.32%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DE0D1FAD",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.45,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.96,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.45、発電機効率が 0.96 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "38.88",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.45×0.96×100",
+      "ηP=38.88%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-6E9DA44F",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.85,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.98,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.85、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.98 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "41.65",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.85×0.5×0.98×100",
+      "ηP=41.65%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-2A5D0D55",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.92,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.96,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.92、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.96 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "44.16",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.92×0.5×0.96×100",
+      "ηP=44.16%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DC473F30",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.4,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.98,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.4、発電機効率が 0.98 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "35.28",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.4×0.98×100",
+      "ηP=35.28%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-5C7FEC59",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.85,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.4,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.85、タービン室効率（熱サイクル効率を含む）が 0.4、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "32.3",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.85×0.4×0.95×100",
+      "ηP=32.3%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-8EAA8690",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.86,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.98,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.86、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.98 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "42.14",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.86×0.5×0.98×100",
+      "ηP=42.14%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-E045E241",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.85,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.96,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.85、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.96 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "40.8",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.85×0.5×0.96×100",
+      "ηP=40.8%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0BB9FDED",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.92,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.4,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.92、タービン室効率（熱サイクル効率を含む）が 0.4、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "34.96",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.92×0.4×0.95×100",
+      "ηP=34.96%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0A612F97",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.85,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.44,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.85、タービン室効率（熱サイクル効率を含む）が 0.44、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "35.53",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.85×0.44×0.95×100",
+      "ηP=35.53%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-5CBC4E05",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.42,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.42、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "35.91",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.42×0.95×100",
+      "ηP=35.91%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DD4740C3",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.98,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.98 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "44.1",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.5×0.98×100",
+      "ηP=44.1%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C92834DF",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.45,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.98,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.45、発電機効率が 0.98 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "39.69",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.45×0.98×100",
+      "ηP=39.69%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-96F4A433",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.88,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.88、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "41.8",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.88×0.5×0.95×100",
+      "ηP=41.8%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0D80CA41",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.86,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.86、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "40.85",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.86×0.5×0.95×100",
+      "ηP=40.85%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DEBD02C6",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.92,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.99,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.92、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.99 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "45.54",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.92×0.5×0.99×100",
+      "ηP=45.54%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DF45E0AE",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.85,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.4,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.96,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.85、タービン室効率（熱サイクル効率を含む）が 0.4、発電機効率が 0.96 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "32.64",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.85×0.4×0.96×100",
+      "ηP=32.64%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-BDC88FA2",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "42.75",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.5×0.95×100",
+      "ηP=42.75%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-BEC89135",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.4,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.4、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "34.2",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.4×0.95×100",
+      "ηP=34.2%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D45ADD55",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.86,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.99,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.86、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.99 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "42.57",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.86×0.5×0.99×100",
+      "ηP=42.57%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-A51BF08F",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.88,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.45,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.88、タービン室効率（熱サイクル効率を含む）が 0.45、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "37.62",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.88×0.45×0.95×100",
+      "ηP=37.62%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-578D265E",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.99,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.99 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "44.55",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.5×0.99×100",
+      "ηP=44.55%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-FBCBC352",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.88,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.98,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.88、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.98 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "43.12",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.88×0.5×0.98×100",
+      "ηP=43.12%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4DCA9B08",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.92,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.45,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.92、タービン室効率（熱サイクル効率を含む）が 0.45、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "39.33",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.92×0.45×0.95×100",
+      "ηP=39.33%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-887CE5ED",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.85,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.4,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.99,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.85、タービン室効率（熱サイクル効率を含む）が 0.4、発電機効率が 0.99 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "33.66",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.85×0.4×0.99×100",
+      "ηP=33.66%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-588D27F1",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.4,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.99,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.4、発電機効率が 0.99 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "35.64",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.4×0.99×100",
+      "ηP=35.64%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-78E881F4",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.88,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.5,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.96,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.88、タービン室効率（熱サイクル効率を含む）が 0.5、発電機効率が 0.96 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "42.24",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.88×0.5×0.96×100",
+      "ηP=42.24%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-FE611CB3",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.85,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.48,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.85、タービン室効率（熱サイクル効率を含む）が 0.48、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "38.76",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.85×0.48×0.95×100",
+      "ηP=38.76%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0CC8218A",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.4,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.96,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.4、発電機効率が 0.96 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "34.56",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.4×0.96×100",
+      "ηP=34.56%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-58BC47B9",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.46,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.46、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "39.33",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.46×0.95×100",
+      "ηP=39.33%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0C80C8AE",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.86,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.4,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.86、タービン室効率（熱サイクル効率を含む）が 0.4、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "32.68",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.86×0.4×0.95×100",
+      "ηP=32.68%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-62BC5777",
+    "exam": "denken2_primary",
+    "subject": "電力",
+    "topic": "汽力発電の発電端効率（効率の積）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "boiler_efficiency": {
+        "value": 0.9,
+        "realistic_range": [
+          0.8,
+          0.95
+        ]
+      },
+      "turbine_efficiency": {
+        "value": 0.48,
+        "realistic_range": [
+          0.35,
+          0.55
+        ]
+      },
+      "generator_efficiency": {
+        "value": 0.95,
+        "realistic_range": [
+          0.9,
+          1
+        ]
+      }
+    },
+    "statement": "ある汽力発電所のボイラ効率が 0.9、タービン室効率（熱サイクル効率を含む）が 0.48、発電機効率が 0.95 である。この発電所の発電端効率 ηP〔%〕はいくらか。",
+    "answer": "41.04",
+    "solution": [
+      "発電端効率は各段の効率の積: ηP=ηB×ηT×ηG",
+      "ηP=0.9×0.48×0.95×100",
+      "ηP=41.04%",
+      "ポイント: 送電端効率はさらに所内率 L を使って ηP×(1−L) となる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
   }
 ]

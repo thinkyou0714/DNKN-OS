@@ -112270,314 +112270,6 @@
     "status": "draft"
   },
   {
-    "id": "G-9570913B",
-    "exam": "denken2_primary",
-    "subject": "理論",
-    "topic": "キルヒホッフの法則（2メッシュ回路）",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "emf1": {
-        "value": 16,
-        "unit": "V",
-        "realistic_range": [
-          1,
-          100
-        ]
-      },
-      "emf2": {
-        "value": 10,
-        "unit": "V",
-        "realistic_range": [
-          1,
-          100
-        ]
-      },
-      "R1": {
-        "value": 2,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      },
-      "R2": {
-        "value": 2,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      },
-      "R3": {
-        "value": 1,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "起電力 E1=16V（内部抵抗 R1=2Ω）と E2=10V（内部抵抗 R2=2Ω）の2電源が、共通の負荷抵抗 R3=1Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
-    "answer": "6.5",
-    "solution": [
-      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
-      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
-      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
-      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(16/2+10/2)/(1/2+1/2+1/1)=6.5V",
-      "I3=V/R3=6.5/1",
-      "I3=6.5A",
-      "（検算: I1=4.75A、I2=1.75A、I1+I2=6.5A=I3）"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-F988C139",
-    "exam": "denken2_primary",
-    "subject": "理論",
-    "topic": "キルヒホッフの法則（2メッシュ回路）",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "emf1": {
-        "value": 14,
-        "unit": "V",
-        "realistic_range": [
-          1,
-          100
-        ]
-      },
-      "emf2": {
-        "value": 10,
-        "unit": "V",
-        "realistic_range": [
-          1,
-          100
-        ]
-      },
-      "R1": {
-        "value": 2,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      },
-      "R2": {
-        "value": 2,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      },
-      "R3": {
-        "value": 1,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "起電力 E1=14V（内部抵抗 R1=2Ω）と E2=10V（内部抵抗 R2=2Ω）の2電源が、共通の負荷抵抗 R3=1Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
-    "answer": "6",
-    "solution": [
-      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
-      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
-      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
-      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(14/2+10/2)/(1/2+1/2+1/1)=6V",
-      "I3=V/R3=6/1",
-      "I3=6A",
-      "（検算: I1=4A、I2=2A、I1+I2=6A=I3）"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-6955127E",
-    "exam": "denken2_primary",
-    "subject": "理論",
-    "topic": "キルヒホッフの法則（2メッシュ回路）",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "emf1": {
-        "value": 20,
-        "unit": "V",
-        "realistic_range": [
-          1,
-          100
-        ]
-      },
-      "emf2": {
-        "value": 14,
-        "unit": "V",
-        "realistic_range": [
-          1,
-          100
-        ]
-      },
-      "R1": {
-        "value": 2,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      },
-      "R2": {
-        "value": 2,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      },
-      "R3": {
-        "value": 1,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "起電力 E1=20V（内部抵抗 R1=2Ω）と E2=14V（内部抵抗 R2=2Ω）の2電源が、共通の負荷抵抗 R3=1Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
-    "answer": "8.5",
-    "solution": [
-      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
-      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
-      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
-      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(20/2+14/2)/(1/2+1/2+1/1)=8.5V",
-      "I3=V/R3=8.5/1",
-      "I3=8.5A",
-      "（検算: I1=5.75A、I2=2.75A、I1+I2=8.5A=I3）"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-E8C1CBFA",
-    "exam": "denken2_primary",
-    "subject": "理論",
-    "topic": "キルヒホッフの法則（2メッシュ回路）",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "emf1": {
-        "value": 24,
-        "unit": "V",
-        "realistic_range": [
-          1,
-          100
-        ]
-      },
-      "emf2": {
-        "value": 12,
-        "unit": "V",
-        "realistic_range": [
-          1,
-          100
-        ]
-      },
-      "R1": {
-        "value": 3,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      },
-      "R2": {
-        "value": 3,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      },
-      "R3": {
-        "value": 1,
-        "unit": "Ω",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "起電力 E1=24V（内部抵抗 R1=3Ω）と E2=12V（内部抵抗 R2=3Ω）の2電源が、共通の負荷抵抗 R3=1Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
-    "answer": "7.2",
-    "solution": [
-      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
-      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
-      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
-      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(24/3+12/3)/(1/3+1/3+1/1)=7.2V",
-      "I3=V/R3=7.2/1",
-      "I3=7.2A",
-      "（検算: I1=5.6A、I2=1.6A、I1+I2=7.2A=I3）"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
     "id": "G-BCE4C29E",
     "exam": "denken2_primary",
     "subject": "理論",
@@ -112732,6 +112424,237 @@
     "status": "draft"
   },
   {
+    "id": "G-F988C139",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "キルヒホッフの法則（2メッシュ回路）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "emf1": {
+        "value": 14,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "emf2": {
+        "value": 10,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "R1": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R2": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R3": {
+        "value": 1,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "起電力 E1=14V（内部抵抗 R1=2Ω）と E2=10V（内部抵抗 R2=2Ω）の2電源が、共通の負荷抵抗 R3=1Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
+    "answer": "6",
+    "solution": [
+      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
+      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
+      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
+      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(14/2+10/2)/(1/2+1/2+1/1)=6V",
+      "I3=V/R3=6/1",
+      "I3=6A",
+      "（検算: I1=4A、I2=2A、I1+I2=6A=I3）"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-E8C1CBFA",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "キルヒホッフの法則（2メッシュ回路）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "emf1": {
+        "value": 24,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "emf2": {
+        "value": 12,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "R1": {
+        "value": 3,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R2": {
+        "value": 3,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R3": {
+        "value": 1,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "起電力 E1=24V（内部抵抗 R1=3Ω）と E2=12V（内部抵抗 R2=3Ω）の2電源が、共通の負荷抵抗 R3=1Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
+    "answer": "7.2",
+    "solution": [
+      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
+      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
+      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
+      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(24/3+12/3)/(1/3+1/3+1/1)=7.2V",
+      "I3=V/R3=7.2/1",
+      "I3=7.2A",
+      "（検算: I1=5.6A、I2=1.6A、I1+I2=7.2A=I3）"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-6D5518CA",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "キルヒホッフの法則（2メッシュ回路）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "emf1": {
+        "value": 20,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "emf2": {
+        "value": 10,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "R1": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R2": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R3": {
+        "value": 1,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "起電力 E1=20V（内部抵抗 R1=2Ω）と E2=10V（内部抵抗 R2=2Ω）の2電源が、共通の負荷抵抗 R3=1Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
+    "answer": "7.5",
+    "solution": [
+      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
+      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
+      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
+      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(20/2+10/2)/(1/2+1/2+1/1)=7.5V",
+      "I3=V/R3=7.5/1",
+      "I3=7.5A",
+      "（検算: I1=6.25A、I2=1.25A、I1+I2=7.5A=I3）"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
     "id": "G-C47B571F",
     "exam": "denken2_primary",
     "subject": "理論",
@@ -112790,6 +112713,545 @@
       "I3=V/R3=7.5/1",
       "I3=7.5A",
       "（検算: I1=5.25A、I2=2.25A、I1+I2=7.5A=I3）"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-3EF79357",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "キルヒホッフの法則（2メッシュ回路）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "emf1": {
+        "value": 36,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "emf2": {
+        "value": 24,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "R1": {
+        "value": 4,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R2": {
+        "value": 4,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R3": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "起電力 E1=36V（内部抵抗 R1=4Ω）と E2=24V（内部抵抗 R2=4Ω）の2電源が、共通の負荷抵抗 R3=2Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
+    "answer": "7.5",
+    "solution": [
+      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
+      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
+      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
+      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(36/4+24/4)/(1/4+1/4+1/2)=15V",
+      "I3=V/R3=15/2",
+      "I3=7.5A",
+      "（検算: I1=5.25A、I2=2.25A、I1+I2=7.5A=I3）"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-16B2B1A7",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "キルヒホッフの法則（2メッシュ回路）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "emf1": {
+        "value": 32,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "emf2": {
+        "value": 20,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "R1": {
+        "value": 4,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R2": {
+        "value": 4,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R3": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "起電力 E1=32V（内部抵抗 R1=4Ω）と E2=20V（内部抵抗 R2=4Ω）の2電源が、共通の負荷抵抗 R3=2Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
+    "answer": "6.5",
+    "solution": [
+      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
+      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
+      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
+      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(32/4+20/4)/(1/4+1/4+1/2)=13V",
+      "I3=V/R3=13/2",
+      "I3=6.5A",
+      "（検算: I1=4.75A、I2=1.75A、I1+I2=6.5A=I3）"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-6955127E",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "キルヒホッフの法則（2メッシュ回路）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "emf1": {
+        "value": 20,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "emf2": {
+        "value": 14,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "R1": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R2": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R3": {
+        "value": 1,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "起電力 E1=20V（内部抵抗 R1=2Ω）と E2=14V（内部抵抗 R2=2Ω）の2電源が、共通の負荷抵抗 R3=1Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
+    "answer": "8.5",
+    "solution": [
+      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
+      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
+      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
+      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(20/2+14/2)/(1/2+1/2+1/1)=8.5V",
+      "I3=V/R3=8.5/1",
+      "I3=8.5A",
+      "（検算: I1=5.75A、I2=2.75A、I1+I2=8.5A=I3）"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-6455F4DE",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "キルヒホッフの法則（2メッシュ回路）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "emf1": {
+        "value": 44,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "emf2": {
+        "value": 28,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "R1": {
+        "value": 4,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R2": {
+        "value": 4,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R3": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "起電力 E1=44V（内部抵抗 R1=4Ω）と E2=28V（内部抵抗 R2=4Ω）の2電源が、共通の負荷抵抗 R3=2Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
+    "answer": "9",
+    "solution": [
+      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
+      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
+      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
+      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(44/4+28/4)/(1/4+1/4+1/2)=18V",
+      "I3=V/R3=18/2",
+      "I3=9A",
+      "（検算: I1=6.5A、I2=2.5A、I1+I2=9A=I3）"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DDC42EB0",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "キルヒホッフの法則（2メッシュ回路）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "emf1": {
+        "value": 28,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "emf2": {
+        "value": 16,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "R1": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R2": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R3": {
+        "value": 1,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "起電力 E1=28V（内部抵抗 R1=2Ω）と E2=16V（内部抵抗 R2=2Ω）の2電源が、共通の負荷抵抗 R3=1Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
+    "answer": "11",
+    "solution": [
+      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
+      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
+      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
+      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(28/2+16/2)/(1/2+1/2+1/1)=11V",
+      "I3=V/R3=11/1",
+      "I3=11A",
+      "（検算: I1=8.5A、I2=2.5A、I1+I2=11A=I3）"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9570913B",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "キルヒホッフの法則（2メッシュ回路）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "emf1": {
+        "value": 16,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "emf2": {
+        "value": 10,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "R1": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R2": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R3": {
+        "value": 1,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "起電力 E1=16V（内部抵抗 R1=2Ω）と E2=10V（内部抵抗 R2=2Ω）の2電源が、共通の負荷抵抗 R3=1Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
+    "answer": "6.5",
+    "solution": [
+      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
+      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
+      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
+      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(16/2+10/2)/(1/2+1/2+1/1)=6.5V",
+      "I3=V/R3=6.5/1",
+      "I3=6.5A",
+      "（検算: I1=4.75A、I2=1.75A、I1+I2=6.5A=I3）"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-6CA4F5AD",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "キルヒホッフの法則（2メッシュ回路）",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "emf1": {
+        "value": 24,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "emf2": {
+        "value": 18,
+        "unit": "V",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "R1": {
+        "value": 3,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R2": {
+        "value": 3,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      },
+      "R3": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "起電力 E1=24V（内部抵抗 R1=3Ω）と E2=18V（内部抵抗 R2=3Ω）の2電源が、共通の負荷抵抗 R3=2Ω を介して並列に接続されている。負荷 R3 に流れる電流 I3〔A〕を、キルヒホッフの法則を用いて求めよ。",
+    "answer": "6",
+    "solution": [
+      "負荷両端の電圧を V とおき、キルヒホッフの電流則(KCL)で連立式を立てる:",
+      "枝電流 I1=(E1−V)/R1、I2=(E2−V)/R2、I3=V/R3、かつ I1+I2=I3",
+      "(E1−V)/R1+(E2−V)/R2=V/R3 … ① を V について解く",
+      "V=(E1/R1+E2/R2)/(1/R1+1/R2+1/R3)=(24/3+18/3)/(1/3+1/3+1/2)=12V",
+      "I3=V/R3=12/2",
+      "I3=6A",
+      "（検算: I1=4A、I2=2A、I1+I2=6A=I3）"
     ],
     "validation": {
       "solver_checked": true,
@@ -147354,6 +147816,5516 @@
       "V=Q/(C1+C2)=1800/(6+2)=225V",
       "（静電エネルギーは接続時の突入電流で一部失われ、保存されない点に注意）",
       "ポイント: エネルギー保存で解くと誤答になる。保存されるのは電荷である。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-88BF0C01",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/10=2倍",
+      "|Vo|=|Av|×Vi=2×0.5=1V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-78CAC319",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/10=20倍",
+      "|Vo|=|Av|×Vi=20×0.1=2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-A44926EE",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "10",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/2=50倍",
+      "|Vo|=|Av|×Vi=50×0.2=10V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-B7C40ECA",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "10",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/10=10倍",
+      "|Vo|=|Av|×Vi=10×1=10V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-1F30A04B",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2.5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/20=2.5倍",
+      "|Vo|=|Av|×Vi=2.5×1=2.5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0ED76BDD",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/20=5倍",
+      "|Vo|=|Av|×Vi=5×1=5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-A25F1FB3",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "4",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/5=4倍",
+      "|Vo|=|Av|×Vi=4×1=4V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-02724828",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.8",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/5=4倍",
+      "|Vo|=|Av|×Vi=4×0.2=0.8V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-E3948142",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/20=10倍",
+      "|Vo|=|Av|×Vi=10×0.5=5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-F4D634FA",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/20=5倍",
+      "|Vo|=|Av|×Vi=5×0.2=1V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9B6A114A",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "10",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/5=20倍",
+      "|Vo|=|Av|×Vi=20×0.5=10V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-16DBF2AE",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=10kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=10/5=2倍",
+      "|Vo|=|Av|×Vi=2×1=2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-CD91DA64",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=10kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=10/5=2倍",
+      "|Vo|=|Av|×Vi=2×0.1=0.2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C991D418",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=10kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=10/5=2倍",
+      "|Vo|=|Av|×Vi=2×0.5=1V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C54A48B5",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=10kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=10/2=5倍",
+      "|Vo|=|Av|×Vi=5×0.1=0.5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-82B6B9D9",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2.5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/2=25倍",
+      "|Vo|=|Av|×Vi=25×0.1=2.5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-8CBF124D",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/10=2倍",
+      "|Vo|=|Av|×Vi=2×0.1=0.2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-89BF0D94",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.4",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/10=2倍",
+      "|Vo|=|Av|×Vi=2×0.2=0.4V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-FFB06FE9",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.25",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/20=2.5倍",
+      "|Vo|=|Av|×Vi=2.5×0.1=0.25V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-FCB06B30",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/20=2.5倍",
+      "|Vo|=|Av|×Vi=2.5×0.2=0.5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DDA451DD",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "4",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/5=40倍",
+      "|Vo|=|Av|×Vi=40×0.1=4V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-8A1BED46",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/25=2倍",
+      "|Vo|=|Av|×Vi=2×0.5=1V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-3A109CCC",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/5=10倍",
+      "|Vo|=|Av|×Vi=10×0.5=5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-A349255B",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/2=50倍",
+      "|Vo|=|Av|×Vi=50×0.1=5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-3880C9D4",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/2=10倍",
+      "|Vo|=|Av|×Vi=10×0.5=5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-85F3A9F0",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/25=2倍",
+      "|Vo|=|Av|×Vi=2×1=2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-7A4C2B0C",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "10",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/2=100倍",
+      "|Vo|=|Av|×Vi=100×0.1=10V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-39109B39",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/5=10倍",
+      "|Vo|=|Av|×Vi=10×0.2=2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-2BD9A13F",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=10kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=10/2=5倍",
+      "|Vo|=|Av|×Vi=5×1=5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-35ABBF9F",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "8",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/25=8倍",
+      "|Vo|=|Av|×Vi=8×1=8V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-EFD62D1B",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2.5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/20=5倍",
+      "|Vo|=|Av|×Vi=5×0.5=2.5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-36109680",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/5=10倍",
+      "|Vo|=|Av|×Vi=10×0.1=1V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-75CABE60",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "4",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/10=20倍",
+      "|Vo|=|Av|×Vi=20×0.2=4V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-03B07635",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1.25",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/20=2.5倍",
+      "|Vo|=|Av|×Vi=2.5×0.5=1.25V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-7146C9C6",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/10=5倍",
+      "|Vo|=|Av|×Vi=5×0.1=0.5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-2DBE005C",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/10=5倍",
+      "|Vo|=|Av|×Vi=5×1=5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4E50FB07",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/10=2倍",
+      "|Vo|=|Av|×Vi=2×1=2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-F3D63367",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/20=5倍",
+      "|Vo|=|Av|×Vi=5×0.1=0.5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-8E1BF392",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/25=2倍",
+      "|Vo|=|Av|×Vi=2×0.1=0.2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9D27DBE1",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/10=10倍",
+      "|Vo|=|Av|×Vi=10×0.2=2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-3780C841",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/2=10倍",
+      "|Vo|=|Av|×Vi=10×0.2=2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-2DFB9942",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "4",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/25=4倍",
+      "|Vo|=|Av|×Vi=4×1=4V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-7FB6B520",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/2=25倍",
+      "|Vo|=|Av|×Vi=25×0.2=5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-2C517D15",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.8",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/25=8倍",
+      "|Vo|=|Av|×Vi=8×0.1=0.8V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-90378EAC",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "10",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/20=10倍",
+      "|Vo|=|Av|×Vi=10×1=10V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-2951785C",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1.6",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/25=8倍",
+      "|Vo|=|Av|×Vi=8×0.2=1.6V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C24A43FC",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=10kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=10/2=5倍",
+      "|Vo|=|Av|×Vi=5×0.2=1V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DF947AF6",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/20=10倍",
+      "|Vo|=|Av|×Vi=10×0.1=1V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DE947963",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=20kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/20=10倍",
+      "|Vo|=|Av|×Vi=10×0.2=2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-7546D012",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2.5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/10=5倍",
+      "|Vo|=|Av|×Vi=5×0.5=2.5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DAA44D24",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "8",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/5=40倍",
+      "|Vo|=|Av|×Vi=40×0.2=8V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-05724CE1",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.4",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/5=4倍",
+      "|Vo|=|Av|×Vi=4×0.1=0.4V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0972532D",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/5=4倍",
+      "|Vo|=|Av|×Vi=4×0.5=2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C14A4269",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=10kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2.5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=10/2=5倍",
+      "|Vo|=|Av|×Vi=5×0.5=2.5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-285176C9",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "4",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/25=8倍",
+      "|Vo|=|Av|×Vi=8×0.5=4V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-3480C388",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/2=10倍",
+      "|Vo|=|Av|×Vi=10×0.1=1V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-970418E9",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.8",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/25=4倍",
+      "|Vo|=|Av|×Vi=4×0.2=0.8V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-8D1BF1FF",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.4",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/25=2倍",
+      "|Vo|=|Av|×Vi=2×0.2=0.4V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-966A096B",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "4",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/5=20倍",
+      "|Vo|=|Av|×Vi=20×0.2=4V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D1613272",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "10",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/5=10倍",
+      "|Vo|=|Av|×Vi=10×1=10V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-86B6C025",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "12.5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/2=25倍",
+      "|Vo|=|Av|×Vi=25×0.5=12.5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-98041A7C",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/25=4倍",
+      "|Vo|=|Av|×Vi=4×0.5=2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-7CCAC965",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 200,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=200kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "10",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=200/10=20倍",
+      "|Vo|=|Av|×Vi=20×0.5=10V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-976A0AFE",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "2",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/5=20倍",
+      "|Vo|=|Av|×Vi=20×0.1=2V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9E27DD74",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.5,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.5V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "5",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/10=10倍",
+      "|Vo|=|Av|×Vi=10×0.5=5V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-7046C833",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 50,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=50kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=50/10=5倍",
+      "|Vo|=|Av|×Vi=5×0.2=1V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D091DF1D",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 5,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.2,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=5kΩ、帰還抵抗 Rf=10kΩ である。入力電圧 Vi=0.2V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.4",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=10/5=2倍",
+      "|Vo|=|Av|×Vi=2×0.2=0.4V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-9A27D728",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 10,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=10kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "1",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/10=10倍",
+      "|Vo|=|Av|×Vi=10×0.1=1V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0715732A",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 20,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 2,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=2kΩ、帰還抵抗 Rf=20kΩ である。入力電圧 Vi=1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "10",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=20/2=10倍",
+      "|Vo|=|Av|×Vi=10×1=10V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-94041430",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "オペアンプ反転増幅",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "feedback_resistance": {
+        "value": 100,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          500
+        ]
+      },
+      "input_resistance": {
+        "value": 25,
+        "unit": "kohm",
+        "realistic_range": [
+          1,
+          100
+        ]
+      },
+      "input_voltage": {
+        "value": 0.1,
+        "unit": "V",
+        "realistic_range": [
+          0.05,
+          2
+        ]
+      }
+    },
+    "statement": "理想オペアンプを用いた反転増幅回路で、入力抵抗 Ri=25kΩ、帰還抵抗 Rf=100kΩ である。入力電圧 Vi=0.1V を加えたときの出力電圧の大きさ |Vo|〔V〕はいくらか。",
+    "answer": "0.4",
+    "solution": [
+      "反転増幅の電圧利得は Av=−Rf/Ri（仮想接地により入力電流 Vi/Ri がすべて Rf に流れる）",
+      "|Av|=100/25=4倍",
+      "|Vo|=|Av|×Vi=4×0.1=0.4V",
+      "ポイント: 出力は入力と逆位相（負号）。非反転増幅の利得 1+Rf/Ri と混同しない。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-47010FF6",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 32,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=32Ω を3個、線間電圧 V=200V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "3.75",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=1.25kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×200²/32=3.75kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-18CCCDEE",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 8,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=8Ω を3個、線間電圧 V=100V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "3.75",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=1.25kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×100²/8=3.75kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-E7AF8EAC",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 32,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=32Ω を3個、線間電圧 V=400V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "15",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=5kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×400²/32=15kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DE56BB9B",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 10,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=10Ω を3個、線間電圧 V=100V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "3",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=1kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×100²/10=3kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0ECCBE30",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=2Ω を3個、線間電圧 V=100V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "15",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=5kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×100²/2=15kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4B0354D9",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 20,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=20Ω を3個、線間電圧 V=200V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "6",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=2kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×200²/20=6kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-F3C0EAB1",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 80,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=80Ω を3個、線間電圧 V=400V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "6",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=2kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×400²/80=6kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-15CCC935",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 5,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=5Ω を3個、線間電圧 V=100V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "6",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=2kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×100²/5=6kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-566072DF",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 50,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=50Ω を3個、線間電圧 V=100V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "0.6",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=0.2kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×100²/50=0.6kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4F1265AF",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 40,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=40Ω を3個、線間電圧 V=200V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "3",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=1kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×200²/40=3kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-63BB8AD3",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 64,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=64Ω を3個、線間電圧 V=400V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "7.5",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=2.5kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×400²/64=7.5kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-7BB7336D",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 40,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=40Ω を3個、線間電圧 V=400V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "12",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=4kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×400²/40=12kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4C4F1A00",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 20,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=20Ω を3個、線間電圧 V=100V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "1.5",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=0.5kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×100²/20=1.5kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-F8CA1311",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 8,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=8Ω を3個、線間電圧 V=200V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "15",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=5kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×200²/8=15kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-E2F6D850",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 100,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=100Ω を3個、線間電圧 V=400V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "4.8",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=1.6kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×400²/100=4.8kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-14CCC7A2",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 4,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=4Ω を3個、線間電圧 V=100V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "7.5",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=2.5kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×100²/4=7.5kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-F4CA0CC5",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 4,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=4Ω を3個、線間電圧 V=200V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "30",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=10kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×200²/4=30kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-7D011D1B",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 8,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=8Ω を3個、線間電圧 V=400V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "60",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=20kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×400²/8=60kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-F3CA0B32",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 5,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=5Ω を3個、線間電圧 V=200V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "24",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=8kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×200²/5=24kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-505E2AD6",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 40,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=40Ω を3個、線間電圧 V=100V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "0.75",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=0.25kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×100²/40=0.75kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-514F21DF",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 25,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=25Ω を3個、線間電圧 V=100V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "1.2",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=0.4kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×100²/25=1.2kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-51059CE2",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 10,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=10Ω を3個、線間電圧 V=200V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "12",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=4kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×200²/10=12kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4E035992",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 25,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=25Ω を3個、線間電圧 V=200V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "4.8",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=1.6kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×200²/25=4.8kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C90F5426",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 50,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=50Ω を3個、線間電圧 V=200V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "2.4",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=0.8kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×200²/50=2.4kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4B059370",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 16,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=16Ω を3個、線間電圧 V=200V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "7.5",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=2.5kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×200²/16=7.5kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-F5B421E4",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 50,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=50Ω を3個、線間電圧 V=400V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "9.6",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=3.2kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×400²/50=9.6kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-5DAA3840",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 10,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=10Ω を3個、線間電圧 V=400V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "48",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=16kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×400²/10=48kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-63AA41B2",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 16,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=16Ω を3個、線間電圧 V=400V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "30",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=10kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×400²/16=30kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-EFB1D9DB",
+    "exam": "denken2_primary",
+    "subject": "理論",
+    "topic": "Δ結線とY結線の消費電力",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "line_voltage": {
+        "value": 400,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          400
+        ]
+      },
+      "resistance": {
+        "value": 20,
+        "unit": "Ω",
+        "realistic_range": [
+          2,
+          100
+        ]
+      }
+    },
+    "statement": "抵抗 R=20Ω を3個、線間電圧 V=400V の対称三相電源に Y結線で接続したのち、同じ3個の抵抗を Δ結線に繋ぎ替えた。Δ結線時の全消費電力 P_Δ〔kW〕はいくらか。",
+    "answer": "24",
+    "solution": [
+      "Y結線では各相に相電圧 V/√3 が加わる: P_Y=3×(V/√3)²/R=V²/R=8kW",
+      "Δ結線では各相に線間電圧 V がそのまま加わる: P_Δ=3×V²/R（Y結線の3倍）",
+      "P_Δ=3×400²/20=24kW",
+      "ポイント: Δ→Y に繋ぎ替えると電力・電流は 1/3。スターデルタ始動で始動電流が 1/3 になる根拠。"
     ],
     "validation": {
       "solver_checked": true,

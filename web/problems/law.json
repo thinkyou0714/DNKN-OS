@@ -5355,7 +5355,7 @@
         "value": 3300,
         "unit": "V",
         "realistic_range": [
-          3300,
+          2200,
           6600
         ]
       }
@@ -5393,6 +5393,55 @@
     "status": "draft"
   },
   {
+    "id": "G-B01E66C0",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "絶縁耐力試験電圧",
+    "format": "multiple_choice",
+    "difficulty": 2,
+    "params": {
+      "nominal_voltage": {
+        "value": 2200,
+        "unit": "V",
+        "realistic_range": [
+          2200,
+          6600
+        ]
+      }
+    },
+    "statement": "公称電圧 2200V の高圧機器について、交流絶縁耐力試験を行う。試験電圧〔V〕を求めよ（最大使用電圧=公称×1.15/1.1、試験電圧=最大使用電圧×1.5）。",
+    "choices": [
+      "2300",
+      "2875",
+      "3300",
+      "3450",
+      "4600"
+    ],
+    "answer": "3450",
+    "solution": [
+      "最大使用電圧=2200×1.15/1.1=2300V",
+      "試験電圧=最大使用電圧×1.5=2300×1.5",
+      "試験電圧=3450V"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0,
+      "common_wrong_choice": "2300"
+    },
+    "status": "draft"
+  },
+  {
     "id": "D-0274",
     "exam": "denken2_primary",
     "subject": "法規",
@@ -5404,7 +5453,7 @@
         "value": 6600,
         "unit": "V",
         "realistic_range": [
-          3300,
+          2200,
           6600
         ]
       }
@@ -8938,7 +8987,7 @@
     "status": "draft"
   },
   {
-    "id": "G-97D5F07C",
+    "id": "G-98D5F20F",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -8954,7 +9003,7 @@
         ]
       },
       "ground_fault_current": {
-        "value": 4,
+        "value": 5,
         "unit": "A",
         "realistic_range": [
           1,
@@ -8962,12 +9011,12 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 4A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "75",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 5A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "60",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
       "本問の条件では V=300V",
-      "R=300/4=75Ω"
+      "R=300/5=60Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -8987,7 +9036,7 @@
     "status": "draft"
   },
   {
-    "id": "G-B04E051E",
+    "id": "G-AF4BC4F4",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -9003,7 +9052,7 @@
         ]
       },
       "ground_fault_current": {
-        "value": 25,
+        "value": 30,
         "unit": "A",
         "realistic_range": [
           1,
@@ -9011,12 +9060,12 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 25A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "24",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 30A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "20",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
       "本問の条件では V=600V",
-      "R=600/25=24Ω"
+      "R=600/30=20Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -9036,7 +9085,7 @@
     "status": "draft"
   },
   {
-    "id": "G-45C4B792",
+    "id": "G-41C4B146",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -9052,7 +9101,7 @@
         ]
       },
       "ground_fault_current": {
-        "value": 20,
+        "value": 24,
         "unit": "A",
         "realistic_range": [
           1,
@@ -9060,12 +9109,61 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 20A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "15",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 24A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "12.5",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
       "本問の条件では V=300V",
-      "R=300/20=15Ω"
+      "R=300/24=12.5Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-3B0FA6DF",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 150,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 40,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 40A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "3.75",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=150V",
+      "R=150/40=3.75Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -9134,7 +9232,7 @@
     "status": "draft"
   },
   {
-    "id": "G-BA016442",
+    "id": "G-42C4B2D9",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -9142,7 +9240,7 @@
     "difficulty": 3,
     "params": {
       "base_voltage": {
-        "value": 150,
+        "value": 300,
         "unit": "V",
         "realistic_range": [
           150,
@@ -9158,12 +9256,12 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 25A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "6",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 25A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "12",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=150V",
-      "R=150/25=6Ω"
+      "本問の条件では V=300V",
+      "R=300/25=12Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -9232,251 +9330,6 @@
     "status": "draft"
   },
   {
-    "id": "G-CBE10F8C",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 600,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 3,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 3A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "200",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=600V",
-      "R=600/3=200Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-98D5F20F",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 300,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 5,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 5A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "60",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=300V",
-      "R=300/5=60Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-3FC26F89",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 300,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 10,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 10A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "30",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=300V",
-      "R=300/10=30Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-C9E10C66",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 600,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 5,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 5A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "120",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=600V",
-      "R=600/5=120Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-A0502A85",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 600,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 15,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 15A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "40",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=600V",
-      "R=600/15=40Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
     "id": "G-CAE10DF9",
     "exam": "denken2_primary",
     "subject": "法規",
@@ -9526,7 +9379,7 @@
     "status": "draft"
   },
   {
-    "id": "G-BD03A792",
+    "id": "G-99D5F3A2",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -9534,7 +9387,7 @@
     "difficulty": 3,
     "params": {
       "base_voltage": {
-        "value": 150,
+        "value": 300,
         "unit": "V",
         "realistic_range": [
           150,
@@ -9542,7 +9395,7 @@
         ]
       },
       "ground_fault_current": {
-        "value": 10,
+        "value": 6,
         "unit": "A",
         "realistic_range": [
           1,
@@ -9550,12 +9403,159 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 10A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "15",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 6A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "50",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=150V",
-      "R=150/10=15Ω"
+      "本問の条件では V=300V",
+      "R=300/6=50Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-42C27442",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 300,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 15,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 15A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "20",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=300V",
+      "R=300/15=20Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D6E120DD",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 600,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 8,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 8A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "75",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=600V",
+      "R=600/8=75Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-B54E0CFD",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 600,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 20,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 20A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "30",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=600V",
+      "R=600/20=30Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -9624,7 +9624,7 @@
     "status": "draft"
   },
   {
-    "id": "G-B7015F89",
+    "id": "G-350D5ED6",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -9640,7 +9640,7 @@
         ]
       },
       "ground_fault_current": {
-        "value": 20,
+        "value": 50,
         "unit": "A",
         "realistic_range": [
           1,
@@ -9648,12 +9648,12 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 20A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "7.5",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 50A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "3",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
       "本問の条件では V=150V",
-      "R=150/20=7.5Ω"
+      "R=150/50=3Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -9673,7 +9673,7 @@
     "status": "draft"
   },
   {
-    "id": "G-4BC6FF9B",
+    "id": "G-BB03A46C",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -9681,7 +9681,7 @@
     "difficulty": 3,
     "params": {
       "base_voltage": {
-        "value": 300,
+        "value": 150,
         "unit": "V",
         "realistic_range": [
           150,
@@ -9689,7 +9689,7 @@
         ]
       },
       "ground_fault_current": {
-        "value": 30,
+        "value": 12,
         "unit": "A",
         "realistic_range": [
           1,
@@ -9697,12 +9697,12 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 30A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "10",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 12A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "12.5",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=300V",
-      "R=300/30=10Ω"
+      "本問の条件では V=150V",
+      "R=150/12=12.5Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -9771,7 +9771,7 @@
     "status": "draft"
   },
   {
-    "id": "G-C4B143A2",
+    "id": "G-BA016442",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -9787,7 +9787,7 @@
         ]
       },
       "ground_fault_current": {
-        "value": 5,
+        "value": 25,
         "unit": "A",
         "realistic_range": [
           1,
@@ -9795,12 +9795,12 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 5A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "30",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 25A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "6",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
       "本問の条件では V=150V",
-      "R=150/5=30Ω"
+      "R=150/25=6Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -9820,7 +9820,154 @@
     "status": "draft"
   },
   {
-    "id": "G-BA03A2D9",
+    "id": "G-3DC26C63",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 300,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 12,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 12A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "25",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=300V",
+      "R=300/12=25Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-51C947A4",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 300,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 40,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 40A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "7.5",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=300V",
+      "R=300/40=7.5Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-99501F80",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 600,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 12,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 12A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "50",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=600V",
+      "R=600/12=50Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C3B1420F",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -9836,7 +9983,7 @@
         ]
       },
       "ground_fault_current": {
-        "value": 15,
+        "value": 6,
         "unit": "A",
         "realistic_range": [
           1,
@@ -9844,12 +9991,61 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 15A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "10",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 6A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "25",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
       "本問の条件では V=150V",
-      "R=150/15=10Ω"
+      "R=150/6=25Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-BB0165D5",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 150,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 24,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 24A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "6.25",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=150V",
+      "R=150/24=6.25Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -9967,7 +10163,7 @@
     "status": "draft"
   },
   {
-    "id": "G-99D5F3A2",
+    "id": "G-B14E06B1",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -9975,7 +10171,7 @@
     "difficulty": 3,
     "params": {
       "base_voltage": {
-        "value": 300,
+        "value": 600,
         "unit": "V",
         "realistic_range": [
           150,
@@ -9983,7 +10179,7 @@
         ]
       },
       "ground_fault_current": {
-        "value": 6,
+        "value": 24,
         "unit": "A",
         "realistic_range": [
           1,
@@ -9991,12 +10187,12 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 6A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "50",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 24A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "25",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=300V",
-      "R=300/6=50Ω"
+      "本問の条件では V=600V",
+      "R=600/24=25Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -10016,7 +10212,154 @@
     "status": "draft"
   },
   {
-    "id": "G-BB03A46C",
+    "id": "G-9BD5F6C8",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 300,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 8,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 8A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "37.5",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=300V",
+      "R=300/8=37.5Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4BC6FF9B",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 300,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 30,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 30A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "10",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=300V",
+      "R=300/30=10Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-3FC26F89",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 300,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 10,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 10A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "30",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=300V",
+      "R=300/10=30Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-BA03A2D9",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -10032,7 +10375,7 @@
         ]
       },
       "ground_fault_current": {
-        "value": 12,
+        "value": 15,
         "unit": "A",
         "realistic_range": [
           1,
@@ -10040,12 +10383,61 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 12A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "12.5",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 15A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "10",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
       "本問の条件では V=150V",
-      "R=150/12=12.5Ω"
+      "R=150/15=10Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D7CC592D",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 300,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 50A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "6",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=300V",
+      "R=300/50=6Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -10114,7 +10506,7 @@
     "status": "draft"
   },
   {
-    "id": "G-B54E0CFD",
+    "id": "G-B04E051E",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "B種接地工事の接地抵抗",
@@ -10123,104 +10515,6 @@
     "params": {
       "base_voltage": {
         "value": 600,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 20,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 20A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "30",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=600V",
-      "R=600/20=30Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-95D5ED56",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 300,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 2,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 2A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "150",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=300V",
-      "R=300/2=150Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-42C4B2D9",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 300,
         "unit": "V",
         "realistic_range": [
           150,
@@ -10236,257 +10530,12 @@
         ]
       }
     },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 25A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "12",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=300V",
-      "R=300/25=12Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-C3B1420F",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 150,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 6,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 6A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "25",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=150V",
-      "R=150/6=25Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-42C27442",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 300,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 15,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 15A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "20",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=300V",
-      "R=300/15=20Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-3DC26C63",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 300,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 12,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 12A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "25",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=300V",
-      "R=300/12=25Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-AF4BC4F4",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 600,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 30,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 30A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "20",
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 25A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "24",
     "solution": [
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
       "本問の条件では V=600V",
-      "R=600/30=20Ω"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-99501F80",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "B種接地工事の接地抵抗",
-    "format": "numeric",
-    "difficulty": 3,
-    "params": {
-      "base_voltage": {
-        "value": 600,
-        "unit": "V",
-        "realistic_range": [
-          150,
-          600
-        ]
-      },
-      "ground_fault_current": {
-        "value": 12,
-        "unit": "A",
-        "realistic_range": [
-          1,
-          50
-        ]
-      }
-    },
-    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 12A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
-    "answer": "50",
-    "solution": [
-      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
-      "本問の条件では V=600V",
-      "R=600/12=50Ω"
+      "R=600/25=24Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -10536,6 +10585,594 @@
       "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
       "本問の条件では V=300V",
       "R=300/3=100Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C4B143A2",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 150,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 5,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 5A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "30",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=150V",
+      "R=150/5=30Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C9E10C66",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 600,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 5,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 5A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "120",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=600V",
+      "R=600/5=120Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-BD03A792",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 150,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 10,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 10A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "15",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=150V",
+      "R=150/10=15Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C9B14B81",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 150,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 8,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 8A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "18.75",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=150V",
+      "R=150/8=18.75Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-B7015F89",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 150,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 20,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 20A であり、混触時に自動的に遮断する装置を施設していない（原則）。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "7.5",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=150V",
+      "R=150/20=7.5Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-23466B62",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 600,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 50A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "12",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=600V",
+      "R=600/50=12Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-A0502A85",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 600,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 15,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 15A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "40",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=600V",
+      "R=600/15=40Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-2948B36B",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 600,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 40,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 40A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "15",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=600V",
+      "R=600/40=15Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-CBE10F8C",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 600,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 3,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 3A であり、混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "200",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=600V",
+      "R=600/3=200Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-45C4B792",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 300,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 20,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 20A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "15",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=300V",
+      "R=300/20=15Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-97D5F07C",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 300,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 4,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 4A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "75",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=300V",
+      "R=300/4=75Ω"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-95D5ED56",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "B種接地工事の接地抵抗",
+    "format": "numeric",
+    "difficulty": 3,
+    "params": {
+      "base_voltage": {
+        "value": 300,
+        "unit": "V",
+        "realistic_range": [
+          150,
+          600
+        ]
+      },
+      "ground_fault_current": {
+        "value": 2,
+        "unit": "A",
+        "realistic_range": [
+          1,
+          50
+        ]
+      }
+    },
+    "statement": "高圧電路と低圧電路を結合する変圧器に B種接地工事を施す。高圧側電路の1線地絡電流は 2A であり、混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している。このとき B種接地工事の接地抵抗の上限値〔Ω〕は?",
+    "answer": "150",
+    "solution": [
+      "B種接地抵抗の上限 R=V/Ig（電技解釈第17条。V は遮断時間により 150/300/600V）",
+      "本問の条件では V=300V",
+      "R=300/2=150Ω"
     ],
     "validation": {
       "solver_checked": true,
@@ -11776,104 +12413,6 @@
     "status": "draft"
   },
   {
-    "id": "G-0458A583",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "漏えい電流",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "voltage": {
-        "value": 105,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          210
-        ]
-      },
-      "insulation_resistance": {
-        "value": 0.5,
-        "unit": "Mohm",
-        "realistic_range": [
-          0.1,
-          2
-        ]
-      }
-    },
-    "statement": "低圧電路において、対地電圧 V=105V、絶縁抵抗 R=0.5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
-    "answer": "0.21",
-    "solution": [
-      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
-      "I=105/(0.5×10⁶)〔A〕を mA に換算（×10³）",
-      "I=105/(0.5×10³)=0.21mA"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-0758AA3C",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "漏えい電流",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "voltage": {
-        "value": 100,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          210
-        ]
-      },
-      "insulation_resistance": {
-        "value": 0.5,
-        "unit": "Mohm",
-        "realistic_range": [
-          0.1,
-          2
-        ]
-      }
-    },
-    "statement": "低圧電路において、対地電圧 V=100V、絶縁抵抗 R=0.5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
-    "answer": "0.2",
-    "solution": [
-      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
-      "I=100/(0.5×10⁶)〔A〕を mA に換算（×10³）",
-      "I=100/(0.5×10³)=0.2mA"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
     "id": "G-C1A586F0",
     "exam": "denken2_primary",
     "subject": "法規",
@@ -11894,7 +12433,7 @@
         "unit": "Mohm",
         "realistic_range": [
           0.1,
-          2
+          5
         ]
       }
     },
@@ -11904,398 +12443,6 @@
       "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
       "I=200/(0.2×10⁶)〔A〕を mA に換算（×10³）",
       "I=200/(0.2×10³)=1mA"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-5316DD58",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "漏えい電流",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "voltage": {
-        "value": 100,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          210
-        ]
-      },
-      "insulation_resistance": {
-        "value": 0.1,
-        "unit": "Mohm",
-        "realistic_range": [
-          0.1,
-          2
-        ]
-      }
-    },
-    "statement": "低圧電路において、対地電圧 V=100V、絶縁抵抗 R=0.1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
-    "answer": "1",
-    "solution": [
-      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
-      "I=100/(0.1×10⁶)〔A〕を mA に換算（×10³）",
-      "I=100/(0.1×10³)=1mA"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-355B1CE2",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "漏えい電流",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "voltage": {
-        "value": 210,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          210
-        ]
-      },
-      "insulation_resistance": {
-        "value": 1,
-        "unit": "Mohm",
-        "realistic_range": [
-          0.1,
-          2
-        ]
-      }
-    },
-    "statement": "低圧電路において、対地電圧 V=210V、絶縁抵抗 R=1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
-    "answer": "0.21",
-    "solution": [
-      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
-      "I=210/(1×10⁶)〔A〕を mA に換算（×10³）",
-      "I=210/(1×10³)=0.21mA"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-C7A7CEF9",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "漏えい電流",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "voltage": {
-        "value": 210,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          210
-        ]
-      },
-      "insulation_resistance": {
-        "value": 0.2,
-        "unit": "Mohm",
-        "realistic_range": [
-          0.1,
-          2
-        ]
-      }
-    },
-    "statement": "低圧電路において、対地電圧 V=210V、絶縁抵抗 R=0.2MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
-    "answer": "1.05",
-    "solution": [
-      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
-      "I=210/(0.2×10⁶)〔A〕を mA に換算（×10³）",
-      "I=210/(0.2×10³)=1.05mA"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-DE0AAE74",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "漏えい電流",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "voltage": {
-        "value": 210,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          210
-        ]
-      },
-      "insulation_resistance": {
-        "value": 0.5,
-        "unit": "Mohm",
-        "realistic_range": [
-          0.1,
-          2
-        ]
-      }
-    },
-    "statement": "低圧電路において、対地電圧 V=210V、絶縁抵抗 R=0.5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
-    "answer": "0.42",
-    "solution": [
-      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
-      "I=210/(0.5×10⁶)〔A〕を mA に換算（×10³）",
-      "I=210/(0.5×10³)=0.42mA"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-5816E537",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "漏えい電流",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "voltage": {
-        "value": 105,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          210
-        ]
-      },
-      "insulation_resistance": {
-        "value": 0.1,
-        "unit": "Mohm",
-        "realistic_range": [
-          0.1,
-          2
-        ]
-      }
-    },
-    "statement": "低圧電路において、対地電圧 V=105V、絶縁抵抗 R=0.1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
-    "answer": "1.05",
-    "solution": [
-      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
-      "I=105/(0.1×10⁶)〔A〕を mA に換算（×10³）",
-      "I=105/(0.1×10³)=1.05mA"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-E40CF67D",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "漏えい電流",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "voltage": {
-        "value": 200,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          210
-        ]
-      },
-      "insulation_resistance": {
-        "value": 0.5,
-        "unit": "Mohm",
-        "realistic_range": [
-          0.1,
-          2
-        ]
-      }
-    },
-    "statement": "低圧電路において、対地電圧 V=200V、絶縁抵抗 R=0.5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
-    "answer": "0.4",
-    "solution": [
-      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
-      "I=200/(0.5×10⁶)〔A〕を mA に換算（×10³）",
-      "I=200/(0.5×10³)=0.4mA"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-1EA8BB91",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "漏えい電流",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "voltage": {
-        "value": 100,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          210
-        ]
-      },
-      "insulation_resistance": {
-        "value": 0.2,
-        "unit": "Mohm",
-        "realistic_range": [
-          0.1,
-          2
-        ]
-      }
-    },
-    "statement": "低圧電路において、対地電圧 V=100V、絶縁抵抗 R=0.2MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
-    "answer": "0.5",
-    "solution": [
-      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
-      "I=100/(0.2×10⁶)〔A〕を mA に換算（×10³）",
-      "I=100/(0.2×10³)=0.5mA"
-    ],
-    "validation": {
-      "solver_checked": true,
-      "human_checked": false,
-      "clean_answer": true,
-      "physically_valid": true,
-      "confidence": 0.9
-    },
-    "source": {
-      "type": "original",
-      "citation": "DENKEN-OS オリジナル問題"
-    },
-    "stats": {
-      "answered": 0,
-      "correct_rate": 0
-    },
-    "status": "draft"
-  },
-  {
-    "id": "G-1B3296B6",
-    "exam": "denken2_primary",
-    "subject": "法規",
-    "topic": "漏えい電流",
-    "format": "numeric",
-    "difficulty": 2,
-    "params": {
-      "voltage": {
-        "value": 100,
-        "unit": "V",
-        "realistic_range": [
-          100,
-          210
-        ]
-      },
-      "insulation_resistance": {
-        "value": 1,
-        "unit": "Mohm",
-        "realistic_range": [
-          0.1,
-          2
-        ]
-      }
-    },
-    "statement": "低圧電路において、対地電圧 V=100V、絶縁抵抗 R=1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
-    "answer": "0.1",
-    "solution": [
-      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
-      "I=100/(1×10⁶)〔A〕を mA に換算（×10³）",
-      "I=100/(1×10³)=0.1mA"
     ],
     "validation": {
       "solver_checked": true,
@@ -12335,7 +12482,7 @@
         "unit": "Mohm",
         "realistic_range": [
           0.1,
-          2
+          5
         ]
       }
     },
@@ -12345,6 +12492,594 @@
       "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
       "I=200/(2×10⁶)〔A〕を mA に換算（×10³）",
       "I=200/(2×10³)=0.1mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-DE0AAE74",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 210,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 0.5,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=210V、絶縁抵抗 R=0.5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.42",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=210/(0.5×10⁶)〔A〕を mA に換算（×10³）",
+      "I=210/(0.5×10³)=0.42mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D919EEE1",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 0.1,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=110V、絶縁抵抗 R=0.1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "1.1",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=110/(0.1×10⁶)〔A〕を mA に換算（×10³）",
+      "I=110/(0.1×10³)=1.1mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-3B5D64EB",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 1,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=200V、絶縁抵抗 R=1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.2",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=200/(1×10⁶)〔A〕を mA に換算（×10³）",
+      "I=200/(1×10³)=0.2mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0D5AF245",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 0.5,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=110V、絶縁抵抗 R=0.5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.22",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=110/(0.5×10⁶)〔A〕を mA に換算（×10³）",
+      "I=110/(0.5×10³)=0.22mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-E40CF67D",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 0.5,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=200V、絶縁抵抗 R=0.5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.4",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=200/(0.5×10⁶)〔A〕を mA に換算（×10³）",
+      "I=200/(0.5×10³)=0.4mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-2134DEBF",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 1,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=110V、絶縁抵抗 R=1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.11",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=110/(1×10⁶)〔A〕を mA に換算（×10³）",
+      "I=110/(1×10³)=0.11mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0758AA3C",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 0.5,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=100V、絶縁抵抗 R=0.5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.2",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=100/(0.5×10⁶)〔A〕を mA に換算（×10³）",
+      "I=100/(0.5×10³)=0.2mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-5316DD58",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 0.1,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=100V、絶縁抵抗 R=0.1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "1",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=100/(0.1×10⁶)〔A〕を mA に換算（×10³）",
+      "I=100/(0.1×10³)=1mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-537E8277",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 5,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=200V、絶縁抵抗 R=5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.04",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=200/(5×10⁶)〔A〕を mA に換算（×10³）",
+      "I=200/(5×10³)=0.04mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-31403856",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 2.5,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=100V、絶縁抵抗 R=2.5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.04",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=100/(2.5×10⁶)〔A〕を mA に換算（×10³）",
+      "I=100/(2.5×10³)=0.04mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-5816E537",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 105,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 0.1,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=105V、絶縁抵抗 R=0.1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "1.05",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=105/(0.1×10⁶)〔A〕を mA に換算（×10³）",
+      "I=105/(0.1×10³)=1.05mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-355B1CE2",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 210,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 1,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=210V、絶縁抵抗 R=1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.21",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=210/(1×10⁶)〔A〕を mA に換算（×10³）",
+      "I=210/(1×10³)=0.21mA"
     ],
     "validation": {
       "solver_checked": true,
@@ -12384,7 +13119,7 @@
         "unit": "Mohm",
         "realistic_range": [
           0.1,
-          2
+          5
         ]
       }
     },
@@ -12394,6 +13129,251 @@
       "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
       "I=100/(2×10⁶)〔A〕を mA に換算（×10³）",
       "I=100/(2×10³)=0.05mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0458A583",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 105,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 0.5,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=105V、絶縁抵抗 R=0.5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.21",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=105/(0.5×10⁶)〔A〕を mA に換算（×10³）",
+      "I=105/(0.5×10³)=0.21mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-31C6CDE2",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 5,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=100V、絶縁抵抗 R=5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.02",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=100/(5×10⁶)〔A〕を mA に換算（×10³）",
+      "I=100/(5×10³)=0.02mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C7A7CEF9",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 210,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 0.2,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=210V、絶縁抵抗 R=0.2MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "1.05",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=210/(0.2×10⁶)〔A〕を mA に換算（×10³）",
+      "I=210/(0.2×10³)=1.05mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-1B3296B6",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 1,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=100V、絶縁抵抗 R=1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.1",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=100/(1×10⁶)〔A〕を mA に換算（×10³）",
+      "I=100/(1×10³)=0.1mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-18A67388",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 0.2,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=110V、絶縁抵抗 R=0.2MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.55",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=110/(0.2×10⁶)〔A〕を mA に換算（×10³）",
+      "I=110/(0.2×10³)=0.55mA"
     ],
     "validation": {
       "solver_checked": true,
@@ -12433,7 +13413,7 @@
         "unit": "Mohm",
         "realistic_range": [
           0.1,
-          2
+          5
         ]
       }
     },
@@ -12482,7 +13462,7 @@
         "unit": "Mohm",
         "realistic_range": [
           0.1,
-          2
+          5
         ]
       }
     },
@@ -12511,7 +13491,56 @@
     "status": "draft"
   },
   {
-    "id": "G-3B5D64EB",
+    "id": "G-1EA8BB91",
+    "exam": "denken2_primary",
+    "subject": "法規",
+    "topic": "漏えい電流",
+    "format": "numeric",
+    "difficulty": 2,
+    "params": {
+      "voltage": {
+        "value": 100,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          210
+        ]
+      },
+      "insulation_resistance": {
+        "value": 0.2,
+        "unit": "Mohm",
+        "realistic_range": [
+          0.1,
+          5
+        ]
+      }
+    },
+    "statement": "低圧電路において、対地電圧 V=100V、絶縁抵抗 R=0.2MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.5",
+    "solution": [
+      "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
+      "I=100/(0.2×10⁶)〔A〕を mA に換算（×10³）",
+      "I=100/(0.2×10³)=0.5mA"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-D2A9048B",
     "exam": "denken2_primary",
     "subject": "法規",
     "topic": "漏えい電流",
@@ -12527,20 +13556,20 @@
         ]
       },
       "insulation_resistance": {
-        "value": 1,
+        "value": 2.5,
         "unit": "Mohm",
         "realistic_range": [
           0.1,
-          2
+          5
         ]
       }
     },
-    "statement": "低圧電路において、対地電圧 V=200V、絶縁抵抗 R=1MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
-    "answer": "0.2",
+    "statement": "低圧電路において、対地電圧 V=200V、絶縁抵抗 R=2.5MΩ であるとき、この電路に流れる漏えい電流〔mA〕は?",
+    "answer": "0.08",
     "solution": [
       "漏えい電流 I=V/R=V/(R×10⁶)〔A〕（R[MΩ]=R×10⁶Ω）",
-      "I=200/(1×10⁶)〔A〕を mA に換算（×10³）",
-      "I=200/(1×10³)=0.2mA"
+      "I=200/(2.5×10⁶)〔A〕を mA に換算（×10³）",
+      "I=200/(2.5×10³)=0.08mA"
     ],
     "validation": {
       "solver_checked": true,
