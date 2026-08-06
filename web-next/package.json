@@ -1,0 +1,26 @@
+{
+  "name": "@denken/web-next",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "DENKEN-OS Next.js 16 移行アプリ（収益化レイヤーの土台・休眠課金）。既存 esbuild web/ を段階的に置換する。",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.0",
+    "@supabase/supabase-js": "^2.110.1",
+    "next": "16.2.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}

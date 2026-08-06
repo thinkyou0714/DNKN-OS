@@ -1,0 +1,17 @@
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# deps
+/node_modules/
+
+# env（secrets はコミット禁止）
+.env
+.env.*
+!.env.example
+
+# misc
+.DS_Store
+/coverage
