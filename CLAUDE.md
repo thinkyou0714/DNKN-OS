@@ -51,8 +51,9 @@ npm run build:web
 - `lib/README.md` documents the shared TypeScript domain layer.
 - `lib/engine/` owns problem schemas, templates, validation, narration, and generation.
 - `lib/scheduler/` owns review scheduling and diagnosis.
-- `lib/curriculum/` owns the systematic learning pipeline: prerequisite concept graph, principle cards, learning-path generation, foundation-gap diagnosis, why-check spaced repetition, and explanation-gap detection. `web/src/concept-graph.ts` is a backward-compat re-export of `lib/curriculum/graph.ts`.
+- `lib/curriculum/` owns the systematic learning pipeline: prerequisite concept graph, principle cards, learning-path generation, foundation-gap diagnosis, why-check spaced repetition, explanation-gap detection, and coefficient reasoning (`coefficients.ts`: contrastive drills on when √3, 1/2, √2, 2, symmetrical-component, and per-unit coefficients apply — the 三種→二種 bridge). `web/src/concept-graph.ts` is a backward-compat re-export of `lib/curriculum/graph.ts`.
 - `web/src/why-store.ts` persists why-check review state under `denken:whyCards`, separate from the practice cards in `web/src/store.ts` so that accuracy, XP, and weakness diagnosis stay unaffected.
+- `web/src/coeff-store.ts` persists coefficient-drill review state under `denken:coeffCards` with the same isolation rationale as `why-store.ts`. Drill IDs are stable `family#index` keys; never reorder or insert mid-array in `lib/curriculum/coefficients.ts` (golden test in `tests/curriculum/coefficients.test.ts`).
 - `lib/store/` owns persistence interfaces and implementations.
 - `lib/audit/` owns repository quality status and supervision helpers.
 - `web/` owns the offline PWA.

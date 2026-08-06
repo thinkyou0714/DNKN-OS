@@ -51,6 +51,8 @@ export const BACKUP_KEYS: readonly string[] = [
   // そのものなので、機種変更で失わないよう含める。末尾に足すのは既存キーの順序
   // （cards→logs…）に依存するテスト・巻き戻し挙動を変えないため。
   "denken:whyCards",
+  // 係数判断ドリルの記憶状態（coeff-store.ts）。whyCards と同じ理由で末尾に追加する。
+  "denken:coeffCards",
 ];
 
 export const BACKUP_VERSION = 1;
@@ -134,6 +136,18 @@ function validateBackupValue(key: string, raw: string): string | null {
     }
     if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
       return "納得チェックの記憶状態（denken:whyCards）の形式が不正です。";
+    }
+    return null;
+  }
+  if (key === "denken:coeffCards") {
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(raw);
+    } catch {
+      return "係数判断ドリルの記憶状態（denken:coeffCards）が壊れています。";
+    }
+    if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
+      return "係数判断ドリルの記憶状態（denken:coeffCards）の形式が不正です。";
     }
     return null;
   }

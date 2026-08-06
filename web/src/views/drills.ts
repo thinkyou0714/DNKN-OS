@@ -16,6 +16,7 @@ import { problems } from "../state/app.js";
 import { practice } from "../state/practice.js";
 import { h, safeHtml } from "../ui/dom.js";
 import { emptyState } from "../ui/widgets.js";
+import { startCoeffDrillSession } from "./coeff-drill.js";
 
 /** 速算ドリルの既定問題数。 */
 const CALC_DRILL_COUNT = 10;
@@ -254,7 +255,7 @@ export function drillLauncherCard(host: HTMLElement): HTMLElement {
     "div",
     { class: "card drill-launcher" },
     h("strong", {}, "🧠 スキルドリル"),
-    h("div", { class: "muted small" }, "手順の理解と計算スピードを鍛える追加ドリル。"),
+    h("div", { class: "muted small" }, "手順の理解・計算スピード・係数の使い分けを鍛える追加ドリル。"),
   );
   const row = h("div", { class: "drill-actions" });
   row.append(
@@ -278,6 +279,15 @@ export function drillLauncherCard(host: HTMLElement): HTMLElement {
         onclick: () => renderCalcDrill(host),
       },
       "⚡ 電卓速算ドリル",
+    ),
+    h(
+      "button",
+      {
+        class: "chip",
+        type: "button",
+        onclick: () => startCoeffDrillSession(host),
+      },
+      "⚖️ 係数判断ドリル",
     ),
   );
   card.append(row);

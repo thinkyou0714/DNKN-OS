@@ -11,6 +11,7 @@ import { problems, progress, storage } from "../state/app.js";
 import { practice, resetPracticeSession } from "../state/practice.js";
 import { h, safeHtml } from "../ui/dom.js";
 import { emptyState, svgNode } from "../ui/widgets.js";
+import { coeffDrillSection } from "./coeff-drill.js";
 import { cramBanner, usedFreezeDays } from "./practice.js";
 import { switchView } from "./router.js";
 import { whyCheckSection } from "./why-review.js";
@@ -95,6 +96,8 @@ export function renderReview(root: HTMLElement): void {
 
   // 「解けるか」の復習の隣に「なぜかを説明できるか」の復習を置く（原理も間隔反復に載せる）。
   whyCheckSection(root);
+  // さらに「係数の使い分けを判断できるか」も間隔反復に載せる（三種→二種ブリッジ）。
+  coeffDrillSection(root);
 
   root.append(h("h2", {}, "間違いノート"));
   if (notebook.length === 0) {
