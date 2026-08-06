@@ -3,7 +3,7 @@
   "id": "./",
   "name": "DENKEN-OS — 今日の一問",
   "short_name": "DENKEN-OS",
-  "description": "電験二種 学習OS のオフライン練習アプリ（デモ）",
+  "description": "電験に、確かな力を。電験二種 学習OS のオフライン練習アプリ（デモ）",
   "categories": ["education"],
   "start_url": "./",
   "scope": "./",

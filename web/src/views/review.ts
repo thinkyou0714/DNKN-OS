@@ -20,7 +20,7 @@ export function renderReview(root: HTMLElement): void {
   // 直前モードのバナー（試験が近いと集中復習を促す #34/#35）。
   const cram = cramBanner();
   if (cram) root.append(cram);
-  // ストリーク予兆ナッジ（崩れる前に背中を押す）。デンタマの表情つきで届きやすく。
+  // ストリーク予兆ナッジ（崩れる前に背中を押す）。シンクウの表情つきで届きやすく。
   const ss = streakStatus(progress.logs(), Date.now(), JST_OFFSET_MS, usedFreezeDays());
   if (ss.state === "at-risk" || ss.state === "broken") {
     if (getMascotEnabled(storage)) {

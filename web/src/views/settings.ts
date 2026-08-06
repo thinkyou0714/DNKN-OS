@@ -157,7 +157,7 @@ export function renderSettings(root: HTMLElement): void {
     h(
       "div",
       { class: "card" },
-      h("label", {}, "マスコット（デンタマ） "),
+      h("label", {}, "マスコット（シンクウ） "),
       mascotSel,
       h("div", { class: "muted" }, "学習タブ・復習タブのキャラクター表示。シンプルに使いたい方はオフに。"),
     ),

@@ -588,7 +588,7 @@ function badgesSection(
 
 /** 実績のシェア（Web Share API、無ければクリップボード）。学習の誇りを外へ＝自然な口コミ。 */
 function shareBadge(title: string, icon: string, desc: string): void {
-  const text = `🏅 電験学習アプリ DENKEN-OS で実績「${icon}${title}」を解除！（${desc}） #電験 #デンタマ`;
+  const text = `🏅 電験学習アプリ DENKEN-OS で実績「${icon}${title}」を解除！（${desc}） #電験 #シンクウ`;
   shareWithAppUrl(text, "badge");
 }
 
@@ -674,7 +674,7 @@ function examDoneCard(root: HTMLElement, logs: ReturnType<typeof progress.logs>)
     // 保存不能でも表示は続行。
   }
   const days = new Set(logs.map((l) => dayIndex(l.atMs, JST_OFFSET_MS))).size;
-  const text = `⚡ 電験の試験勉強、${days}日間で${logs.length}問を積み上げました。おつかれさま自分！ #電験 #デンタマ`;
+  const text = `⚡ 電験の試験勉強、${days}日間で${logs.length}問を積み上げました。おつかれさま自分！ #電験 #シンクウ`;
   root.append(
     h(
       "div",
@@ -714,7 +714,7 @@ function monthlyRecapCard(root: HTMLElement, logs: ReturnType<typeof progress.lo
   const correct = monthLogs.filter((l) => l.correct).length;
   const acc = Math.round((correct / monthLogs.length) * 100);
   const label = `${Number(prevMonth.slice(5, 7))}月`;
-  const text = `📊 ${label}の電験学習: ${days}日・${monthLogs.length}問・正答率${acc}%（DENKEN-OS） #電験 #デンタマ`;
+  const text = `📊 ${label}の電験学習: ${days}日・${monthLogs.length}問・正答率${acc}%（DENKEN-OS） #電験 #シンクウ`;
   root.append(
     h(
       "div",
