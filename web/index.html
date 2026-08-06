@@ -249,6 +249,20 @@
       .rubric-item { display: flex; gap: .55rem; align-items: flex-start; padding: .5rem .6rem; border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface-2); cursor: pointer; font-size: .92rem; transition: border-color .15s var(--ease), background .15s var(--ease); }
       .rubric-item input { margin-top: .18rem; width: 1.1rem; height: 1.1rem; accent-color: var(--accent); flex: none; }
       .rubric-item:has(input:checked) { border-color: var(--ok); background: var(--ok-soft); }
+      .rubric-body { display: flex; flex-wrap: wrap; gap: .3rem .5rem; align-items: baseline; }
+      /* 配点バッジ（役割ごとの重み）。採点対象外は淡く沈める */
+      .rubric-role { font-size: .68rem; font-weight: 700; padding: .08rem .4rem; border-radius: var(--r-pill); border: 1px solid var(--border-strong); color: var(--muted); white-space: nowrap; flex: none; }
+      .rubric-role.role-conclusion { color: var(--gold); border-color: var(--gold-border); background: var(--gold-soft); }
+      .rubric-role.role-formula, .rubric-role.role-substitution, .rubric-role.role-calculation { color: var(--accent); border-color: var(--accent); }
+      .rubric-item.rubric-note { opacity: .62; }
+      .rubric-item.rubric-note:has(input:checked) { border-color: var(--border); background: var(--surface-2); }
+      .rubric-selfcheck { margin: .5rem 0; display: grid; gap: .35rem; }
+      .rubric-answer { width: 100%; box-sizing: border-box; font: inherit; font-size: .88rem; padding: .5rem .6rem; border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface-2); color: inherit; resize: vertical; }
+      .rubric-advice { display: block; font-size: .8rem; font-weight: 400; opacity: .9; margin-top: .2rem; }
+      /* 誤概念（誤答パターン）の可視化 */
+      .miscon-list { display: grid; gap: .4rem; margin: .4rem 0; }
+      .miscon-item { padding: .5rem .6rem; border: 1px solid var(--border); border-left: 3px solid var(--ng); border-radius: var(--r-sm); background: var(--surface-2); }
+      .miscon-count { float: right; font-size: .78rem; font-weight: 700; color: var(--ng); }
       .share {
         white-space: pre-wrap; background: var(--surface-2); color: var(--muted);
         padding: .7rem .85rem; border-radius: var(--r-md); font-size: .82rem; margin-top: .6rem;
@@ -700,6 +714,6 @@
       復習は FSRS（最新の間隔反復アルゴリズム）。コード=MIT / 問題データ=CC-BY-SA-4.0。
     </footer>
 
-    <script type="module" src="./dist/app.js" integrity="sha384-ytKuQ8mC8UzpkJuhKHhrq3W371eVjc+I5IZnlQ5RPXBxDpnoUXd5yQIrShqc1M3u" crossorigin="anonymous"></script>
+    <script type="module" src="./dist/app.js" integrity="sha384-UgKFe7P00D4QYmlREKYhZ/ttha92HA/Gcs77PXu9bEllMtZW68gLwIIzoIvKUbps" crossorigin="anonymous"></script>
   </body>
 </html>
