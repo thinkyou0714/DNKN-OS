@@ -9,6 +9,7 @@ import { foundationGaps } from "../../../lib/curriculum/gaps.js";
 import { buildLearningPath, nextUp } from "../../../lib/curriculum/path.js";
 import { getPrincipleCard } from "../../../lib/curriculum/principles.js";
 import { explanationGaps } from "../../../lib/curriculum/understanding.js";
+import { whyChecksForArea } from "../../../lib/curriculum/why-check.js";
 import { hashSeed } from "../../../lib/shared/rng.js";
 import { evaluateAchievements } from "../achievements.js";
 import { recordClick } from "../bridge.js";
@@ -45,6 +46,7 @@ import { renderOrderingDrillBody } from "./drills.js";
 import { currentLevel, freezeInfo, questsCard, weeklyQuestsCard } from "./practice.js";
 import { startDrill } from "./review.js";
 import { switchView } from "./router.js";
+import { startWhyCheckSession } from "./why-review.js";
 
 /** レベルカード（XP・称号・次レベルへの進捗）— 成長の実感を最上段に。 */
 function levelCard(root: HTMLElement, lv: ReturnType<typeof levelInfo>): void {
@@ -357,6 +359,9 @@ function principleCardDetails(area: string, statusIcon = "💡"): HTMLElement | 
 function explanationGapSection(root: HTMLElement, logs: ReturnType<typeof progress.logs>): void {
   const gap = explanationGaps(logs, whyChecks.startedIds())[0];
   if (!gap) return;
+  // 指摘した領域をその場で確かめられるようにする（復習タブへ飛ばすと全体キューになり、
+  // 「この領域を確かめたい」という動機と出題がずれる）。
+  const host = h("div", {});
   root.append(
     h(
       "div",
@@ -365,7 +370,8 @@ function explanationGapSection(root: HTMLElement, logs: ReturnType<typeof progre
       h(
         "div",
         { class: "muted" },
-        `「${gap.area}」は正答率 ${Math.round(gap.solveAccuracy * 100)}%（${gap.attempts}問）と得意な一方、` +
+        // 少試行のノイズを抑えた平滑化後の値なので「推定」と明示する（他画面の素の正答率と異なる）。
+        `「${gap.area}」は推定正答率 ${Math.round(gap.solveAccuracy * 100)}%（${gap.attempts}問）と得意な一方、` +
           `原理の納得チェックは ${gap.whyStarted}/${gap.whyTotal} 件しか確認していません。` +
           "解き方は身についても「なぜその式か」が空白だと、少し形を変えた出題で崩れやすくなります。",
       ),
@@ -374,11 +380,16 @@ function explanationGapSection(root: HTMLElement, logs: ReturnType<typeof progre
         { class: "drill-actions" },
         h(
           "button",
-          { class: "chip", type: "button", onclick: () => switchView("review") },
-          "🧠 納得チェックで確かめる →",
+          {
+            class: "chip",
+            type: "button",
+            onclick: () => startWhyCheckSession(host, whyChecksForArea(gap.area), gap.area),
+          },
+          "🧠 この領域の納得チェックをする",
         ),
       ),
     ),
+    host,
   );
 }
 

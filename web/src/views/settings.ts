@@ -30,10 +30,11 @@ import {
   setTheme,
   type ThemePref,
 } from "../settings.js";
-import { applyTheme, installPrompt, progress, setInstallPrompt, storage } from "../state/app.js";
+import { applyTheme, installPrompt, progress, setInstallPrompt, storage, whyChecks } from "../state/app.js";
 import { SEEN_LEVEL_KEY, SEEN_STREAK_MILESTONE_KEY } from "../storage-keys.js";
 import { h } from "../ui/dom.js";
 import { showToast } from "../ui/toast.js";
+import { WHY_CARD_KEY } from "../why-store.js";
 import {
   creatorContentCard,
   inviteCard,
@@ -80,7 +81,12 @@ export function renderSettings(root: HTMLElement): void {
   const retSel = h("select", {}) as HTMLSelectElement;
   for (const r of [0.8, 0.85, 0.9, 0.95]) retSel.append(h("option", { value: r }, `${Math.round(r * 100)}%`));
   retSel.value = String(progress.desiredRetention());
-  retSel.addEventListener("change", () => progress.setDesiredRetention(Number(retSel.value)));
+  retSel.addEventListener("change", () => {
+    const value = Number(retSel.value);
+    progress.setDesiredRetention(value);
+    // 納得チェックも同じ目標保持率で回す（演習だけ設定が効く非対称を作らない）。
+    whyChecks.setDesiredRetention(progress.desiredRetention());
+  });
 
   const themeSel = h("select", {}) as HTMLSelectElement;
   for (const [v, label] of [
@@ -440,6 +446,9 @@ function resetData(): void {
   // 各 setItem を個別の try で保護し、失敗キーを集計してから結果を通知する。
   const entries: ReadonlyArray<readonly [string, string]> = [
     ["denken:cards", "{}"],
+    // 納得チェックの記憶状態も演習の cards と対称に消す（バックアップ対象に含めた以上、
+    // リセットでも残すと「消したはずの採点結果が復習タブに出続ける」不整合になる）。
+    [WHY_CARD_KEY, "{}"],
     ["denken:logs", "[]"],
     ["denken:freeze", ""],
     ["denken:badges", "[]"],

@@ -39,7 +39,14 @@ export interface PrincipleCard {
   pitfalls: string[];
   /** web/src/formulas.ts の公式名への参照（公式集との突き合わせ用）。 */
   formulaRefs: string[];
-  /** 納得チェックQ&A。 */
+  /**
+   * 納得チェックQ&A。
+   *
+   * 【不変条件】既存要素の順序を変えないこと。追加は必ず末尾に行う。
+   * 間隔反復の記憶状態は `area#index`（curriculum/why-check.ts）をキーに保存されるため、
+   * 途中挿入・並べ替え・削除をすると学習者の復習履歴が黙って別の質問に付け替わる。
+   * `tests/curriculum/why-check.test.ts` のゴールデン表がこの不変条件を守っている。
+   */
   checks: WhyCheck[];
 }
 

@@ -38,6 +38,14 @@ export class WhyCheckStore {
     this.scheduler = getScheduler("fsrs", desiredRetention !== undefined ? { desiredRetention } : {});
   }
 
+  /**
+   * 目標保持率を変更してスケジューラを作り直す（設定タブの変更に追随する）。
+   * 演習側（store.ts の setDesiredRetention）と同じ値を渡して非対称を作らないこと。
+   */
+  setDesiredRetention(desiredRetention: number): void {
+    this.scheduler = getScheduler("fsrs", { desiredRetention });
+  }
+
   private cards(): Record<string, StoredCard> {
     const raw = this.storage.getItem(WHY_CARD_KEY);
     if (!raw) return {};
@@ -60,36 +68,51 @@ export class WhyCheckStore {
     }
   }
 
-  /** ID → 出題予定（lib/curriculum の due 判定に渡す形）。 */
-  states(): Map<string, WhyCheckState> {
-    const out = new Map<string, WhyCheckState>();
-    for (const [id, card] of Object.entries(this.cards())) {
-      try {
-        out.set(id, { dueMs: this.scheduler.view(reviveCard(card)).dueMs });
-      } catch {
-        // 壊れた1件で全体を落とさない（未着手として扱う）。
-      }
-    }
-    return out;
-  }
-
-  /** 一度でも回答したチェックの ID 一覧（理解ギャップ検出に使う）。 */
-  startedIds(): string[] {
-    return Object.keys(this.cards());
-  }
-
-  /** 1件の記憶状態ビュー（未着手なら undefined）。 */
-  view(id: string): FsrsView | undefined {
-    const card = this.cards()[id];
-    if (!card) return undefined;
+  /**
+   * 保存値1件から有効なビューを取り出す。破損値（日付が壊れて due が NaN になる等）は
+   * undefined を返し、呼び出し側で「未着手」として扱えるようにする。
+   * NaN を素通しすると due 比較が常に false になり、そのチェックが二度と出題されないまま
+   * 「着手済み」として数えられ続ける（サイレントな取りこぼし）ため、ここで必ず弾く。
+   */
+  private validView(card: StoredCard): FsrsView | undefined {
     try {
-      return this.scheduler.view(reviveCard(card));
+      const view = this.scheduler.view(reviveCard(card));
+      return Number.isFinite(view.dueMs) ? view : undefined;
     } catch {
       return undefined;
     }
   }
 
-  /** 自己採点を反映して次回予定を更新する。 */
+  /** ID → 出題予定（lib/curriculum の due 判定に渡す形）。破損値は含めない。 */
+  states(): Map<string, WhyCheckState> {
+    const out = new Map<string, WhyCheckState>();
+    for (const [id, card] of Object.entries(this.cards())) {
+      const view = this.validView(card);
+      if (view) out.set(id, { dueMs: view.dueMs });
+    }
+    return out;
+  }
+
+  /**
+   * 一度でも回答したチェックの ID 一覧（理解ギャップ検出に使う）。
+   * states() と同じ有効性判定を使い、破損値を「着手済み」に数えない。
+   */
+  startedIds(): string[] {
+    return [...this.states().keys()];
+  }
+
+  /** 1件の記憶状態ビュー（未着手・破損値なら undefined）。 */
+  view(id: string): FsrsView | undefined {
+    const card = this.cards()[id];
+    if (!card) return undefined;
+    return this.validView(card);
+  }
+
+  /**
+   * 自己採点を反映して次回予定を更新する。
+   * 保存値がどんな形に壊れていても（型が違う・日付が不正）例外は投げず、
+   * 新規カードとしてやり直して採点を成立させる（学習を止めない）。
+   */
   record(id: string, rating: Rating, nowMs: number = Date.now()): FsrsView {
     const now = new Date(nowMs);
     const cards = this.cards();
@@ -99,10 +122,16 @@ export class WhyCheckStore {
       try {
         prev = reviveCard(stored);
       } catch {
-        // 壊れた保存値は新規カードとして扱う（学習を止めない）。
+        // 壊れた保存値は新規カードとして扱う。
       }
     }
-    const next = this.scheduler.review(prev, rating, now);
+    let next: ReturnType<FsrsScheduler["review"]>;
+    try {
+      next = this.scheduler.review(prev, rating, now);
+    } catch {
+      // reviveCard は通っても FSRS が受け付けない形（欠損フィールド等）だった場合の最後の砦。
+      next = this.scheduler.review(this.scheduler.init(now), rating, now);
+    }
     cards[id] = toStoredCard(next);
     this.safeSet(JSON.stringify(cards));
     return this.scheduler.view(next);

@@ -7,6 +7,9 @@
  * フロー: 質問を見る → 自分の言葉で答える（頭の中で）→ 答え合わせ → 4段階の自己採点。
  * 自己採点は FSRS の Rating にそのまま対応し、次回出題日が決まる。
  * 純ロジックは lib/curriculum/why-check.ts、永続化は web/src/why-store.ts。ここは薄い DOM グルー。
+ *
+ * 出題キューは「開始する瞬間」に毎回作り直す。セクション描画時のキューを使い回すと、
+ * 採点済みの問題を同じ画面から何度も再採点でき、FSRS の間隔が不正に伸びてしまう。
  */
 import { getPrincipleCard } from "../../../lib/curriculum/principles.js";
 import {
@@ -27,6 +30,39 @@ const RATINGS: ReadonlyArray<{ rating: Rating; label: string; hint: string }> = 
   { rating: "easy", label: "😎 スラスラ言えた", hint: "長い間隔で出します" },
 ];
 
+/** 出題できるものが無いときのカード。 */
+function allDoneCard(scopeLabel: string): HTMLElement {
+  const stats = whyCheckStats(whyChecks.states());
+  return h(
+    "div",
+    { class: "card" },
+    h("strong", {}, `✅ ${scopeLabel}の納得チェックは完了`),
+    h(
+      "div",
+      { class: "muted" },
+      `${stats.started} / ${stats.total} 件に取り組み済み。期限が来たものからまた出題します。`,
+    ),
+  );
+}
+
+/**
+ * 納得チェックのセッションを host に開始する（出題キューはここで作り直す）。
+ *
+ * @param host 描画先。中身は毎回置き換えられる。
+ * @param pool 出題母集団。省略時は全チェック。特定領域だけ確かめたいときは
+ *   `whyChecksForArea(area)` を渡す（ダッシュボードの理解ギャップ導線がこれを使う）。
+ * @param scopeLabel 完了時の文言に使う範囲名（既定は「今日」）。
+ */
+export function startWhyCheckSession(host: HTMLElement, pool?: readonly WhyCheckItem[], scopeLabel = "今日"): void {
+  const queue = dueWhyChecks(whyChecks.states(), Date.now(), WHY_CHECK_SESSION_SIZE, pool);
+  host.innerHTML = "";
+  if (queue.length === 0) {
+    host.append(allDoneCard(scopeLabel));
+    return;
+  }
+  renderWhyCheckSession(host, queue, () => startWhyCheckSession(host, pool, scopeLabel));
+}
+
 /**
  * 復習タブの「原理の納得チェック」セクション。
  * 期限到来・未着手の件数を示し、セッションを開始できる。
@@ -38,57 +74,58 @@ export function whyCheckSection(root: HTMLElement): void {
   const queue = dueWhyChecks(states, nowMs, WHY_CHECK_SESSION_SIZE);
 
   root.append(h("h2", {}, "原理の納得チェック"));
-  const host = h("div", {});
   if (queue.length === 0) {
-    root.append(
-      h(
-        "div",
-        { class: "card" },
-        h("strong", {}, "✅ 今日の納得チェックは完了"),
-        h(
-          "div",
-          { class: "muted" },
-          `${stats.started} / ${stats.total} 件に取り組み済み。期限が来たものからまた出題します。`,
-        ),
-      ),
-    );
+    root.append(allDoneCard("今日"));
     return;
   }
-  root.append(
+  const host = h("div", {});
+  const intro = h(
+    "div",
+    { class: "card" },
+    h("strong", {}, "🧠 「なぜそうなるのか」を思い出す"),
     h(
       "div",
-      { class: "card" },
-      h("strong", {}, "🧠 「なぜそうなるのか」を思い出す"),
+      { class: "muted" },
+      "公式を当てはめられるだけでは試験本番の応用が効きません。" +
+        "自分の言葉で説明できるかを、忘れかけた頃に問い直します。",
+    ),
+    h(
+      "div",
+      { class: "muted small" },
+      `復習の期限が来た ${stats.due} 件 ・ 未着手 ${stats.fresh} 件（全 ${stats.total} 件中 ${stats.started} 件に着手済み）`,
+    ),
+    h(
+      "div",
+      { class: "drill-actions" },
       h(
-        "div",
-        { class: "muted" },
-        "公式を当てはめられるだけでは試験本番の応用が効きません。" +
-          "自分の言葉で説明できるかを、忘れかけた頃に問い直します。",
-      ),
-      h(
-        "div",
-        { class: "muted small" },
-        `復習の期限が来た ${stats.due} 件 ・ 未着手 ${stats.fresh} 件（全 ${stats.total} 件中 ${stats.started} 件に着手済み）`,
-      ),
-      h(
-        "div",
-        { class: "drill-actions" },
-        h(
-          "button",
-          { class: "primary", type: "button", onclick: () => renderWhyCheckSession(host, queue) },
-          `▶ 納得チェックを始める（${queue.length}問）`,
-        ),
+        "button",
+        {
+          class: "primary",
+          type: "button",
+          onclick: () => {
+            // 件数表示ごとイントロを畳む（古い件数の再クリックで二重採点しないため）。
+            intro.remove();
+            startWhyCheckSession(host);
+          },
+        },
+        `▶ 納得チェックを始める（${queue.length}問）`,
       ),
     ),
-    host,
   );
+  root.append(intro, host);
 }
 
 /**
- * 納得チェックのセッションを host に描画する（1問ずつ・自己採点で次へ）。
+ * 納得チェックのセッションを1問ずつ描画する（自己採点で次へ）。
  * 採点結果は即座に保存されるため、途中でタブを離れてもそこまでの分は残る。
+ *
+ * @param onContinue 全問終えたあとに「続けて確認する」で呼ばれる継続処理。
  */
-export function renderWhyCheckSession(host: HTMLElement, queue: readonly WhyCheckItem[]): void {
+export function renderWhyCheckSession(
+  host: HTMLElement,
+  queue: readonly WhyCheckItem[],
+  onContinue?: () => void,
+): void {
   if (queue.length === 0) return;
   let index = 0;
   const graded: Rating[] = [];
@@ -110,7 +147,9 @@ export function renderWhyCheckSession(host: HTMLElement, queue: readonly WhyChec
             {
               class: "chip",
               type: "button",
+              // title だけだとタッチ端末・支援技術に届かないため aria-label にも含める。
               title: r.hint,
+              "aria-label": `${r.label}（${r.hint}）`,
               onclick: () => {
                 whyChecks.record(item.id, r.rating);
                 graded.push(r.rating);
@@ -129,20 +168,28 @@ export function renderWhyCheckSession(host: HTMLElement, queue: readonly WhyChec
     host.innerHTML = "";
     if (index >= queue.length) {
       const recalled = graded.filter((r) => r !== "again").length;
-      host.append(
+      const summary = h(
+        "div",
+        { class: "card" },
+        h("strong", {}, "🎉 納得チェック終了"),
+        h("div", { class: "muted" }, `${queue.length} 問中 ${recalled} 問を説明できました。`),
         h(
           "div",
-          { class: "card" },
-          h("strong", {}, "🎉 納得チェック終了"),
-          h("div", { class: "muted" }, `${queue.length} 問中 ${recalled} 問を説明できました。`),
-          h(
-            "div",
-            { class: "muted small" },
-            "「言えなかった」ものは近いうちにまた出ます。原理カード（進捗タブの体系学習ロードマップ）で" +
-              "導出をたどり直すと定着が早くなります。",
-          ),
+          { class: "muted small" },
+          "「言えなかった」ものは近いうちにまた出ます。原理カード（進捗タブの体系学習ロードマップ）で" +
+            "導出をたどり直すと定着が早くなります。",
         ),
       );
+      if (onContinue) {
+        summary.append(
+          h(
+            "div",
+            { class: "drill-actions" },
+            h("button", { class: "chip", type: "button", onclick: onContinue }, "▶ 続けて確認する"),
+          ),
+        );
+      }
+      host.append(summary);
       return;
     }
     const item = queue[index] as WhyCheckItem; // index < queue.length のため在中

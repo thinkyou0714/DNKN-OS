@@ -60,6 +60,50 @@ describe("WhyCheckStore", () => {
     expect(() => store.record(ID, "good", NOW)).not.toThrow();
   });
 
+  it("日付が壊れた保存値は未着手として扱う（NaN の due で永久に出題されなくなるのを防ぐ）", () => {
+    const storage = new MemoryStorage();
+    const store = new WhyCheckStore(storage);
+    store.record(ID, "good", NOW);
+    // 保存済みカードの due を壊す（バックアップの手編集・部分的な書き込み失敗などを想定）。
+    const cards = JSON.parse(storage.getItem(WHY_CARD_KEY) as string) as Record<string, { due: string }>;
+    (cards[ID] as { due: string }).due = "壊れた日付";
+    storage.setItem(WHY_CARD_KEY, JSON.stringify(cards));
+
+    const broken = new WhyCheckStore(storage);
+    expect(broken.states().has(ID)).toBe(false);
+    expect(broken.startedIds()).not.toContain(ID);
+    expect(broken.view(ID)).toBeUndefined();
+    // 未着手として再開でき、次回予定も正常に戻る。
+    const view = broken.record(ID, "good", NOW);
+    expect(Number.isFinite(view.dueMs)).toBe(true);
+    expect(broken.states().get(ID)?.dueMs).toBe(view.dueMs);
+  });
+
+  it("エントリの型が壊れていても採点は成立する（新規カードとしてやり直す）", () => {
+    const storage = new MemoryStorage();
+    storage.setItem(WHY_CARD_KEY, JSON.stringify({ [ID]: 42 }));
+    const store = new WhyCheckStore(storage);
+    expect(store.states().size).toBe(0);
+    expect(() => store.record(ID, "good", NOW)).not.toThrow();
+    expect(store.states().get(ID)?.dueMs).toBeGreaterThan(NOW);
+  });
+
+  it("目標保持率を上げると間隔が短くなる（設定タブの変更に追随する）", () => {
+    // 初回採点は学習ステップ（当日中の再出題）で保持率に依らないため、2回目の間隔で比べる。
+    const intervalDays = (store: WhyCheckStore): number => {
+      const first = store.record(ID, "good", NOW);
+      return store.record(ID, "good", first.dueMs).scheduledDays;
+    };
+    expect(intervalDays(new WhyCheckStore(new MemoryStorage(), 0.95))).toBeLessThan(
+      intervalDays(new WhyCheckStore(new MemoryStorage(), 0.8)),
+    );
+
+    // 構築後に setDesiredRetention で変更しても効く。
+    const changed = new WhyCheckStore(new MemoryStorage(), 0.8);
+    changed.setDesiredRetention(0.95);
+    expect(intervalDays(changed)).toBeLessThan(intervalDays(new WhyCheckStore(new MemoryStorage(), 0.8)));
+  });
+
   it("同じチェックを繰り返し採点すると間隔が伸びる", () => {
     const store = new WhyCheckStore(new MemoryStorage());
     const first = store.record(ID, "good", NOW);
