@@ -11,7 +11,7 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const POLE_SET: ReadonlyArray<number> = [3, 6, 9, 12, 15]; // 〔m〕
+const POLE_SET: ReadonlyArray<number> = [3, 4.5, 6, 7.5, 9, 10.5, 12, 13.5, 15]; // 〔m〕
 
 type Params = {
   pole_length: number;

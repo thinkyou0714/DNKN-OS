@@ -8,8 +8,10 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const R2_SET: ReadonlyArray<number> = [0.05, 0.1, 0.2, 0.25, 0.5];
-const SMT_SET: ReadonlyArray<number> = [0.1, 0.125, 0.2, 0.25, 0.5];
+const R2_SET: ReadonlyArray<number> = [
+  0.02, 0.03, 0.04, 0.05, 0.06, 0.08, 0.1, 0.12, 0.15, 0.16, 0.2, 0.25, 0.3, 0.4, 0.5,
+];
+const SMT_SET: ReadonlyArray<number> = [0.05, 0.1, 0.125, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6];
 
 type Params = {
   secondary_resistance: number;

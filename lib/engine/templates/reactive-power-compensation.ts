@@ -7,7 +7,9 @@ import { formatClean, isCleanAnswer } from "../clean.js";
 import { powerTriangleFigure } from "../figures/index.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const P_SET: ReadonlyArray<number> = [600, 1200, 1500, 1800, 2400, 3000];
+const P_SET: ReadonlyArray<number> = [
+  300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000, 3300, 3600, 3900, 4200, 4500, 4800,
+];
 const PF_PAIRS: ReadonlyArray<readonly [number, number]> = [
   [0.6, 1.0],
   [0.8, 1.0],
@@ -31,7 +33,7 @@ export const reactivePowerCompensation = defineTemplate<Params>({
   difficulty: 4,
   pastExam: { area: "変電・調相", frequency: "mid", years: [2009, 2014, 2019, 2024] },
   paramSpecs: {
-    load_power: { unit: "kW", realistic_range: [500, 3000] },
+    load_power: { unit: "kW", realistic_range: [300, 5000] },
     power_factor_before: { unit: "", realistic_range: [0.5, 1] },
     power_factor_after: { unit: "", realistic_range: [0.5, 1] },
   },
@@ -56,7 +58,7 @@ export const reactivePowerCompensation = defineTemplate<Params>({
     return {
       format: "descriptive",
       params: {
-        load_power: { value: P, unit: "kW", realistic_range: [500, 3000] },
+        load_power: { value: P, unit: "kW", realistic_range: [300, 5000] },
         power_factor_before: { value: cos1, unit: "", realistic_range: [0.5, 1] },
         power_factor_after: { value: cos2, unit: "", realistic_range: [0.5, 1] },
       },

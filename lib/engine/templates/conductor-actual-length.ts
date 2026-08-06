@@ -11,8 +11,8 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const SPAN_SET: ReadonlyArray<number> = [100, 120, 150, 200, 240, 300, 400]; // 〔m〕
-const DIP_SET: ReadonlyArray<number> = [3, 6, 9]; // 〔m〕
+const SPAN_SET: ReadonlyArray<number> = [100, 120, 140, 150, 160, 180, 200, 240, 250, 270, 300, 320, 360, 400]; // 〔m〕
+const DIP_SET: ReadonlyArray<number> = [3, 4.5, 6, 7.5, 9]; // 〔m〕
 
 type Params = {
   span: number;

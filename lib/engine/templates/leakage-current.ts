@@ -13,8 +13,8 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const VOLTAGE_SET: ReadonlyArray<number> = [100, 105, 200, 210]; // 〔V〕
-const RESISTANCE_SET: ReadonlyArray<number> = [0.1, 0.2, 0.5, 1, 2]; // 〔MΩ〕
+const VOLTAGE_SET: ReadonlyArray<number> = [100, 105, 110, 200, 210]; // 〔V〕
+const RESISTANCE_SET: ReadonlyArray<number> = [0.1, 0.2, 0.5, 1, 2, 2.5, 5]; // 〔MΩ〕
 
 type Params = {
   voltage: number;
@@ -34,7 +34,7 @@ export const leakageCurrent = defineTemplate<Params>({
   },
   paramSpecs: {
     voltage: { unit: "V", realistic_range: [100, 210] },
-    insulation_resistance: { unit: "Mohm", realistic_range: [0.1, 2] },
+    insulation_resistance: { unit: "Mohm", realistic_range: [0.1, 5] },
   },
   paramOrder: ["voltage", "insulation_resistance"],
   draw(rng) {
@@ -52,7 +52,7 @@ export const leakageCurrent = defineTemplate<Params>({
       format: "numeric",
       params: {
         voltage: { value: voltage, unit: "V", realistic_range: [100, 210] },
-        insulation_resistance: { value: r, unit: "Mohm", realistic_range: [0.1, 2] },
+        insulation_resistance: { value: r, unit: "Mohm", realistic_range: [0.1, 5] },
       },
       answerValue: iMa,
       answerUnit: "mA",

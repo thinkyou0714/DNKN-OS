@@ -7,8 +7,8 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const ETA_G_SET: ReadonlyArray<number> = [25, 30, 35, 40];
-const ETA_S_SET: ReadonlyArray<number> = [20, 25, 30, 35, 40];
+const ETA_G_SET: ReadonlyArray<number> = [20, 22, 24, 25, 26, 28, 30, 32, 33, 34, 35, 36, 38, 40, 42, 45];
+const ETA_S_SET: ReadonlyArray<number> = [15, 18, 20, 22, 24, 25, 26, 28, 30, 32, 34, 35, 36, 38, 40, 42, 45];
 
 type Params = {
   eta_gas: number;

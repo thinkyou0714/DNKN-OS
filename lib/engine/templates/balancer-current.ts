@@ -9,8 +9,8 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const IA_SET: ReadonlyArray<number> = [30, 40, 50, 60, 80, 100];
-const IB_SET: ReadonlyArray<number> = [10, 20, 30, 40, 60];
+const IA_SET: ReadonlyArray<number> = [20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+const IB_SET: ReadonlyArray<number> = [5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 80];
 
 type Params = {
   load_current_a: number;

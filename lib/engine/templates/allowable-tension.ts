@@ -10,8 +10,11 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const TB_SET: ReadonlyArray<number> = [2000, 4000, 8000, 9800, 10000, 20000];
-const F_SET: ReadonlyArray<number> = [2, 2.5, 4, 5];
+const TB_SET: ReadonlyArray<number> = [
+  2000, 2100, 2400, 2700, 3000, 3600, 4000, 4200, 4800, 5400, 6000, 6600, 7200, 7800, 8000, 8400, 9000, 9600, 9800,
+  10000, 10500, 12000, 13500, 15000, 16500, 18000, 19500, 20000,
+];
+const F_SET: ReadonlyArray<number> = [2, 2.5, 3, 4, 5];
 
 type Params = {
   tensile_strength: number;

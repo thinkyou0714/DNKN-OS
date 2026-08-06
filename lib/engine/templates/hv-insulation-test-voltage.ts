@@ -7,7 +7,7 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const NOMINAL_SET: ReadonlyArray<number> = [22000, 33000]; // 〔V〕
+const NOMINAL_SET: ReadonlyArray<number> = [11000, 22000, 33000, 44000, 55000]; // 〔V〕（いずれも最大使用電圧≤60000V）
 
 type Params = {
   nominal_voltage: number;
@@ -25,7 +25,7 @@ export const hvInsulationTestVoltage = defineTemplate<Params>({
     note: "電技解釈15条: 最大使用電圧7000V超60000V以下は試験電圧=最大使用電圧×1.25（10分間印加）",
   },
   paramSpecs: {
-    nominal_voltage: { unit: "V", realistic_range: [22000, 33000] },
+    nominal_voltage: { unit: "V", realistic_range: [11000, 55000] },
   },
   paramOrder: ["nominal_voltage"],
   draw(rng) {
@@ -43,7 +43,7 @@ export const hvInsulationTestVoltage = defineTemplate<Params>({
     return {
       format: "numeric",
       params: {
-        nominal_voltage: { value: nominal_voltage, unit: "V", realistic_range: [22000, 33000] },
+        nominal_voltage: { value: nominal_voltage, unit: "V", realistic_range: [11000, 55000] },
       },
       answerValue: test,
       answerUnit: "V",

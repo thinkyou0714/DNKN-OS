@@ -19,6 +19,10 @@ const KT_PAIRS: ReadonlyArray<readonly [number, number]> = [
   [4, 25],
   [100, 1],
   [100, 4],
+  [25, 25],
+  [100, 25],
+  [25, 100],
+  [1, 100],
 ];
 
 type Params = {
@@ -34,7 +38,7 @@ export const secondOrderResponse = defineTemplate<Params>({
   pastExam: { area: "自動制御理論", frequency: "high", years: [2009, 2014, 2020, 2024] },
   paramSpecs: {
     gain: { realistic_range: [0.5, 200] },
-    time_constant: { unit: "s", realistic_range: [0.5, 50] },
+    time_constant: { unit: "s", realistic_range: [0.5, 100] },
   },
   paramOrder: ["gain", "time_constant"],
   draw(rng) {
@@ -51,7 +55,7 @@ export const secondOrderResponse = defineTemplate<Params>({
       format: "numeric",
       params: {
         gain: { value: k, realistic_range: [0.5, 200] },
-        time_constant: { value: t, unit: "s", realistic_range: [0.5, 50] },
+        time_constant: { value: t, unit: "s", realistic_range: [0.5, 100] },
       },
       answerValue: omegaN,
       answerUnit: "rad/s",

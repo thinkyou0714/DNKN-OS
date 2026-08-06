@@ -8,8 +8,8 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const T_SET: ReadonlyArray<number> = [1, 2, 4, 5, 10];
-const K_SET: ReadonlyArray<number> = [3, 4, 9, 19, 24];
+const T_SET: ReadonlyArray<number> = [0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 15, 20];
+const K_SET: ReadonlyArray<number> = [1, 3, 4, 9, 19, 24, 49];
 
 type Params = {
   open_loop_time_constant: number;

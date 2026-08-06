@@ -10,7 +10,7 @@ import { formatClean } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
 const FREQ: ReadonlyArray<number> = [50, 60]; // 〔Hz〕
-const POLES: ReadonlyArray<number> = [2, 4, 6, 8, 10, 12]; // 〔pole〕
+const POLES: ReadonlyArray<number> = [2, 4, 6, 8, 10, 12, 16, 18, 20, 24]; // 〔pole〕
 
 type Params = {
   frequency: number;
@@ -30,7 +30,7 @@ export const synchronousSpeed = defineTemplate<Params>({
   },
   paramSpecs: {
     frequency: { unit: "Hz", realistic_range: [50, 60] },
-    poles: { unit: "pole", realistic_range: [2, 12] },
+    poles: { unit: "pole", realistic_range: [2, 24] },
   },
   paramOrder: ["frequency", "poles"],
   draw(rng) {
@@ -48,7 +48,7 @@ export const synchronousSpeed = defineTemplate<Params>({
       format: "numeric",
       params: {
         frequency: { value: f, unit: "Hz", realistic_range: [50, 60] },
-        poles: { value: p, unit: "pole", realistic_range: [2, 12] },
+        poles: { value: p, unit: "pole", realistic_range: [2, 24] },
       },
       answerValue: Ns,
       answerUnit: "min⁻¹",

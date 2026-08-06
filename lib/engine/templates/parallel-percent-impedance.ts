@@ -6,7 +6,9 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const PZ_SET: ReadonlyArray<number> = [4, 5, 6, 8, 10, 12, 20];
+const PZ_SET: ReadonlyArray<number> = [
+  4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 12, 12.5, 13, 14, 15, 16, 18, 19.5, 20,
+];
 
 type Params = {
   percent_z_a: number;

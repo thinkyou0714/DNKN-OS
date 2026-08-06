@@ -11,7 +11,10 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const DELTA_SET: ReadonlyArray<number> = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 36, 45, 60, 75, 90]; // 〔Ω〕
+// 3の倍数（Y換算 R/3 が綺麗になる）を [3,90] の全域から採る。
+const DELTA_SET: ReadonlyArray<number> = [
+  3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90,
+]; // 〔Ω〕
 
 type Params = {
   delta_resistance: number;

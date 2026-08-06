@@ -8,7 +8,9 @@ import { formatClean, isCleanAnswer } from "../clean.js";
 import { powerTriangleFigure } from "../figures/index.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const P_SET: ReadonlyArray<number> = [60, 120, 150, 180, 240, 300, 360, 480, 600];
+const P_SET: ReadonlyArray<number> = [
+  60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480, 510, 540, 570, 600,
+];
 // [cosθ1(改善前), cosθ2(改善後)]。cosθ2>cosθ1（力率が良くなる）。
 const PF_PAIRS: ReadonlyArray<readonly [number, number]> = [
   [0.6, 1.0],

@@ -8,7 +8,7 @@ import { isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
 // 150/Ig が綺麗な値になる 1線地絡電流〔A〕。
-const IG_SET = [2, 3, 5, 6, 10, 15, 25, 30];
+const IG_SET = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 7.5, 8, 10, 12, 12.5, 15, 20, 24, 25, 30];
 
 type Params = {
   ground_fault_current: number;

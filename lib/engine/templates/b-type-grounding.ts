@@ -14,7 +14,7 @@ const CASES: ReadonlyArray<readonly [number, string]> = [
   [300, "混触時に1秒を超え2秒以内に自動的に高圧電路を遮断する装置を施設している"],
   [600, "混触時に1秒以内に自動的に高圧電路を遮断する装置を施設している"],
 ];
-const IG_SET: ReadonlyArray<number> = [2, 3, 4, 5, 6, 10, 12, 15, 20, 25, 30];
+const IG_SET: ReadonlyArray<number> = [2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 24, 25, 30, 40, 50];
 
 type Params = {
   base_voltage: number;

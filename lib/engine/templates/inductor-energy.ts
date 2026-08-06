@@ -7,8 +7,8 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const L_SET: ReadonlyArray<number> = [0.1, 0.2, 0.5, 1, 2];
-const I_SET: ReadonlyArray<number> = [2, 4, 5, 10, 20];
+const L_SET: ReadonlyArray<number> = [0.1, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.75, 0.8, 1, 1.2, 1.25, 1.5, 1.6, 2];
+const I_SET: ReadonlyArray<number> = [1, 2, 3, 4, 5, 6, 8, 10, 12, 14, 15, 16, 18, 20];
 
 type Params = {
   inductance: number;
