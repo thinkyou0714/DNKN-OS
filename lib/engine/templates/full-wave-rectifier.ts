@@ -6,7 +6,7 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const V_SET: ReadonlyArray<number> = [100, 110, 200, 220, 400, 1000];
+const V_SET: ReadonlyArray<number> = [100, 110, 120, 200, 220, 240, 400, 440, 500, 600, 1000];
 
 type Params = {
   ac_voltage: number;

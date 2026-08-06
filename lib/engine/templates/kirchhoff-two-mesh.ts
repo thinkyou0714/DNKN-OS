@@ -32,6 +32,12 @@ const SETS: ReadonlyArray<readonly [number, number, number, number, number]> = [
   [40, 20, 4, 4, 1],
   [26, 14, 3, 3, 1],
   [12, 8, 2, 2, 2],
+  [28, 16, 2, 2, 1],
+  [24, 18, 3, 3, 2],
+  [36, 24, 4, 4, 2],
+  [20, 10, 2, 2, 1],
+  [44, 28, 4, 4, 2],
+  [32, 20, 4, 4, 2],
 ];
 
 type Params = {

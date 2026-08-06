@@ -7,7 +7,7 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const PZ_SET: ReadonlyArray<number> = [80, 100, 125, 160, 200, 250];
+const PZ_SET: ReadonlyArray<number> = [50, 80, 100, 125, 160, 200, 250];
 
 type Params = {
   percent_synchronous_impedance: number;

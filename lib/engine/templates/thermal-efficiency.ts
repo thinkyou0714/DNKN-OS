@@ -8,7 +8,7 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const Q_SET: ReadonlyArray<number> = [7200, 7500, 8000, 9000, 10000];
+const Q_SET: ReadonlyArray<number> = [7200, 7500, 8000, 9000, 9375, 9600, 10000];
 
 type Params = {
   heat_rate: number;

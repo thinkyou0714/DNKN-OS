@@ -15,6 +15,14 @@ const PAIRS: ReadonlyArray<readonly [number, number]> = [
   [4, 25],
   [1, 16],
   [36, 49],
+  [1, 25],
+  [4, 16],
+  [9, 36],
+  [36, 64],
+  [16, 100],
+  [25, 100],
+  [49, 100],
+  [81, 100],
 ];
 
 type Params = {
@@ -29,8 +37,8 @@ export const maxEfficiencyLoad = defineTemplate<Params>({
   difficulty: 3,
   pastExam: { area: "変圧器", frequency: "mid", years: [2011, 2016, 2021] },
   paramSpecs: {
-    iron_loss: { unit: "kW", realistic_range: [1, 50] },
-    copper_loss: { unit: "kW", realistic_range: [1, 60] },
+    iron_loss: { unit: "kW", realistic_range: [1, 100] },
+    copper_loss: { unit: "kW", realistic_range: [1, 100] },
   },
   paramOrder: ["iron_loss", "copper_loss"],
   draw(rng) {
@@ -45,8 +53,8 @@ export const maxEfficiencyLoad = defineTemplate<Params>({
     return {
       format: "numeric",
       params: {
-        iron_loss: { value: pi, unit: "kW", realistic_range: [1, 50] },
-        copper_loss: { value: pc, unit: "kW", realistic_range: [1, 60] },
+        iron_loss: { value: pi, unit: "kW", realistic_range: [1, 100] },
+        copper_loss: { value: pc, unit: "kW", realistic_range: [1, 100] },
       },
       answerValue: alpha,
       answerUnit: "",

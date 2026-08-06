@@ -6,7 +6,7 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const K_SET: ReadonlyArray<number> = [1, 3, 4, 9, 19, 24];
+const K_SET: ReadonlyArray<number> = [1, 3, 4, 9, 19, 24, 49];
 
 type Params = {
   gain: number;

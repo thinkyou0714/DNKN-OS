@@ -8,7 +8,7 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const V_SET: ReadonlyArray<number> = [200, 220, 230, 400, 415, 440, 460];
+const V_SET: ReadonlyArray<number> = [200, 220, 230, 240, 400, 415, 440, 460, 480, 600];
 /** 制御角〔°〕→ cosα（浮動小数の揺れを避けるため厳密値の表を引く）。 */
 const COS_TABLE: Readonly<Record<number, number>> = { 0: 1, 60: 0.5 };
 const ALPHA_SET: ReadonlyArray<number> = [0, 60];

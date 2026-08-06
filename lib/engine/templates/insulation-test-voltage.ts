@@ -9,7 +9,7 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { buildMcChoices, defineTemplate, pick } from "./helpers.js";
 
-const NOMINAL_SET: ReadonlyArray<number> = [3300, 6600];
+const NOMINAL_SET: ReadonlyArray<number> = [2200, 3300, 6600];
 
 type Params = {
   nominal_voltage: number;
@@ -22,7 +22,7 @@ export const insulationTestVoltage = defineTemplate<Params>({
   difficulty: 2,
   pastExam: { area: "絶縁・絶縁耐力", frequency: "high", years: [2008, 2012, 2016, 2020, 2024] },
   paramSpecs: {
-    nominal_voltage: { unit: "V", realistic_range: [3300, 6600] },
+    nominal_voltage: { unit: "V", realistic_range: [2200, 6600] },
   },
   paramOrder: ["nominal_voltage"],
   draw(rng) {
@@ -51,7 +51,7 @@ export const insulationTestVoltage = defineTemplate<Params>({
 
     return {
       params: {
-        nominal_voltage: { value: nominal, unit: "V", realistic_range: [3300, 6600] },
+        nominal_voltage: { value: nominal, unit: "V", realistic_range: [2200, 6600] },
       },
       answerValue: test,
       answerUnit: "V",

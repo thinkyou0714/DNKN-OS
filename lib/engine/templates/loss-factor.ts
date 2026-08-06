@@ -10,7 +10,7 @@ import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
 const ALPHA = 0.3;
-const L_SET: ReadonlyArray<number> = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8];
+const L_SET: ReadonlyArray<number> = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
 
 type Params = {
   load_factor: number;

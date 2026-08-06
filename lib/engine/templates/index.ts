@@ -11,6 +11,7 @@ import { boostChopper } from "./boost-chopper.js";
 import { buckBoostChopper } from "./buck-boost-chopper.js";
 import { buckChopper } from "./buck-chopper.js";
 import { capacitorEnergy } from "./capacitor-energy.js";
+import { capacitorVoltageRise } from "./capacitor-voltage-rise.js";
 import { capacityFactor } from "./capacity-factor.js";
 import { chargeRedistribution } from "./charge-redistribution.js";
 import { chopperCurrentRipple } from "./chopper-current-ripple.js";
@@ -28,6 +29,7 @@ import { dcGeneratorEmf } from "./dc-generator-emf.js";
 import { dcMotorEmf } from "./dc-motor-emf.js";
 import { dcMotorFieldWeakening } from "./dc-motor-field-weakening.js";
 import { dcMotorSpeedResistance } from "./dc-motor-speed-resistance.js";
+import { deltaWyePowerRatio } from "./delta-wye-power-ratio.js";
 import { deltaWyeResistance } from "./delta-wye-resistance.js";
 import { demandFactor } from "./demand-factor.js";
 import { disturbanceSteadyState } from "./disturbance-steady-state.js";
@@ -45,6 +47,7 @@ import { groundFaultSymmetrical } from "./ground-fault-symmetrical.js";
 import { groundingResistance } from "./grounding-resistance.js";
 import { groundingTypes } from "./grounding-types.js";
 import { guyWireSafety } from "./guy-wire-safety.js";
+import { halfWaveRectifier } from "./half-wave-rectifier.js";
 import { heatPumpCop } from "./heat-pump-cop.js";
 import { hoistMotorOutput } from "./hoist-motor-output.js";
 import { hvInsulationTestVoltage } from "./hv-insulation-test-voltage.js";
@@ -77,6 +80,7 @@ import { maxTorqueStartResistance } from "./max-torque-start-resistance.js";
 import { multiplierResistor } from "./multiplier-resistor.js";
 import { mutualInductance } from "./mutual-inductance.js";
 import { nuclearPowerOutput } from "./nuclear-power-output.js";
+import { opAmpInvertingGain } from "./op-amp-inverting-gain.js";
 import { opAmpNoninvertingGain } from "./op-amp-noninverting-gain.js";
 import { overheadClearance } from "./overhead-clearance.js";
 import { parallelConductorForce } from "./parallel-conductor-force.js";
@@ -98,6 +102,7 @@ import { pumpingRequiredPower } from "./pumping-required-power.js";
 import { pwmInverterVoltage } from "./pwm-inverter-voltage.js";
 import { rcTimeConstant } from "./rc-time-constant.js";
 import { reactivePowerCompensation } from "./reactive-power-compensation.js";
+import { requiredCompensationCapacity } from "./required-compensation-capacity.js";
 import { reserveMargin } from "./reserve-margin.js";
 import { resistanceTemperature } from "./resistance-temperature.js";
 import { resistorNetwork } from "./resistor-network.js";
@@ -127,9 +132,11 @@ import { switchingLoss } from "./switching-loss.js";
 import { synchronizingCurrent } from "./synchronizing-current.js";
 import { synchronousGeneratorOutput } from "./synchronous-generator-output.js";
 import { synchronousSpeed } from "./synchronous-speed.js";
+import { synchronousVoltageRegulation } from "./synchronous-voltage-regulation.js";
 import { systemFrequencyConstant } from "./system-frequency-constant.js";
 import { thermalEfficiency } from "./thermal-efficiency.js";
 import { thermalFuelConsumption } from "./thermal-fuel-consumption.js";
+import { thermalPlantEfficiency } from "./thermal-plant-efficiency.js";
 import { theveninLoadCurrent } from "./thevenin-load-current.js";
 import { threePhasePower } from "./three-phase-power.js";
 import { threePhaseRectifier } from "./three-phase-rectifier.js";
@@ -189,6 +196,8 @@ const templates: Template[] = [
   acBridgeBalance,
   coupledInductorConnection,
   chargeRedistribution,
+  opAmpInvertingGain,
+  deltaWyePowerRatio,
   // 電力
   demandFactor,
   powerFactorCorrection,
@@ -213,6 +222,7 @@ const templates: Template[] = [
   currentTransformerRelay,
   pfImprovementCapacity,
   massDefectEnergy,
+  thermalPlantEfficiency,
   // 機械
   inductionMotorSpeed,
   transformerEfficiency,
@@ -242,6 +252,8 @@ const templates: Template[] = [
   inductionMotorEfficiency,
   elevatorCounterweightPower,
   ironLossFrequency,
+  synchronousVoltageRegulation,
+  halfWaveRectifier,
   // 法規
   groundingResistance,
   sagTension,
@@ -311,6 +323,8 @@ const templates: Template[] = [
   reserveMargin,
   currentLimitingReactor,
   pumpedStorageGenerationTime,
+  capacitorVoltageRise,
+  requiredCompensationCapacity,
 ];
 
 const registry = new Map<string, Template>(templates.map((t) => [t.topic, t]));
@@ -348,6 +362,7 @@ export {
   buckBoostChopper,
   buckChopper,
   capacitorEnergy,
+  capacitorVoltageRise,
   capacityFactor,
   chargeRedistribution,
   chopperCurrentRipple,
@@ -365,6 +380,7 @@ export {
   dcMotorEmf,
   dcMotorFieldWeakening,
   dcMotorSpeedResistance,
+  deltaWyePowerRatio,
   deltaWyeResistance,
   demandFactor,
   disturbanceSteadyState,
@@ -381,6 +397,7 @@ export {
   groundingResistance,
   groundingTypes,
   guyWireSafety,
+  halfWaveRectifier,
   heatPumpCop,
   hoistMotorOutput,
   hvInsulationTestVoltage,
@@ -413,6 +430,7 @@ export {
   multiplierResistor,
   mutualInductance,
   nuclearPowerOutput,
+  opAmpInvertingGain,
   opAmpNoninvertingGain,
   overheadClearance,
   parallelConductorForce,
@@ -434,6 +452,7 @@ export {
   pwmInverterVoltage,
   rcTimeConstant,
   reactivePowerCompensation,
+  requiredCompensationCapacity,
   reserveMargin,
   resistanceTemperature,
   resistorNetwork,
@@ -464,9 +483,11 @@ export {
   synchronizingCurrent,
   synchronousGeneratorOutput,
   synchronousSpeed,
+  synchronousVoltageRegulation,
   systemFrequencyConstant,
   thermalEfficiency,
   thermalFuelConsumption,
+  thermalPlantEfficiency,
   theveninLoadCurrent,
   threePhasePower,
   threePhaseRectifier,
