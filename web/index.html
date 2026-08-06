@@ -379,6 +379,33 @@
       }
       .rubric-item input { margin-top: .18rem; width: 1.1rem; height: 1.1rem; accent-color: var(--accent); flex: none; }
       .rubric-item:has(input:checked) { border-color: var(--ok-border); background: var(--ok-soft); }
+      .rubric-body { display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-2); align-items: baseline; }
+      /* 配点バッジ（役割ごとの重み）。結論は金＝到達点、途中式は朱＝過程。 */
+      .rubric-role {
+        flex: none; white-space: nowrap; font-size: var(--fs-caption); font-weight: 700; line-height: 1;
+        padding: 3px 8px; border-radius: var(--r-sm); border: 1px solid var(--border); color: var(--muted);
+      }
+      .rubric-role.role-conclusion { color: var(--gold); border-color: var(--gold-border); background: var(--gold-soft); }
+      .rubric-role.role-formula, .rubric-role.role-substitution, .rubric-role.role-calculation {
+        color: var(--accent); border-color: var(--accent-border); background: var(--accent-soft);
+      }
+      /* 採点対象外の注記は沈めて、配点のある項目と混ざらないようにする。 */
+      .rubric-item.rubric-note { color: var(--muted); background: var(--surface-2); border-style: dashed; }
+      .rubric-item.rubric-note:has(input:checked) { border-color: var(--border-strong); background: var(--surface-2); }
+      .rubric-selfcheck { display: grid; gap: var(--sp-1); margin: var(--sp-3) 0; }
+      .rubric-answer {
+        width: 100%; resize: vertical; font: inherit; font-size: var(--fs-small); line-height: 1.7;
+        padding: var(--sp-2) var(--sp-3); border: 1px solid var(--border); border-radius: var(--r-sm);
+        background: var(--surface-2); color: var(--text);
+      }
+      .rubric-advice { display: block; font-size: var(--fs-small); font-weight: 400; color: var(--muted); margin-top: var(--sp-1); }
+      /* 誤概念（誤答パターン）の可視化。件数は赤＝つまずきの重さ。 */
+      .miscon-list { display: grid; gap: var(--sp-2); margin: var(--sp-2) 0; }
+      .miscon-item {
+        padding: var(--sp-2) var(--sp-3); border: 1px solid var(--border); border-left: 3px solid var(--ng);
+        border-radius: var(--r-sm); background: var(--surface-2);
+      }
+      .miscon-count { float: right; font: 700 var(--fs-small)/1.6 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ng); }
       .share {
         white-space: pre-wrap; background: var(--surface-2); color: var(--muted);
         padding: var(--sp-3) var(--sp-4); border-radius: var(--r-sm); font-size: var(--fs-small);
@@ -812,6 +839,6 @@
       復習は FSRS（最新の間隔反復アルゴリズム）。コード=MIT / 問題データ=CC-BY-SA-4.0。
     </footer>
 
-    <script type="module" src="./dist/app.js" integrity="sha384-raCeeQh/4SByJ3REpkfK3NGs0yG82poKi2XgKi5iX6UpMourV8oSbxqMB05nr/VK" crossorigin="anonymous"></script>
+    <script type="module" src="./dist/app.js" integrity="sha384-tDIXUM6iReudeHCkpPkg3D6DBWMDo/gnjgwXrYuaaO5TWMnk7hX8nrWJ8+tEBlwW" crossorigin="anonymous"></script>
   </body>
 </html>

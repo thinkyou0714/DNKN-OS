@@ -44,6 +44,7 @@ import { type levelInfo, xpByDay, xpBySubject } from "../xp.js";
 import { subjectNoteChip } from "./bridge-cards.js";
 import { coeffBridgeSection } from "./coeff-drill.js";
 import { renderOrderingDrillBody } from "./drills.js";
+import { misconceptionSection } from "./misconceptions.js";
 import { currentLevel, freezeInfo, questsCard, weeklyQuestsCard } from "./practice.js";
 import { startDrill } from "./review.js";
 import { switchView } from "./router.js";
@@ -798,6 +799,8 @@ export function renderDashboard(root: HTMLElement): void {
   readinessSection(root, logs, plan.daysLeft);
   learningOrderSection(root, logs);
   explanationGapSection(root, logs);
+  // 誤答の中身（何を取り違えたか）→ 係数ドリルへ、の順に並べる。
+  misconceptionSection(root, logs);
   coeffBridgeSection(root);
   statsSection(root, logs, lv);
   badgesSection(root, logs, lv);

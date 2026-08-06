@@ -2,6 +2,15 @@
  * views/practice-grade.ts — 学習タブの採点処理（gradeObjective / revealDescriptive / ratingBar / finalize）。
  * practice.ts から切り出して行数制限（600行以下）を守る（I-054）。
  */
+import {
+  buildRubric,
+  missingUnits,
+  ROLE_HINTS,
+  ROLE_LABELS,
+  type RubricItem,
+  scoreRubric,
+  suggestedCheckedIndices,
+} from "../../../lib/curriculum/rubric.js";
 import type { Problem } from "../../../lib/engine/schema.js";
 import type { Rating } from "../../../lib/scheduler/types.js";
 import { cardText } from "../../../lib/share-card/card-text.js";
@@ -9,7 +18,7 @@ import { affiliateActive } from "../bridge-config.js";
 import { recordPracticeAnswer } from "../entitlements.js";
 import { formatElapsed } from "../format.js";
 import { confettiBurst, playTone, vibrate, xpFloat } from "../fx.js";
-import { isAnswerCorrect, normalizeNumericInput, partialScore } from "../grade.js";
+import { isAnswerCorrect, normalizeNumericInput } from "../grade.js";
 import { mascotCheer } from "../mascot.js";
 import { formatMath } from "../mathfmt.js";
 import {
@@ -78,45 +87,113 @@ export function gradeObjective(host: HTMLElement, p: Problem, given: string, cli
       ]),
     );
   } else {
-    // 不正解 → again 記録して次へ。
-    finalize(host, p, "again");
+    // 不正解 → again 記録して次へ。選んだ答えも残す（誤概念分析の素材）。
+    finalize(host, p, "again", undefined, given);
   }
 }
 
-/** 記述(二次): 模範解答の各ステップを採点観点とし、書けた項目にチェック→部分点で自己採点。 */
+/**
+ * 記述(二次): 模範解答の各ステップを採点観点とし、書けた項目にチェック→**配点重み付き**の部分点で自己採点。
+ *
+ * 旧実装との違い（lib/curriculum/rubric.ts が担当）:
+ *   - 「ポイント:」「（補足: …）」の行は採点対象外（重み0）。満点の答案が満点になる。
+ *   - 方針1点 / 公式・代入・計算2点 / 最終値と単位3点の重み付け（本番の採点感覚に寄せる）。
+ *   - 答案を書き写すと、数値・単位・量記号の照合でチェック候補を提案する（自己採点の補助）。
+ */
 export function revealDescriptive(host: HTMLElement, p: Problem): void {
   const answers = host.querySelector("#answers") as HTMLElement;
   answers.innerHTML = "";
   const result = host.querySelector("#result") as HTMLElement;
   result.innerHTML = "";
-  const steps = p.solution;
-  const checks: HTMLInputElement[] = [];
+  const items = buildRubric(p.solution);
+  const checks = new Map<number, HTMLInputElement>();
   const list = h("div", { class: "rubric" });
-  steps.forEach((s, i) => {
-    const cb = h("input", { type: "checkbox", id: `rb${i}` }) as HTMLInputElement;
-    checks.push(cb);
-    list.append(h("label", { class: "rubric-item", for: `rb${i}` }, cb, h("span", { html: safeHtml(formatMath(s)) })));
-  });
+  for (const item of items) {
+    const cb = h("input", { type: "checkbox", id: `rb${item.index}` }) as HTMLInputElement;
+    checks.set(item.index, cb);
+    const badge = h(
+      "span",
+      { class: `rubric-role role-${item.role}`, title: ROLE_HINTS[item.role] },
+      item.weight > 0 ? `${ROLE_LABELS[item.role]} ${item.weight}点` : `${ROLE_LABELS[item.role]}（採点対象外）`,
+    );
+    list.append(
+      h(
+        "label",
+        { class: `rubric-item${item.weight > 0 ? "" : " rubric-note"}`, for: `rb${item.index}` },
+        cb,
+        h("span", { class: "rubric-body" }, badge, h("span", { html: safeHtml(formatMath(item.text)) })),
+      ),
+    );
+  }
+
+  // 答案の照合（任意）: 書いた答案を貼ると、キーワード一致からチェック候補を提案する。
+  const answerBox = h("textarea", {
+    class: "rubric-answer",
+    rows: "3",
+    placeholder: "（任意）自分の答案を書き写すと、数値・単位の照合でチェック候補を提案します",
+    "aria-label": "自分の答案",
+  }) as HTMLTextAreaElement;
+  const matchNote = h("div", { class: "muted small" });
+  const suggest = h(
+    "button",
+    {
+      class: "chip",
+      type: "button",
+      onclick: () => {
+        const text = answerBox.value;
+        if (text.trim() === "") {
+          matchNote.textContent = "答案を入力すると照合できます。";
+          return;
+        }
+        const suggested = suggestedCheckedIndices(items, text);
+        for (const i of suggested) {
+          const cb = checks.get(i);
+          if (cb) cb.checked = true;
+        }
+        const lacking = missingUnits(items, text);
+        matchNote.textContent =
+          `${suggested.length} 項目にチェックを提案しました（最終判断はご自身で）。` +
+          (lacking.length > 0 ? ` ⚠️ 答案に見当たらない単位: ${lacking.join("・")}` : " 単位の書き漏れはなさそうです。");
+      },
+    },
+    "🔎 答案と照合してチェック候補を出す",
+  );
+
   const grade = h(
     "button",
     {
       class: "primary",
       type: "button",
       onclick: () => {
-        const checked = checks.filter((c) => c.checked).length;
-        const { pct, rating } = partialScore(checked, steps.length);
-        finalize(host, p, rating, { checked, total: steps.length, pct });
+        const checkedIdx = [...checks.entries()].filter(([, cb]) => cb.checked).map(([i]) => i);
+        const s = scoreRubric(items, checkedIdx);
+        finalize(host, p, s.rating, {
+          checked: s.checkedCount,
+          total: s.scoringCount,
+          pct: s.pct,
+          earned: s.earned,
+          possible: s.possible,
+          missed: s.missed,
+        });
       },
     },
     "採点する",
   );
+  const scoring = items.filter((i) => i.weight > 0);
+  const possible = scoring.reduce((a, i) => a + i.weight, 0);
   result.append(
     h(
       "div",
       { class: "gradeui solution" },
       h("strong", {}, "模範解答（採点観点）"),
-      h("p", { class: "muted" }, "各ステップを自分の解答と照合し、書けた項目にチェック → 採点する（部分点で評価）"),
+      h(
+        "p",
+        { class: "muted" },
+        `各ステップを自分の解答と照合し、書けた項目にチェック → 採点する。` +
+          `配点は全 ${possible} 点（${scoring.length} 項目）で、最終値と単位がいちばん重い配点です。`,
+      ),
       list,
+      h("div", { class: "rubric-selfcheck" }, answerBox, h("div", { class: "drill-actions" }, suggest), matchNote),
       h("p", { class: "src" }, sourceText(p)),
       grade,
     ),
@@ -139,11 +216,28 @@ export function ratingBar(host: HTMLElement, p: Problem, opts: ReadonlyArray<rea
   return el;
 }
 
+/** 記述の採点結果（配点重み付き）。客観式では undefined。 */
+export interface DescriptiveScore {
+  /** チェックした採点対象の項目数。 */
+  checked: number;
+  /** 採点対象の項目数。 */
+  total: number;
+  /** 達成率 0..1（重み付き）。 */
+  pct: number;
+  /** 獲得点。 */
+  earned: number;
+  /** 満点。 */
+  possible: number;
+  /** 取りこぼした項目（重みの大きい順）。 */
+  missed: RubricItem[];
+}
+
 export function finalize(
   host: HTMLElement,
   p: Problem,
   rating: Rating,
-  score?: { checked: number; total: number; pct: number },
+  score?: DescriptiveScore,
+  chosen?: string,
 ): void {
   const timeMs = Date.now() - practice.shownAt;
   // 開きっぱなしのタブで日をまたいでいた場合、記録前に欠席日をカバーしておく。
@@ -155,7 +249,7 @@ export function finalize(
   const questsBefore = allQuestsClear(logsOfDay(progress.logs(), todayIdx), todayIdx);
   const weeklyBefore = allWeeklyQuestsClear(logsOfWeek(progress.logs(), weekIdx), weekIdx);
 
-  progress.record(p.topic, rating, Date.now(), timeMs, p.id);
+  progress.record(p.topic, rating, Date.now(), timeMs, p.id, chosen);
   // フリーミアム: 無料枠カウンタは「学習タブの新しい問題」だけを数える。
   // 復習タブ発のドリル（pool）と再出題（requeue）は対象外（nextQuestion のゲートと対）。
   // 収益化未設定・Pro 解錠中は何も書かない。
@@ -219,14 +313,24 @@ export function finalize(
     // 記述: 採点UIを消した後に模範解答を残し、先頭に部分点フィードバックを置く。
     result.append(solutionNode(p, "模範解答"));
     const ok = score.pct >= 2 / 3;
-    result.insertBefore(
-      h(
-        "div",
-        { class: `feedback ${ok ? "ok" : "ng"}` },
-        `📝 部分点 ${score.checked}/${score.total}（${Math.round(score.pct * 100)}%）${ok ? "— 合格圏" : "— 要強化"}`,
-      ),
-      result.firstChild,
+    const fb = h(
+      "div",
+      { class: `feedback ${ok ? "ok" : "ng"}` },
+      `📝 部分点 ${score.earned}/${score.possible} 点（${Math.round(score.pct * 100)}%・観点 ${score.checked}/${score.total}）` +
+        `${ok ? " — 合格圏" : " — 要強化"}`,
     );
+    // 取りこぼしのうち最も配点の重い1つだけを示す（全部並べても読まれない）。
+    const worst = score.missed[0];
+    if (worst) {
+      fb.append(
+        h(
+          "span",
+          { class: "rubric-advice" },
+          `いちばん大きい取りこぼしは「${ROLE_LABELS[worst.role]}」（${worst.weight}点）です`,
+        ),
+      );
+    }
+    result.insertBefore(fb, result.firstChild);
   }
   // 深掘り一冊（17-A17）: アフィリエイト設定時のみ、閉じた details を1つだけ添える。
   if (affiliateActive()) {
