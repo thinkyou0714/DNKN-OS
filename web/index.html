@@ -633,8 +633,13 @@
       .mface .lnt { fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
       .mface .fill { fill: currentColor; stroke: none; }
       .mface .soft { fill: color-mix(in srgb, currentColor 14%, transparent); stroke: none; }
-      /* 金は「達成」だけの色。Lv40+（主任技術者）の記章にのみ使う。 */
+      /* 地色の板。胸の前に構えた手や白ヘルメットが、下の線を隠すために使う。 */
+      .mface .plate { fill: var(--surface); stroke: none; }
+      /* 向かって右に垂れる長いカール毛。太い一筆で描く。 */
+      .mface .curl { fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+      /* 金は「達成」だけの色。Lv40+（主任技術者）の徽章にのみ使う。 */
       .mface .gold { fill: var(--gold); stroke: none; }
+      .mface .goldline { fill: none; stroke: var(--gold); stroke-width: 2; stroke-linecap: round; }
       /* シンクウの呼吸（ゆっくり上下。reduced-motion では全アニメ停止に従う）。 */
       .mface svg { animation: mbob 3.6s ease-in-out infinite; }
       @keyframes mbob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
@@ -807,6 +812,6 @@
       復習は FSRS（最新の間隔反復アルゴリズム）。コード=MIT / 問題データ=CC-BY-SA-4.0。
     </footer>
 
-    <script type="module" src="./dist/app.js" integrity="sha384-NKdHLBS0SXbK8V6s5rLFOg6d0phMfGDolgYpJn31sVWJNwzV+MjuLi/pftXcM7Wm" crossorigin="anonymous"></script>
+    <script type="module" src="./dist/app.js" integrity="sha384-raCeeQh/4SByJ3REpkfK3NGs0yG82poKi2XgKi5iX6UpMourV8oSbxqMB05nr/VK" crossorigin="anonymous"></script>
   </body>
 </html>

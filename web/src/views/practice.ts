@@ -19,7 +19,7 @@ import {
   streakWithFreezes,
   studiedDays,
 } from "../freeze.js";
-import { MASCOT_NAME, mascotHome, mascotSvg, mascotTip, tierForLevel } from "../mascot.js";
+import { MASCOT_NAME, type MascotMood, mascotHome, mascotSvg, mascotTip, tierForLevel } from "../mascot.js";
 import { formatMath } from "../mathfmt.js";
 import { MONETIZATION, monetizationConfigured } from "../monetization-config.js";
 import {
@@ -247,6 +247,11 @@ function mascotCard(): HTMLElement {
   // レベルが上がるとシンクウの装備も育つ（Lv10+ 認定バッジ / Lv20+ 安全ヘルメット / Lv40+ 主任技術者章）。
   const tier = tierForLevel(currentLevel().level);
   const bubble = h("div", { class: "mbubble" }, mv.message);
+  const face = svgNode(mascotSvg(mv.mood, 64, tier), "div", { class: "mface" });
+  // 表情を差し替える（svgNode を通すことで sanitize 経路を外さない）。
+  const setMood = (mood: MascotMood): void => {
+    face.replaceChildren(...svgNode(mascotSvg(mood, 64, tier)).childNodes);
+  };
   const tipBtn = h(
     "button",
     {
@@ -255,16 +260,13 @@ function mascotCard(): HTMLElement {
       onclick: () => {
         tipIndex = tipIndex < 0 ? dayIndexOf(Date.now()) : tipIndex + 1;
         bubble.textContent = `💡 ${mascotTip(tipIndex)}`;
+        // まめ知識を語るときは「せつめい顔」（人差し指＋電球）に変わる。
+        setMood("teach");
       },
     },
     "💡 まめ知識",
   );
-  return h(
-    "div",
-    { class: "card mascot" },
-    svgNode(mascotSvg(mv.mood, 64, tier), "div", { class: "mface" }),
-    h("div", { class: "mcol" }, bubble, tipBtn),
-  );
+  return h("div", { class: "card mascot" }, face, h("div", { class: "mcol" }, bubble, tipBtn));
 }
 
 /** 日次目標を達成した瞬間に出す「今日のまとめ」。やり切った感＋明日への予告で締める。 */
