@@ -96,63 +96,59 @@ export function masteredConceptAreas(masteredTopics: Iterable<string>): Set<stri
   return areas;
 }
 
-/** グラフの隣接表現（prereq -> それを前提とする後続たち）。 */
-function buildAdjacency(edges: readonly PrereqEdge[]): Map<string, string[]> {
-  const adj = new Map<string, string[]>();
-  for (const e of edges) {
-    const arr = adj.get(e.from) ?? [];
-    arr.push(e.to);
-    adj.set(e.from, arr);
-  }
-  return adj;
+interface ConceptGraphIndex {
+  adjacency: Map<string, string[]>;
+  prereqs: Map<string, string[]>;
+  nodes: Set<string>;
 }
 
-/** グラフに登場する全ノード集合。 */
-function collectNodes(edges: readonly PrereqEdge[]): Set<string> {
+/** エッジを1回だけ走査し、以降の解析で共有する索引を組み立てる。 */
+function buildGraphIndex(edges: readonly PrereqEdge[]): ConceptGraphIndex {
+  const adjacency = new Map<string, string[]>();
+  const prereqs = new Map<string, string[]>();
   const nodes = new Set<string>();
   for (const e of edges) {
+    const successors = adjacency.get(e.from) ?? [];
+    successors.push(e.to);
+    adjacency.set(e.from, successors);
+    const predecessors = prereqs.get(e.to) ?? [];
+    predecessors.push(e.from);
+    prereqs.set(e.to, predecessors);
     nodes.add(e.from);
     nodes.add(e.to);
   }
-  return nodes;
+  return { adjacency, prereqs, nodes };
 }
 
 /**
  * topic -> その直接の前提集合。ロードマップ生成（curriculum/path.ts）でも使うため公開する。
  */
 export function directPrereqs(edges: readonly PrereqEdge[] = CONCEPT_EDGES): Map<string, string[]> {
-  const m = new Map<string, string[]>();
-  for (const e of edges) {
-    const arr = m.get(e.to) ?? [];
-    arr.push(e.from);
-    m.set(e.to, arr);
-  }
-  return m;
+  return buildGraphIndex(edges).prereqs;
 }
 
-/** 前提グラフを一度走査して得られる、ロードマップ生成用の派生情報。 */
+/** 1つの共有索引からまとめて算出した、ロードマップ生成用の派生情報。 */
 export interface ConceptGraphAnalysis {
   /** topic → 直接前提。 */
-  prereqs: Map<string, string[]>;
+  prereqs: ReadonlyMap<string, readonly string[]>;
   /** topic → 最長前提連鎖の長さ。循環部分は含まない。 */
-  depths: Map<string, number>;
+  depths: ReadonlyMap<string, number>;
   /** 深さ昇順、同深さは名前順の決定論的な体系順。 */
-  order: string[];
+  order: readonly string[];
 }
 
 /**
  * グラフに循環があるか（DFS の3色塗り）。DAG であることをテストで保証するために公開する。
  */
 export function hasCycle(edges: readonly PrereqEdge[] = CONCEPT_EDGES): boolean {
-  const adj = buildAdjacency(edges);
+  const { adjacency, nodes } = buildGraphIndex(edges);
   const WHITE = 0;
   const GRAY = 1;
   const BLACK = 2;
   const color = new Map<string, number>();
-  const nodes = collectNodes(edges);
   const dfs = (node: string): boolean => {
     color.set(node, GRAY);
-    for (const next of adj.get(node) ?? []) {
+    for (const next of adjacency.get(node) ?? []) {
       const c = color.get(next) ?? WHITE;
       if (c === GRAY) return true; // 後退辺 → 循環
       if (c === WHITE && dfs(next)) return true;
@@ -175,14 +171,12 @@ export function hasCycle(edges: readonly PrereqEdge[] = CONCEPT_EDGES): boolean 
  * （CONCEPT_EDGES が DAG であることは hasCycle のテストで保証する。防御的挙動）。
  */
 export function analyzeConceptGraph(edges: readonly PrereqEdge[] = CONCEPT_EDGES): ConceptGraphAnalysis {
-  const adj = buildAdjacency(edges);
-  const prereqMap = directPrereqs(edges);
-  const nodes = collectNodes(edges);
+  const { adjacency, prereqs, nodes } = buildGraphIndex(edges);
   const remaining = new Map<string, number>(); // 未処理の直接前提数
   const depths = new Map<string, number>();
   const queue: string[] = [];
   for (const n of nodes) {
-    const count = (prereqMap.get(n) ?? []).length;
+    const count = (prereqs.get(n) ?? []).length;
     remaining.set(n, count);
     if (count === 0) {
       depths.set(n, 0);
@@ -192,7 +186,7 @@ export function analyzeConceptGraph(edges: readonly PrereqEdge[] = CONCEPT_EDGES
   for (let i = 0; i < queue.length; i++) {
     const n = queue[i] as string; // i < queue.length のため在中
     const d = depths.get(n) ?? 0;
-    for (const next of adj.get(n) ?? []) {
+    for (const next of adjacency.get(n) ?? []) {
       depths.set(next, Math.max(depths.get(next) ?? 0, d + 1));
       const left = (remaining.get(next) ?? 0) - 1;
       remaining.set(next, left);
@@ -206,12 +200,12 @@ export function analyzeConceptGraph(edges: readonly PrereqEdge[] = CONCEPT_EDGES
   const order = [...depths.keys()].sort(
     (a, b) => (depths.get(a) ?? 0) - (depths.get(b) ?? 0) || a.localeCompare(b, "ja"),
   );
-  return { prereqs: prereqMap, depths, order };
+  return { prereqs, depths, order };
 }
 
 /** 各ノードの体系深さを返す。複数の派生情報が必要なら analyzeConceptGraph を使う。 */
 export function conceptDepths(edges: readonly PrereqEdge[] = CONCEPT_EDGES): Map<string, number> {
-  return analyzeConceptGraph(edges).depths;
+  return new Map(analyzeConceptGraph(edges).depths);
 }
 
 /**
@@ -219,7 +213,7 @@ export function conceptDepths(edges: readonly PrereqEdge[] = CONCEPT_EDGES): Map
  * 循環に巻き込まれたノードは含めない（conceptDepths と同じ防御的挙動）。
  */
 export function topologicalOrder(edges: readonly PrereqEdge[] = CONCEPT_EDGES): string[] {
-  return analyzeConceptGraph(edges).order;
+  return [...analyzeConceptGraph(edges).order];
 }
 
 /** 学習順のおすすめ結果。 */
@@ -245,14 +239,13 @@ export function recommendNextConcepts(
   edges: readonly PrereqEdge[] = CONCEPT_EDGES,
 ): ConceptRecommendation {
   const done = new Set(mastered);
-  const prereqMap = directPrereqs(edges);
-  const nodes = collectNodes(edges);
+  const { prereqs, nodes } = buildGraphIndex(edges);
   const recommended: string[] = [];
   const blocked: ConceptRecommendation["blocked"] = [];
   for (const topic of nodes) {
     if (done.has(topic)) continue; // 習得済みは対象外
-    const prereqs = prereqMap.get(topic) ?? [];
-    const missing = prereqs.filter((p) => !done.has(p));
+    const direct = prereqs.get(topic) ?? [];
+    const missing = direct.filter((p) => !done.has(p));
     if (missing.length === 0) recommended.push(topic);
     else blocked.push({ topic, missingPrereqs: missing });
   }
