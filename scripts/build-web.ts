@@ -179,6 +179,8 @@ async function main() {
     // どれか1つでも内容が変われば sw.js のバイトが変わり、SW 更新→キャッシュ一括切替が走る。
     join(ROOT, "web", SHARD_DIR, MANIFEST_FILE),
     ...allShardSlugs().map((slug) => join(ROOT, "web", SHARD_DIR, `${slug}.json`)),
+    // 出題傾向メタ（頻出度）もプリキャッシュ対象。頻度が変われば SW を更新させる。
+    join(ROOT, "web", SHARD_DIR, "topic-meta.json"),
     join(ROOT, "web/manifest.webmanifest"),
     join(ROOT, "web/icon.svg"),
   ];

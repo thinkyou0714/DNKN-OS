@@ -395,6 +395,29 @@ export function renderExamRunning(root: HTMLElement): void {
       "中断",
     ),
   );
+  // 見直しフラグ（本試CBT相当）。迷った問題に印を付けて先へ進み、結果画面で拾い直す。
+  // 逐次進行のため「戻る」は提供しないが、どこで迷ったかは記録され振り返りに使える。
+  const flagBtn = h("button", { class: "chip flagbtn", type: "button" }) as HTMLButtonElement;
+  const paintFlag = (): void => {
+    // この関数は renderExamRunning 内（冒頭で exam の null チェック済み）でのみ呼ばれるが、
+    // クロージャなので型は再度絞る必要がある。
+    const e = exam;
+    const on = e ? (e.flagged?.includes(e.idx) ?? false) : false;
+    flagBtn.textContent = on ? "🚩 見直す" : "🏳 見直しに入れる";
+    flagBtn.classList.toggle("is-on", on);
+    flagBtn.setAttribute("aria-pressed", on ? "true" : "false");
+  };
+  flagBtn.addEventListener("click", () => {
+    // exam は再代入されうる module binding なので、ローカルに束ねてから触る。
+    const e = exam;
+    if (!e) return;
+    const list = e.flagged ?? [];
+    const i = list.indexOf(e.idx);
+    e.flagged = i >= 0 ? list.filter((x) => x !== e.idx) : [...list, e.idx];
+    paintFlag();
+  });
+  paintFlag();
+  header.append(flagBtn);
   const host = h("div", {});
   // 未監修（自動生成）の問題はバッジで明示する（#63）。
   const meta = h("div", { id: "meta" }, `${p.subject}・難易度${difficultyStars(p.difficulty)}`);
@@ -634,6 +657,21 @@ function examReviewSection(root: HTMLElement): void {
   // biome-ignore lint/style/noNonNullAssertion: renderExamResult の `if (!exam) return` 後に呼ばれるため exam は非 null。
   const wrong = exam!.set.filter((_, i) => !exam!.results[i]);
   root.append(h("h2", {}, "見直し（問題別の結果）"));
+  // 試験中に「見直す」と印を付けた問題。正誤に関わらず、迷った箇所は本人が一番よく分かっている。
+  // biome-ignore lint/style/noNonNullAssertion: 同上 — renderExamResult でガード済み。
+  const flaggedIdx = exam!.flagged ?? [];
+  if (flaggedIdx.length > 0) {
+    // biome-ignore lint/style/noNonNullAssertion: 同上。
+    const flaggedProblems = flaggedIdx.map((i) => exam!.set[i]).filter((p): p is NonNullable<typeof p> => !!p);
+    root.append(
+      h("p", { class: "muted" }, `🚩 試験中に見直しフラグを付けた問題が ${flaggedProblems.length} 問あります。`),
+      h(
+        "button",
+        { class: "primary", type: "button", onclick: () => startDrill(flaggedProblems) },
+        `▶ 見直しフラグだけ再演習（${flaggedProblems.length}問）`,
+      ),
+    );
+  }
   if (wrong.length > 0) {
     root.append(
       h(

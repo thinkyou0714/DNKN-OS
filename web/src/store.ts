@@ -21,6 +21,7 @@ import {
 } from "../../lib/scheduler/index.js";
 import { dayIndex as _dayIndex, JST_OFFSET_MS } from "./dates.js";
 import { daysUntil } from "./plan.js";
+import { applyAnswer, dueProblemIds, evictOverCap, PROBLEM_CARD_KEY, type ProblemCardMap } from "./problem-cards.js";
 
 export interface StorageLike {
   getItem(key: string): string | null;
@@ -76,6 +77,8 @@ export class LocalProgress {
    * 内容ハッシュではないが、書き込みは safeSet 経由で blob 長 or 内容が変わるため十分実用的。
    */
   private _dueCountCache: { cardsLen: number; minute: number; retention: number; count: number } | null = null;
+  /** 問題単位カードの due 件数メモ（blob 長＋分をキーにする）。 */
+  private _dueProblemCache: { key: string; count: number } | null = null;
 
   /**
    * 試験日(ISO `YYYY-MM-DD`)。設定タブから変更され、setExamDate で更新される。
@@ -287,7 +290,47 @@ export class LocalProgress {
     });
     if (logs.length > LOG_CAP) logs.splice(0, logs.length - LOG_CAP); // 古い順に間引く
     this.safeSet(LOG_KEY, JSON.stringify(logs));
+
+    // 問題単位カード（誤答した問題だけを個別に期日管理する）。
+    // record() は学習タブ・模試・ドリルの全経路が通る唯一の choke point なので、
+    // ここにフックすれば呼び出し側は無改修で済む。topic カードには影響しない。
+    if (problemId !== undefined) {
+      const before = this.problemCards();
+      const after = evictOverCap(applyAnswer(before, problemId, rating, this.scheduler, now));
+      if (after !== before) {
+        this.safeSet(PROBLEM_CARD_KEY, JSON.stringify(after));
+        this._dueProblemCache = null;
+      }
+    }
     return this.scheduler.view(next);
+  }
+
+  /** 問題単位カードの全体（誤答起点で作られたものだけが入る）。 */
+  problemCards(): ProblemCardMap {
+    return this.read<ProblemCardMap>(PROBLEM_CARD_KEY, {});
+  }
+
+  /** 期日が来た problemId（期日の早い順）。 */
+  dueProblemIds(nowMs: number = Date.now()): string[] {
+    return dueProblemIds(this.problemCards(), nowMs);
+  }
+
+  /** 管理中の問題カード数。 */
+  problemCardCount(): number {
+    return Object.keys(this.problemCards()).length;
+  }
+
+  /**
+   * 期日到来の問題数（メモ化）。ナビのバッジが毎描画で JSON.parse しないようにする。
+   * topic 側の _dueCountCache と同じく blob 長＋分をキーにする。
+   */
+  dueProblemCountCached(nowMs: number = Date.now()): number {
+    const blob = this.storage.getItem(PROBLEM_CARD_KEY) ?? "";
+    const key = `${blob.length}:${Math.floor(nowMs / 60_000)}`;
+    if (this._dueProblemCache && this._dueProblemCache.key === key) return this._dueProblemCache.count;
+    const count = this.dueProblemIds(nowMs).length;
+    this._dueProblemCache = { key, count };
+    return count;
   }
 
   /** 今日まで連続して学習した日数（既定 JST 日基準）。 */

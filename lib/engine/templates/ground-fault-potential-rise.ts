@@ -8,8 +8,8 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const IG_SET: ReadonlyArray<number> = [1, 2, 3, 4, 5, 6, 10, 15];
-const RB_SET: ReadonlyArray<number> = [5, 10, 15, 20, 25, 30, 50, 75, 150];
+const IG_SET: ReadonlyArray<number> = [1, 2, 3, 4, 5, 6, 10, 15, 7, 8, 9, 12, 14, 16, 18, 20];
+const RB_SET: ReadonlyArray<number> = [5, 10, 15, 20, 25, 30, 50, 75, 150, 6, 8, 12, 18, 24, 40, 60, 100, 120];
 /** 遮断装置なしの場合の対地電圧上昇の上限〔V〕（電技解釈17条）。 */
 const LIMIT_VOLTAGE = 150;
 

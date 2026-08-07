@@ -2,17 +2,19 @@
  * views/review.ts — 復習タブの描画。
  */
 
+import { listBookmarks, toggleBookmark } from "../bookmarks.js";
 import { mascotSvg } from "../mascot.js";
 import { formatMath } from "../mathfmt.js";
+import { MISTAKE_REVIEW_CAP } from "../problem-cards.js";
 import { dailyReviewBatch, effectiveReviewCap, JST_OFFSET_MS, streakStatus } from "../retention.js";
-import { dueReviewProblems, mistakeNotebook } from "../review.js";
+import { dueMistakeProblems, dueReviewProblems, mistakeNotebook } from "../review.js";
 import { getMascotEnabled, getReviewCap } from "../settings.js";
-import { problems, progress, storage } from "../state/app.js";
+import { problems, progress, storage, visibleProblemIdSet, visibleTopicSet } from "../state/app.js";
 import { practice, resetPracticeSession } from "../state/practice.js";
 import { h, safeHtml } from "../ui/dom.js";
 import { emptyState, svgNode } from "../ui/widgets.js";
 import { cramBanner, usedFreezeDays } from "./practice.js";
-import { switchView } from "./router.js";
+import { render, switchView } from "./router.js";
 
 export function renderReview(root: HTMLElement): void {
   // 直前モードのバナー（試験が近いと集中復習を促す #34/#35）。
@@ -36,7 +38,9 @@ export function renderReview(root: HTMLElement): void {
   }
 
   // 1日上限でバッチ化（大量の復習による離脱を防ぐ）。直前モードでは上限を引き上げる（#64）。
-  const allDue = progress.dueTopics();
+  // 区分外の topic（いまの試験区分に問題が無い）は復習枠を食わないよう除外する。
+  const visible = visibleTopicSet();
+  const allDue = progress.dueTopics().filter((t) => visible.has(t));
   const cap = effectiveReviewCap(getReviewCap(storage), progress.cramMode());
   const { batch, overflow, capped } = dailyReviewBatch(allDue, cap);
   const dueProblems = dueReviewProblems(problems, batch);
@@ -92,6 +96,25 @@ export function renderReview(root: HTMLElement): void {
     root.append(list);
   }
 
+  // 今日の解き直し（問題単位カードで期日が来たもの）。
+  // 従来の間違いノートは回数順の静的リストで期日が無く、放置されやすかった。
+  const dueMistakes = dueMistakeProblems(
+    progress.dueProblemIds().filter((id) => visibleProblemIdSet().has(id)),
+    problems,
+    MISTAKE_REVIEW_CAP,
+  );
+  if (dueMistakes.length > 0) {
+    root.append(
+      h("h2", {}, "今日の解き直し"),
+      h("p", { class: "muted" }, "以前まちがえた問題のうち、いま復習すると定着しやすいものです。"),
+      h(
+        "button",
+        { class: "primary", type: "button", onclick: () => startDrill(dueMistakes) },
+        `▶ 解き直す（${dueMistakes.length}問）`,
+      ),
+    );
+  }
+
   root.append(h("h2", {}, "間違いノート"));
   if (notebook.length === 0) {
     root.append(emptyState("📝", "間違いノートは空です", "誤答した問題がここに集まり、ワンタップで再演習できます。"));
@@ -119,6 +142,56 @@ export function renderReview(root: HTMLElement): void {
       );
     }
     root.append(list);
+  }
+
+  // しおり（明示的に保存した問題）。間違いノートが「誤答」なのに対し、
+  // こちらは「正解したが不安」「解説を読み返したい」を拾う受け皿。
+  const bmIds = listBookmarks(storage);
+  const byId = new Map(problems.map((p) => [p.id, p]));
+  const marked = bmIds.map((id) => byId.get(id)).filter((p): p is NonNullable<typeof p> => p !== undefined);
+  root.append(h("h2", {}, "しおり"));
+  if (marked.length === 0) {
+    root.append(
+      emptyState("🔖", "しおりはまだありません", "学習タブで問題の「🔖 しおり」を押すと、ここに集まります。"),
+    );
+  } else {
+    root.append(
+      h(
+        "button",
+        { class: "primary", type: "button", onclick: () => startDrill([...marked].reverse()) },
+        `▶ しおりだけ再演習（${marked.length}問）`,
+      ),
+    );
+    const bmList = h("div", {});
+    // 新しく付けたものから見せる（直近の関心が上）。
+    for (const p of [...marked].reverse().slice(0, 15)) {
+      bmList.append(
+        h(
+          "div",
+          { class: "card" },
+          h("div", { html: safeHtml(formatMath(p.statement)) }),
+          h(
+            "div",
+            { class: "muted" },
+            `${p.subject}・${p.topic}`,
+            " ",
+            h(
+              "button",
+              {
+                class: "chip",
+                type: "button",
+                onclick: () => {
+                  toggleBookmark(storage, p.id);
+                  render();
+                },
+              },
+              "しおりを外す",
+            ),
+          ),
+        ),
+      );
+    }
+    root.append(bmList);
   }
 }
 

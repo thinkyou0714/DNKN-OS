@@ -66,6 +66,8 @@ async function buildForTopic(topic: string, perTopic: number): Promise<Problem[]
   // 多めに生成 → statement 重複を除去 → 上限まで採用（綺麗な draw の枯渇に強い）。
   const candidates = await generate(template, {
     count: perTopic * 6,
+    // 一次試験は全問マークシート五肢択一。数値テンプレは生成時に五択化する。
+    autoMc: true,
     narrator: new StubNarrator(),
     rng: seededRng(hashSeed(topic)),
     idPrefix: "TMP",
@@ -177,12 +179,52 @@ function writeShards(problems: Problem[]): void {
   );
 }
 
+/**
+ * 過去問頻度に応じた採用上限の倍率。
+ * 「ほぼ毎年出る論点」に在庫を厚く積み、「まれ」な論点で容量を食わない。
+ * 倍率は上限にのみ効き、テンプレの一意な組合せが尽きればそこで止まる。
+ */
+const FREQUENCY_MULTIPLIER: Record<string, number> = { high: 3, mid: 1.2, low: 0.4 };
+
+function perTopicFor(topic: string, base: number): number {
+  const freq = getTemplate(topic)?.pastExam?.frequency ?? "mid";
+  return Math.max(1, Math.round(base * (FREQUENCY_MULTIPLIER[freq] ?? 1)));
+}
+
+/**
+ * topic → 出題傾向メタ（頻度・分野）を書き出す。
+ *
+ * Problem スキーマに pastExam を持たせるとデータ量が問題数ぶん膨らみ、
+ * 逆にアプリ側へ手書きの表を置くとテンプレ定義と二重管理になる。
+ * ここで「テンプレを唯一の情報源」として小さな辞書に落とすことで両方を避ける。
+ */
+function writeTopicMeta(): void {
+  const meta: Record<string, { subject: string; exam?: string; frequency: string; area?: string }> = {};
+  for (const topic of listTopics()) {
+    const t = getTemplate(topic);
+    if (!t) continue;
+    meta[topic] = {
+      subject: t.subject,
+      ...(t.exam ? { exam: t.exam } : {}),
+      frequency: t.pastExam?.frequency ?? "mid",
+      ...(t.pastExam?.area ? { area: t.pastExam.area } : {}),
+    };
+  }
+  const out = join(ROOT, "web", SHARD_DIR, "topic-meta.json");
+  atomicWriteFileSync(out, `${JSON.stringify(meta)}\n`);
+  const counts = Object.values(meta).reduce<Record<string, number>>((a, m) => {
+    a[m.frequency] = (a[m.frequency] ?? 0) + 1;
+    return a;
+  }, {});
+  console.log(`web/${SHARD_DIR}/topic-meta.json を生成: ${Object.keys(meta).length}topic ${JSON.stringify(counts)}`);
+}
+
 async function main(): Promise<void> {
   const { perTopic } = parseCliOptions(process.argv.slice(2));
 
   const all: Problem[] = [];
   for (const topic of listTopics()) {
-    const items = await buildForTopic(topic, perTopic);
+    const items = await buildForTopic(topic, perTopicFor(topic, perTopic));
     all.push(...items);
   }
 
@@ -218,6 +260,7 @@ async function main(): Promise<void> {
   // combined にフォールバックする（app-init.ts）。順序は上の problems 配列の並びを保つ
   // ため決定論的。
   writeShards(problems);
+  writeTopicMeta();
 
   const byFormat = problems.reduce<Record<string, number>>((acc, p) => {
     const f = p.format ?? "multiple_choice";

@@ -7,10 +7,11 @@ import { featureLocked } from "../entitlements.js";
 import { recoveryView } from "../errors.js";
 import { coveredDays, streakBreakdown, studiedDays } from "../freeze.js";
 import { buildStudyPlan } from "../plan.js";
+import { MISTAKE_REVIEW_CAP } from "../problem-cards.js";
 import { dayIndexOf } from "../quests.js";
 import { offlineLabel } from "../retention.js";
-import { getDailyGoal, getExamDate, getReviewCap } from "../settings.js";
-import { problems, progress, setView, storage, view } from "../state/app.js";
+import { EXAM_FILTER_LABEL, getDailyGoal, getExamDate, getExamFilter, getReviewCap } from "../settings.js";
+import { problems, progress, setView, storage, view, visibleProblemIdSet, visibleTopicSet } from "../state/app.js";
 import { exam as examInProgress } from "../state/exam.js";
 import { estimateStorageKb, STORAGE_WARN_KB } from "../store.js";
 import { $, h } from "../ui/dom.js";
@@ -32,7 +33,7 @@ export const TABS: ReadonlyArray<readonly [string, string, string]> = [
   ["exam", "模試", "📝"],
   ["chat", "質問", "💬"],
   ["dashboard", "進捗", "📊"],
-  ["formulas", "公式", "📐"],
+  ["formulas", "資料", "📐"],
   ["settings", "設定", "⚙️"],
 ];
 
@@ -60,6 +61,13 @@ export function renderHeader(): void {
     dailyGoal: getDailyGoal(storage),
   }).daysLeft;
   $("countdown").textContent = `試験まで ${days} 日`;
+  // 出題を絞っているときだけ、今どの区分を学習中かを常時見えるようにする。
+  const ef = getExamFilter(storage);
+  const efEl = document.getElementById("examfilter");
+  if (efEl) {
+    efEl.textContent = EXAM_FILTER_LABEL[ef];
+    efEl.hidden = ef === "all";
+  }
   updateNetStatus();
 }
 
@@ -81,7 +89,14 @@ export function renderNav(): void {
   // バッジは件数のみ必要なので、due 件数（メモ化）を上限でクランプして算出する
   //   （dailyReviewBatch(topics, cap).batch.length と一致: alreadyDoneToday=0 のため min(count, cap)）。
   const cap = Math.max(1, Math.floor(getReviewCap(storage)));
-  const dueCount = Math.min(progress.dueCountCached(), cap);
+  // バッジも復習キューと同じ基準にする（区分外 topic を数えない）。
+  const visible = visibleTopicSet();
+  const topicDue = Math.min(progress.dueTopics().filter((t) => visible.has(t)).length, cap);
+  // 解き直し（問題単位カード）は topic とは別枠なので加算する。
+  // これを入れないと「バッジ0なのに開くと解き直しがある」というズレが出る。
+  const visibleIds = visibleProblemIdSet();
+  const mistakeDue = Math.min(progress.dueProblemIds().filter((id) => visibleIds.has(id)).length, MISTAKE_REVIEW_CAP);
+  const dueCount = topicDue + mistakeDue;
   for (const [id, label, icon] of TABS) {
     const due = id === "review" ? dueCount : 0;
     const selected = id === view;

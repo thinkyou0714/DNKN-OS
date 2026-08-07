@@ -6,6 +6,9 @@ import { formatMath } from "../mathfmt.js";
 import { h, safeHtml } from "../ui/dom.js";
 import { emptyState } from "../ui/widgets.js";
 import { gearGuideSection } from "./bridge-cards.js";
+import { renderHoukiMap } from "./houki-map.js";
+import { renderProblemSearch } from "./problem-search.js";
+import { startDrill } from "./review.js";
 
 /** 公式タブの検索クエリ（タブ滞在中は保持）。 */
 let formulasQuery = "";
@@ -38,7 +41,48 @@ function renderFormulaList(host: HTMLElement): void {
   }
 }
 
+/** 資料タブ内のサブ画面。タブを増やさずに参照系を束ねる（モバイル下部ナビの限界=7タブ）。 */
+type FxSegment = "formulas" | "houki" | "search";
+let fxSegment: FxSegment = "formulas";
+
+const SEGMENTS: ReadonlyArray<readonly [FxSegment, string]> = [
+  ["formulas", "公式集"],
+  ["houki", "法規マップ"],
+  ["search", "問題をさがす"],
+];
+
 export function renderFormulas(root: HTMLElement): void {
+  // セグメント切替（科目マップが増えてもここに足すだけでタブ数は変わらない）。
+  const seg = h("div", { class: "hk-seg-nav", role: "tablist", "aria-label": "資料の種類" });
+  for (const [id, label] of SEGMENTS) {
+    seg.append(
+      h(
+        "button",
+        {
+          class: `hk-seg-btn${fxSegment === id ? " is-on" : ""}`,
+          role: "tab",
+          "aria-selected": fxSegment === id ? "true" : "false",
+          onclick: () => {
+            fxSegment = id;
+            root.innerHTML = "";
+            renderFormulas(root);
+          },
+        },
+        label,
+      ),
+    );
+  }
+  root.append(seg);
+
+  if (fxSegment === "houki") {
+    renderHoukiMap(root);
+    return;
+  }
+  if (fxSegment === "search") {
+    renderProblemSearch(root, startDrill);
+    return;
+  }
+
   root.append(
     h("h2", {}, "公式集"),
     h("p", { class: "muted" }, "暗記だけでなく導出の足がかりに。出題テンプレートと対応しています。"),

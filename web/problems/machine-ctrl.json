@@ -23544,7 +23544,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "二次系の固有角周波数",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 4,
     "params": {
       "gain": {
@@ -23564,6 +23564,31 @@
       }
     },
     "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=4, T=25s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "choices": [
+      "0.04",
+      "0.2",
+      "0.4",
+      "0.8",
+      "4"
+    ],
+    "distractors": [
+      {
+        "choice": "0.8",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "0.2",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "4",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      },
+      {
+        "choice": "0.04",
+        "reason": "桁を1つ小さく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "0.4",
     "solution": [
       "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
@@ -23592,7 +23617,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "二次系の固有角周波数",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 4,
     "params": {
       "gain": {
@@ -23612,6 +23637,31 @@
       }
     },
     "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=25, T=4s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "choices": [
+      "1.25",
+      "1.58",
+      "2.5",
+      "5",
+      "25"
+    ],
+    "distractors": [
+      {
+        "choice": "5",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "1.25",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "1.58",
+        "reason": "平方根を余分に取った（2乗を忘れた）"
+      },
+      {
+        "choice": "25",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "2.5",
     "solution": [
       "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
@@ -23640,7 +23690,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "二次系の固有角周波数",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 4,
     "params": {
       "gain": {
@@ -23660,6 +23710,31 @@
       }
     },
     "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=1, T=25s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "choices": [
+      "0.02",
+      "0.1",
+      "0.2",
+      "0.4",
+      "2"
+    ],
+    "distractors": [
+      {
+        "choice": "0.4",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "0.1",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "2",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      },
+      {
+        "choice": "0.02",
+        "reason": "桁を1つ小さく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "0.2",
     "solution": [
       "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
@@ -23688,7 +23763,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "二次系の固有角周波数",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 4,
     "params": {
       "gain": {
@@ -23708,6 +23783,31 @@
       }
     },
     "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=100, T=1s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "choices": [
+      "3.16",
+      "5",
+      "10",
+      "20",
+      "100"
+    ],
+    "distractors": [
+      {
+        "choice": "20",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "5",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "3.16",
+        "reason": "平方根を余分に取った（2乗を忘れた）"
+      },
+      {
+        "choice": "100",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "10",
     "solution": [
       "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
@@ -23736,7 +23836,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "二次系の固有角周波数",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 4,
     "params": {
       "gain": {
@@ -23756,6 +23856,31 @@
       }
     },
     "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=4, T=1s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "choices": [
+      "1",
+      "1.41",
+      "2",
+      "4",
+      "20"
+    ],
+    "distractors": [
+      {
+        "choice": "4",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "1",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "1.41",
+        "reason": "平方根を余分に取った（2乗を忘れた）"
+      },
+      {
+        "choice": "20",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "2",
     "solution": [
       "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
@@ -23784,7 +23909,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "二次系の固有角周波数",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 4,
     "params": {
       "gain": {
@@ -23804,6 +23929,31 @@
       }
     },
     "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=1, T=1s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "choices": [
+      "0.1",
+      "0.5",
+      "1",
+      "2",
+      "10"
+    ],
+    "distractors": [
+      {
+        "choice": "2",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "0.5",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "10",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      },
+      {
+        "choice": "0.1",
+        "reason": "桁を1つ小さく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "1",
     "solution": [
       "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
@@ -23832,7 +23982,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "二次系の固有角周波数",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 4,
     "params": {
       "gain": {
@@ -23852,6 +24002,31 @@
       }
     },
     "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=1, T=4s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "choices": [
+      "0.05",
+      "0.25",
+      "0.5",
+      "1",
+      "5"
+    ],
+    "distractors": [
+      {
+        "choice": "1",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "0.25",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "5",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      },
+      {
+        "choice": "0.05",
+        "reason": "桁を1つ小さく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "0.5",
     "solution": [
       "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
@@ -23880,7 +24055,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "二次系の固有角周波数",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 4,
     "params": {
       "gain": {
@@ -23900,6 +24075,31 @@
       }
     },
     "statement": "開ループ伝達関数 G(s)=K/{s(Ts+1)}（K=25, T=1s）の単位フィードバック系がある。閉ループ系を標準二次系で表したときの固有角周波数 ωn〔rad/s〕は?",
+    "choices": [
+      "2.24",
+      "2.5",
+      "5",
+      "10",
+      "50"
+    ],
+    "distractors": [
+      {
+        "choice": "10",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "2.5",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "2.24",
+        "reason": "平方根を余分に取った（2乗を忘れた）"
+      },
+      {
+        "choice": "50",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "5",
     "solution": [
       "閉ループ伝達関数 W(s)=G/(1+G)=K/(Ts²+s+K)",
@@ -23928,7 +24128,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 3,
     "params": {
       "forward_gain": {
@@ -23947,6 +24147,31 @@
       }
     },
     "statement": "前向き要素のゲイン G=12、フィードバック要素のゲイン H=0.25 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "choices": [
+      "1.5",
+      "1.73",
+      "3",
+      "6",
+      "30"
+    ],
+    "distractors": [
+      {
+        "choice": "6",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "1.5",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "1.73",
+        "reason": "平方根を余分に取った（2乗を忘れた）"
+      },
+      {
+        "choice": "30",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "3",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
@@ -23975,7 +24200,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 3,
     "params": {
       "forward_gain": {
@@ -23994,6 +24219,31 @@
       }
     },
     "statement": "前向き要素のゲイン G=4、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "choices": [
+      "0.08",
+      "0.4",
+      "0.8",
+      "1.6",
+      "8"
+    ],
+    "distractors": [
+      {
+        "choice": "1.6",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "0.4",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "8",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      },
+      {
+        "choice": "0.08",
+        "reason": "桁を1つ小さく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "0.8",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
@@ -24022,7 +24272,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 3,
     "params": {
       "forward_gain": {
@@ -24041,6 +24291,31 @@
       }
     },
     "statement": "前向き要素のゲイン G=99、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "choices": [
+      "0.1",
+      "0.49",
+      "0.99",
+      "1.98",
+      "9.9"
+    ],
+    "distractors": [
+      {
+        "choice": "1.98",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "0.49",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "9.9",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      },
+      {
+        "choice": "0.1",
+        "reason": "桁を1つ小さく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "0.99",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
@@ -24069,7 +24344,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 3,
     "params": {
       "forward_gain": {
@@ -24088,6 +24363,31 @@
       }
     },
     "statement": "前向き要素のゲイン G=15、フィードバック要素のゲイン H=0.2 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "choices": [
+      "1.88",
+      "1.94",
+      "3.75",
+      "7.5",
+      "37.5"
+    ],
+    "distractors": [
+      {
+        "choice": "7.5",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "1.88",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "1.94",
+        "reason": "平方根を余分に取った（2乗を忘れた）"
+      },
+      {
+        "choice": "37.5",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "3.75",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
@@ -24116,7 +24416,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 3,
     "params": {
       "forward_gain": {
@@ -24135,6 +24435,31 @@
       }
     },
     "statement": "前向き要素のゲイン G=6、フィードバック要素のゲイン H=0.5 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "choices": [
+      "0.75",
+      "1.22",
+      "1.5",
+      "3",
+      "15"
+    ],
+    "distractors": [
+      {
+        "choice": "3",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "0.75",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "1.22",
+        "reason": "平方根を余分に取った（2乗を忘れた）"
+      },
+      {
+        "choice": "15",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "1.5",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
@@ -24163,7 +24488,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 3,
     "params": {
       "forward_gain": {
@@ -24182,6 +24507,31 @@
       }
     },
     "statement": "前向き要素のゲイン G=20、フィードバック要素のゲイン H=0.2 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "choices": [
+      "0.4",
+      "2",
+      "4",
+      "8",
+      "40"
+    ],
+    "distractors": [
+      {
+        "choice": "8",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "2",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "40",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      },
+      {
+        "choice": "0.4",
+        "reason": "桁を1つ小さく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "4",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
@@ -24210,7 +24560,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 3,
     "params": {
       "forward_gain": {
@@ -24229,6 +24579,31 @@
       }
     },
     "statement": "前向き要素のゲイン G=8、フィードバック要素のゲイン H=0.5 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "choices": [
+      "0.8",
+      "1.26",
+      "1.6",
+      "3.2",
+      "16"
+    ],
+    "distractors": [
+      {
+        "choice": "3.2",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "0.8",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "1.26",
+        "reason": "平方根を余分に取った（2乗を忘れた）"
+      },
+      {
+        "choice": "16",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "1.6",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
@@ -24257,7 +24632,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 3,
     "params": {
       "forward_gain": {
@@ -24276,6 +24651,31 @@
       }
     },
     "statement": "前向き要素のゲイン G=19、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "choices": [
+      "0.1",
+      "0.47",
+      "0.95",
+      "1.9",
+      "9.5"
+    ],
+    "distractors": [
+      {
+        "choice": "1.9",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "0.47",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "9.5",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      },
+      {
+        "choice": "0.1",
+        "reason": "桁を1つ小さく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "0.95",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
@@ -24304,7 +24704,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 3,
     "params": {
       "forward_gain": {
@@ -24323,6 +24723,31 @@
       }
     },
     "statement": "前向き要素のゲイン G=9、フィードバック要素のゲイン H=1 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "choices": [
+      "0.09",
+      "0.45",
+      "0.9",
+      "1.8",
+      "9"
+    ],
+    "distractors": [
+      {
+        "choice": "1.8",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "0.45",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "9",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      },
+      {
+        "choice": "0.09",
+        "reason": "桁を1つ小さく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "0.9",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
@@ -24351,7 +24776,7 @@
     "exam": "denken2_secondary",
     "subject": "機械制御",
     "topic": "負帰還系の合成ゲイン",
-    "format": "numeric",
+    "format": "multiple_choice",
     "difficulty": 3,
     "params": {
       "forward_gain": {
@@ -24370,6 +24795,31 @@
       }
     },
     "statement": "前向き要素のゲイン G=4、フィードバック要素のゲイン H=0.25 の負帰還制御系がある。系全体の合成ゲイン W=G/(1+GH) の値は?",
+    "choices": [
+      "1",
+      "1.41",
+      "2",
+      "4",
+      "20"
+    ],
+    "distractors": [
+      {
+        "choice": "4",
+        "reason": "係数 2 を余分に掛けた（½ を落とした）"
+      },
+      {
+        "choice": "1",
+        "reason": "係数 ½ を余分に掛けた（2 倍を落とした）"
+      },
+      {
+        "choice": "1.41",
+        "reason": "平方根を余分に取った（2乗を忘れた）"
+      },
+      {
+        "choice": "20",
+        "reason": "桁を1つ大きく取り違えた（単位換算のミス）"
+      }
+    ],
     "answer": "2",
     "solution": [
       "負帰還系の合成伝達関数 W=G/(1+G·H)",
@@ -49870,6 +50320,1356 @@
       "挿入前: E1=200−40×0.5=180V",
       "挿入後: E2=200−40×(0.5+0.75)=150V",
       "N2=N1×E2/E1=1500×150/180=1250min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-C0ABD342",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.4,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 0.6,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1200,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 200V、電機子抵抗 0.4Ω の直流分巻電動機が、電機子電流 50A、回転速度 1200min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に0.6Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "1000",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=200−50×0.4=180V",
+      "挿入後: E2=200−50×(0.4+0.6)=150V",
+      "N2=N1×E2/E1=1200×150/180=1000min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-1252DFCD",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.2,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 1.2,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1200,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 110V、電機子抵抗 0.2Ω の直流分巻電動機が、電機子電流 50A、回転速度 1200min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に1.2Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "480",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=110−50×0.2=100V",
+      "挿入後: E2=110−50×(0.2+1.2)=40V",
+      "N2=N1×E2/E1=1200×40/100=480min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-0D9F3000",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 220,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 40,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.5,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 1,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1500,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 220V、電機子抵抗 0.5Ω の直流分巻電動機が、電機子電流 40A、回転速度 1500min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に1Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "1200",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=220−40×0.5=200V",
+      "挿入後: E2=220−40×(0.5+1)=160V",
+      "N2=N1×E2/E1=1500×160/200=1200min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-8B9E8D5C",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.4,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 1.5,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1200,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 200V、電機子抵抗 0.4Ω の直流分巻電動機が、電機子電流 50A、回転速度 1200min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に1.5Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "700",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=200−50×0.4=180V",
+      "挿入後: E2=200−50×(0.4+1.5)=105V",
+      "N2=N1×E2/E1=1200×105/180=700min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-CC1253BE",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 20,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.5,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 900,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 110V、電機子抵抗 0.5Ω の直流分巻電動機が、電機子電流 20A、回転速度 900min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に2Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "540",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=110−20×0.5=100V",
+      "挿入後: E2=110−20×(0.5+2)=60V",
+      "N2=N1×E2/E1=900×60/100=540min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-E24FC814",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.4,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 1.5,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1200,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 110V、電機子抵抗 0.4Ω の直流分巻電動機が、電機子電流 50A、回転速度 1200min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に1.5Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "200",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=110−50×0.4=90V",
+      "挿入後: E2=110−50×(0.4+1.5)=15V",
+      "N2=N1×E2/E1=1200×15/90=200min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-4C5350CE",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 220,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.4,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1200,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 220V、電機子抵抗 0.4Ω の直流分巻電動機が、電機子電流 50A、回転速度 1200min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に2Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "600",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=220−50×0.4=200V",
+      "挿入後: E2=220−50×(0.4+2)=100V",
+      "N2=N1×E2/E1=1200×100/200=600min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-8D8E1391",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 220,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 20,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.2,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 0.75,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 900,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 220V、電機子抵抗 0.2Ω の直流分巻電動機が、電機子電流 20A、回転速度 900min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に0.75Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "837.5",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=220−20×0.2=216V",
+      "挿入後: E2=220−20×(0.2+0.75)=201V",
+      "N2=N1×E2/E1=900×201/216=837.5min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-62FB819A",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 25,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.5,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 0.5,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1200,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 200V、電機子抵抗 0.5Ω の直流分巻電動機が、電機子電流 25A、回転速度 1200min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に0.5Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "1120",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=200−25×0.5=187.5V",
+      "挿入後: E2=200−25×(0.5+0.5)=175V",
+      "N2=N1×E2/E1=1200×175/187.5=1120min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-2FD73936",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.4,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 2,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 900,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 200V、電機子抵抗 0.4Ω の直流分巻電動機が、電機子電流 50A、回転速度 900min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に2Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "400",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=200−50×0.4=180V",
+      "挿入後: E2=200−50×(0.4+2)=80V",
+      "N2=N1×E2/E1=900×80/180=400min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-89190F56",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 220,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 40,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.5,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 0.75,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 900,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 220V、電機子抵抗 0.5Ω の直流分巻電動機が、電機子電流 40A、回転速度 900min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に0.75Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "765",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=220−40×0.5=200V",
+      "挿入後: E2=220−40×(0.5+0.75)=170V",
+      "N2=N1×E2/E1=900×170/200=765min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-B2D390CB",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.2,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 1,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 900,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 110V、電機子抵抗 0.2Ω の直流分巻電動機が、電機子電流 50A、回転速度 900min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に1Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "450",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=110−50×0.2=100V",
+      "挿入後: E2=110−50×(0.2+1)=50V",
+      "N2=N1×E2/E1=900×50/100=450min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-46B8D224",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 20,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.4,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 1,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1200,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 200V、電機子抵抗 0.4Ω の直流分巻電動機が、電機子電流 20A、回転速度 1200min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に1Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "1075",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=200−20×0.4=192V",
+      "挿入後: E2=200−20×(0.4+1)=172V",
+      "N2=N1×E2/E1=1200×172/192=1075min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-82201AAF",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.4,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 1.5,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1500,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 200V、電機子抵抗 0.4Ω の直流分巻電動機が、電機子電流 50A、回転速度 1500min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に1.5Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "875",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=200−50×0.4=180V",
+      "挿入後: E2=200−50×(0.4+1.5)=105V",
+      "N2=N1×E2/E1=1500×105/180=875min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-863C508F",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.2,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 0.6,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1500,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 110V、電機子抵抗 0.2Ω の直流分巻電動機が、電機子電流 50A、回転速度 1500min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に0.6Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "1050",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=110−50×0.2=100V",
+      "挿入後: E2=110−50×(0.2+0.6)=70V",
+      "N2=N1×E2/E1=1500×70/100=1050min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-31DD4EDF",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 40,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.2,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 0.75,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1000,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 200V、電機子抵抗 0.2Ω の直流分巻電動機が、電機子電流 40A、回転速度 1000min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に0.75Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "843.75",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=200−40×0.2=192V",
+      "挿入後: E2=200−40×(0.2+0.75)=162V",
+      "N2=N1×E2/E1=1000×162/192=843.75min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-22F5F8D1",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 200,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 50,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.4,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 0.6,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1500,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 200V、電機子抵抗 0.4Ω の直流分巻電動機が、電機子電流 50A、回転速度 1500min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に0.6Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "1250",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=200−50×0.4=180V",
+      "挿入後: E2=200−50×(0.4+0.6)=150V",
+      "N2=N1×E2/E1=1500×150/180=1250min⁻¹",
+      "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
+    ],
+    "validation": {
+      "solver_checked": true,
+      "human_checked": false,
+      "clean_answer": true,
+      "physically_valid": true,
+      "confidence": 0.9
+    },
+    "source": {
+      "type": "original",
+      "citation": "DENKEN-OS オリジナル問題"
+    },
+    "stats": {
+      "answered": 0,
+      "correct_rate": 0
+    },
+    "status": "draft"
+  },
+  {
+    "id": "G-5C615373",
+    "exam": "denken2_secondary",
+    "subject": "機械制御",
+    "topic": "直流分巻電動機の抵抗制御",
+    "format": "descriptive",
+    "difficulty": 5,
+    "params": {
+      "terminal_voltage": {
+        "value": 110,
+        "unit": "V",
+        "realistic_range": [
+          100,
+          250
+        ]
+      },
+      "armature_current": {
+        "value": 25,
+        "unit": "A",
+        "realistic_range": [
+          10,
+          60
+        ]
+      },
+      "armature_resistance": {
+        "value": 0.4,
+        "unit": "Ω",
+        "realistic_range": [
+          0.1,
+          1
+        ]
+      },
+      "series_resistance": {
+        "value": 1.2,
+        "unit": "Ω",
+        "realistic_range": [
+          0.2,
+          2
+        ]
+      },
+      "initial_speed": {
+        "value": 1200,
+        "unit": "min⁻¹",
+        "realistic_range": [
+          800,
+          2000
+        ]
+      }
+    },
+    "statement": "端子電圧 110V、電機子抵抗 0.4Ω の直流分巻電動機が、電機子電流 25A、回転速度 1200min⁻¹ で運転している。負荷トルクと界磁磁束は一定のまま、電機子回路に1.2Ω の抵抗を直列に挿入したときの回転速度 N2〔min⁻¹〕を求めよ。",
+    "answer": "840",
+    "solution": [
+      "着眼点: トルク一定・界磁一定なら Ia 不変で、速度は逆起電力 E=V−Ia·R に比例する。",
+      "挿入前: E1=110−25×0.4=100V",
+      "挿入後: E2=110−25×(0.4+1.2)=70V",
+      "N2=N1×E2/E1=1200×70/100=840min⁻¹",
       "ポイント: 挿入抵抗の電圧降下 Ia·R がそのまま逆起電力の減少になり速度が下がる。"
     ],
     "validation": {

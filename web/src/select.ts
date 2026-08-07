@@ -28,6 +28,12 @@ export interface PickOptions {
    */
   recentTopics?: string[];
   /**
+   * topic の出題重み（過去問頻度）。>1 なら選ばれやすくなる。未指定は一様。
+   * 「過去問で頻出の論点ほど多く当たる」を、順序ではなく確率で実現する
+   * （順序で固定すると頻出以外を一度も見ないまま本番を迎えるため）。
+   */
+  topicWeight?: (topic: string) => number;
+  /**
    * 過去に間違えた問題ID集合（問題単位の弱点バイアス）。topic 内の候補に含まれていれば、
    * これに該当する問題を優先して出す（never-seen / already-correct より前に）。
    */
@@ -53,6 +59,25 @@ export function missedProblemIds(logs: readonly AnswerLog[]): Set<string> {
   return missed;
 }
 
+/** topic 重みつきの抽選。重み未指定・総和0のときは一様抽選に落とす。 */
+function weightedPick(
+  pool: Problem[],
+  weightOf: ((topic: string) => number) | undefined,
+  rng: () => number,
+): Problem | null {
+  if (pool.length === 0) return null;
+  if (!weightOf) return pool[Math.floor(rng() * pool.length)] ?? null;
+  const weights = pool.map((p) => Math.max(0, weightOf(p.topic)));
+  const total = weights.reduce((a, b) => a + b, 0);
+  if (!(total > 0)) return pool[Math.floor(rng() * pool.length)] ?? null;
+  let r = rng() * total;
+  for (const [i, w] of weights.entries()) {
+    r -= w;
+    if (r <= 0) return pool[i] ?? null;
+  }
+  return pool[pool.length - 1] ?? null;
+}
+
 export function pickNextProblem(problems: Problem[], opts: PickOptions): Problem | null {
   if (problems.length === 0) return null;
   const rng = opts.rng ?? Math.random;
@@ -70,7 +95,7 @@ export function pickNextProblem(problems: Problem[], opts: PickOptions): Problem
       const missedPool = usable.filter((p) => missed.has(p.id));
       if (missedPool.length > 0) return missedPool[Math.floor(rng() * missedPool.length)] ?? null;
     }
-    return usable[Math.floor(rng() * usable.length)] ?? null;
+    return weightedPick(usable, opts.topicWeight, rng);
   };
 
   // 弱点 topic を「直近に出していないもの」優先で並べ替える（インターリーブ #50）。

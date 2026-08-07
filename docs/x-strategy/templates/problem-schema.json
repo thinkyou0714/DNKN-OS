@@ -28,6 +28,19 @@
     "statement": { "type": "string", "minLength": 1, "description": "問題文" },
     "figure": { "type": "string", "description": "図/回路図のパスまたは説明(任意)" },
     "choices": { "type": "array", "items": { "type": "string" }, "description": "選択肢。誤りが『成立する引っ掛け』であること。multiple_choice では必須かつ2件以上" },
+    "distractors": {
+      "type": "array",
+      "description": "誤答の言語化。choice=誤答の選択肢, reason=その選択肢に至る典型ミス",
+      "items": {
+        "type": "object",
+        "required": ["choice", "reason"],
+        "properties": {
+          "choice": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
     "answer": { "type": "string", "minLength": 1, "description": "正解(綺麗な値・一意・有限であること)。multiple_choice では choices のいずれかと一致" },
     "solution": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "解法ステップ(自作。引き写し禁止)" },
     "validation": {

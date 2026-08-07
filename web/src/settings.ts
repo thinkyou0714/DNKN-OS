@@ -84,6 +84,96 @@ export function setReviewCap(storage: StorageLike, n: number): void {
   storage.setItem(REVIEW_CAP_KEY, String(clamped));
 }
 
+// ---- 受験する試験区分（三種 / 二種一次 / 二種二次）----
+
+const EXAM_FILTER_KEY = "denken:examFilter";
+
+/**
+ * 出題を絞る試験区分。"all" は従来どおり全部混ぜる（既存ユーザーの既定＝挙動を変えない）。
+ * 学習ログ・FSRSカードは topic 単位で貯まるため、この設定を切り替えても履歴は消えない
+ * （表示・出題プールが変わるだけで、戻せば元の進捗もそのまま見える）。
+ */
+export type ExamFilter = "all" | "denken3" | "denken2_primary" | "denken2_secondary";
+
+const EXAM_FILTERS: readonly ExamFilter[] = ["all", "denken3", "denken2_primary", "denken2_secondary"];
+
+export const EXAM_FILTER_LABEL: Record<ExamFilter, string> = {
+  all: "すべて",
+  denken3: "電験三種",
+  denken2_primary: "電験二種 一次",
+  denken2_secondary: "電験二種 二次",
+};
+
+export function getExamFilter(storage: StorageLike): ExamFilter {
+  const raw = storage.getItem(EXAM_FILTER_KEY) as ExamFilter | null;
+  return raw && EXAM_FILTERS.includes(raw) ? raw : "all";
+}
+
+export function setExamFilter(storage: StorageLike, f: ExamFilter): void {
+  storage.setItem(EXAM_FILTER_KEY, EXAM_FILTERS.includes(f) ? f : "all");
+}
+
+/** 試験区分フィルタを問題リストに適用する（"all" は素通し）。 */
+export function applyExamFilter<T extends { exam?: string | undefined }>(items: readonly T[], f: ExamFilter): T[] {
+  if (f === "all") return [...items];
+  // exam 未設定の問題は区分が判定できないため、絞り込み時は除外する。
+  return items.filter((p) => p.exam === f);
+}
+
+// ---- 科目合格（電験の科目別合格制度）----
+
+const SUBJECT_PASS_KEY = "denken:subjectPasses";
+
+/**
+ * 科目合格の記録。値は「その合格から数えて既に何回試験が実施されたか」。
+ * 制度は年数でなく回数で数える（最大連続5回免除）ため、回数で保存する。
+ */
+export function getSubjectPasses(storage: StorageLike): Record<string, number> {
+  try {
+    const raw = storage.getItem(SUBJECT_PASS_KEY);
+    if (!raw) return {};
+    const parsed: unknown = JSON.parse(raw);
+    if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) return {};
+    const out: Record<string, number> = {};
+    for (const [k, v] of Object.entries(parsed as Record<string, unknown>)) {
+      if (typeof v === "number" && Number.isFinite(v) && v >= 0) out[k] = Math.floor(v);
+    }
+    return out;
+  } catch {
+    return {};
+  }
+}
+
+export function setSubjectPasses(storage: StorageLike, v: Record<string, number>): void {
+  storage.setItem(SUBJECT_PASS_KEY, JSON.stringify(v));
+}
+
+// ---- 文字サイズ（可読性・アクセシビリティ）----
+
+const FONT_SCALE_KEY = "denken:fontScale";
+
+/**
+ * 文字サイズ。既存CSSが rem ベースなので、ルートの font-size を変えるだけで
+ * 問題文・選択肢・解説まで一律に追随する（個別指定を増やさない）。
+ * 競合の学習アプリでは標準機能で、長文の条文問題を読む法規で特に効く。
+ */
+export type FontScale = "s" | "m" | "l" | "xl";
+
+const FONT_SCALES: readonly FontScale[] = ["s", "m", "l", "xl"];
+
+/** ルート要素に掛ける倍率（%）。m=100% が既定＝従来の見た目。 */
+export const FONT_SCALE_PERCENT: Record<FontScale, number> = { s: 90, m: 100, l: 115, xl: 130 };
+export const FONT_SCALE_LABEL: Record<FontScale, string> = { s: "小", m: "標準", l: "大", xl: "特大" };
+
+export function getFontScale(storage: StorageLike): FontScale {
+  const raw = storage.getItem(FONT_SCALE_KEY) as FontScale | null;
+  return raw && FONT_SCALES.includes(raw) ? raw : "m";
+}
+
+export function setFontScale(storage: StorageLike, v: FontScale): void {
+  storage.setItem(FONT_SCALE_KEY, FONT_SCALES.includes(v) ? v : "m");
+}
+
 // ---- 効果音（正解音・ファンファーレ等。既定オン(中)・音量3段階＋オフ）----
 
 const SOUND_KEY = "denken:sound";

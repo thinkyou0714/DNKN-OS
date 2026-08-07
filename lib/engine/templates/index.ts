@@ -16,6 +16,7 @@ import { chargeRedistribution } from "./charge-redistribution.js";
 import { chopperCurrentRipple } from "./chopper-current-ripple.js";
 import { closedLoopTimeConstant } from "./closed-loop-time-constant.js";
 import { combinedCycleEfficiency } from "./combined-cycle-efficiency.js";
+import { compositeLoadSag } from "./composite-load-sag.js";
 import { condenserCoolingWater } from "./condenser-cooling-water.js";
 import { conductorActualLength } from "./conductor-actual-length.js";
 import { conductorLength } from "./conductor-length.js";
@@ -29,6 +30,7 @@ import { dcMotorEmf } from "./dc-motor-emf.js";
 import { dcMotorFieldWeakening } from "./dc-motor-field-weakening.js";
 import { dcMotorSpeedResistance } from "./dc-motor-speed-resistance.js";
 import { deltaWyeResistance } from "./delta-wye-resistance.js";
+import { demandDiversityComposite } from "./demand-diversity-composite.js";
 import { demandFactor } from "./demand-factor.js";
 import { disturbanceSteadyState } from "./disturbance-steady-state.js";
 import { diversityFactor } from "./diversity-factor.js";
@@ -45,6 +47,7 @@ import { groundFaultSymmetrical } from "./ground-fault-symmetrical.js";
 import { groundingResistance } from "./grounding-resistance.js";
 import { groundingTypes } from "./grounding-types.js";
 import { guyWireSafety } from "./guy-wire-safety.js";
+import { guyWireStrandCount } from "./guy-wire-strand-count.js";
 import { heatPumpCop } from "./heat-pump-cop.js";
 import { hoistMotorOutput } from "./hoist-motor-output.js";
 import { hvInsulationTestVoltage } from "./hv-insulation-test-voltage.js";
@@ -56,14 +59,18 @@ import { inductionMotorSpeed } from "./induction-motor-speed.js";
 import { inductionPowerBalance } from "./induction-power-balance.js";
 import { inductionProportionalShift } from "./induction-proportional-shift.js";
 import { inductionSecondaryCopperLoss } from "./induction-secondary-copper-loss.js";
+import { inductionSlipTorque } from "./induction-slip-torque.js";
 import { inductorEnergy } from "./inductor-energy.js";
 import { insulationResistance } from "./insulation-resistance.js";
+import { insulationTestChargingCurrent } from "./insulation-test-charging-current.js";
 import { insulationTestVoltage } from "./insulation-test-voltage.js";
 import { inverseSquareIlluminance } from "./inverse-square-illuminance.js";
 import { ironLossFrequency } from "./iron-loss-frequency.js";
 import { kirchhoffTwoMesh } from "./kirchhoff-two-mesh.js";
 import { leakageCurrent } from "./leakage-current.js";
+import { leakageVoltageDivider } from "./leakage-voltage-divider.js";
 import { lightingDesign } from "./lighting-design.js";
+import { lineDropAndLoss } from "./line-drop-and-loss.js";
 import { loadFactor } from "./load-factor.js";
 import { loopDistributionCurrent } from "./loop-distribution-current.js";
 import { lossFactor } from "./loss-factor.js";
@@ -89,6 +96,7 @@ import { percentImpedanceShortCircuit } from "./percent-impedance-short-circuit.
 import { pfImprovementCapacity } from "./pf-improvement-capacity.js";
 import { pointChargePotential } from "./point-charge-potential.js";
 import { poleEmbedmentDepth } from "./pole-embedment-depth.js";
+import { powerFactorCapacitor } from "./power-factor-capacitor.js";
 import { powerFactorCorrection } from "./power-factor-correction.js";
 import { pqVoltageDrop } from "./pq-voltage-drop.js";
 import { pumpMotorInput } from "./pump-motor-input.js";
@@ -121,6 +129,8 @@ import { specificSpeed } from "./specific-speed.js";
 import { speedRegulation } from "./speed-regulation.js";
 import { starDeltaStarting } from "./star-delta-starting.js";
 import { stationServiceEfficiency } from "./station-service-efficiency.js";
+import { statuteBlankFill } from "./statute-blank-fill.js";
+import { statutoryNumbersDrill } from "./statutory-numbers-drill.js";
 import { steadyStateError } from "./steady-state-error.js";
 import { supplyVoltageLimit } from "./supply-voltage-limit.js";
 import { switchingLoss } from "./switching-loss.js";
@@ -131,11 +141,13 @@ import { systemFrequencyConstant } from "./system-frequency-constant.js";
 import { thermalEfficiency } from "./thermal-efficiency.js";
 import { thermalFuelConsumption } from "./thermal-fuel-consumption.js";
 import { theveninLoadCurrent } from "./thevenin-load-current.js";
+import { theveninMaxPower } from "./thevenin-max-power.js";
 import { threePhasePower } from "./three-phase-power.js";
 import { threePhaseRectifier } from "./three-phase-rectifier.js";
 import { transformerCapacitySelection } from "./transformer-capacity-selection.js";
 import { transformerEfficiency } from "./transformer-efficiency.js";
 import { transformerExcitingCurrent } from "./transformer-exciting-current.js";
+import { transformerMarginAfterPf } from "./transformer-margin-after-pf.js";
 import { transformerParallelLoad } from "./transformer-parallel-load.js";
 import { transformerTap } from "./transformer-tap.js";
 import { transformerTurnsRatio } from "./transformer-turns-ratio.js";
@@ -242,7 +254,16 @@ const templates: Template[] = [
   inductionMotorEfficiency,
   elevatorCounterweightPower,
   ironLossFrequency,
+  theveninMaxPower,
+  lineDropAndLoss,
+  inductionSlipTorque,
   // 法規
+  compositeLoadSag,
+  demandDiversityComposite,
+  powerFactorCapacitor,
+  insulationTestChargingCurrent,
+  statuteBlankFill,
+  statutoryNumbersDrill,
   groundingResistance,
   sagTension,
   insulationTestVoltage,
@@ -254,12 +275,15 @@ const templates: Template[] = [
   overheadClearance,
   groundingTypes,
   guyWireSafety,
+  guyWireStrandCount,
   indoorVoltageLimit,
   supplyVoltageLimit,
   leakageCurrent,
+  leakageVoltageDivider,
   conductorActualLength,
   poleEmbedmentDepth,
   transformerCapacitySelection,
+  transformerMarginAfterPf,
   hvInsulationTestVoltage,
   smallScaleElectricalFacility,
   groundFaultPotentialRise,
@@ -353,6 +377,7 @@ export {
   chopperCurrentRipple,
   closedLoopTimeConstant,
   combinedCycleEfficiency,
+  compositeLoadSag,
   condenserCoolingWater,
   conductorActualLength,
   conductorLength,
@@ -366,6 +391,7 @@ export {
   dcMotorFieldWeakening,
   dcMotorSpeedResistance,
   deltaWyeResistance,
+  demandDiversityComposite,
   demandFactor,
   disturbanceSteadyState,
   diversityFactor,
@@ -381,6 +407,7 @@ export {
   groundingResistance,
   groundingTypes,
   guyWireSafety,
+  guyWireStrandCount,
   heatPumpCop,
   hoistMotorOutput,
   hvInsulationTestVoltage,
@@ -394,11 +421,13 @@ export {
   inductionSecondaryCopperLoss,
   inductorEnergy,
   insulationResistance,
+  insulationTestChargingCurrent,
   insulationTestVoltage,
   inverseSquareIlluminance,
   ironLossFrequency,
   kirchhoffTwoMesh,
   leakageCurrent,
+  leakageVoltageDivider,
   lightingDesign,
   loadFactor,
   loopDistributionCurrent,
@@ -425,6 +454,7 @@ export {
   pfImprovementCapacity,
   pointChargePotential,
   poleEmbedmentDepth,
+  powerFactorCapacitor,
   powerFactorCorrection,
   pqVoltageDrop,
   pumpedStorageEfficiency,
@@ -458,6 +488,8 @@ export {
   speedRegulation,
   starDeltaStarting,
   stationServiceEfficiency,
+  statuteBlankFill,
+  statutoryNumbersDrill,
   steadyStateError,
   supplyVoltageLimit,
   switchingLoss,
@@ -473,6 +505,7 @@ export {
   transformerCapacitySelection,
   transformerEfficiency,
   transformerExcitingCurrent,
+  transformerMarginAfterPf,
   transformerParallelLoad,
   transformerTap,
   transformerTurnsRatio,

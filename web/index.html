@@ -302,6 +302,104 @@
       table.fx tr:last-child td { border-bottom: none; }
       table.fx td:first-child { white-space: nowrap; color: var(--muted); font-weight: 600; padding-right: .7rem; }
 
+      /* 見直しフラグ（模試中）。押下状態は文言でも変わる。 */
+      .flagbtn { cursor: pointer; background: var(--surface); }
+      .flagbtn.is-on { background: var(--gold-soft); border-color: var(--gold-border); color: var(--gold); font-weight: 800; }
+
+      /* 過去問バッジ。生成問題との区別を一目で。 */
+      .past-exam { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-strong); font-weight: 800; }
+      .past-exam-mod { background: var(--gold-soft); border-color: var(--gold-border); color: var(--gold); }
+
+      /* 問題検索（資料タブ内） */
+      .ps-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .5rem; margin: .6rem 0; }
+      .ps-field { display: flex; flex-direction: column; gap: .15rem; font-size: .8rem; }
+      .ps-field select { width: 100%; }
+      .ps-summary { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin: .6rem 0; }
+
+      /* 誤答フィードバック（選んだ選択肢に固有の理由）。正誤の赤を再利用せず、
+         「responsible な気づき」として警告寄りの穏やかなトーンにする。 */
+      .whywrong { margin: .5rem 0; padding: .5rem .7rem; border-left: 4px solid var(--gold-border);
+        background: var(--gold-soft); border-radius: var(--r-sm); font-size: .9rem; }
+
+      /* 警告テキスト（データ保護が効いていない等）。既存の warn トークンを使う。 */
+      .warn { color: var(--warn-text); background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: var(--r-sm); padding: .3rem .5rem; font-size: .85rem; }
+
+      /* しおりボタン（出題メタ行）。押下状態は色だけでなく文言でも変わる。 */
+      .bmbtn { cursor: pointer; background: var(--surface); }
+      .bmbtn.is-on { background: var(--gold-soft); border-color: var(--gold-border); color: var(--gold); font-weight: 800; }
+
+      /* ===== 法規マップ（資料タブ内） ===== */
+      .hk-seg-nav { display: flex; gap: .3rem; margin: .2rem 0 .8rem; }
+      .hk-seg-btn {
+        flex: 1; padding: .4rem .6rem; font-size: .85rem; font-weight: 700;
+        border: 1px solid var(--border-strong); border-radius: var(--r-pill);
+        background: var(--surface); color: var(--muted); cursor: pointer;
+      }
+      .hk-seg-btn.is-on { background: var(--accent); border-color: var(--accent); color: var(--accent-contrast); }
+
+      .hk-sec { margin: 1.4rem 0; }
+      .hk-sec h3 { font-size: .92rem; margin: .9rem 0 .35rem; }
+      /* 法規は項目名が長いので nowrap を解除し、折り返して読ませる。 */
+      table.hk-tbl td:first-child { white-space: normal; color: var(--text); font-weight: 600; }
+      table.hk-tbl td:last-child { text-align: right; white-space: nowrap; }
+      .hk-val { color: var(--accent-strong); font-weight: 700; }
+
+      /* 得点の積み上げ（横幅いっぱい=100点）＋合格ラインの縦線 */
+      .hk-plan { margin: .8rem 0; }
+      .hk-plan-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .3rem; }
+      .hk-stack-wrap { position: relative; margin-bottom: .25rem; }
+      .hk-stack { display: flex; height: 1.5rem; border-radius: var(--r-pill); overflow: hidden; border: 1px solid var(--border); position: relative; }
+      .hk-fill { display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 800; color: var(--accent-contrast); min-width: 0; }
+      .hk-fill-0 { background: var(--accent); }
+      .hk-fill-1 { background: var(--accent-soft); color: var(--text); }
+      .hk-fill-rest { background: var(--surface-2); }
+      /* 合格ライン60点。色ではなく「線＋ラベル」で示すのでモノクロでも読める。 */
+      .hk-passline { position: absolute; left: 60%; top: -.15rem; bottom: -.15rem; width: 2px; background: var(--text); }
+      .hk-passline::after {
+        content: "合格60"; position: absolute; top: -1rem; left: 50%; transform: translateX(-50%);
+        font-size: .6rem; font-weight: 800; white-space: nowrap; color: var(--text);
+      }
+      .hk-plan:first-child .hk-stack-wrap { margin-top: 1rem; }
+      .hk-pass { background: var(--accent-soft); border-color: var(--accent); font-weight: 800; }
+      .hk-fail { background: var(--surface-2); }
+
+      /* 法令体系: 縦の背骨。段の深さは左ラインの濃さ＋インデントで示す（色に依存しない）。 */
+      .hk-hier { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
+      .hk-tree { display: flex; flex-direction: column; }
+      .hk-arrow { text-align: center; color: var(--muted); font-size: .7rem; line-height: 1; margin: .12rem 0; }
+      .hk-node { border: 1px solid var(--border); border-radius: var(--r-md); padding: .45rem .6rem; background: var(--surface); }
+      .hk-node-name { font-weight: 700; font-size: .88rem; display: flex; align-items: center; gap: .35rem; flex-wrap: wrap; }
+      .hk-lv0 { border-left: 5px solid var(--accent); }
+      .hk-lv1 { border-left: 5px solid var(--accent-soft); margin-left: .5rem; }
+      .hk-lv2 { border-left: 5px solid var(--border-strong); margin-left: 1rem; }
+      /* 法令そのものではないもの（電技解釈）は破線で区別する。 */
+      .hk-node-dashed { border-style: dashed; }
+      .hk-side { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; }
+      .hk-node-side { border-left: 5px solid var(--gold); }
+      .hk-target { background: var(--surface-2); font-size: .66rem; }
+
+      .hk-slot { font-variant-numeric: tabular-nums; }
+      /* 頻度は記号(◎○△)が主。--ok/--ng は正誤の意味で使われているため流用しない。 */
+      .hk-freq { display: inline-block; background: var(--surface-2); }
+      .hk-freq-every { background: var(--accent-soft); border-color: var(--accent); font-weight: 800; }
+      .hk-freq-often { background: var(--gold-soft); border-color: var(--gold-border); }
+
+      .hk-formula { display: block; font-size: .78rem; color: var(--muted); margin-top: .15rem; }
+      .hk-hits { width: 38%; }
+      .hk-bar { height: .5rem; margin-bottom: .2rem; }
+      .hk-bar-fill { height: 100%; background: var(--accent); }
+
+      .hk-nums { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+      .hk-numcard h3 { margin: 0 0 .3rem; }
+      .hk-steps { padding-left: 1.2rem; }
+      .hk-steps li { margin-bottom: .7rem; }
+      .hk-topics { display: flex; flex-wrap: wrap; gap: .25rem; margin-top: .3rem; }
+
+      @media (max-width: 640px) {
+        .hk-hier, .hk-nums, .hk-side { grid-template-columns: 1fr; }
+        .hk-hits { width: 34%; }
+      }
+
       /* ===== 図 ===== */
       figure.figure {
         margin: .7rem 0; padding: .7rem; border: 1px solid var(--border); border-radius: var(--r-md);
@@ -682,7 +780,7 @@
       </div>
       <div class="stats">
         <span id="netstatus" class="pill net" role="status" hidden></span>
-        <span id="xp" class="pill xp"></span><span id="streak" class="pill"></span><span id="countdown" class="pill"></span>
+        <span id="examfilter" class="pill" hidden></span><span id="xp" class="pill xp"></span><span id="streak" class="pill"></span><span id="countdown" class="pill"></span>
       </div>
     </header>
 
@@ -700,6 +798,6 @@
       復習は FSRS（最新の間隔反復アルゴリズム）。コード=MIT / 問題データ=CC-BY-SA-4.0。
     </footer>
 
-    <script type="module" src="./dist/app.js" integrity="sha384-SakZ8RYYVuzOzWwk50uqpJC2I63jHPv49t6GCE8wqLu3GNDjkW1+wuCKeCqraJS8" crossorigin="anonymous"></script>
+    <script type="module" src="./dist/app.js" integrity="sha384-Yv3LYwABXRuOy47FjkNkrpIHUTB2MJQbNwP7UJCNDe7yocNeFs7K/CneNJr0MtBR" crossorigin="anonymous"></script>
   </body>
 </html>

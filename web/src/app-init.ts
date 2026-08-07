@@ -15,7 +15,7 @@
 import type { Problem } from "../../lib/engine/schema.js";
 import type { ProblemManifest } from "../../lib/shared/problem-shards.js";
 import { MANIFEST_FILE, SHARD_DIR } from "../../lib/shared/problem-shards.js";
-import { setLoadFailed, setProblems } from "./state/app.js";
+import { setLoadFailed, setProblems, setTopicMeta, type TopicMeta } from "./state/app.js";
 import { render } from "./views/router.js";
 
 /** 二重ロード防止フラグ（II-164）: すでにロード中のときは重複fetchをしない。 */
@@ -102,6 +102,13 @@ export async function reloadProblems(): Promise<void> {
     }
     setProblems(data);
     setLoadFailed(false);
+    // 出題傾向メタ（頻出度）。取れなくても学習は成立するので失敗は握りつぶす。
+    try {
+      const r = await fetch(`./${SHARD_DIR}/topic-meta.json`);
+      if (r.ok) setTopicMeta((await r.json()) as Record<string, TopicMeta>);
+    } catch {
+      // オフライン初回など。頻出度バッジが出ないだけで機能は落とさない。
+    }
   } catch (err) {
     console.warn("[app] reloadProblems 失敗:", err);
     setProblems([]);

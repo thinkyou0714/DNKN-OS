@@ -14,7 +14,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { generate } from "./generate.js";
-import type { SourceType } from "./schema.js";
+import { type Exam, examEnum, type SourceType } from "./schema.js";
 import { getTemplate, listTopics } from "./templates/index.js";
 import { buildXPosts } from "./xpost/index.js";
 
@@ -30,11 +30,14 @@ export interface Args {
   /** xpost プレビューをファイルに出力（省略時は stderr）。 */
   xpostOut?: string;
   seed?: number;
+  /** emit する問題の exam をテンプレ宣言値から上書きする（法規のような試験区分横断テンプレ用）。 */
+  exam?: string;
   help: boolean;
   version: boolean;
 }
 
 const SOURCE_TYPES: readonly SourceType[] = ["original", "past_exam_modified", "past_exam_quoted"];
+const EXAMS: readonly string[] = examEnum.options;
 
 /** --topic 直後の値がオプション（--xxx）や欠落のとき警告を出してデフォルト扱いにする。 */
 function isOptionLike(v: string | undefined): boolean {
@@ -109,6 +112,11 @@ export function parseArgs(argv: string[]): Args {
         if (v !== undefined) args.seed = Number(v);
         break;
       }
+      case "--exam": {
+        const v = next();
+        if (v !== undefined) args.exam = v;
+        break;
+      }
       case "--help":
       case "-h":
         args.help = true;
@@ -139,6 +147,9 @@ export function argErrors(args: Args): string[] {
   if (args.seed !== undefined && !Number.isFinite(args.seed)) {
     errs.push("--seed は数値で指定してください");
   }
+  if (args.exam !== undefined && !EXAMS.includes(args.exam)) {
+    errs.push(`--exam が不正です: ${args.exam}（${EXAMS.join(" / ")} のいずれか）`);
+  }
   if (!Number.isInteger(args.xpostLimit) || args.xpostLimit < 1) {
     errs.push("--xpost-limit は 1 以上の整数で指定してください");
   }
@@ -162,6 +173,8 @@ const USAGE = `DENKEN-OS 問題生成エンジン
   --xpost-limit 先頭 N 件のみ xpost プレビュー（既定 10）。
   --xpost-out   xpost プレビューをファイルに出力。
   --seed        決定論 RNG のシード（再現生成用）。
+  --exam        出力の試験区分をテンプレ宣言値から上書き
+                （denken3 | denken2_primary | denken2_secondary）。
   --version, -v バージョン番号を表示して終了。
   -h, --help    このヘルプを表示。`;
 
@@ -237,6 +250,7 @@ async function main() {
       source: args.source,
       ...(args.citation !== undefined && { citation: args.citation }),
       ...(rng !== undefined && { rng }),
+      ...(args.exam !== undefined && { examOverride: args.exam as Exam }),
     });
   } catch (e) {
     // draw/narrate/validate 各段階のエラーに topic 文脈を付与。

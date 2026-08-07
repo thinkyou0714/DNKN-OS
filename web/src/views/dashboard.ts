@@ -25,10 +25,17 @@ import {
 import { dayIndex, JST_OFFSET_MS, sameJstDay } from "../dates.js";
 import { loadFreezeState } from "../freeze.js";
 import { buildStudyPlan } from "../plan.js";
-import { getDailyGoal, getExamDate, isOnboarded } from "../settings.js";
-import { problems, progress, storage } from "../state/app.js";
+import { getDailyGoal, getExamDate, getExamFilter, getSubjectPasses, isOnboarded } from "../settings.js";
+import { allProblems, problems, progress, storage } from "../state/app.js";
 import { practice as practiceState } from "../state/practice.js";
 import { ghostRace, masteredTopics, myStats } from "../stats.js";
+import {
+  DENKEN3_SUBJECTS,
+  planSummary,
+  recommendSubjects,
+  type SubjectPass,
+  subjectStatuses,
+} from "../subject-plan.js";
 import { h } from "../ui/dom.js";
 import { showToast } from "../ui/toast.js";
 import { bar, emptyState, masteryChip, ringNode, sparklineNode } from "../ui/widgets.js";
@@ -262,6 +269,95 @@ function learningOrderSection(root: HTMLElement, logs: ReturnType<typeof progres
 }
 
 /** 自分の記録・ゴーストレース・弱点論点・マスター済み論点のセクション。 */
+/**
+ * 学習時間の集計（今日 / 直近7日 / 累計）。
+ *
+ * 解答ごとの所要時間は AnswerLog.timeMs として以前から記録されていたが、
+ * 進捗画面には出しておらず（シェアカードでのみ使用）、学習者が
+ * 「今週どれだけ積んだか」を確認できなかった。競合の学習アプリでは標準の指標。
+ */
+function studyMinutes(
+  logs: ReturnType<typeof progress.logs>,
+  nowMs: number,
+): { today: number; week: number; total: number } {
+  const dayMs = 86_400_000;
+  let today = 0;
+  let week = 0;
+  let total = 0;
+  for (const l of logs) {
+    const ms = l.timeMs ?? 0;
+    total += ms;
+    if (sameJstDay(l.atMs, nowMs)) today += ms;
+    if (nowMs - l.atMs <= 7 * dayMs) week += ms;
+  }
+  const m = (x: number) => Math.round(x / 60_000);
+  return { today: m(today), week: m(week), total: m(total) };
+}
+
+/** 分を「Xh Ym」表記にする（60分未満は「Ym」）。 */
+function fmtMinutes(min: number): string {
+  if (min < 60) return `${min}分`;
+  return `${Math.floor(min / 60)}時間${min % 60 > 0 ? `${min % 60}分` : ""}`;
+}
+
+/**
+ * 科目合格ポートフォリオ。「今回どの科目に張るか」という電験固有の意思決定を支援する。
+ * 免除は年数ではなく試験の回数で数える（最大連続5回）ため、回数で表示する。
+ */
+function subjectPlanSection(root: HTMLElement, logs: ReturnType<typeof progress.logs>, daysLeft: number): void {
+  // 電験三種の受験者だけに意味がある画面（二種には科目合格制の同じ仕組みが無い）。
+  if (getExamFilter(storage) !== "denken3") return;
+
+  const saved = getSubjectPasses(storage);
+  const passes: SubjectPass[] = DENKEN3_SUBJECTS.filter((s) => saved[s] !== undefined).map((s) => ({
+    subject: s,
+    sittingsAgo: saved[s] as number,
+  }));
+  const statuses = subjectStatuses(passes);
+  const readinessRows = allSubjectReadiness(logs, problems, daysLeft);
+  const readiness = new Map(readinessRows.map((r) => [String(r.subject), r.readiness]));
+  const recs = recommendSubjects(statuses, readiness);
+
+  root.append(
+    h("h2", {}, "科目合格プラン"),
+    h(
+      "p",
+      { class: "muted small" },
+      "免除は「最初に合格した試験以降、最大で連続5回」まで（年2回実施なので約2.5年）。年数ではなく回数で数えます。",
+    ),
+  );
+
+  // 科目ごとの免除状況（合格済みを登録していないと全て未合格として出る）。
+  const table = h("table", { class: "fx" });
+  for (const st of statuses) {
+    const right = st.passed
+      ? h(
+          "span",
+          { class: st.expiringSoon ? "warn" : "" },
+          `免除あと${st.remaining}回${st.expiringSoon ? "（まもなく失効）" : ""}`,
+        )
+      : h("span", { class: "muted" }, "未合格");
+    table.append(h("tr", {}, h("td", {}, st.subject), h("td", {}, right)));
+  }
+  root.append(table);
+
+  root.append(h("p", {}, planSummary(recs)));
+  if (recs.length > 0) {
+    const list = h("ol", { class: "hk-steps" });
+    for (const r of recs) {
+      list.append(h("li", {}, h("strong", {}, r.subject), h("div", { class: "muted" }, r.reason)));
+    }
+    root.append(list);
+  }
+  root.append(
+    h(
+      "p",
+      { class: "muted small" },
+      "合格済み科目は設定タブの「科目合格の記録」で登録すると、失効までの回数が出ます。",
+    ),
+  );
+}
+
 function statsSection(
   root: HTMLElement,
   logs: ReturnType<typeof progress.logs>,
@@ -272,6 +368,7 @@ function statsSection(
   const st = myStats(logs, fzStat.usedDays, fzStat.restDays);
   const xpPerDay = st.studyDays > 0 ? Math.round(lv.totalXp / st.studyDays) : 0;
   const o = overall(logs);
+  const mins = studyMinutes(logs, Date.now());
   root.append(
     h("h2", {}, "自分の記録"),
     // これまでのあゆみ（累計の一行サマリー。続けてきた事実そのものを称える）。
@@ -287,6 +384,9 @@ function statsSection(
       ...(
         [
           [String(st.studyDays), "学習日数"],
+          [fmtMinutes(mins.today), "今日の学習時間"],
+          [fmtMinutes(mins.week), "直近7日"],
+          [fmtMinutes(mins.total), "累計学習時間"],
           [`${st.bestStreakEver}日`, "歴代最長🔥"],
           [String(xpPerDay), "XP/学習日"],
           [String(st.bestCombo), "最高コンボ"],
@@ -414,7 +514,9 @@ function badgesSection(
     logs,
     streakDays: fiBadge.streak,
     level: lv.level,
-    subjectOf: topicSubjectMap(problems),
+    // 実績は過去の全学習が対象。区分で絞ると他区分で解いた分の科目対応が失われ
+    // 「全科目制覇」等のバッジが退行するため、ここは allProblems を使う。
+    subjectOf: topicSubjectMap(allProblems),
     usedFreezeDays: fiBadge.state.usedDays,
   });
   const unlockedCount = badges.filter((b) => b.unlocked).length;
@@ -647,6 +749,7 @@ export function renderDashboard(root: HTMLElement): void {
   xpChartSection(root, logs);
   masterySection(root, logs);
   readinessSection(root, logs, plan.daysLeft);
+  subjectPlanSection(root, logs, plan.daysLeft);
   learningOrderSection(root, logs);
   statsSection(root, logs, lv);
   badgesSection(root, logs, lv);

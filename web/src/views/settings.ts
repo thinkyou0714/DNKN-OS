@@ -9,29 +9,49 @@ import { applyLicenseKey, clearLicense, initEntitlements, proInfo, proUnlocked }
 import { canReserveRest, loadFreezeState, saveFreezeState, studiedDays, toggleRestReservation } from "../freeze.js";
 import { playTone } from "../fx.js";
 import { MONETIZATION, monetizationConfigured } from "../monetization-config.js";
+import { PERSIST_LABEL, persistenceState } from "../persistence.js";
 import { dayIndexOf } from "../quests.js";
 import {
+  EXAM_FILTER_LABEL,
+  type ExamFilter,
+  FONT_SCALE_LABEL,
+  type FontScale,
   getApiKey,
   getChatModel,
   getDailyGoal,
   getExamDate,
+  getExamFilter,
+  getFontScale,
   getMascotEnabled,
   getReviewCap,
   getSoundLevel,
+  getSubjectPasses,
   getTheme,
   type SoundLevel,
   setApiKey,
   setChatModel,
   setDailyGoal,
   setExamDate,
+  setExamFilter,
+  setFontScale,
   setMascotEnabled,
   setReviewCap,
   setSoundLevel,
+  setSubjectPasses,
   setTheme,
   type ThemePref,
 } from "../settings.js";
-import { applyTheme, installPrompt, progress, setInstallPrompt, storage } from "../state/app.js";
+import {
+  applyFontScale,
+  applyTheme,
+  installPrompt,
+  progress,
+  refreshExamFilter,
+  setInstallPrompt,
+  storage,
+} from "../state/app.js";
 import { SEEN_LEVEL_KEY, SEEN_STREAK_MILESTONE_KEY } from "../storage-keys.js";
+import { DENKEN3_SUBJECTS, MAX_EXEMPT_SITTINGS } from "../subject-plan.js";
 import { h } from "../ui/dom.js";
 import { showToast } from "../ui/toast.js";
 import {
@@ -47,6 +67,28 @@ import { renderHeader, renderNav, switchView } from "./router.js";
 
 export function renderSettings(root: HTMLElement): void {
   root.append(h("h2", {}, "設定"));
+  // 文字サイズ。長文の条文問題を読む法規で特に効くうえ、可読性の基本機能。
+  const fontSel = h("select", {}) as HTMLSelectElement;
+  for (const [value, label] of Object.entries(FONT_SCALE_LABEL)) {
+    fontSel.append(h("option", { value, ...(getFontScale(storage) === value ? { selected: true } : {}) }, label));
+  }
+  fontSel.addEventListener("change", () => {
+    setFontScale(storage, fontSel.value as FontScale);
+    applyFontScale();
+  });
+  // 受験する試験区分。出題プールを絞るだけで、学習ログ・FSRSカード（topic単位）は消えない。
+  const examFilterSel = h("select", {}) as HTMLSelectElement;
+  for (const [value, label] of Object.entries(EXAM_FILTER_LABEL)) {
+    examFilterSel.append(
+      h("option", { value, ...(getExamFilter(storage) === value ? { selected: true } : {}) }, label),
+    );
+  }
+  examFilterSel.addEventListener("change", () => {
+    setExamFilter(storage, examFilterSel.value as ExamFilter);
+    refreshExamFilter();
+    renderHeader();
+    renderNav();
+  });
   const examInput = h("input", { type: "date", value: getExamDate(storage) }) as HTMLInputElement;
   examInput.addEventListener("change", () => {
     setExamDate(storage, examInput.value);
@@ -146,6 +188,17 @@ export function renderSettings(root: HTMLElement): void {
       mascotSel,
       h("div", { class: "muted" }, "学習タブ・復習タブのキャラクター表示。シンプルに使いたい方はオフに。"),
     ),
+    h(
+      "div",
+      { class: "card" },
+      h("label", {}, "受験する試験 "),
+      examFilterSel,
+      h(
+        "div",
+        { class: "muted" },
+        "学習・模試に出す問題をこの区分に絞ります。学習の記録は消えません（戻せば元どおり表示されます）。",
+      ),
+    ),
     h("div", { class: "card" }, h("label", {}, "試験日 "), examInput),
     h("div", { class: "card" }, h("label", {}, "1日の目標問題数 "), goalInput),
     h(
@@ -194,6 +247,15 @@ export function renderSettings(root: HTMLElement): void {
     // 応援・読みもの（橋渡し収益 17-B17/C11/C18/D3）。未設定の項目は各カードが null を返す。
     ...bridgeSection(),
     h("h2", {}, "データ"),
+    h(
+      "div",
+      { class: "card" },
+      h("label", {}, "文字サイズ "),
+      fontSel,
+      h("div", { class: "muted" }, "問題文・選択肢・解説の文字の大きさを変えます。"),
+    ),
+    subjectPassCard(),
+    persistenceCard(),
     backupCard(),
     ...(installPrompt
       ? [
@@ -369,6 +431,68 @@ function restDayCard(): HTMLElement {
         "予約できるのは「今日すでに学習した日」の明日だけ（連続のおやすみはできません）。",
     ),
   );
+}
+
+/**
+ * 科目合格の記録。免除は「最初に合格した試験以降、最大で連続5回」なので、
+ * 年月日ではなく「その合格から何回の試験が実施されたか」を入力させる（制度の数え方に一致）。
+ */
+function subjectPassCard(): HTMLElement {
+  const card = h(
+    "div",
+    { class: "card" },
+    h("label", {}, "科目合格の記録 "),
+    h(
+      "div",
+      { class: "muted" },
+      "合格済み科目と「その合格から何回の試験が実施されたか」を選ぶと、進捗タブで免除の残り回数が出ます。",
+    ),
+  );
+  const saved = getSubjectPasses(storage);
+  for (const subject of DENKEN3_SUBJECTS) {
+    const sel = h("select", {}) as HTMLSelectElement;
+    const cur = saved[subject];
+    const opts: Array<readonly [string, string]> = [["", "未合格"]];
+    for (let i = 0; i <= MAX_EXEMPT_SITTINGS; i++) {
+      opts.push([String(i), i === 0 ? "直近の回に合格" : `${i}回前に合格`]);
+    }
+    for (const [value, label] of opts) {
+      sel.append(h("option", { value, ...(String(cur ?? "") === value ? { selected: true } : {}) }, label));
+    }
+    sel.addEventListener("change", () => {
+      const next = { ...getSubjectPasses(storage) };
+      if (sel.value === "") delete next[subject];
+      else next[subject] = Number(sel.value);
+      setSubjectPasses(storage, next);
+    });
+    card.append(h("div", { class: "ps-field" }, h("span", { class: "muted" }, subject), sel));
+  }
+  return card;
+}
+
+/**
+ * データ保護の状態表示。学習履歴は localStorage にしか無く、
+ * 永続化が効いていない環境ではブラウザ都合で消えうることを正直に伝える。
+ */
+function persistenceCard(): HTMLElement {
+  const status = h("div", { class: "muted" }, "確認中…");
+  const card = h(
+    "div",
+    { class: "card" },
+    h("label", {}, "学習データの保護 "),
+    status,
+    h(
+      "div",
+      { class: "muted" },
+      "このアプリの学習記録は端末内にのみ保存されます。機種変更やブラウザのデータ削除では失われるため、" +
+        "下のバックアップを定期的に書き出してください。",
+    ),
+  );
+  void persistenceState().then((st) => {
+    status.textContent = PERSIST_LABEL[st];
+    status.className = st === "persisted" ? "muted" : "warn";
+  });
+  return card;
 }
 
 /** バックアップ: localStorage 単一保存の単一障害点対策（書き出し/読み込み）。 */

@@ -103,6 +103,67 @@ export interface McChoices {
  *      formatKW のように W→kW で割る整形関数では 1000 を渡す（真値は W、表示は kW）。
  * @returns 整形済み choices/distractors/answerText/likelyWrongChoice、または不成立で null。
  */
+/**
+ * 丸め容認版のマークシート五択ビルダ。
+ *
+ * `buildMcChoices` は「表示が真値を厳密に再現する」ことを要求するため（isCleanByDisplay）、
+ * π や無理数 tanθ が絡んで答えが割り切れないテンプレートでは全 draw が棄却されてしまう。
+ * 一方、本試（電験）は**丸めた数値の五択**で出題されるので、丸めた表示のまま選択肢を
+ * 構成できる経路が要る。本関数はその用途に限定した姉妹関数で、
+ * 「表示＝真値」の忠実性ゲートだけを外し、他の安全ゲートは同じに保つ:
+ *
+ *   1. 正解・全誤答の表示が有限で、小数2桁表記に収まる（formatter 経由）
+ *   2. 表示文字列が相互にすべて一意（重複する誤答は不可）
+ *   3. 正解が選択肢に含まれる（answer ∈ choices を構造的に保証）
+ *   4. 誤答が正解と表示上一致しない
+ *
+ * 割り切れる答えしか出さないテンプレートでは従来どおり `buildMcChoices` を使うこと。
+ */
+export function buildRoundedMcChoices(
+  answer: number,
+  distractors: ReadonlyArray<McDistractorSpec>,
+  formatter: (value: number) => string,
+  opts?: { expected?: number },
+): McChoices | null {
+  const expected = opts?.expected ?? 5;
+  if (!Number.isFinite(answer)) return null;
+  for (const d of distractors) {
+    if (!Number.isFinite(d.value)) return null;
+  }
+
+  const answerText = formatter(answer);
+  if (!Number.isFinite(Number(answerText))) return null;
+
+  // 正解が正の量のとき、負または表示上ゼロになる誤答は「見ただけで捨てられる」ため
+  // 五択として成立しない。実際の本試の選択肢は全て同じオーダーの正の値になる。
+  if (answer > 0) {
+    for (const d of distractors) {
+      if (d.value <= 0) return null;
+      if (Number(formatter(d.value)) === 0) return null;
+    }
+  }
+
+  const formatted: Distractor[] = distractors.map((d) => ({
+    text: formatter(d.value),
+    reason: d.reason,
+    ...(d.sourceRef ? { sourceRef: d.sourceRef } : {}),
+  }));
+  if (formatted.some((d) => !Number.isFinite(Number(d.text)))) return null;
+  // 表示が正解と一致する誤答は「誤答として成立しない」ため排除（丸めで一致する場合を含む）。
+  if (formatted.some((d) => d.text === answerText)) return null;
+
+  const texts = new Set([answerText, ...formatted.map((d) => d.text)]);
+  if (texts.size !== expected) return null;
+
+  const choices = [...texts].sort((a, b) => Number(a) - Number(b));
+  return {
+    choices,
+    distractors: formatted,
+    answerText,
+    likelyWrongChoice: formatted[0]?.text ?? answerText,
+  };
+}
+
 export function buildMcChoices(
   answer: number,
   distractors: ReadonlyArray<McDistractorSpec>,

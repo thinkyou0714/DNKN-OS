@@ -19,8 +19,8 @@ const Q_SET: ReadonlyArray<readonly [number, string]> = [
   [980, "甲種"],
   [490, "乙種"],
 ];
-const D_SET: ReadonlyArray<number> = [10, 20, 25, 40, 50]; // 電線直径〔mm〕
-const L_SET: ReadonlyArray<number> = [50, 100, 150, 200]; // 径間〔m〕
+const D_SET: ReadonlyArray<number> = [10, 20, 25, 40, 50, 12, 14, 15, 16, 18, 22, 30, 32, 35, 38, 45, 48]; // 電線直径〔mm〕
+const L_SET: ReadonlyArray<number> = [50, 100, 150, 200, 60, 70, 75, 80, 90, 110, 120, 125, 160, 175, 180]; // 径間〔m〕
 
 type Params = {
   wind_pressure: number;

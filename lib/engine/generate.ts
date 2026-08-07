@@ -14,8 +14,9 @@
  * - `validatePhysics` で draw.physicallyValid とvalidation の一致を確認（II-114）。
  * - `checkParamsConsistency` で GenerationResult.params → Problem.params の整合確認（II-121）。
  */
+import { buildAutoMc, shouldAutoConvert } from "./auto-distractors.js";
 import { defaultNarrator, type Narrator, toNarrationInput } from "./narrate.js";
-import type { Problem, SourceType } from "./schema.js";
+import type { Exam, Problem, SourceType } from "./schema.js";
 import type { GenerationResult, Template } from "./templates/types.js";
 import { narrationMatchesAnswer, statementMatchesParams, validateProblem } from "./validate.js";
 
@@ -44,6 +45,17 @@ export interface GenerateOptions {
   startIndex?: number;
   /** confidence の足切り（これ未満は出題しない。既定0=無効）。 */
   minConfidence?: number;
+  /**
+   * emit する問題の exam をテンプレの宣言値から上書きする。
+   * 法規のようにテンプレ内容が複数試験区分で共通の場合に、テンプレを複製・改変せず
+   * 別区分（例: denken3）の問題として出題するための seam。未指定なら template.exam。
+   */
+  examOverride?: Exam;
+  /**
+   * 数値テンプレートを五肢択一へ自動変換するか（既定 false = 従来どおり numeric のまま）。
+   * 一次試験は全問マークシートなので、本試形式で出したいときに true にする。
+   */
+  autoMc?: boolean;
   /**
    * 歩留まりロガー（II-118）。問題を1件採用するたびに呼ばれる。
    * `accepted` は採用済み件数、`rejected` は棄却累積件数、`total` は試行合計。
@@ -135,6 +147,8 @@ export async function generateOne(
     rng: () => number;
     maxAttempts: number;
     minConfidence?: number;
+    examOverride?: Exam;
+    autoMc?: boolean;
   },
 ): Promise<Problem | null> {
   const detailed = await generateOneDetailed(template, opts);
@@ -157,6 +171,8 @@ export async function generateOneDetailed(
     rng: () => number;
     maxAttempts: number;
     minConfidence?: number;
+    examOverride?: Exam;
+    autoMc?: boolean;
   },
 ): Promise<GenerateOneResult> {
   let draw = null as ReturnType<Template["generate"]>;
@@ -206,11 +222,30 @@ export async function generateOneDetailed(
     };
   }
 
-  const format = draw.format ?? "multiple_choice";
+  let format = draw.format ?? "multiple_choice";
+  let autoChoices = draw.choices;
+  let autoDistractors = draw.distractors;
+
+  // 数値解答テンプレートを本試同様の五肢択一へ自動変換する（autoMc）。
+  // 一次試験は全問マークシートなので、numeric のままでは本番形式にならない。
+  // テンプレートが自前の誤答を持つ場合はそちらが分野固有で質が高いので触らない。
+  if (
+    opts.autoMc &&
+    format === "numeric" &&
+    (!draw.distractors || draw.distractors.length === 0) &&
+    shouldAutoConvert(draw.answerValue, draw.answerText)
+  ) {
+    const mc = buildAutoMc(draw.answerValue, draw.answerText, draw.answerUnit);
+    if (mc) {
+      format = "multiple_choice";
+      autoChoices = mc.choices;
+      autoDistractors = mc.distractors;
+    }
+  }
 
   const problem: Problem = {
     id: opts.id,
-    exam: template.exam,
+    exam: opts.examOverride ?? template.exam,
     subject: template.subject,
     topic: template.topic,
     format,
@@ -219,7 +254,12 @@ export async function generateOneDetailed(
     statement,
     ...(draw.figure ? { figure: draw.figure } : {}),
     // numeric は選択肢なし。multiple_choice のみ choices を持つ。
-    ...(format === "multiple_choice" ? { choices: draw.choices } : {}),
+    ...(format === "multiple_choice" ? { choices: autoChoices } : {}),
+    // 誤答の言語化（どの典型ミスでその選択肢に至るか）。テンプレが算出済みなら載せる。
+    // スキーマ・validate は以前から distractors を受け付けるが、従来ここで捨てていた。
+    ...(format === "multiple_choice" && autoDistractors && autoDistractors.length > 0
+      ? { distractors: autoDistractors.map((d) => ({ choice: d.text, reason: d.reason })) }
+      : {}),
     answer: draw.answerText,
     solution: narration.solution,
     validation: {
@@ -290,6 +330,8 @@ export async function generate(template: Template, opts: GenerateOptions): Promi
       rng,
       maxAttempts,
       ...(opts.minConfidence !== undefined && { minConfidence: opts.minConfidence }),
+      ...(opts.examOverride !== undefined && { examOverride: opts.examOverride }),
+      ...(opts.autoMc !== undefined && { autoMc: opts.autoMc }),
     });
     if (p) {
       out.push(p);

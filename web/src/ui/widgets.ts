@@ -22,7 +22,17 @@ export function draftBadge(p: Problem): HTMLElement | null {
   return h("span", { class: "chip draft", title: "自動生成・未監修の問題です（内容は確認中）" }, "未監修");
 }
 
-/** 問題の出典テキスト。 */
+/**
+ * 過去問であることを示すバッジ。
+ * 試験センターの利用条件は「出典明記」なので、出典は解説側で必ず出す（sourceText）。
+ * このバッジは一覧で「過去問か生成問題か」を一目で判別するための補助。
+ */
+export function pastExamBadge(p: Problem): HTMLElement | null {
+  if (p.source.type === "past_exam_quoted") return h("span", { class: "chip past-exam" }, "過去問");
+  if (p.source.type === "past_exam_modified") return h("span", { class: "chip past-exam-mod" }, "過去問改題");
+  return null;
+}
+
 export function sourceText(p: Problem): string {
   return p.source.type === "original"
     ? `出典: ${p.source.citation ?? "DENKEN-OS オリジナル問題"}`
@@ -52,9 +62,29 @@ export function svgNode(svgStr: string, tag = "div", attrs: Record<string, strin
   return h(tag, { ...attrs, html: safeHtml(safe) });
 }
 
-/** 図（インライン SVG）を表示するノード。sanitizeSvg でサニタイズ済み（I-037）。 */
+/**
+ * 問題図（インラインSVG）。sanitizeSvg でサニタイズ済み（I-037）。
+ *
+ * 従来は role も代替テキストも無く、スクリーンリーダーからは存在しないのと同じだった。
+ * SVG 内のテキスト要素（端子名・数値ラベル）を拾って代替テキストを組み立て、
+ * 少なくとも「何が描かれているか」の手掛かりを読み上げられるようにする。
+ * 図そのものを言語化するには作図側にキャプションを持たせる必要があり、それは別途。
+ */
 export function figureNode(svgStr: string): HTMLElement {
-  return svgNode(svgStr, "figure", { class: "figure" });
+  const labels = extractSvgText(svgStr);
+  const alt = labels.length > 0 ? `図（記載: ${labels.join("、")}）` : "問題の図";
+  return svgNode(svgStr, "figure", { class: "figure", role: "img", "aria-label": alt });
+}
+
+/** SVG 中の <text> の中身を順に取り出す（代替テキストの材料）。 */
+export function extractSvgText(svgStr: string, limit = 12): string[] {
+  const out: string[] = [];
+  for (const m of svgStr.matchAll(/<text\s[^>]*>([\s\S]*?)<\/text>/g)) {
+    const t = (m[1] ?? m[2] ?? "").replace(/<[^>]*>/g, "").trim();
+    if (t) out.push(t);
+    if (out.length >= limit) break;
+  }
+  return out;
 }
 
 /** 空状態（履歴なし等）の上質な表示。 */

@@ -101,6 +101,12 @@ export const problemSchema = z
     statement: z.string().min(1),
     figure: z.string().optional(),
     choices: z.array(z.string()).optional(),
+    /**
+     * 誤答の言語化。「どの典型ミスをするとその選択肢に至るか」を選択肢ごとに持つ。
+     * 生成器は以前から出力していたが schema 未定義のため zod が黙って捨てており、
+     * アプリ側で型が見えず表示もできなかった（誤答フィードバックの素材が死蔵）。
+     */
+    distractors: z.array(z.object({ choice: z.string().min(1), reason: z.string().min(1) })).optional(),
     answer: z.string().min(1),
     solution: z.array(z.string()).min(1),
     validation: validationSchema,

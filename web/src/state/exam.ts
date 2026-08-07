@@ -26,6 +26,11 @@ export interface ExamState {
   celebrated: boolean;
   /** 結果を履歴に保存済みか（タブ再描画での二重保存を防ぐ）。 */
   historySaved?: boolean;
+  /**
+   * 「あとで見直す」を付けた問題の index 集合（本試CBTの見直しフラグ相当）。
+   * 迷った問題を飛ばして先に進み、時間が余ったら戻る、という本番の解き方を再現する。
+   */
+  flagged?: number[];
 }
 
 export let exam: ExamState | null = null;

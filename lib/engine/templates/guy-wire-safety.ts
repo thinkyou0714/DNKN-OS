@@ -7,7 +7,7 @@ import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
 const SAFETY_FACTOR = 2.5;
-const T_SET: ReadonlyArray<number> = [2, 4, 6, 8, 10, 12, 16, 20];
+const T_SET: ReadonlyArray<number> = [2, 4, 6, 8, 10, 12, 16, 20, 3, 5, 7, 9, 14, 15, 18, 24, 25, 30, 35, 40];
 
 type Params = {
   max_tension: number;

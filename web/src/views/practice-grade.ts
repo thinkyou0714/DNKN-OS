@@ -67,7 +67,17 @@ export function gradeObjective(host: HTMLElement, p: Problem, given: string, cli
     h("span", { class: "elapsed" }, `⏱ ${elapsed}${practice.hintsShown > 0 ? ` ・ ヒント${practice.hintsShown}` : ""}`),
     h("span", { class: "cheer" }, mascotCheer(correct, practice.combo, dayIndexOf(Date.now()))),
   );
-  result.append(feedback, solutionNode(p, "解説"));
+  result.append(feedback);
+  // 誤答フィードバック: 選んだ選択肢が「どの典型ミスで導かれる値か」を先に返す。
+  // 問題データは distractors[{choice, reason}] を持っているが従来は未使用だった。
+  // 正解を見る前に「自分がどこで間違えたか」が分かると、次の想起が変わる。
+  if (!correct) {
+    const why = p.distractors?.find((d) => d.choice === given);
+    if (why) {
+      result.append(h("div", { class: "whywrong" }, h("strong", {}, "この選択肢を選んだ理由: "), why.reason));
+    }
+  }
+  result.append(solutionNode(p, "解説"));
   if (correct) {
     // 正解 → 想起の難易度を自己申告（FSRS）。
     result.append(

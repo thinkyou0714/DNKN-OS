@@ -1,42 +1,42 @@
 {
-  "version": "a09ea4b0c5e0",
-  "total": 9354,
+  "version": "483de530f5e8",
+  "total": 16558,
   "shards": [
     {
       "subject": "理論",
       "slug": "theory",
       "file": "theory.json",
-      "count": 2628
+      "count": 3329
     },
     {
       "subject": "電力",
       "slug": "power",
       "file": "power.json",
-      "count": 1268
+      "count": 2769
     },
     {
       "subject": "機械",
       "slug": "machine",
       "file": "machine.json",
-      "count": 2002
+      "count": 2873
     },
     {
       "subject": "法規",
       "slug": "law",
       "file": "law.json",
-      "count": 365
+      "count": 4298
     },
     {
       "subject": "電力管理",
       "slug": "power-mgmt",
       "file": "power-mgmt.json",
-      "count": 1832
+      "count": 2012
     },
     {
       "subject": "機械制御",
       "slug": "machine-ctrl",
       "file": "machine-ctrl.json",
-      "count": 1259
+      "count": 1277
     }
   ]
 }

@@ -52,3 +52,18 @@ export function mistakeNotebook(logs: WebAnswerLog[], problems: Problem[], limit
     .sort((a, b) => b.missCount - a.missCount || b.lastMissMs - a.lastMissMs)
     .slice(0, limit);
 }
+
+/**
+ * 期日が来た誤答問題を解き直し用に解決する。
+ * dueIds の順（期日の早い順）を保ち、現在の試験区分に存在しない問題は除外する。
+ */
+export function dueMistakeProblems(dueIds: readonly string[], problems: readonly Problem[], limit: number): Problem[] {
+  const byId = new Map(problems.map((p) => [p.id, p]));
+  const out: Problem[] = [];
+  for (const id of dueIds) {
+    const p = byId.get(id);
+    if (p) out.push(p);
+    if (out.length >= limit) break;
+  }
+  return out;
+}

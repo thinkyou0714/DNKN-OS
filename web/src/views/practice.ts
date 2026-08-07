@@ -7,8 +7,10 @@
  */
 import type { Problem, Subject } from "../../../lib/engine/schema.js";
 import { reloadProblems } from "../app-init.js";
+import { isBookmarked, toggleBookmark } from "../bookmarks.js";
 import { canShowNudge, markNudgeShown, recordClick, recordShown } from "../bridge.js";
 import { BRIDGE } from "../bridge-config.js";
+import { calibrationLabel, statsByProblemCached } from "../calibration.js";
 import { featureLocked, proUnlocked, remainingFreeToday } from "../entitlements.js";
 import {
   bridgeWithFreezes,
@@ -46,16 +48,19 @@ import {
   setExamDate,
   setOnboarded,
 } from "../settings.js";
-import { loadFailed, problems, progress, storage, view } from "../state/app.js";
+import { frequencyOf, loadFailed, problems, progress, storage, view } from "../state/app.js";
 import { practice, pushRecentTopic, takeDueRequeue, todayCount, weakTopics } from "../state/practice.js";
 import { SEEN_LEVEL_KEY, SEEN_STREAK_MILESTONE_KEY } from "../storage-keys.js";
 import { $, h, safeHtml } from "../ui/dom.js";
 import { showToast } from "../ui/toast.js";
-import { bar, difficultyStars, draftBadge, emptyState, figureNode, svgNode } from "../ui/widgets.js";
+import { bar, difficultyStars, draftBadge, emptyState, figureNode, pastExamBadge, svgNode } from "../ui/widgets.js";
 import { levelInfo, QUEST_BOOST_MULT, totalXp, xpByDay } from "../xp.js";
 import { drillLauncherCard } from "./drills.js";
 import { paywallCard } from "./paywall.js";
 import { renderHeader } from "./router.js";
+
+/** 過去問頻度 → 出題の重み。頻出を厚くしつつ、まれな論点もゼロにはしない。 */
+const FREQUENCY_WEIGHT: Record<string, number> = { high: 3, mid: 1, low: 0.4 };
 
 // re-export todayCount for other views
 export { todayCount } from "../state/practice.js";
@@ -470,6 +475,8 @@ export function nextQuestion(root: HTMLElement): void {
       weakTopics: weakTopics(),
       recentTopics: practice.recentTopics,
       missedIds: missedProblemIds(progress.logs()),
+      // 過去問で頻出の論点ほど当たりやすくする（high=3倍 / mid=1倍 / low=0.4倍）。
+      topicWeight: (t) => FREQUENCY_WEIGHT[frequencyOf(t)] ?? 1,
       ...(excludeId !== undefined ? { excludeId } : {}),
     });
   practice.current = next;
@@ -494,8 +501,29 @@ export function nextQuestion(root: HTMLElement): void {
   const stmt = h("div", { class: "stmt", tabindex: "-1", html: safeHtml(formatMath(p.statement)) });
   // 未監修（自動生成）の問題はバッジで明示する（#63）。
   const meta = h("div", { id: "meta" }, `${p.subject}・${p.topic}・難易度${difficultyStars(p.difficulty)}`);
+  // 自己較正: 配信データの stats は全問0なので、端末内の実績で「自分にとっての難しさ」を出す。
+  const selfStat = statsByProblemCached(progress.logs()).get(p.id);
+  const calLabel = calibrationLabel(p.difficulty, selfStat);
+  if (calLabel) meta.append(" ", h("span", { class: "muted small" }, calLabel));
   const badge = draftBadge(p);
   if (badge) meta.append(" ", badge);
+  // 過去問か生成問題かを解く前に示す（電験は過去問の使い回しが多く、区別に学習上の意味がある）。
+  const peBadge = pastExamBadge(p);
+  if (peBadge) meta.append(" ", peBadge);
+  // しおり: 正解した問題でも「後で見返したい」を残せるようにする（間違いノートは誤答のみ）。
+  const bmBtn = h("button", { class: "chip bmbtn", type: "button" }) as HTMLButtonElement;
+  const paintBookmark = (): void => {
+    const on = isBookmarked(storage, p.id);
+    bmBtn.textContent = on ? "🔖 しおり済み" : "🔖 しおり";
+    bmBtn.classList.toggle("is-on", on);
+    bmBtn.setAttribute("aria-pressed", on ? "true" : "false");
+  };
+  bmBtn.addEventListener("click", () => {
+    toggleBookmark(storage, p.id);
+    paintBookmark();
+  });
+  paintBookmark();
+  meta.append(" ", bmBtn);
   // フリーミアム作動中は無料枠の残数を出題メタに添える（残数の見える化＝納得感）。
   // freeLeft はゲート判定と同じ読み出しを再利用する（storage の二重 parse を避ける）。
   if (Number.isFinite(freeLeft)) {

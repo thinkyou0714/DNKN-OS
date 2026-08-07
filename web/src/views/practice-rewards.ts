@@ -16,7 +16,7 @@ import {
   weekIndexOf,
 } from "../quests.js";
 import { passedStreakMilestone } from "../retention.js";
-import { problems, progress, storage } from "../state/app.js";
+import { allProblems, progress, storage } from "../state/app.js";
 import { SEEN_LEVEL_KEY, SEEN_STREAK_MILESTONE_KEY } from "../storage-keys.js";
 import { currentLevel, freezeInfo, runFreezeBridge, seenLevel, seenStreakMilestone } from "./practice.js";
 
@@ -92,7 +92,9 @@ export function processRewards(beforeRecord: { questsClear: boolean; weeklyClear
     logs: progress.logs(),
     streakDays: fiAfter.streak,
     level: lv.level,
-    subjectOf: topicSubjectMap(problems),
+    // 実績は過去の全学習が対象。区分で絞ると他区分で解いた分の科目対応が失われ
+    // 「全科目制覇」等のバッジが退行するため、ここは allProblems を使う。
+    subjectOf: topicSubjectMap(allProblems),
     usedFreezeDays: fiAfter.state.usedDays,
   });
   const seen = loadSeenBadges(storage);

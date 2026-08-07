@@ -9,9 +9,10 @@ import { captureFirstTouch } from "./bridge.js";
 import { initEntitlements } from "./entitlements.js";
 import { onKeydown } from "./keyboard.js";
 import { runMigrations } from "./migrate.js";
+import { requestPersistence } from "./persistence.js";
 import { getTheme } from "./settings.js";
 import type { InstallPromptEvent } from "./state/app.js";
-import { applyTheme, loadFailed, setInstallPrompt, storage } from "./state/app.js";
+import { applyFontScale, applyTheme, loadFailed, setInstallPrompt, storage } from "./state/app.js";
 import { showToast } from "./ui/toast.js";
 import { runFreezeBridge } from "./views/practice.js";
 import { initRouting, renderHeader, renderNav, updateNetStatus } from "./views/router.js";
@@ -69,6 +70,7 @@ async function main(): Promise<void> {
   // 初回 render を行う reloadProblems の直前まで遅らせる（検証失敗でも無料プランで続行）。
   const entitlementsReady = initEntitlements(storage).catch(() => false);
   applyTheme();
+  applyFontScale();
   // system 設定時は OS のテーマ変更に追従。
   matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => {
     if (getTheme(storage) === "system") applyTheme();
@@ -107,6 +109,9 @@ async function main(): Promise<void> {
   renderSkeleton();
   // ゲート判定（模試ロック等）が初回描画に正しく効くよう、render 前にプランを確定させる。
   await entitlementsReady;
+  // 学習データの自動破棄を防ぐ（科目合格制で最長3年使うため）。
+  // 非対応・拒否でも学習は続くので待たない・失敗も無視する。
+  void requestPersistence();
   await reloadProblems();
   document.addEventListener("keydown", onKeydown);
   // オフライン状態の変化をヘッダに反映（完全オフライン動作だが状態は明示する）。

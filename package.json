@@ -32,6 +32,7 @@
     "build:problems": "tsx scripts/build-problems.ts",
     "seed:data": "tsx scripts/seed-data-problems.ts",
     "build:web": "tsx scripts/build-web.ts",
+    "serve:web": "node scripts/serve-web.cjs",
     "typecheck:web": "tsc -p web/tsconfig.json --noEmit",
     "validate:data": "tsx scripts/validate-problems.ts",
     "test": "vitest run",

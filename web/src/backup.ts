@@ -47,6 +47,11 @@ export const BACKUP_KEYS: readonly string[] = [
   // 収益ナッジのオプトアウト。ユーザーの明示的な拒否設定を機種変更で黙って初期化しない
   // （非侵襲原則「消せる」の担保。計測台帳・既読フラグは演出用なので含めない）。
   "denken:bridgeOptOut",
+  // 誤答した問題の解き直し予定（問題単位カード）。ログとは独立に期日を持つため、
+  // これを含めないと機種変更で「いつ解き直すか」だけが失われる。
+  "denken:problemCards",
+  // 科目合格の記録。失うと免除の残り回数が分からなくなる。
+  "denken:subjectPasses",
 ];
 
 export const BACKUP_VERSION = 1;
@@ -109,15 +114,15 @@ function validateBackupValue(key: string, raw: string): string | null {
     if (!ok) return "学習ログ（denken:logs）の形式が不正です。";
     return null;
   }
-  if (key === "denken:cards") {
+  if (key === "denken:cards" || key === "denken:problemCards") {
     let parsed: unknown;
     try {
       parsed = JSON.parse(raw);
     } catch {
-      return "記憶状態（denken:cards）が壊れています。";
+      return `記憶状態（${key}）が壊れています。`;
     }
     if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
-      return "記憶状態（denken:cards）の形式が不正です。";
+      return `記憶状態（${key}）の形式が不正です。`;
     }
     return null;
   }
