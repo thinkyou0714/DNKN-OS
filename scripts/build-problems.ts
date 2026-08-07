@@ -17,6 +17,7 @@ import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { ledgerIndex, templateFingerprint, templateSupervisionStage } from "../lib/audit/template-supervision.js";
 import { generate } from "../lib/engine/generate.js";
 import { StubNarrator } from "../lib/engine/narrate.js";
 import type { Problem, Subject } from "../lib/engine/schema.js";
@@ -32,6 +33,7 @@ import {
 // G3 が lib/shared/rng.ts を新設予定。同一 xorshift 出力を保証。
 import { hashSeed, seededRng } from "../lib/shared/rng.js";
 import { atomicWriteFileSync, printHelp, validateOrExit } from "./shared.js";
+import { loadTemplateLedger } from "./supervision-io.js";
 
 const HELP = `\
 build-problems — web/problems.json を全テンプレートから決定論的に生成する
@@ -58,6 +60,29 @@ function paramsSignature(p: Problem): string {
     .sort()
     .map((k) => `${k}=${(params[k] as { value: number }).value}`)
     .join("|");
+}
+
+/**
+ * テンプレ監修の状態を問題データへ伝播させる。
+ *
+ * 監修済み（監修後に振る舞いが変わっていない）テンプレから生成された問題は、
+ * 人間がその式・レンジ・解説を確認済みなので `supervisor_checked: true` を立てる。
+ * 要再監修（stale）・未監修のテンプレからは立てない — テンプレを編集した瞬間に
+ * 次回ビルドでフラグが自動的に外れるのが、この仕組みの要点。
+ *
+ * @returns 監修済みとみなす topic の集合。
+ */
+function supervisedTopics(): Set<string> {
+  const index = ledgerIndex(loadTemplateLedger());
+  const out = new Set<string>();
+  for (const topic of listTopics()) {
+    const template = getTemplate(topic);
+    if (!template) continue;
+    const entry = index.get(topic);
+    if (!entry) continue; // 未監修は指紋計算そのものを省く（151テンプレぶんの無駄を避ける）。
+    if (templateSupervisionStage(templateFingerprint(template), entry) === "supervised") out.add(topic);
+  }
+  return out;
 }
 
 async function buildForTopic(topic: string, perTopic: number): Promise<Problem[]> {
@@ -231,7 +256,13 @@ async function main(): Promise<void> {
   // ID は内容由来の安定ハッシュ（テンプレ追加・並び替えでIDがズレて
   // 既存ユーザーの間違いノートが別問題を指す事故を構造的に防ぐ）。
   const taken = new Set<string>();
-  const problems = all.map((p) => ({ ...p, id: stableId(p, taken) }));
+  // 監修済みテンプレから生成された問題には監修フラグを伝播させる（台帳が空なら何も変わらない）。
+  const supervised = supervisedTopics();
+  const problems = all.map((p) => ({
+    ...p,
+    id: stableId(p, taken),
+    ...(supervised.has(p.topic) ? { validation: { ...p.validation, supervisor_checked: true } } : {}),
+  }));
 
   // 念のため全件 validate（壊れた問題を web に出さない）。
   const errors: string[] = [];

@@ -10,12 +10,13 @@
 
 import { hashSeed } from "../../../lib/shared/rng.js";
 import { buildCalcDrill, type CalcDrillProblem, gradeCalcDrill, summarizeCalcDrill } from "../calc-drill.js";
-import { buildDerivationDrill, isDerivationCorrect } from "../derivation.js";
+import { buildDerivationDrill, type DerivationDrill, isDerivationCorrect } from "../derivation.js";
 import { formatMath } from "../mathfmt.js";
 import { problems } from "../state/app.js";
 import { practice } from "../state/practice.js";
 import { h, safeHtml } from "../ui/dom.js";
 import { emptyState } from "../ui/widgets.js";
+import { startCoeffDrillSession } from "./coeff-drill.js";
 
 /** 速算ドリルの既定問題数。 */
 const CALC_DRILL_COUNT = 10;
@@ -40,10 +41,21 @@ export function renderDerivationDrill(host: HTMLElement): void {
     return;
   }
 
-  host.append(
-    h("div", { id: "meta" }, `公式導出ドリル ・ ${p.subject}・${p.topic}`),
-    h("p", { class: "muted small" }, "解答の手順を正しい順に並べ替えましょう。↑↓ボタンで入れ替えできます。"),
-  );
+  host.append(h("div", { id: "meta" }, `公式導出ドリル ・ ${p.subject}・${p.topic}`));
+  const body = h("div", {});
+  host.append(body);
+  renderOrderingDrillBody(body, drill);
+}
+
+/**
+ * 並べ替えドリルの本体（リスト・確認ボタン・結果表示）を host へ描画する共通部。
+ * 題材は問題の solution でも原理カードの導出（lib/curriculum/principles.ts）でもよい。
+ * 見出しは呼び出し側が描く（practice は #meta、ダッシュボードは原理カード内見出し。
+ * id を持たないので同一画面に複数配置できる）。
+ */
+export function renderOrderingDrillBody(host: HTMLElement, drill: DerivationDrill): void {
+  host.innerHTML = "";
+  host.append(h("p", { class: "muted small" }, "手順を正しい順に並べ替えましょう。↑↓ボタンで入れ替えできます。"));
 
   // 現在の並び（drill.shuffledOrder のコピー）。各要素は元 step の index。
   const order = [...drill.shuffledOrder];
@@ -100,7 +112,7 @@ export function renderDerivationDrill(host: HTMLElement): void {
   };
   render();
 
-  const result = h("div", { id: "deriv-result" });
+  const result = h("div", { class: "deriv-result" });
   const submit = h(
     "button",
     {
@@ -243,7 +255,7 @@ export function drillLauncherCard(host: HTMLElement): HTMLElement {
     "div",
     { class: "card drill-launcher" },
     h("strong", {}, "🧠 スキルドリル"),
-    h("div", { class: "muted small" }, "手順の理解と計算スピードを鍛える追加ドリル。"),
+    h("div", { class: "muted small" }, "手順の理解・計算スピード・係数の使い分けを鍛える追加ドリル。"),
   );
   const row = h("div", { class: "drill-actions" });
   row.append(
@@ -267,6 +279,15 @@ export function drillLauncherCard(host: HTMLElement): HTMLElement {
         onclick: () => renderCalcDrill(host),
       },
       "⚡ 電卓速算ドリル",
+    ),
+    h(
+      "button",
+      {
+        class: "chip",
+        type: "button",
+        onclick: () => startCoeffDrillSession(host),
+      },
+      "⚖️ 係数判断ドリル",
     ),
   );
   card.append(row);

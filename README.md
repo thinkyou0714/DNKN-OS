@@ -15,8 +15,8 @@
 
 | 領域 | 実装 | 仕様 |
 |---|---|---|
-| 問題生成＆検証エンジン | `lib/engine/`（決定論ソルバ＋検算＋出典＋CLI、**テンプレ112種＝全6科目**: 一次 理論/電力/機械/法規＋二次 電力管理/機械制御。過去問頻出テーマを網羅。MC＋numeric＋descriptive形式＋図解SVG） | `docs/automation/01` |
-| 過去問出題傾向カバレッジ | `lib/engine/templates/pastexam-areas.ts`（20年分の正準出題分野マップ＝**全6科目37分野**）＋`lib/audit/pastexam-coverage.ts`＋`npm run coverage:pastexam`。各テンプレに**出題傾向メタ（分野/頻度・逐語引用なし）**を付与し、全6科目の分野網羅度を定量化（**全37分野100%カバー**・傾向分析・改題出題の重み付けの元データ） | `docs/automation/04` |
+| 問題生成＆検証エンジン | `lib/engine/`（決定論ソルバ＋検算＋出典＋CLI、**テンプレ160種＝全6科目**: 一次 理論/電力/機械/法規＋二次 電力管理/機械制御。過去問頻出テーマを網羅。MC＋numeric＋descriptive形式＋図解SVG） | `docs/automation/01` |
+| 過去問出題傾向カバレッジ | `lib/engine/templates/pastexam-areas.ts`（20年分の正準出題分野マップ＝**全6科目40分野**）＋`lib/audit/pastexam-coverage.ts`＋`npm run coverage:pastexam`。各テンプレに**出題傾向メタ（分野/頻度・逐語引用なし）**を付与し、全6科目の分野網羅度を定量化（**全40分野100%カバー**・傾向分析・改題出題の重み付けの元データ） | `docs/automation/04` |
 | CI品質ゲート | `.github/workflows/validate.yml` ＋ `scripts/validate-problems.ts`（ajv）＋ Biome ＋ 型チェック ＋ `npm run verify` | `docs/automation/09` |
 | アプリのデプロイ | `.github/workflows/deploy-pages.yml`（main マージで `web/` を GitHub Pages へ自動公開） | README ビジョン |
 | X投稿生成＋予約 | `lib/engine/toXPost.ts`＋`xlength.ts`（重み付き280字・自動スレッド）＋`publish.ts`（poll併設・朝→夜引用） | `docs/automation/02` |
@@ -26,8 +26,8 @@
 | コミュニティ儀式 | `lib/community/`（チェックイン・出戻り歓迎・卒業ロール） | `docs/automation/08` |
 | 通知計画 | `lib/notify/`（頻度制御・オプトアウト・ジッター・試験カウントダウン） | `docs/automation/12` |
 | シェアカード文言 / クロスポスト / 誤り訂正 / 週次KPI・UTM計測 | `lib/share-card` `lib/crosspost` `lib/correction` `lib/analytics`（`utm.ts`） | `docs/automation/06,07,10,11` |
-| **オフライン学習アプリ（学習OS）** | `web/`（PWA・タブ型: 学習/復習/模試/質問/進捗/公式/設定。**図解(回路図/ベクトル図/ブロック図のインラインSVG)＋構造化解説**・**FSRS＋4段階評価**・弱点優先＋科目ドリル・**間違いノート**・**時間制限模試(合格判定)**・科目別到達度・試験カウントダウン・数式整形・自動生成9354問。**試験日逆算スケジューリング（直前モード）・科目別合格予測・本番再現模試（科目別実時間・一次4科目/二次合算判定）・二次の問題選択式・年度別通し模試・公式導出ドリル・電卓速算ドリル・前提コンセプトグラフ（学習順）・一次5択マークシート**。esbuild・Service Worker） | README ビジョン |
-| **ゲーミフィケーション（継続の仕組み）** | `web/src/`（**XP/レベル/称号**=解答ログから完全導出・**日替わり/ウィークリークエスト**・**ストリークお守り**=7日ごと獲得で欠席日を自動カバー・**実績バッジ22種**・マスコット**「デンタマ」**=状況反応するインラインSVG・**自分の記録**統計・紙吹雪/効果音/XPフロートの祝賀演出） | `docs/strategy/ideas/13-gamification-duolingo-100.md` |
+| **オフライン学習アプリ（学習OS）** | `web/`（PWA・タブ型: 学習/復習/模試/質問/進捗/公式/設定。**図解(回路図/ベクトル図/ブロック図のインラインSVG)＋構造化解説**・**FSRS＋4段階評価**・弱点優先＋科目ドリル・**間違いノート**・**時間制限模試(合格判定)**・科目別到達度・試験カウントダウン・数式整形・自動生成12890問。**試験日逆算スケジューリング（直前モード）・科目別合格予測・本番再現模試（科目別実時間・一次4科目/二次合算判定）・二次の問題選択式・年度別通し模試・公式導出ドリル・電卓速算ドリル・前提コンセプトグラフ（学習順）・一次5択マークシート**。esbuild・Service Worker） | README ビジョン |
+| **ゲーミフィケーション（継続の仕組み）** | `web/src/`（**XP/レベル/称号**=解答ログから完全導出・**日替わり/ウィークリークエスト**・**ストリークお守り**=7日ごと獲得で欠席日を自動カバー・**実績バッジ22種**・マスコット**「シンクウ」**=状況反応するインラインSVG・**自分の記録**統計・紙吹雪/効果音/XPフロートの祝賀演出） | `docs/strategy/ideas/13-gamification-duolingo-100.md` |
 | **AI質問チャット（質問タブ）** | `lib/chat/`（検証済みナレッジ60件＝出典必須＋日本語バイグラム検索＋RAGプロンプト）＋`web/src/chat.ts`（**オフラインは内蔵ナレッジで即答／APIキー設定時は Claude をブラウザ直結(BYOK)でストリーミング**。法規は改正注意を自動付与） | `docs/strategy/ideas/10-ai-chat-100.md` |
 | Obsidian/Markdown 書き出し | `lib/export/markdown.ts` ＋ `scripts/export-vault.ts`（vault レイアウト） | README ビジョン |
 | **収益化（フリーミアム基盤）** | `lib/license/`＋`web/src/entitlements.ts`（**ECDSA署名ライセンスキー**＝サーバ不要のオフライン検証・無料枠=新規1日N問（復習/再出題は対象外）・模試/スキルドリルのProゲート。**既定=公開鍵未設定では全機能無料のまま**＝挙動不変）＋`scripts/license-keygen.ts`/`license-issue.ts`（販売者CLI: 鍵生成・キー発行） | `docs/strategy/monetization-setup.md` |
@@ -49,7 +49,7 @@ npm run gen -- --topic 誘導電動機の回転速度 --count 5     # 他: 直�
 npm run gen -- --topic 三相交流電力 --count 5 --xpost    # 朝/夜の投稿スレッドも表示
 npm run validate:data                                     # data/ の問題を schema 検証（CIと同じ）
 npm run export:vault -- --out out/vault                   # 問題を Obsidian Markdown に書き出し
-npm run build:problems                                    # 全151テンプレから web/problems.json＋科目別シャード(web/problems/)を再生成（9354問・出荷済みIDは温存＋新規は内容由来の安定ID）
+npm run build:problems                                    # 全160テンプレから web/problems.json＋科目別シャード(web/problems/)を再生成（12890問・出荷済みIDは温存＋新規は内容由来の安定ID）
 npm run coverage:pastexam                                 # 過去問20年分の出題分野カバレッジを集計（--json 対応）
 npm run build:web                                         # オフライン学習アプリをバンドル → web/dist/
 npm run lint                                              # Biome（lint + format チェック）
@@ -59,6 +59,9 @@ npm run audit:status                                      # 問題数・形式�
 npm run supervision:status                                # 監修カバレッジ（合格者レビュー進捗・科目/論点別）。--json 対応
 npm run supervision:packet -- --out out/packet.md         # 監修待ち問題のレビューパケット(Markdown)を書き出し
 npm run supervision:mark -- T-0001                        # 合格者が監修合格と判断した問題のフラグを安全に立てる
+npm run supervision:templates                             # テンプレ単位の監修カバレッジ（1件で平均81問を担保）。--json 対応
+npm run supervision:templates:packet -- --out out/tp.md   # 監修待ちテンプレのレビューパケット（式・レンジ・生成サンプル3件）
+npm run supervision:templates:mark -- --supervisor "名前" 三相交流電力  # テンプレを監修済みとして台帳に記録
 npm run release:check                                     # 公開前の厳格チェック（audit strict含む）
 npm test                                                  # ユニットテスト（vitest）
 ```
@@ -124,7 +127,7 @@ web/src/
   **レベルと電験称号**（見習い電気係→フェーザ術師→電験マイスター・次称号ティーザー付き）。
   **日替わりクエスト3種**（全達成+20XP）＋**ウィークリークエスト3種**（全達成+50XP）・
   **ストリークお守り**（7日継続ごとに獲得・欠席日を次回起動時に自動カバー・最大2個）・**実績バッジ22種**（遡及判定）。
-  マスコット**「デンタマ」**が状況に反応（目標達成を祝う/ストリーク危機を心配/ブランク復帰を歓迎・台詞は日替わり・
+  マスコット**「シンクウ」**が状況に反応（目標達成を祝う/ストリーク危機を心配/ブランク復帰を歓迎・台詞は日替わり・
   設定で非表示可）。正解音・紙吹雪・XPフロート・ハプティクス・正解ポップ/不正解シェイクの祝賀演出
   （効果音は設定でオフ可・prefers-reduced-motion 尊重）。FSRS評価は 1〜3 キーでも選択可。
 - **復習**: FSRS 期限の復習キュー（**1日上限でバッチ化**し復習の洪水を防止）＋**間違いノート**（誤答した問題を再演習＝想起練習）。

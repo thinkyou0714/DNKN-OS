@@ -1,6 +1,7 @@
 /**
  * views/formulas.ts — 公式タブの描画。
  */
+import { filterPrincipleCards, type PrincipleCard } from "../../../lib/curriculum/principles.js";
 import { FORMULAS, filterFormulas } from "../formulas.js";
 import { formatMath } from "../mathfmt.js";
 import { h, safeHtml } from "../ui/dom.js";
@@ -13,11 +14,36 @@ import { startDrill } from "./review.js";
 /** 公式タブの検索クエリ（タブ滞在中は保持）。 */
 let formulasQuery = "";
 
+/** 検索でヒットした原理カードを畳んだ状態で並べる（「式は引けたが、なぜ？」への入口）。 */
+function principleHits(host: HTMLElement, query: string): void {
+  // 空クエリでは全カードが並んで公式集の見通しを損なうため、検索中だけ出す。
+  if (query.trim().length === 0) return;
+  const cards: PrincipleCard[] = filterPrincipleCards(undefined, query);
+  if (cards.length === 0) return;
+  host.append(h("h2", {}, `原理カード（${cards.length}件ヒット）`));
+  for (const card of cards) {
+    host.append(
+      h(
+        "details",
+        { class: "card" },
+        h("summary", {}, `💡 ${card.area} — なぜそうなるのか？`),
+        h("p", {}, card.coreIdea),
+        h("p", { class: "muted" }, card.why),
+        h("div", { class: "muted small" }, "導出の筋道:"),
+        h("ol", {}, ...card.derivation.map((d) => h("li", {}, d))),
+      ),
+    );
+  }
+}
+
 function renderFormulaList(host: HTMLElement): void {
   host.innerHTML = "";
   const groups = filterFormulas(FORMULAS, formulasQuery);
   if (groups.length === 0) {
-    host.append(emptyState("🔍", "見つかりませんでした", "別のキーワードでお試しください（例: 力率 / %Z / すべり）。"));
+    host.append(
+      emptyState("🔍", "公式は見つかりませんでした", "別のキーワードでお試しください（例: 力率 / %Z / すべり）。"),
+    );
+    principleHits(host, formulasQuery);
     return;
   }
   for (const group of groups) {
@@ -39,6 +65,7 @@ function renderFormulaList(host: HTMLElement): void {
     }
     host.append(h("h2", {}, group.subject), table);
   }
+  principleHits(host, formulasQuery);
 }
 
 /** 資料タブ内のサブ画面。タブを増やさずに参照系を束ねる（モバイル下部ナビの限界=7タブ）。 */
@@ -92,8 +119,8 @@ export function renderFormulas(root: HTMLElement): void {
   const search = h("input", {
     type: "search",
     class: "num",
-    placeholder: "公式を検索（例: 力率 / %Z / たるみ）",
-    "aria-label": "公式を検索",
+    placeholder: "公式・原理を検索（例: 力率 / %Z / たるみ）",
+    "aria-label": "公式・原理を検索",
     value: formulasQuery,
   }) as HTMLInputElement;
   search.addEventListener("input", () => {

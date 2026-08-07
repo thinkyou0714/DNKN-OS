@@ -10,8 +10,8 @@
       "value": 1200,
       "unit": "kW",
       "realistic_range": [
-        500,
-        3000
+        300,
+        5000
       ]
     },
     "power_factor_before": {

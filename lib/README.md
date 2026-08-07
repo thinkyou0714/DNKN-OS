@@ -12,6 +12,7 @@
 | `aggregate/` | poll → 正答率・最頻誤答・難易度提案 | [`automation/03`](../docs/automation/03-answer-aggregator.md) |
 | `ingest/` | 過去問取込（出典メタ必須・原典/生成分離・重複検出・要手修正フラグ） | [`automation/04`](../docs/automation/04-pastexam-ingest.md) |
 | `scheduler/` | 適応出題。SM-2 ＋ FSRS ＋ 弱点診断（独立モジュール） | [`automation/05`](../docs/automation/05-adaptive-diagnosis.md) |
+| `curriculum/` | 体系学習パイプライン。前提コンセプトDAG（旧 `web/src/concept-graph.ts` を移設・単一情報源化）＋原理カード（なぜ成り立つか・導出・納得チェック）＋習得状態つきロードマップ生成＋弱点の根っこ診断（前提不足の検出）＋納得チェックの間隔反復（`why-check`）と「解けるけど説明できない」検出（`understanding`） | — |
 | `store/` | 永続化アダプタ（インメモリ / JSONファイル / Supabase） | 〃 |
 | `share-card/` | シェアカード文言生成 | [`automation/06`](../docs/automation/06-share-card-generator.md) |
 | `analytics/` | 週次KPIレビュー ＋ UTM 計測（`utm.ts`） | [`automation/07`](../docs/automation/07-analytics-weekly-review.md) |

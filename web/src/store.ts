@@ -33,7 +33,23 @@ export interface StorageLike {
 /** 解答ログ（AnswerLog に4段階評価を添える）。 */
 export interface WebAnswerLog extends AnswerLog {
   rating?: Rating;
+  /**
+   * 誤答時に学習者が選んだ/入力した答え（誤概念分析用。正解時は記録しない）。
+   *
+   * 正解値との「比」から誤概念を推定する（lib/curriculum/misconceptions.ts）ため、
+   * 分類は保存時ではなく読み出し時に行う。こうしておくとパターン表を後から
+   * 増やしたときに、過去のログにも遡って新しい分類が効く
+   * （XP を解答ログから完全導出しているのと同じ設計方針）。
+   */
+  chosen?: string;
 }
+
+/**
+ * ログに保存する誤答文字列の最大長。
+ * 選択肢や入力がどれだけ長くても、比の判定に要るのは先頭の数値だけなので短く切る
+ * （LOG_CAP=5000 件ぶん積み上がるため、quota を圧迫しないことを優先する）。
+ */
+export const CHOSEN_MAX_LEN = 24;
 
 const CARD_KEY = "denken:cards";
 const LOG_KEY = "denken:logs";
@@ -257,13 +273,18 @@ export class LocalProgress {
     this._dueCountCache = null;
   }
 
-  /** 採点を記録し、FSRS で記憶状態を更新する。rating は4段階 or 正誤boolean。 */
+  /**
+   * 採点を記録し、FSRS で記憶状態を更新する。rating は4段階 or 正誤boolean。
+   *
+   * @param chosen 誤答時に選んだ/入力した答え（誤概念分析用）。正解時は保存しない。
+   */
   record(
     topic: string,
     ratingOrCorrect: Rating | boolean,
     nowMs: number = Date.now(),
     timeMs?: number,
     problemId?: string,
+    chosen?: string,
   ): FsrsView {
     const rating = ratingOf(ratingOrCorrect);
     const now = new Date(nowMs);
@@ -279,14 +300,19 @@ export class LocalProgress {
     // due 件数が変わりうるのでメモ化キャッシュを破棄（blob 長が同じでも内容変化を取りこぼさない）。
     this._dueCountCache = null;
 
+    const correct = rating !== "again";
     const logs = this.logs();
     logs.push({
       topic,
-      correct: rating !== "again",
+      correct,
       atMs: nowMs,
       rating,
       ...(timeMs !== undefined ? { timeMs } : {}),
       ...(problemId !== undefined ? { problemId } : {}),
+      // 誤答のときだけ、選んだ答えを短く切って残す（正解値は問題データ側にあるので持たない）。
+      ...(!correct && chosen !== undefined && chosen.trim() !== ""
+        ? { chosen: chosen.trim().slice(0, CHOSEN_MAX_LEN) }
+        : {}),
     });
     if (logs.length > LOG_CAP) logs.splice(0, logs.length - LOG_CAP); // 古い順に間引く
     this.safeSet(LOG_KEY, JSON.stringify(logs));

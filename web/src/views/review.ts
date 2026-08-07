@@ -13,14 +13,16 @@ import { problems, progress, storage, visibleProblemIdSet, visibleTopicSet } fro
 import { practice, resetPracticeSession } from "../state/practice.js";
 import { h, safeHtml } from "../ui/dom.js";
 import { emptyState, svgNode } from "../ui/widgets.js";
+import { coeffDrillSection } from "./coeff-drill.js";
 import { cramBanner, usedFreezeDays } from "./practice.js";
 import { render, switchView } from "./router.js";
+import { whyCheckSection } from "./why-review.js";
 
 export function renderReview(root: HTMLElement): void {
   // 直前モードのバナー（試験が近いと集中復習を促す #34/#35）。
   const cram = cramBanner();
   if (cram) root.append(cram);
-  // ストリーク予兆ナッジ（崩れる前に背中を押す）。デンタマの表情つきで届きやすく。
+  // ストリーク予兆ナッジ（崩れる前に背中を押す）。シンクウの表情つきで届きやすく。
   const ss = streakStatus(progress.logs(), Date.now(), JST_OFFSET_MS, usedFreezeDays());
   if (ss.state === "at-risk" || ss.state === "broken") {
     if (getMascotEnabled(storage)) {
@@ -114,6 +116,11 @@ export function renderReview(root: HTMLElement): void {
       ),
     );
   }
+
+  // 「解けるか」の復習の隣に「なぜかを説明できるか」の復習を置く（原理も間隔反復に載せる）。
+  whyCheckSection(root);
+  // さらに「係数の使い分けを判断できるか」も間隔反復に載せる（三種→二種ブリッジ）。
+  coeffDrillSection(root);
 
   root.append(h("h2", {}, "間違いノート"));
   if (notebook.length === 0) {

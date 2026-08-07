@@ -6,7 +6,7 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const K_SET: ReadonlyArray<number> = [1, 3, 4, 9, 19, 24];
+const K_SET: ReadonlyArray<number> = [1, 3, 4, 9, 19, 24, 49, 99];
 
 type Params = {
   gain: number;
@@ -19,7 +19,7 @@ export const steadyStateError = defineTemplate<Params>({
   difficulty: 4,
   pastExam: { area: "自動制御理論", frequency: "high", years: [2007, 2012, 2018, 2023] },
   paramSpecs: {
-    gain: { unit: "", realistic_range: [1, 50] },
+    gain: { unit: "", realistic_range: [1, 100] },
   },
   paramOrder: ["gain"],
   draw(rng) {
@@ -33,7 +33,7 @@ export const steadyStateError = defineTemplate<Params>({
     return {
       format: "descriptive",
       params: {
-        gain: { value: K, unit: "", realistic_range: [1, 50] },
+        gain: { value: K, unit: "", realistic_range: [1, 100] },
       },
       answerValue: ess,
       answerUnit: "",

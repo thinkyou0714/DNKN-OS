@@ -51,6 +51,11 @@ npm run build:web
 - `lib/README.md` documents the shared TypeScript domain layer.
 - `lib/engine/` owns problem schemas, templates, validation, narration, and generation.
 - `lib/scheduler/` owns review scheduling and diagnosis.
+- `lib/curriculum/` owns the systematic learning pipeline: prerequisite concept graph, principle cards, learning-path generation, foundation-gap diagnosis, why-check spaced repetition, explanation-gap detection, and coefficient reasoning (`coefficients.ts`: contrastive drills on when √3, 1/2, √2, 2, symmetrical-component, and per-unit coefficients apply — the 三種→二種 bridge). `web/src/concept-graph.ts` is a backward-compat re-export of `lib/curriculum/graph.ts`.
+- `web/src/why-store.ts` persists why-check review state under `denken:whyCards`, separate from the practice cards in `web/src/store.ts` so that accuracy, XP, and weakness diagnosis stay unaffected.
+- `web/src/coeff-store.ts` persists coefficient-drill review state under `denken:coeffCards` with the same isolation rationale as `why-store.ts`. Drill IDs are stable `family#index` keys; never reorder or insert mid-array in `lib/curriculum/coefficients.ts` (golden test in `tests/curriculum/coefficients.test.ts`).
+- `lib/curriculum/rubric.ts` derives a weighted marking rubric from a problem's `solution` steps alone (no schema change): role classification (approach/formula/substitution/calculation/conclusion/note) with per-role weights, plus required-keyword and unit extraction for self-grading assistance. `note` steps (「ポイント:」「（補足…）」) weigh 0 — checking every scoring item must yield a perfect score on every descriptive problem (enforced against real data in `tests/curriculum/rubric.test.ts`).
+- `lib/curriculum/misconceptions.ts` identifies what a wrong answer got wrong from the chosen/correct ratio (√3, 1/2, 2π, ×1000, sign…) and maps it to a coefficient family so the UI can send the learner straight to the matching drill. Classification happens at read time from `WebAnswerLog.chosen`, so extending the pattern table retroactively improves past logs.
 - `lib/store/` owns persistence interfaces and implementations.
 - `lib/audit/` owns repository quality status and supervision helpers.
 - `web/` owns the offline PWA.
@@ -152,8 +157,14 @@ npm run build:web
 - `scripts/audit-status.ts` is the audit command entrypoint.
 - `npm run audit:status` is advisory.
 - `npm run audit:status:strict` fails on warning-level audit items.
-- `scripts/supervision-status.ts`, `scripts/supervision-packet.ts`, and `scripts/supervision-mark.ts` support supervision workflows.
-- Tests include `tests/audit/status.test.ts` and `tests/audit/supervision.test.ts`.
+- `scripts/supervision-status.ts`, `scripts/supervision-packet.ts`, and `scripts/supervision-mark.ts` support per-problem supervision of `data/problems/` (52 curated problems).
+- `lib/audit/template-supervision.ts` + `scripts/supervision-templates.ts` support per-template supervision, which covers the ~12,890 shipped problems generated from 160 templates (one template ≈ 81 problems). The ledger is `data/supervision/templates.json`.
+- Template supervision records a behavioral fingerprint (a hash of deterministically generated samples plus declared metadata), so editing a template's formula, `realistic_range`, difficulty, solution text, or choices automatically invalidates its supervision and surfaces it as 要再監修 (stale). Comment/identifier-only edits do not. Never weaken this — it is what stops the ledger from carrying false "supervised" claims.
+- Stale supervision and ledger orphans (entries whose topic no longer exists) are reported by `npm run audit:status` and fail `npm run audit:status:strict`, so they cannot sit unnoticed without running the dedicated command.
+- `scripts/build-problems.ts` reads the ledger and stamps `validation.supervisor_checked: true` on problems generated from supervised templates only. Editing a template therefore drops the flag on its generated problems at the next build. With an empty ledger the generated artifacts are byte-identical to before.
+- `scripts/supervision-io.ts` is the single owner of the ledger path and its read/write conventions (used by the supervision CLI, the audit script, and the problem build).
+- Tests include `tests/audit/status.test.ts`, `tests/audit/supervision.test.ts`, and `tests/audit/template-supervision.test.ts`.
+- The runbook for both layers is `docs/strategy/supervision-workflow.md`.
 
 ## 11. Commands
 
@@ -175,9 +186,12 @@ npm run build:web
 - `npm run verify`: run lint, typecheck, web typecheck, data validation, tests, and web build.
 - `npm run audit:status`: show repository quality audit.
 - `npm run audit:status:strict`: run strict repository quality audit.
-- `npm run supervision:status`: show supervision status.
-- `npm run supervision:packet`: create a supervision packet.
-- `npm run supervision:mark`: mark supervision state.
+- `npm run supervision:status`: show per-problem supervision status.
+- `npm run supervision:packet`: create a per-problem supervision packet.
+- `npm run supervision:mark`: mark a problem as supervised.
+- `npm run supervision:templates`: show per-template supervision coverage (leverage-ordered queue).
+- `npm run supervision:templates:packet`: create a per-template review packet.
+- `npm run supervision:templates:mark`: record a template as supervised (`-- --supervisor "name" <topic>`).
 - `npm run coverage:pastexam`: check past-exam template coverage.
 - `npm run release:check`: run release validation.
 - `npm run release:semver`: validate release version semantics.
@@ -193,6 +207,7 @@ npm run build:web
 - Migration static checks live under `tests/infra/migrations.test.ts`.
 - Store tests live under `tests/store/`.
 - Scheduler tests live under `tests/scheduler/`.
+- Curriculum tests live under `tests/curriculum/`.
 - Web behavior tests live under `tests/web/`.
 - The main local gate is `npm run verify`.
 - `.claude/settings.json` is outside Biome's `files.includes`, so `biome check` on it is a no-op; validate it with the JSON parse one-liner below instead.

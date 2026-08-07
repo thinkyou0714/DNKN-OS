@@ -11,7 +11,7 @@
       "unit": "kW",
       "realistic_range": [
         1,
-        50
+        100
       ]
     },
     "copper_loss": {
@@ -19,7 +19,7 @@
       "unit": "kW",
       "realistic_range": [
         1,
-        60
+        100
       ]
     }
   },

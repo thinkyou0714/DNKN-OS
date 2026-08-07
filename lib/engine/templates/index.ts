@@ -11,6 +11,7 @@ import { boostChopper } from "./boost-chopper.js";
 import { buckBoostChopper } from "./buck-boost-chopper.js";
 import { buckChopper } from "./buck-chopper.js";
 import { capacitorEnergy } from "./capacitor-energy.js";
+import { capacitorVoltageRise } from "./capacitor-voltage-rise.js";
 import { capacityFactor } from "./capacity-factor.js";
 import { chargeRedistribution } from "./charge-redistribution.js";
 import { chopperCurrentRipple } from "./chopper-current-ripple.js";
@@ -23,12 +24,14 @@ import { conductorLength } from "./conductor-length.js";
 import { coulombForce } from "./coulomb-force.js";
 import { coupledInductorConnection } from "./coupled-inductor-connection.js";
 import { currentLimitingReactor } from "./current-limiting-reactor.js";
+import { currentReductionFactor } from "./current-reduction-factor.js";
 import { currentTransformerRelay } from "./current-transformer-relay.js";
 import { dailyLoadFactor } from "./daily-load-factor.js";
 import { dcGeneratorEmf } from "./dc-generator-emf.js";
 import { dcMotorEmf } from "./dc-motor-emf.js";
 import { dcMotorFieldWeakening } from "./dc-motor-field-weakening.js";
 import { dcMotorSpeedResistance } from "./dc-motor-speed-resistance.js";
+import { deltaWyePowerRatio } from "./delta-wye-power-ratio.js";
 import { deltaWyeResistance } from "./delta-wye-resistance.js";
 import { demandDiversityComposite } from "./demand-diversity-composite.js";
 import { demandFactor } from "./demand-factor.js";
@@ -48,6 +51,7 @@ import { groundingResistance } from "./grounding-resistance.js";
 import { groundingTypes } from "./grounding-types.js";
 import { guyWireSafety } from "./guy-wire-safety.js";
 import { guyWireStrandCount } from "./guy-wire-strand-count.js";
+import { halfWaveRectifier } from "./half-wave-rectifier.js";
 import { heatPumpCop } from "./heat-pump-cop.js";
 import { hoistMotorOutput } from "./hoist-motor-output.js";
 import { hvInsulationTestVoltage } from "./hv-insulation-test-voltage.js";
@@ -76,6 +80,7 @@ import { loopDistributionCurrent } from "./loop-distribution-current.js";
 import { lossFactor } from "./loss-factor.js";
 import { lossReductionPf } from "./loss-reduction-pf.js";
 import { magneticCircuit } from "./magnetic-circuit.js";
+import { mainLineAllowableCurrent } from "./main-line-allowable-current.js";
 import { massDefectEnergy } from "./mass-defect-energy.js";
 import { maxDemandComposite } from "./max-demand-composite.js";
 import { maxEfficiencyLoad } from "./max-efficiency-load.js";
@@ -84,6 +89,7 @@ import { maxTorqueStartResistance } from "./max-torque-start-resistance.js";
 import { multiplierResistor } from "./multiplier-resistor.js";
 import { mutualInductance } from "./mutual-inductance.js";
 import { nuclearPowerOutput } from "./nuclear-power-output.js";
+import { opAmpInvertingGain } from "./op-amp-inverting-gain.js";
 import { opAmpNoninvertingGain } from "./op-amp-noninverting-gain.js";
 import { overheadClearance } from "./overhead-clearance.js";
 import { parallelConductorForce } from "./parallel-conductor-force.js";
@@ -106,6 +112,7 @@ import { pumpingRequiredPower } from "./pumping-required-power.js";
 import { pwmInverterVoltage } from "./pwm-inverter-voltage.js";
 import { rcTimeConstant } from "./rc-time-constant.js";
 import { reactivePowerCompensation } from "./reactive-power-compensation.js";
+import { requiredCompensationCapacity } from "./required-compensation-capacity.js";
 import { reserveMargin } from "./reserve-margin.js";
 import { resistanceTemperature } from "./resistance-temperature.js";
 import { resistorNetwork } from "./resistor-network.js";
@@ -137,9 +144,11 @@ import { switchingLoss } from "./switching-loss.js";
 import { synchronizingCurrent } from "./synchronizing-current.js";
 import { synchronousGeneratorOutput } from "./synchronous-generator-output.js";
 import { synchronousSpeed } from "./synchronous-speed.js";
+import { synchronousVoltageRegulation } from "./synchronous-voltage-regulation.js";
 import { systemFrequencyConstant } from "./system-frequency-constant.js";
 import { thermalEfficiency } from "./thermal-efficiency.js";
 import { thermalFuelConsumption } from "./thermal-fuel-consumption.js";
+import { thermalPlantEfficiency } from "./thermal-plant-efficiency.js";
 import { theveninLoadCurrent } from "./thevenin-load-current.js";
 import { theveninMaxPower } from "./thevenin-max-power.js";
 import { threePhasePower } from "./three-phase-power.js";
@@ -201,6 +210,8 @@ const templates: Template[] = [
   acBridgeBalance,
   coupledInductorConnection,
   chargeRedistribution,
+  opAmpInvertingGain,
+  deltaWyePowerRatio,
   // 電力
   demandFactor,
   powerFactorCorrection,
@@ -225,6 +236,7 @@ const templates: Template[] = [
   currentTransformerRelay,
   pfImprovementCapacity,
   massDefectEnergy,
+  thermalPlantEfficiency,
   // 機械
   inductionMotorSpeed,
   transformerEfficiency,
@@ -257,6 +269,8 @@ const templates: Template[] = [
   theveninMaxPower,
   lineDropAndLoss,
   inductionSlipTorque,
+  synchronousVoltageRegulation,
+  halfWaveRectifier,
   // 法規
   compositeLoadSag,
   demandDiversityComposite,
@@ -287,6 +301,8 @@ const templates: Template[] = [
   hvInsulationTestVoltage,
   smallScaleElectricalFacility,
   groundFaultPotentialRise,
+  mainLineAllowableCurrent,
+  currentReductionFactor,
   // 機械制御（二次）
   transformerVoltageRegulation,
   synchronousGeneratorOutput,
@@ -335,6 +351,8 @@ const templates: Template[] = [
   reserveMargin,
   currentLimitingReactor,
   pumpedStorageGenerationTime,
+  capacitorVoltageRise,
+  requiredCompensationCapacity,
 ];
 
 const registry = new Map<string, Template>(templates.map((t) => [t.topic, t]));
@@ -372,6 +390,7 @@ export {
   buckBoostChopper,
   buckChopper,
   capacitorEnergy,
+  capacitorVoltageRise,
   capacityFactor,
   chargeRedistribution,
   chopperCurrentRipple,
@@ -384,12 +403,14 @@ export {
   coulombForce,
   coupledInductorConnection,
   currentLimitingReactor,
+  currentReductionFactor,
   currentTransformerRelay,
   dailyLoadFactor,
   dcGeneratorEmf,
   dcMotorEmf,
   dcMotorFieldWeakening,
   dcMotorSpeedResistance,
+  deltaWyePowerRatio,
   deltaWyeResistance,
   demandDiversityComposite,
   demandFactor,
@@ -408,6 +429,7 @@ export {
   groundingTypes,
   guyWireSafety,
   guyWireStrandCount,
+  halfWaveRectifier,
   heatPumpCop,
   hoistMotorOutput,
   hvInsulationTestVoltage,
@@ -434,6 +456,7 @@ export {
   lossFactor,
   lossReductionPf,
   magneticCircuit,
+  mainLineAllowableCurrent,
   massDefectEnergy,
   maxDemandComposite,
   maxEfficiencyLoad,
@@ -442,6 +465,7 @@ export {
   multiplierResistor,
   mutualInductance,
   nuclearPowerOutput,
+  opAmpInvertingGain,
   opAmpNoninvertingGain,
   overheadClearance,
   parallelConductorForce,
@@ -464,6 +488,7 @@ export {
   pwmInverterVoltage,
   rcTimeConstant,
   reactivePowerCompensation,
+  requiredCompensationCapacity,
   reserveMargin,
   resistanceTemperature,
   resistorNetwork,
@@ -496,9 +521,11 @@ export {
   synchronizingCurrent,
   synchronousGeneratorOutput,
   synchronousSpeed,
+  synchronousVoltageRegulation,
   systemFrequencyConstant,
   thermalEfficiency,
   thermalFuelConsumption,
+  thermalPlantEfficiency,
   theveninLoadCurrent,
   threePhasePower,
   threePhaseRectifier,

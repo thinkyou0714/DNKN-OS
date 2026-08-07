@@ -16,8 +16,12 @@ import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { auditStatus, formatAuditSummary, type InvalidProblemFile, parseAuditCliOptions } from "../lib/audit/status.js";
+import { templateSupervisionReport } from "../lib/audit/template-supervision.js";
 import { type Problem, problemSchema } from "../lib/engine/schema.js";
+import { getTemplate, listTopics } from "../lib/engine/templates/index.js";
+import type { Template } from "../lib/engine/templates/types.js";
 import { printHelp } from "./shared.js";
+import { loadTemplateLedger } from "./supervision-io.js";
 
 const HELP = `\
 audit-status — リポジトリの品質ステータスを監査する
@@ -82,12 +86,24 @@ function main(): void {
 
   const options = parseAuditCliOptions(argv);
   const { parsed, invalidFiles } = readProblems(DATA_DIR);
+  // テンプレ監修の破れ（要再監修・孤児）は専用コマンドを叩かないと気づけないため、
+  // 通常の監査にも載せる（--strict ではリリースを止める）。
+  const templates = listTopics()
+    .map((topic) => getTemplate(topic))
+    .filter((t): t is Template => t !== undefined);
+  const tsReport = templateSupervisionReport({ templates, ledger: loadTemplateLedger() });
   const summary = auditStatus({
     problems: parsed,
     invalidSchema: invalidFiles.length,
     invalidFiles,
     testFiles: walk(TEST_DIR).filter((f) => f.endsWith(".test.ts")).length,
     thresholds: options.thresholds,
+    templateSupervision: {
+      total: tsReport.total,
+      supervised: tsReport.supervised,
+      stale: tsReport.stale,
+      orphans: tsReport.orphans.length,
+    },
   });
 
   if (options.json) console.log(JSON.stringify(summary, null, 2));

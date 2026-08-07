@@ -8,8 +8,8 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const D_SET: ReadonlyArray<number> = [5, 10, 20, 50];
-const K_SET: ReadonlyArray<number> = [4, 9, 19, 24, 49, 99];
+const D_SET: ReadonlyArray<number> = [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30, 40, 50, 60, 75, 80, 100];
+const K_SET: ReadonlyArray<number> = [1, 3, 4, 9, 19, 24, 49, 99, 199];
 
 type Params = {
   disturbance: number;

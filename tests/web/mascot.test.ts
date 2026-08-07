@@ -67,7 +67,7 @@ describe("mascotCheer（解答直後のリアクション）", () => {
 
 describe("mascotSvg（インラインSVG）", () => {
   it("有効なSVG要素でアクセシブルなラベルを持つ", () => {
-    for (const mood of ["happy", "cheer", "worried", "sad", "sleepy"] as const) {
+    for (const mood of ["happy", "cheer", "teach", "worried", "sad", "sleepy"] as const) {
       const svg = mascotSvg(mood);
       expect(svg.startsWith("<svg")).toBe(true);
       expect(svg.endsWith("</svg>")).toBe(true);

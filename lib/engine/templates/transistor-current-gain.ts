@@ -11,8 +11,8 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const COLLECTOR_SET: ReadonlyArray<number> = [1, 2, 3, 4, 5]; // 〔mA〕
-const BASE_SET: ReadonlyArray<number> = [10, 20, 25, 40, 50]; // 〔μA〕
+const COLLECTOR_SET: ReadonlyArray<number> = [1, 1.2, 1.5, 1.6, 2, 2.4, 2.5, 3, 3.2, 3.5, 4, 4.5, 4.8, 5]; // 〔mA〕
+const BASE_SET: ReadonlyArray<number> = [10, 12, 15, 16, 20, 24, 25, 30, 32, 40, 48, 50]; // 〔μA〕
 
 type Params = {
   collector_current: number;

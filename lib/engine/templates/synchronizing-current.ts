@@ -8,8 +8,10 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const DE_SET: ReadonlyArray<number> = [100, 150, 200, 300, 600];
-const XS_SET: ReadonlyArray<number> = [2, 2.5, 3, 5, 6];
+const DE_SET: ReadonlyArray<number> = [
+  50, 60, 70, 80, 90, 100, 120, 150, 180, 200, 240, 250, 300, 360, 400, 450, 500, 600, 750, 800, 900, 1000,
+];
+const XS_SET: ReadonlyArray<number> = [1, 1.25, 1.5, 2, 2.5, 3, 4, 5, 6, 7.5, 8, 10];
 
 type Params = {
   emf_difference: number;

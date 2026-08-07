@@ -3,6 +3,7 @@
  * problems 配列・loadFailed・現在 view・progress インスタンス・テーマ。
  */
 import type { Problem } from "../../../lib/engine/schema.js";
+import { CoeffDrillStore } from "../coeff-store.js";
 import { JST_OFFSET_MS } from "../dates.js";
 import {
   applyExamFilter,
@@ -13,11 +14,16 @@ import {
   getTheme,
 } from "../settings.js";
 import { LocalProgress } from "../store.js";
+import { WhyCheckStore } from "../why-store.js";
 
 export const storage = window.localStorage;
 // 試験日を渡して FSRS を試験日逆算モードで構築する（#34/#35）。試験日が変わったら
 // settings 側で progress.setExamDate を呼んで再構築する。
 export const progress = new LocalProgress(storage, JST_OFFSET_MS, getExamDate(storage));
+/** 原理の納得チェックの記憶状態（演習の progress とは別カード・別キーで管理する）。 */
+export const whyChecks = new WhyCheckStore(storage);
+/** 係数判断ドリルの記憶状態（同じく演習とは別カード・別キーで管理する）。 */
+export const coeffDrills = new CoeffDrillStore(storage);
 
 /**
  * 読み込み済みの問題リスト（試験区分フィルタ適用後）。各画面はこれを見る。

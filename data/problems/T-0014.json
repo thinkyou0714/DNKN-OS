@@ -10,7 +10,7 @@
       "value": 6600,
       "unit": "V",
       "realistic_range": [
-        3300,
+        2200,
         6600
       ]
     }

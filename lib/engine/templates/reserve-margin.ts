@@ -6,10 +6,10 @@
 import { formatClean, isCleanAnswer } from "../clean.js";
 import { defineTemplate, pick } from "./helpers.js";
 
-const THERMAL_SET: ReadonlyArray<number> = [2000, 3000, 4000];
-const HYDRO_SET: ReadonlyArray<number> = [1000, 1500, 2000];
-const PURCHASE_SET: ReadonlyArray<number> = [500, 1000];
-const DEMAND_SET: ReadonlyArray<number> = [4000, 5000, 6000, 8000];
+const THERMAL_SET: ReadonlyArray<number> = [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000];
+const HYDRO_SET: ReadonlyArray<number> = [500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 3000];
+const PURCHASE_SET: ReadonlyArray<number> = [200, 400, 500, 600, 800, 1000, 1200, 1500, 2000];
+const DEMAND_SET: ReadonlyArray<number> = [3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000];
 
 type Params = {
   thermal_capacity: number;
