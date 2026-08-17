@@ -399,6 +399,33 @@
         background: var(--surface-2); color: var(--text);
       }
       .rubric-advice { display: block; font-size: var(--fs-small); font-weight: 400; color: var(--muted); margin-top: var(--sp-1); }
+      /* 解法スライド（解く流れを1枚ずつ再生するモーダル）。z-index はキーボードヘルプ(70)の下。 */
+      .slides-overlay {
+        position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center;
+        background: rgba(20, 17, 12, .5); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+        padding: var(--sp-4); animation: fade var(--dur) var(--ease) both;
+      }
+      .slides-card {
+        width: min(680px, 100%); max-height: 88vh; overflow: auto; display: grid; gap: var(--sp-3);
+        background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--r-md);
+        padding: var(--sp-4) var(--sp-5); box-shadow: 0 18px 48px rgba(0, 0, 0, .28);
+      }
+      .slides-head { display: flex; align-items: center; gap: var(--sp-2); }
+      .slides-label { font: 600 var(--fs-caption)/1 var(--font-mono); color: var(--accent); letter-spacing: .18em; }
+      .slides-count {
+        margin-left: auto; font: 600 var(--fs-small)/1 var(--font-mono);
+        font-variant-numeric: tabular-nums; color: var(--muted);
+      }
+      .slides-title { display: flex; align-items: baseline; gap: var(--sp-2); font-size: var(--fs-body); }
+      .slides-body { font-size: var(--fs-body); line-height: 1.9; min-height: 3.5rem; }
+      .slides-thought {
+        border-top: 1px dashed var(--border-strong); padding-top: var(--sp-2);
+        color: var(--muted); font-size: var(--fs-small); line-height: var(--lh-small);
+      }
+      .slides-nav { display: flex; align-items: center; gap: var(--sp-2); }
+      .slides-dots { display: flex; gap: 6px; margin: 0 auto; }
+      .slides-dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--border-strong); }
+      .slides-dots i.on { background: var(--accent); }
       /* 誤概念（誤答パターン）の可視化。件数は赤＝つまずきの重さ。 */
       .miscon-list { display: grid; gap: var(--sp-2); margin: var(--sp-2) 0; }
       .miscon-item {
@@ -839,6 +866,6 @@
       復習は FSRS（最新の間隔反復アルゴリズム）。コード=MIT / 問題データ=CC-BY-SA-4.0。
     </footer>
 
-    <script type="module" src="./dist/app.js" integrity="sha384-tDIXUM6iReudeHCkpPkg3D6DBWMDo/gnjgwXrYuaaO5TWMnk7hX8nrWJ8+tEBlwW" crossorigin="anonymous"></script>
+    <script type="module" src="./dist/app.js" integrity="sha384-QbnuuFq+EHMl2+QBj/txfXVrJVNdjqG0DQb+C1FDDb1CXwRFUQuX16IPdeOIZL4R" crossorigin="anonymous"></script>
   </body>
 </html>

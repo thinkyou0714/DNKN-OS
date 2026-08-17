@@ -10,6 +10,7 @@
  * - coefficients.ts: 係数リーズニング（√3・1/2 等の適用判断ドリル。三種→二種ブリッジ）
  * - rubric.ts:       二次記述の配点重み付きルーブリックと必須キーワード照合
  * - misconceptions.ts: 誤答比から誤概念を同定し、係数ファミリのドリルへ橋渡しする
+ * - solution-slides.ts: 解法スライド（解く流れの1枚ずつ再生。役割バッジ＋実戦の思考ガイド）
  */
 export * from "./coefficients.js";
 export * from "./gaps.js";
@@ -18,5 +19,6 @@ export * from "./misconceptions.js";
 export * from "./path.js";
 export * from "./principles.js";
 export * from "./rubric.js";
+export * from "./solution-slides.js";
 export * from "./understanding.js";
 export * from "./why-check.js";
