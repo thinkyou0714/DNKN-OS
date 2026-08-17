@@ -56,7 +56,8 @@ npm run build:web
 - `web/src/coeff-store.ts` persists coefficient-drill review state under `denken:coeffCards` with the same isolation rationale as `why-store.ts`. Drill IDs are stable `family#index` keys; never reorder or insert mid-array in `lib/curriculum/coefficients.ts` (golden test in `tests/curriculum/coefficients.test.ts`).
 - `lib/curriculum/rubric.ts` derives a weighted marking rubric from a problem's `solution` steps alone (no schema change): role classification (approach/formula/substitution/calculation/conclusion/note) with per-role weights, plus required-keyword and unit extraction for self-grading assistance. `note` steps (「ポイント:」「（補足…）」) weigh 0 — checking every scoring item must yield a perfect score on every descriptive problem (enforced against real data in `tests/curriculum/rubric.test.ts`).
 - `lib/curriculum/misconceptions.ts` identifies what a wrong answer got wrong from the chosen/correct ratio (√3, 1/2, 2π, ×1000, sign…) and maps it to a coefficient family so the UI can send the learner straight to the matching drill. Classification happens at read time from `WebAnswerLog.chosen`, so extending the pattern table retroactively improves past logs.
-- `lib/curriculum/solution-slides.ts` turns a problem's `solution` steps into a slide deck (cover → per-step slides annotated with rubric roles plus a 実戦の思考 guide → answer) with no schema change. `web/src/ui/slide-overlay.ts` plays the deck as a modal, opened from the slide button that `solutionNode` (`web/src/ui/widgets.ts`) appends wherever a solution is shown.
+- `lib/curriculum/solution-slides.ts` turns a problem's `solution` steps into a slide deck (cover → per-step slides annotated with rubric roles plus a 実戦の思考 guide → answer) with no schema change, and owns the autoplay pace vocabulary (`AUTOPLAY_PACES`, `nextAutoplayIndex`). `web/src/ui/slide-overlay.ts` plays the deck as a modal (manual nav plus autoplay that stops on the last slide), opened from the slide button that `solutionNode` (`web/src/ui/widgets.ts`) appends wherever a solution is shown. `web/src/ui/slide-print.ts` prints the deck one-slide-per-page (A4 landscape) for PDF archiving.
+- `lib/curriculum/narration-script.ts` converts a slide deck into a deterministic video narration script (verbatim step text, role lead-ins only, duration estimate at ~300 chars/min); `scripts/export-video-scripts.ts` (`npm run export:video-scripts`) writes the scripts as Markdown to `out/video-scripts/`.
 - `lib/store/` owns persistence interfaces and implementations.
 - `lib/audit/` owns repository quality status and supervision helpers.
 - `web/` owns the offline PWA.
@@ -171,6 +172,7 @@ npm run build:web
 
 - `npm run gen`: run `tsx lib/engine/cli.ts`.
 - `npm run export:vault`: export selected problem data to vault markdown.
+- `npm run export:video-scripts`: write video narration scripts built from solution slides (`-- --id <problemId>` / `-- --topic <topic> [--limit n]`).
 - `npm run build:problems`: rebuild `web/problems.json`.
 - `npm run seed:data`: seed generated problem data under `data/problems/`.
 - `npm run build:web`: build the offline web app.
