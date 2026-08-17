@@ -7,6 +7,7 @@ import { formatMath } from "../mathfmt.js";
 import { isUnsupervised } from "../problem-meta.js";
 import { sanitizeSvg } from "../sanitize.js";
 import { h, safeHtml } from "./dom.js";
+import { openSlideOverlay } from "./slide-overlay.js";
 
 /** 難易度を星で表示。 */
 export function difficultyStars(n: number): string {
@@ -29,7 +30,7 @@ export function sourceText(p: Problem): string {
     : `出典: ${p.source.citation}`;
 }
 
-/** 解説ノード（ステップ付き）。 */
+/** 解説ノード（ステップ付き）。解説が出る場所すべてに「スライドで解き直す」を添える。 */
 export function solutionNode(p: Problem, label: string): HTMLElement {
   return h(
     "div",
@@ -37,6 +38,11 @@ export function solutionNode(p: Problem, label: string): HTMLElement {
     h("strong", {}, label),
     h("ol", {}, ...p.solution.map((s) => h("li", { html: safeHtml(formatMath(s)) }))),
     h("p", { class: "src" }, sourceText(p)),
+    h(
+      "button",
+      { class: "chip", type: "button", onclick: () => openSlideOverlay(p) },
+      "🎞 スライドで解き直す（解く流れを1枚ずつ）",
+    ),
   );
 }
 
