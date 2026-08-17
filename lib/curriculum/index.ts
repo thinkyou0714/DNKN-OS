@@ -11,11 +11,13 @@
  * - rubric.ts:       二次記述の配点重み付きルーブリックと必須キーワード照合
  * - misconceptions.ts: 誤答比から誤概念を同定し、係数ファミリのドリルへ橋渡しする
  * - solution-slides.ts: 解法スライド（解く流れの1枚ずつ再生。役割バッジ＋実戦の思考ガイド）
+ * - narration-script.ts: 解法動画のナレーション台本（スライド1枚=1セグメントの決定論生成）
  */
 export * from "./coefficients.js";
 export * from "./gaps.js";
 export * from "./graph.js";
 export * from "./misconceptions.js";
+export * from "./narration-script.js";
 export * from "./path.js";
 export * from "./principles.js";
 export * from "./rubric.js";

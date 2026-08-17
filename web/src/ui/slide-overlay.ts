@@ -10,13 +10,24 @@
  *     （app.ts の onKeydown: 数字で解答・Enterで次の問題）がモーダル中に発火しないようにする。
  *   - ←/→ でスライド移動、Esc で閉じる、Tab はモーダル内で循環（フォーカストラップ）。
  *   - 閉じたら開いたボタンへフォーカスを返す。
+ *
+ * 自動再生（▶）は AUTOPLAY_PACES の間隔でスライドを送り、最後の1枚で自動停止する
+ * （勝手に閉じない）。タイマーは close() で必ず破棄する（タイマーリーク防止 II-156 と同じ規律）。
  */
 
 import { ROLE_LABELS } from "../../../lib/curriculum/rubric.js";
-import { buildSolutionSlides, clampSlideIndex, type SolutionSlide } from "../../../lib/curriculum/solution-slides.js";
+import {
+  AUTOPLAY_PACES,
+  type AutoplayPace,
+  buildSolutionSlides,
+  clampSlideIndex,
+  nextAutoplayIndex,
+  type SolutionSlide,
+} from "../../../lib/curriculum/solution-slides.js";
 import type { Problem } from "../../../lib/engine/schema.js";
 import { formatMath } from "../mathfmt.js";
 import { h, safeHtml } from "./dom.js";
+import { printSlides } from "./slide-print.js";
 
 /** スライド位置ドットを描画する上限枚数（それ以上はカウンタ表示だけで十分）。 */
 const MAX_DOTS = 12;
@@ -52,6 +63,66 @@ export function openSlideOverlay(p: Problem): void {
     "次へ ▶",
   ) as HTMLButtonElement;
 
+  // ---- 自動再生（動画のように流す再生モード） ----
+  let paceIdx = 1; // 既定は「ふつう」
+  let timer: number | null = null;
+  const pace = (): AutoplayPace => AUTOPLAY_PACES[paceIdx % AUTOPLAY_PACES.length] as AutoplayPace;
+  const playBtn = h(
+    "button",
+    { class: "chip", type: "button", "aria-pressed": "false", onclick: () => toggleAutoplay() },
+    "▶ 自動再生",
+  ) as HTMLButtonElement;
+  const paceBtn = h(
+    "button",
+    { class: "chip", type: "button", title: "1枚あたりの表示時間を切り替え", onclick: () => cyclePace() },
+    `ペース: ${pace().label}`,
+  ) as HTMLButtonElement;
+
+  function stopAutoplay(): void {
+    if (timer !== null) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+    playBtn.textContent = "▶ 自動再生";
+    playBtn.setAttribute("aria-pressed", "false");
+  }
+
+  function startAutoplay(): void {
+    stopAutoplay();
+    timer = window.setInterval(() => {
+      const nx = nextAutoplayIndex(idx, n);
+      if (nx === null) {
+        // 最後まで来たら止まって待つ（勝手に閉じない）。
+        stopAutoplay();
+        return;
+      }
+      idx = nx;
+      renderSlide();
+    }, pace().ms);
+    playBtn.textContent = "⏸ 一時停止";
+    playBtn.setAttribute("aria-pressed", "true");
+  }
+
+  function toggleAutoplay(): void {
+    if (timer !== null) {
+      stopAutoplay();
+      return;
+    }
+    // 最後のスライドで▶を押したら最初からもう一周（解き直しの導線）。
+    if (idx >= n - 1) {
+      idx = 0;
+      renderSlide();
+    }
+    startAutoplay();
+  }
+
+  function cyclePace(): void {
+    paceIdx = (paceIdx + 1) % AUTOPLAY_PACES.length;
+    paceBtn.textContent = `ペース: ${pace().label}`;
+    // 再生中なら新しい間隔で仕切り直す。
+    if (timer !== null) startAutoplay();
+  }
+
   const overlay = h(
     "div",
     {
@@ -83,6 +154,25 @@ export function openSlideOverlay(p: Problem): void {
       body,
       thought,
       h("div", { class: "slides-nav" }, prev, dots, next),
+      h(
+        "div",
+        { class: "slides-tools" },
+        playBtn,
+        paceBtn,
+        h(
+          "button",
+          {
+            class: "chip",
+            type: "button",
+            title: "1スライド=1ページ（A4横）で印刷ダイアログを開き、PDFとして保存できます",
+            onclick: () => {
+              stopAutoplay();
+              printSlides(p);
+            },
+          },
+          "🖨 印刷 / PDF保存",
+        ),
+      ),
     ),
   );
 
@@ -109,9 +199,12 @@ export function openSlideOverlay(p: Problem): void {
     }
     idx = clampSlideIndex(to, n);
     renderSlide();
+    // 手動で送ったら、そのスライドをフルの間隔で見られるようタイマーを仕切り直す。
+    if (timer !== null) startAutoplay();
   }
 
   function close(): void {
+    stopAutoplay();
     document.removeEventListener("keydown", onKey, true);
     overlay.remove();
     opener?.focus();

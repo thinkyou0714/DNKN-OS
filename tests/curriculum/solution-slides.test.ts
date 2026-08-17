@@ -10,9 +10,11 @@ import { describe, expect, it } from "vitest";
 import { buildRubric, ROLE_LABELS } from "../../lib/curriculum/rubric.js";
 import {
   ANSWER_THOUGHT,
+  AUTOPLAY_PACES,
   buildSolutionSlides,
   COVER_THOUGHT,
   clampSlideIndex,
+  nextAutoplayIndex,
   THOUGHT_BY_ROLE,
 } from "../../lib/curriculum/solution-slides.js";
 
@@ -93,6 +95,30 @@ describe("clampSlideIndex", () => {
     expect(clampSlideIndex(Number.NaN, 5)).toBe(0);
     expect(clampSlideIndex(Number.POSITIVE_INFINITY, 5)).toBe(0);
     expect(clampSlideIndex(2, 0)).toBe(0);
+  });
+});
+
+describe("自動再生（AUTOPLAY_PACES / nextAutoplayIndex）", () => {
+  it("ペースは重複なしのキーを持ち、表示時間は正で「ゆっくり→はやい」の降順", () => {
+    const keys = AUTOPLAY_PACES.map((p) => p.key);
+    expect(new Set(keys).size).toBe(AUTOPLAY_PACES.length);
+    for (const p of AUTOPLAY_PACES) expect(p.ms).toBeGreaterThan(0);
+    for (let i = 1; i < AUTOPLAY_PACES.length; i++) {
+      // 配列順は UI の切替順。後ろほど速い（表示時間が短い）ことを固定する。
+      expect((AUTOPLAY_PACES[i] as { ms: number }).ms).toBeLessThan((AUTOPLAY_PACES[i - 1] as { ms: number }).ms);
+    }
+  });
+
+  it("次の位置を返し、最後のスライドでは null（自動では閉じない）", () => {
+    expect(nextAutoplayIndex(0, 5)).toBe(1);
+    expect(nextAutoplayIndex(3, 5)).toBe(4);
+    expect(nextAutoplayIndex(4, 5)).toBeNull();
+  });
+
+  it("範囲外・空デッキにも安全（clamp してから判定する）", () => {
+    expect(nextAutoplayIndex(-3, 5)).toBe(1); // clamp で 0 → 次は 1
+    expect(nextAutoplayIndex(99, 5)).toBeNull(); // clamp で末尾
+    expect(nextAutoplayIndex(0, 0)).toBeNull();
   });
 });
 

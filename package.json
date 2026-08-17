@@ -29,6 +29,7 @@
   "scripts": {
     "gen": "tsx lib/engine/cli.ts",
     "export:vault": "tsx scripts/export-vault.ts",
+    "export:video-scripts": "tsx scripts/export-video-scripts.ts",
     "build:problems": "tsx scripts/build-problems.ts",
     "seed:data": "tsx scripts/seed-data-problems.ts",
     "build:web": "tsx scripts/build-web.ts",

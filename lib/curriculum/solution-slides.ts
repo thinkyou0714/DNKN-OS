@@ -102,3 +102,25 @@ export function clampSlideIndex(index: number, slideCount: number): number {
   if (slideCount <= 0 || !Number.isFinite(index)) return 0;
   return Math.min(Math.max(Math.trunc(index), 0), slideCount - 1);
 }
+
+/**
+ * 自動再生のペース（1枚あたりの表示ミリ秒）。動画のように流す「再生モード」の速さの語彙。
+ * 表示時間は「読む＋実戦の思考を追う」時間なので、短すぎる選択肢は置かない。
+ */
+export const AUTOPLAY_PACES = [
+  { key: "slow", label: "ゆっくり", ms: 12_000 },
+  { key: "normal", label: "ふつう", ms: 8_000 },
+  { key: "fast", label: "はやい", ms: 5_000 },
+] as const;
+
+/** 自動再生ペースの1項目。 */
+export type AutoplayPace = (typeof AUTOPLAY_PACES)[number];
+
+/**
+ * 自動再生での次のスライド index。最後のスライドに達していたら null（自動では閉じない。
+ * 学習者の意図しないタイミングでモーダルが消えるのを避け、停止して答えの画面で待つ）。
+ */
+export function nextAutoplayIndex(current: number, slideCount: number): number | null {
+  const cur = clampSlideIndex(current, slideCount);
+  return cur >= slideCount - 1 ? null : cur + 1;
+}

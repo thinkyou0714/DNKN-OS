@@ -426,6 +426,29 @@
       .slides-dots { display: flex; gap: 6px; margin: 0 auto; }
       .slides-dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--border-strong); }
       .slides-dots i.on { background: var(--accent); }
+      .slides-tools { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-2); }
+      /* 解法スライドの印刷（1スライド=1ページ・A4横）。画面では常に非表示で、
+         printing-slides クラスが付いた印刷時だけ .slides-print が紙面になる。 */
+      .slides-print { display: none; }
+      @page { size: A4 landscape; margin: 12mm; }
+      @media print {
+        body.printing-slides > :not(.slides-print) { display: none !important; }
+        body.printing-slides { max-width: none; padding: 0; background: #fff; color: #111; }
+        body.printing-slides .slides-print { display: block; }
+        .slides-print-page { page-break-after: always; padding: 8mm 10mm; }
+        .slides-print-page:last-child { page-break-after: auto; }
+        .slides-print-head {
+          display: flex; justify-content: space-between; gap: 8mm;
+          font-size: 10pt; color: #666; margin-bottom: 8mm;
+        }
+        .slides-print-title { font-size: 17pt; font-weight: 700; margin-bottom: 6mm; }
+        .slides-print-body { font-size: 14pt; line-height: 2; }
+        .slides-print-thought {
+          margin-top: 8mm; padding-top: 4mm; border-top: 1px dashed #999;
+          font-size: 11pt; color: #555;
+        }
+        .slides-print-src { margin-top: 4mm; font-size: 9pt; color: #777; }
+      }
       /* 誤概念（誤答パターン）の可視化。件数は赤＝つまずきの重さ。 */
       .miscon-list { display: grid; gap: var(--sp-2); margin: var(--sp-2) 0; }
       .miscon-item {
@@ -866,6 +889,6 @@
       復習は FSRS（最新の間隔反復アルゴリズム）。コード=MIT / 問題データ=CC-BY-SA-4.0。
     </footer>
 
-    <script type="module" src="./dist/app.js" integrity="sha384-QbnuuFq+EHMl2+QBj/txfXVrJVNdjqG0DQb+C1FDDb1CXwRFUQuX16IPdeOIZL4R" crossorigin="anonymous"></script>
+    <script type="module" src="./dist/app.js" integrity="sha384-9vxlZSHYKo1C4LYK9pgNnqliFolqmGBOYZIMwog+fW/xNrZYrIKkajL/LMclEGKo" crossorigin="anonymous"></script>
   </body>
 </html>
