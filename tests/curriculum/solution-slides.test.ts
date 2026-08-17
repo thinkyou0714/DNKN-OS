@@ -124,6 +124,7 @@ describe("自動再生（AUTOPLAY_PACES / nextAutoplayIndex）", () => {
 
 describe("実データ検証（web/problems.json の全問題）", () => {
   interface RawProblem {
+    id: string;
     statement: string;
     answer: string;
     solution: string[];
@@ -132,17 +133,27 @@ describe("実データ検証（web/problems.json の全問題）", () => {
     readFileSync(new URL("../../web/problems.json", import.meta.url), "utf8"),
   ) as RawProblem[];
 
-  it("全問題でデッキが成立する（cover 先頭・answer 末尾・枚数一致・思考ガイドあり）", () => {
-    expect(problems.length).toBeGreaterThan(0);
-    for (const p of problems) {
-      const deck = buildSolutionSlides(p);
-      expect(deck.slides[0]?.kind).toBe("cover");
-      expect(deck.slides.at(-1)?.kind).toBe("answer");
-      expect(deck.slides).toHaveLength(p.solution.length + 2);
-      for (const slide of deck.slides) {
-        expect(slide.thought.length).toBeGreaterThan(0);
-        expect(slide.body.length).toBeGreaterThan(0);
+  // 全問題×全スライドに expect() を刺すと呼び出しコストだけで遅いランナーの
+  // タイムアウトを超えるため、違反を収集して最後に1回だけ検証する
+  // （失敗時は違反の中身が表示される）。タイムアウトも明示的に広げておく。
+  it(
+    "全問題でデッキが成立する（cover 先頭・answer 末尾・枚数一致・思考ガイドあり）",
+    () => {
+      expect(problems.length).toBeGreaterThan(0);
+      const violations: string[] = [];
+      for (const p of problems) {
+        const deck = buildSolutionSlides(p);
+        if (deck.slides[0]?.kind !== "cover") violations.push(`${p.id}: 先頭が cover でない`);
+        if (deck.slides.at(-1)?.kind !== "answer") violations.push(`${p.id}: 末尾が answer でない`);
+        if (deck.slides.length !== p.solution.length + 2) violations.push(`${p.id}: 枚数不一致`);
+        if (deck.slides.some((s) => s.thought.length === 0 || s.body.length === 0)) {
+          violations.push(`${p.id}: 空の本文または思考ガイドがある`);
+        }
+        // 出力が溢れないよう早期打ち切り（1件でも失敗なので網羅は不要）。
+        if (violations.length >= 20) break;
       }
-    }
-  });
+      expect(violations).toEqual([]);
+    },
+    30_000,
+  );
 });
