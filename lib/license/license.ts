@@ -30,9 +30,16 @@ export interface LicenseJwk {
   key_ops?: string[];
 }
 
+/**
+ * 発行可能な sku の一覧。
+ *  - "pro":     学習アプリの Pro プラン（既定）。
+ *  - "toolkit": 電気設計計算ツールキットの有料版（web/toolkit.html）。
+ */
+export const KNOWN_SKUS = ["pro", "toolkit"] as const;
+
 /** ライセンスの中身。exp 省略時は買い切り（無期限）。 */
 export interface LicensePayload {
-  /** 対象プラン。現状 "pro" のみ有効。 */
+  /** 対象プラン（KNOWN_SKUS のいずれか。検証時は expectedSku と一致を要求）。 */
   sku: string;
   /** 購入者の識別子（メール等・任意）。問い合わせ時の照合用。 */
   sub?: string;
@@ -171,11 +178,14 @@ function signedBytes(payloadB64: string): Uint8Array {
 /**
  * ライセンスキーを検証する（形式 → 署名 → sku → 期限の順）。
  * 失敗理由はユーザー向けの日本語で返す（設定画面のトーストにそのまま出せる）。
+ * expectedSku 省略時は "pro"（既存呼び出しの互換）。ツールキットは "toolkit" を渡す。
+ * 商品ごとに解錠対象を分けるため、sku 不一致は署名が正しくても拒否する。
  */
 export async function verifyLicense(
   key: string,
   publicKeyJwk: LicenseJwk,
   nowMs: number,
+  expectedSku = "pro",
 ): Promise<LicenseVerifyResult> {
   const parsed = parseLicense(key);
   if (parsed === null) return { ok: false, reason: "ライセンスキーの形式が正しくありません" };
@@ -191,7 +201,9 @@ export async function verifyLicense(
     return { ok: false, reason: "ライセンスの検証に失敗しました" };
   }
   if (!valid) return { ok: false, reason: "ライセンスの署名が一致しません" };
-  if (parsed.payload.sku !== "pro") return { ok: false, reason: "このライセンスは対象プランのものではありません" };
+  if (parsed.payload.sku !== expectedSku) {
+    return { ok: false, reason: "このライセンスは対象プランのものではありません" };
+  }
   if (isLicenseExpired(parsed.payload, nowMs)) {
     return { ok: false, reason: `ライセンスの有効期限（${parsed.payload.exp}）が切れています` };
   }

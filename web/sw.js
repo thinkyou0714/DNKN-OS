@@ -34,8 +34,10 @@
 //   (v21: 最高品質化 — stale-while-revalidate(陳腐化解消)・週次クエスト修正・採点/a11y/試験忠実度の根本是正)
 //   (v22: SW堅牢化第2弾 — SRI原子ペア(index.html/app.js)をSWR裏差し替え対象から除外(新HTML×旧JSの
 //         SRI不整合による白画面を防止)・clients.claim()をwaitUntil内で待機)
+//   (v23: 電気設計計算ツールキット(toolkit.html/dist/toolkit.js) — ディレーティング・熱・電圧降下・
+//         パターン幅の5モジュール＋根拠解説＋計算書印刷。SRI原子ペア第2組として同様に保護)
 // ★ CACHE の版数は build:web が自動更新する（プレースホルダ置換）。手動編集禁止。
-const CACHE = "denken-os-v22-09db7b73";
+const CACHE = "denken-os-v23-e60f33c5";
 // 問題データは科目別シャード（分割ロード）＋ combined フォールバックの両方をプリキャッシュする。
 // シャード一覧は科目の固定集合（6科目）に対応し、lib/shared/problem-shards.ts の SUBJECT_SLUGS と
 // 一致させること（該当0件の科目でも空配列シャードが必ず出力されるため 404 にならない）。
@@ -43,6 +45,8 @@ const ASSETS = [
   "./",
   "./index.html",
   "./dist/app.js",
+  "./toolkit.html",
+  "./dist/toolkit.js",
   "./problems.json",
   "./problems/manifest.json",
   "./problems/theory.json",
@@ -76,14 +80,21 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// SRI で結ばれた原子ペア: index.html は dist/app.js の SRI ハッシュ（sha384）を埋め込むため、
-// 片方だけ裏で差し替わると 新HTML×旧JS（またはその逆）となり SRI 検証に失敗して白画面になる。
-// この2つ（と "./"）は install の addAll でのみ「原子的に」更新し、SWR の裏差し替え対象から外す。
-// CACHE 版数はプリキャッシュ全アセットの内容ハッシュ（build:web）なので、どちらかが変わる
+// SRI で結ばれた原子ペア: index.html は dist/app.js の、toolkit.html は dist/toolkit.js の
+// SRI ハッシュ（sha384）を埋め込むため、片方だけ裏で差し替わると 新HTML×旧JS（またはその逆）と
+// なり SRI 検証に失敗して白画面になる。
+// これら（と "./"）は install の addAll でのみ「原子的に」更新し、SWR の裏差し替え対象から外す。
+// CACHE 版数はプリキャッシュ全アセットの内容ハッシュ（build:web）なので、どれかが変わる
 // 配信では必ず sw.js のバイトが変わり SW 更新→新キャッシュへの一括切替が走る（＝陳腐化しない）。
 function isSriAtomicPair(request) {
   const path = new URL(request.url).pathname;
-  return path.endsWith("/") || path.endsWith("/index.html") || path.endsWith("/dist/app.js");
+  return (
+    path.endsWith("/") ||
+    path.endsWith("/index.html") ||
+    path.endsWith("/dist/app.js") ||
+    path.endsWith("/toolkit.html") ||
+    path.endsWith("/dist/toolkit.js")
+  );
 }
 
 // stale-while-revalidate: キャッシュを即返ししつつ裏でネットワーク更新する（web#3）。

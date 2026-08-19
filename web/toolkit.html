@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="電気設計計算ツールキット — ディレーティング・熱・電圧降下・基板パターンの定型設計計算を「根拠解説」と計算書出力つきで。入力データはブラウザ内でのみ処理されます。"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self';"
+    />
+    <title>電気設計計算ツールキット — DENKEN-OS</title>
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <meta name="theme-color" content="#1f1d19" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#a84b26" media="(prefers-color-scheme: light)" />
+    <style>
+      /* DENKEN-OS Design Tokens v2 のサブセット（テーマは prefers-color-scheme で自動）。 */
+      :root {
+        color-scheme: light;
+        --bg: #f2efe5; --surface: #fcfaf4; --surface-2: #e9e4d6; --surface-3: #e0d9c6;
+        --text: #211d16; --text-strong: #14110c; --muted: #655d4c;
+        --border: #e2dcca; --border-strong: #c6bda2;
+        --accent: #a84b26; --accent-strong: #8a3a1a; --accent-ink: #fff6ef;
+        --accent-soft: #f4e5da; --accent-border: #dfc3b1;
+        --ok: #1d6f4c; --ok-soft: #e3efe6; --ok-border: #b7d5c2;
+        --ng: #b02d30; --ng-soft: #f7e5e3; --ng-border: #e3bfba;
+        --warn: #8f5a06; --warn-soft: #f6ecd4; --warn-border: #e0cf9e;
+        --font-serif: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "BIZ UDMincho", "Noto Serif JP", Georgia, serif;
+        --font-sans: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
+        --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Noto Sans Mono", monospace;
+        --shadow-1: 0 1px 2px rgba(33, 29, 22, .05), 0 1px 1px rgba(33, 29, 22, .03);
+        --r-sm: 8px; --r-md: 12px; --r-pill: 999px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: dark;
+          --bg: #1f1d19; --surface: #292621; --surface-2: #332f28; --surface-3: #3c372e;
+          --text: #ece7db; --text-strong: #f7f3e9; --muted: #b5ab97;
+          --border: #3a352c; --border-strong: #4d473a;
+          --accent: #e59a76; --accent-strong: #efb08e; --accent-ink: #2a130a;
+          --accent-soft: #3a2a20; --accent-border: #55402f;
+          --ok: #66c694; --ok-soft: #22352b; --ok-border: #3a5a48;
+          --ng: #f08d84; --ng-soft: #3d2624; --ng-border: #63403c;
+          --warn: #e0b566; --warn-soft: #3a2f1a; --warn-border: #5d4c28;
+          --shadow-1: 0 1px 2px rgba(0, 0, 0, .35);
+        }
+      }
+      * { box-sizing: border-box; }
+      [hidden] { display: none !important; }
+      body {
+        font-family: var(--font-sans); font-size: .9375rem; line-height: 1.75;
+        margin: 0 auto; padding: 0 16px 48px; max-width: 860px;
+        color: var(--text); background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+      }
+      h1 { font: 700 1.4rem/1.4 var(--font-serif); color: var(--text-strong); margin: 0; }
+      h2 { font: 700 1.15rem/1.45 var(--font-serif); color: var(--text-strong); margin: 0 0 8px; }
+      h3 { font-size: 1rem; margin: 16px 0 4px; color: var(--text-strong); }
+      a { color: var(--accent); }
+      .site-header { padding: 20px 0 4px; }
+      .brand-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+      .brand-by { color: var(--muted); font-size: .8125rem; }
+      .privacy-note {
+        display: inline-block; margin: 8px 0 0; padding: 4px 12px; font-size: .8125rem;
+        color: var(--ok); background: var(--ok-soft); border: 1px solid var(--ok-border);
+        border-radius: var(--r-pill);
+      }
+      .tk-nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+      .tk-nav button {
+        font: inherit; font-size: .875rem; padding: 6px 14px; cursor: pointer;
+        color: var(--text); background: var(--surface); border: 1px solid var(--border-strong);
+        border-radius: var(--r-pill);
+      }
+      .tk-nav button[aria-selected="true"] {
+        color: var(--accent-ink); background: var(--accent); border-color: var(--accent);
+      }
+      .card {
+        background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md);
+        box-shadow: var(--shadow-1); padding: 20px; margin: 0 0 16px;
+      }
+      .mod-desc { color: var(--muted); font-size: .875rem; margin: 0 0 12px; }
+      .tab-row { display: flex; gap: 6px; margin: 0 0 16px; border-bottom: 1px solid var(--border); }
+      .tab-row button {
+        font: inherit; font-size: .875rem; padding: 6px 14px; cursor: pointer;
+        color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent;
+      }
+      .tab-row button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 700; }
+      .field-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px 16px; }
+      .field label { display: block; font-size: .8125rem; color: var(--muted); }
+      .field .unit { color: var(--muted); font-size: .8125rem; margin-left: 4px; }
+      .field input, .field select, .memo textarea, .license-row input, .sheet-grid input {
+        font: inherit; width: 100%; padding: 8px 10px; margin-top: 2px;
+        color: var(--text); background: var(--surface); border: 1px solid var(--border-strong);
+        border-radius: var(--r-sm);
+      }
+      .field input[aria-invalid="true"] { border-color: var(--ng); }
+      .field .help { font-size: .75rem; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+      .verdict { display: inline-block; padding: 4px 14px; border-radius: var(--r-pill); font-weight: 700; }
+      .verdict.ok { color: var(--ok); background: var(--ok-soft); border: 1px solid var(--ok-border); }
+      .verdict.warn { color: var(--warn); background: var(--warn-soft); border: 1px solid var(--warn-border); }
+      .verdict.ng { color: var(--ng); background: var(--ng-soft); border: 1px solid var(--ng-border); }
+      .result-box { background: var(--surface-2); border-radius: var(--r-sm); padding: 14px 16px; margin-top: 16px; }
+      .result-items { margin: 8px 0 0; padding: 0; list-style: none; }
+      .result-items li { display: flex; justify-content: space-between; gap: 12px; padding: 3px 0; border-bottom: 1px dashed var(--border); }
+      .result-items .val { font-family: var(--font-mono); font-weight: 700; color: var(--text-strong); white-space: nowrap; }
+      .err-list { color: var(--ng); margin: 8px 0 0; padding-left: 1.2em; }
+      .note-list { margin: 10px 0 0; padding-left: 1.2em; font-size: .8125rem; color: var(--muted); }
+      .expl h3 { font-family: var(--font-serif); }
+      .expl ul { margin: 4px 0 0; padding-left: 1.2em; }
+      .expl li { margin: 4px 0; }
+      .expl .formula-block {
+        font-family: var(--font-mono); font-size: .875rem; background: var(--surface-2);
+        border-radius: var(--r-sm); padding: 10px 14px; margin: 4px 0; overflow-x: auto;
+      }
+      .memo textarea { min-height: 80px; resize: vertical; }
+      .btn {
+        font: inherit; font-size: .875rem; padding: 8px 18px; cursor: pointer;
+        color: var(--text); background: var(--surface); border: 1px solid var(--border-strong);
+        border-radius: var(--r-sm);
+      }
+      .btn.primary { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+      .btn.primary:hover { background: var(--accent-strong); }
+      .btn:disabled { opacity: .5; cursor: not-allowed; }
+      .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; align-items: center; }
+      .sheet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px 16px; margin-top: 8px; }
+      .locked-teaser .lead { font-size: 1rem; }
+      .locked-badge {
+        display: inline-block; font-size: .75rem; padding: 2px 10px; margin-left: 6px;
+        color: var(--warn); background: var(--warn-soft); border: 1px solid var(--warn-border);
+        border-radius: var(--r-pill);
+      }
+      .license-row { display: flex; gap: 10px; flex-wrap: wrap; }
+      .license-row input { flex: 1 1 260px; width: auto; font-family: var(--font-mono); font-size: .8125rem; }
+      .status-line { font-size: .8125rem; color: var(--muted); margin-top: 6px; }
+      .disclaimer { font-size: .75rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 12px; margin-top: 24px; }
+      .toast {
+        position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+        background: var(--text-strong); color: var(--bg); padding: 8px 20px;
+        border-radius: var(--r-pill); font-size: .875rem; opacity: 0; transition: opacity .2s;
+        pointer-events: none; max-width: 90vw;
+      }
+      .toast.show { opacity: 1; }
+
+      /* ===== 計算書（印刷）: 画面では非表示。printing-sheet クラスが付いた印刷
+         （計算書ボタン経由）だけ #tk-print が紙面になる。素の Ctrl+P は通常画面を印刷する。 ===== */
+      #tk-print { display: none; }
+      @media print {
+        @page { size: A4; margin: 18mm; }
+        body.printing-sheet { background: #fff; color: #000; max-width: none; padding: 0; }
+        body.printing-sheet > *:not(#tk-print) { display: none !important; }
+        body.printing-sheet #tk-print { display: block !important; font-size: 10.5pt; }
+        #tk-print h1 { font-size: 14pt; border-bottom: 2px solid #000; padding-bottom: 4pt; color: #000; }
+        #tk-print table { width: 100%; border-collapse: collapse; margin: 8pt 0; }
+        #tk-print th, #tk-print td { border: 1px solid #000; padding: 3pt 6pt; text-align: left; font-weight: 400; }
+        #tk-print th { background: #eee; width: 34%; }
+        #tk-print .print-meta { display: flex; justify-content: space-between; gap: 8pt; }
+        #tk-print .print-disclaimer { font-size: 8pt; margin-top: 10pt; }
+        #tk-print .print-notes { font-size: 8.5pt; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand-row">
+        <h1>電気設計計算ツールキット</h1>
+        <span class="brand-by">by DENKEN-OS</span>
+      </div>
+      <p class="mod-desc">ディレーティング・熱・電圧降下・基板パターンの定型設計計算を、「なぜその式・係数なのか」の根拠解説と計算書出力つきで。</p>
+      <span class="privacy-note">🔒 入力データはお使いのブラウザ内でのみ処理され、外部に送信されません</span>
+    </header>
+
+    <nav id="tk-nav" class="tk-nav" role="tablist" aria-label="計算モジュール"></nav>
+    <main id="tk-main"></main>
+
+    <section id="tk-sheet" class="card" aria-label="計算書と保存">
+      <h2>計算書・データ管理</h2>
+      <div class="sheet-grid" id="tk-sheet-grid"></div>
+      <div class="btn-row" id="tk-data-row"></div>
+      <p class="status-line">計算条件とメモはこの端末（ブラウザの localStorage）にのみ保存されます。JSON 書き出しでバックアップできます。</p>
+    </section>
+
+    <section id="tk-license" class="card" aria-label="ライセンス"></section>
+
+    <footer>
+      <p class="mod-desc">電験学習アプリ <a href="./index.html">DENKEN-OS</a> の姉妹ツールです。</p>
+      <p class="disclaimer" id="tk-disclaimer"></p>
+    </footer>
+
+    <div id="tk-print"></div>
+    <div id="tk-toast" class="toast" role="status" aria-live="polite"></div>
+
+    <noscript><p>このツールの実行には JavaScript が必要です。</p></noscript>
+    <script type="module" src="./dist/toolkit.js" integrity="sha384-pA3biFYPnC5glmJCU9xU82JLIxPchs5m5HzhXyYTf6VGgPoUYA51zhXabSNO/X9x" crossorigin="anonymous"></script>
+  </body>
+</html>

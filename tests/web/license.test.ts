@@ -123,4 +123,15 @@ describe("signLicense → verifyLicense ラウンドトリップ", () => {
       expect(res.ok).toBe(false);
     }
   });
+
+  it("expectedSku='toolkit': toolkit キーを受理し、pro キーは拒否する（商品間の流用防止）", async () => {
+    const { pub, priv } = await genKeypair();
+    const toolkitKey = await signLicense({ sku: "toolkit", sub: "buyer@example.com" }, priv);
+    const proKey = await signLicense({ sku: "pro" }, priv);
+    const ok = await verifyLicense(toolkitKey, pub, NOW, "toolkit");
+    expect(ok).toEqual({ ok: true, payload: { sku: "toolkit", sub: "buyer@example.com" } });
+    expect((await verifyLicense(proKey, pub, NOW, "toolkit")).ok).toBe(false);
+    // 逆方向: toolkit キーは既定（pro）検証を通らない。
+    expect((await verifyLicense(toolkitKey, pub, NOW)).ok).toBe(false);
+  });
 });
