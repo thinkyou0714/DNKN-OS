@@ -115,10 +115,16 @@ async function runBuild(entry: string, outfile: string): Promise<void> {
 
 /** バンドルの SHA-384 を対応する HTML の SRI プレースホルダ/既存値へ注入する（冪等）。 */
 function injectSri(bundlePath: string, htmlPath: string): void {
-  if (!existsSync(htmlPath)) return;
+  // 存在チェック→読み取りの2段構え（TOCTOU: CodeQL js/file-system-race）を避け、
+  // 読み取り1回に寄せて HTML が無い構成では黙ってスキップする。
+  let htmlContent: string;
+  try {
+    htmlContent = readFileSync(htmlPath, "utf-8");
+  } catch {
+    return;
+  }
   const sha384 = createHash("sha384").update(readFileSync(bundlePath, "utf-8")).digest("base64");
   const integrityValue = `sha384-${sha384}`;
-  const htmlContent = readFileSync(htmlPath, "utf-8");
   const newHtml = htmlContent.replace(/__SRI_HASH__|sha384-[A-Za-z0-9+/=]+/g, integrityValue);
   if (newHtml !== htmlContent) {
     writeFileSync(htmlPath, newHtml, "utf-8");
