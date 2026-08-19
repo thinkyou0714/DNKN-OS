@@ -59,6 +59,7 @@ npm run build:web
 - `lib/curriculum/solution-slides.ts` turns a problem's `solution` steps into a slide deck (cover → per-step slides annotated with rubric roles plus a 実戦の思考 guide → answer) with no schema change, and owns the autoplay pace vocabulary (`AUTOPLAY_PACES`, `nextAutoplayIndex`). `web/src/ui/slide-overlay.ts` plays the deck as a modal (manual nav plus autoplay that stops on the last slide), opened from the slide button that `solutionNode` (`web/src/ui/widgets.ts`) appends wherever a solution is shown. `web/src/ui/slide-print.ts` prints the deck one-slide-per-page (A4 landscape) for PDF archiving.
 - `lib/curriculum/narration-script.ts` converts a slide deck into a deterministic video narration script (verbatim step text, role lead-ins only, duration estimate at ~300 chars/min); `scripts/export-video-scripts.ts` (`npm run export:video-scripts`) writes the scripts as Markdown to `out/video-scripts/`.
 - `lib/store/` owns persistence interfaces and implementations.
+- `lib/toolkit/` owns the 電気設計計算ツールキット domain (a separate product page at `web/toolkit.html` for design engineers): five calculation modules (resistor derating, capacitor derating + Arrhenius life, semiconductor thermal, voltage drop, IPC-2221 trace width) as declarative field specs plus pure `compute` functions plus 根拠解説 content. `lib/toolkit/index.ts` is the single source of truth for module order and the free/paid tier split. Golden-value tests live in `tests/toolkit/`.
 - `lib/audit/` owns repository quality status and supervision helpers.
 - `web/` owns the offline PWA.
 - `supabase/migrations/` owns database schema and RLS policy changes.
@@ -145,7 +146,9 @@ npm run build:web
 - `lib/shared/problem-shards.ts` is the single source of truth for the subject→slug map, manifest type, and shard paths (shared by build, web, and tests).
 - `web/src/app-init.ts` loads via the manifest+shards first and falls back to `web/problems.json`.
 - `scripts/build-problems.ts` emits both the combined bundle and the shards+manifest deterministically.
-- `scripts/build-web.ts` builds `web/dist/app.js` with esbuild.
+- `scripts/build-web.ts` builds `web/dist/app.js` and `web/dist/toolkit.js` with esbuild.
+- `web/toolkit.html` is the 電気設計計算ツールキット page (entry `web/src/toolkit/ui/main.ts`, DOM glue excluded from coverage like `views/`). Its pure logic lives in `web/src/toolkit/toolkit-store.ts` (state persistence under `denken:toolkit`, license unlock under `denken:toolkitLicense`) and `web/src/toolkit/toolkit-config.ts` (fail-open monetization config sharing the app's public key; sku `toolkit` licenses only — Pro keys do not unlock the toolkit).
+- SRI atomic pairs are `index.html`×`dist/app.js` and `toolkit.html`×`dist/toolkit.js`; both are precached and excluded from stale-while-revalidate background swaps in `web/sw.js`.
 - `npm run typecheck:web` typechecks `web/src` through `web/tsconfig.json`.
 - `npm run build:web` builds the web bundle and updates deterministic build artifacts.
 - `web/sw.js` cache versioning is owned by `scripts/build-web.ts`.
