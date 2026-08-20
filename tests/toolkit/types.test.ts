@@ -6,7 +6,15 @@
  *  - validateFields の NaN・範囲・showIf・select 検証
  */
 import { describe, expect, it } from "vitest";
-import { type FieldSpec, formatSig, judgeUsage, num, validateFields, worstVerdict } from "../../lib/toolkit/types.js";
+import {
+  type FieldSpec,
+  formatSig,
+  isFieldVisible,
+  judgeUsage,
+  num,
+  validateFields,
+  worstVerdict,
+} from "../../lib/toolkit/types.js";
 
 describe("judgeUsage", () => {
   it("閾値の90%以下は ok・閾値以下は warn・超過は ng", () => {
@@ -103,5 +111,28 @@ describe("validateFields", () => {
     const r = validateFields(FIELDS, { mode: "zzz", x: 1 });
     expect(r.ok).toBe(true);
     if (r.ok) expect(r.input.sels.mode).toBe("a");
+  });
+
+  it("showIf の equals に配列を渡すと「いずれか」で表示・検証される", () => {
+    const multi: FieldSpec[] = [
+      {
+        key: "mode",
+        label: "モード",
+        kind: "select",
+        defaultValue: "a",
+        options: [
+          { value: "a", label: "A" },
+          { value: "b", label: "B" },
+          { value: "c", label: "C" },
+        ],
+      },
+      { key: "z", label: "係数", kind: "number", defaultValue: 1, min: 0, showIf: { key: "mode", equals: ["a", "b"] } },
+    ];
+    // 表示制御（UI）と検証（validateFields）が同じ述語を共有していることを両側から確認する。
+    expect(isFieldVisible(multi[1] as FieldSpec, { mode: "a" })).toBe(true);
+    expect(isFieldVisible(multi[1] as FieldSpec, { mode: "b" })).toBe(true);
+    expect(isFieldVisible(multi[1] as FieldSpec, { mode: "c" })).toBe(false);
+    expect(validateFields(multi, { mode: "b", z: Number.NaN }).ok).toBe(false);
+    expect(validateFields(multi, { mode: "c", z: Number.NaN }).ok).toBe(true);
   });
 });

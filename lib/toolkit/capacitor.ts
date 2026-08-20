@@ -4,7 +4,8 @@
  * - セラミック: 電圧ディレーティング率のみ（既定閾値 50%）。DC バイアスによる実効容量低下は
  *   判定対象外（notes と根拠解説で注意喚起する）。
  * - アルミ電解: 電圧ディレーティング（既定閾値 80%）に加え、アレニウス則（10℃2倍則）で
- *   寿命を推定する。リプル電流による内部温度上昇は ΔT = ΔT0 × (Ir/Ir0)² の簡易モデル。
+ *   寿命を推定する。リプル電流による内部温度上昇は ΔT = ΔT0 × (Ir/(Ir0×kf))² の簡易モデル
+ *   （kf = 周波数補正係数。定格周波数どおりなら 1.0）。
  *   L = L0 × 2^((T0 − Ta − ΔT) / 10)
  *   メーカー各社の寿命式（リプル項の扱い）は微妙に異なるため、あくまで一次近似であり、
  *   採用部品のメーカー計算式を優先すべきことを notes に明記する。
@@ -131,6 +132,17 @@ export const CAPACITOR_FIELDS: FieldSpec[] = [
     showIf: { key: "capType", equals: "electrolytic" },
   },
   {
+    key: "freqCoeff",
+    label: "周波数補正係数",
+    kind: "number",
+    defaultValue: 1,
+    min: 0,
+    minExclusive: true,
+    max: 10,
+    help: "データシートの周波数補正係数（許容リプル電流の倍率）。定格周波数どおりなら 1.0",
+    showIf: { key: "capType", equals: "electrolytic" },
+  },
+  {
     key: "coreRise",
     label: "定格リプル時の中心温度上昇",
     unit: "K",
@@ -157,7 +169,7 @@ export const CAPACITOR_FIELDS: FieldSpec[] = [
 
 /**
  * アレニウス則（10℃2倍則）による電解コンデンサの推定寿命 [h]。
- * ΔT = coreRise × (Ir/Ir0)² を内部温度上昇とし、L = L0 × 2^((T0 − Ta − ΔT)/10)。
+ * ΔT = coreRise × (Ir/(Ir0×kf))² を内部温度上昇とし、L = L0 × 2^((T0 − Ta − ΔT)/10)。
  */
 export function estimateElectrolyticLife(params: {
   ratedLife: number;
@@ -166,10 +178,15 @@ export function estimateElectrolyticLife(params: {
   rippleCurrent: number;
   ratedRipple: number;
   coreRise: number;
-}): { lifeHours: number; rippleRise: number } {
-  const rippleRise = params.coreRise * (params.rippleCurrent / params.ratedRipple) ** 2;
+  /** 周波数補正係数（許容リプル電流の倍率）。省略時 1.0＝定格周波数どおり。 */
+  freqCoeff?: number;
+}): { lifeHours: number; rippleRise: number; rippleUsage: number } {
+  const kf = params.freqCoeff ?? 1;
+  // 補正後の許容リプルに対する比。発熱は I²R なので温度上昇はこの比の2乗で効く。
+  const rippleUsage = params.rippleCurrent / (params.ratedRipple * kf);
+  const rippleRise = params.coreRise * rippleUsage ** 2;
   const lifeHours = params.ratedLife * 2 ** ((params.ratedTemp - params.ambientTemp - rippleRise) / 10);
-  return { lifeHours, rippleRise };
+  return { lifeHours, rippleRise, rippleUsage: rippleUsage * 100 };
 }
 
 export function computeCapacitor(values: Record<string, number | string>): ModuleResult {
@@ -203,25 +220,30 @@ export function computeCapacitor(values: Record<string, number | string>): Modul
   const rippleCurrent = num(v.input, "rippleCurrent");
   const ratedRipple = num(v.input, "ratedRipple");
   const coreRise = num(v.input, "coreRise");
+  const freqCoeff = num(v.input, "freqCoeff");
   const requiredLife = num(v.input, "requiredLife");
 
-  const { lifeHours, rippleRise } = estimateElectrolyticLife({
+  const { lifeHours, rippleRise, rippleUsage } = estimateElectrolyticLife({
     ratedLife,
     ratedTemp,
     ambientTemp,
     rippleCurrent,
     ratedRipple,
     coreRise,
+    freqCoeff,
   });
   const lifeUsage = (requiredLife / lifeHours) * 100;
   const voltVerdict = judgeUsage(voltUsage, threshold);
   // 寿命の合否は「要求寿命 ÷ 推定寿命」を負荷率とみなして共通の3値判定に載せる（閾値 100% 固定）。
   const lifeVerdict = judgeUsage(lifeUsage, 100);
+  // リプル電流は補正後の許容値を超えた時点で不適（寿命以前に定格違反）。
+  const rippleVerdict = judgeUsage(rippleUsage, 100);
 
   const overTemp = ambientTemp + rippleRise > ratedTemp;
   const notes: string[] = [
     "寿命式は 10℃2倍則＋リプル自己発熱 ΔT=ΔT0×(Ir/Ir0)² の一次近似です。採用部品のメーカー寿命計算式（リプル項の扱いが各社異なる）を優先してください。",
     "低温では ESR 増大・容量低下が起きます（寿命とは別の制約）。",
+    "リプル電流の許容値は周波数で変わります。スイッチング電源など定格周波数と違う用途では、データシートの周波数補正係数を必ず入れてください。",
   ];
   if (overTemp) {
     notes.unshift("周囲温度＋リプル自己発熱が定格上限温度を超えています。この条件では使用できません。");
@@ -235,13 +257,14 @@ export function computeCapacitor(values: Record<string, number | string>): Modul
     ok: true,
     items: [
       { label: "電圧ディレーティング率", value: voltUsage, unit: "%" },
+      { label: "リプル電流負荷率（周波数補正後）", value: rippleUsage, unit: "%" },
       { label: "リプルによる内部温度上昇", value: rippleRise, unit: "K" },
       { label: "推定寿命", value: lifeHours, unit: "h" },
       { label: "推定寿命（年換算）", value: lifeHours / 8760, unit: "年" },
       { label: "寿命充足率（要求÷推定）", value: lifeUsage, unit: "%" },
     ],
-    usagePercent: Math.max(voltUsage, lifeUsage),
-    verdict: overTemp ? "ng" : worstVerdict(voltVerdict, lifeVerdict),
+    usagePercent: Math.max(voltUsage, lifeUsage, rippleUsage),
+    verdict: overTemp ? "ng" : worstVerdict(worstVerdict(voltVerdict, lifeVerdict), rippleVerdict),
     notes,
   };
 }
@@ -254,7 +277,8 @@ export const CAPACITOR_EXPLANATION: ExplanationDoc = {
   formula: [
     "電圧ディレーティング率 [%] = V印加 ÷ V定格 × 100",
     "推定寿命 L = L0 × 2^((T0 − Ta − ΔT) / 10)　（10℃2倍則）",
-    "リプルによる内部温度上昇 ΔT = ΔT0 × (Ir / Ir0)²",
+    "リプルによる内部温度上昇 ΔT = ΔT0 × (Ir / (Ir0 × kf))²",
+    "リプル電流負荷率 [%] = Ir ÷ (Ir0 × kf) × 100",
   ],
   terms: [
     "L0: データシートの定格寿命（定格上限温度・定格リプルでの保証時間。105℃ 5000h など）。",
@@ -262,7 +286,8 @@ export const CAPACITOR_EXPLANATION: ExplanationDoc = {
     "Ta: 実使用の周囲温度。筐体内の温度上昇を含む部品周囲の局所温度。",
     "ΔT: リプル電流の自己発熱による内部（コア）温度上昇。発熱は I²R なのでリプル比の2乗で効く。",
     "ΔT0: 定格リプルを流したときの内部温度上昇。5K 前後が一般的な目安（メーカー資料があれば実値を使う）。",
-    "Ir/Ir0: 実リプル電流と定格リプル電流の比。周波数補正係数がある部品は補正後の値で比較する。",
+    "Ir/Ir0: 実リプル電流と定格リプル電流の比。発熱は I²R なので温度上昇はこの比の2乗で効く。",
+    "kf: 周波数補正係数。許容リプル電流は周波数で変わり（低周波では小さく、高周波では大きい）、データシートの表・グラフから読む。本ツールは Ir0×kf を実効的な許容値として扱う。",
   ],
   pitfalls: [
     "10℃2倍則は電解液の蒸散（化学反応速度）に基づく経験則で、セラミックやフィルムには適用しない。",

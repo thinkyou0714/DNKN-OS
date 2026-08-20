@@ -5,6 +5,7 @@
  */
 import { describe, expect, it } from "vitest";
 import { capacitorModule, computeCapacitor, estimateElectrolyticLife } from "../../lib/toolkit/capacitor.js";
+import { hasNote, itemValue } from "../helpers/toolkit.js";
 
 const ELEC = {
   capType: "electrolytic",
@@ -16,6 +17,7 @@ const ELEC = {
   ambientTemp: 65,
   rippleCurrent: 0,
   ratedRipple: 1,
+  freqCoeff: 1,
   coreRise: 5,
   requiredLife: 87600,
 };
@@ -83,8 +85,8 @@ describe("estimateElectrolyticLife / computeCapacitor — アルミ電解", () =
 
   it("要求寿命 10年 vs 推定 80,000h → 寿命充足率 109.5% = ng（電圧 68.6% は ok でも総合 ng）", () => {
     const r = computeCapacitor({ ...ELEC });
-    expect(r.items?.[2]?.value).toBeCloseTo(80000, 6);
-    expect(r.items?.[4]?.value).toBeCloseTo(109.5, 3);
+    expect(itemValue(r, "推定寿命")).toBeCloseTo(80000, 6);
+    expect(itemValue(r, "寿命充足率（要求÷推定）")).toBeCloseTo(109.5, 3);
     expect(r.verdict).toBe("ng");
   });
 
@@ -96,8 +98,8 @@ describe("estimateElectrolyticLife / computeCapacitor — アルミ電解", () =
 
   it("15年超の推定寿命には上限注記が付く", () => {
     const r = computeCapacitor({ ...ELEC, ambientTemp: 45, requiredLife: 87600 });
-    expect(r.items?.[2]?.value).toBeGreaterThan(15 * 8760);
-    expect(r.notes?.some((n) => n.includes("15年"))).toBe(true);
+    expect(itemValue(r, "推定寿命")).toBeGreaterThan(15 * 8760);
+    expect(hasNote(r, "15年")).toBe(true);
   });
 
   it("バリデーション: 定格リプル 0 は弾く（ゼロ割り防止）", () => {
@@ -107,5 +109,40 @@ describe("estimateElectrolyticLife / computeCapacitor — アルミ電解", () =
 
   it("モジュール定義: 有料枠", () => {
     expect(capacitorModule.tier).toBe("paid");
+  });
+});
+
+describe("周波数補正係数 kf（第2弾）", () => {
+  it("kf=2 は許容リプルを2倍にする: Ir=Ir0 なら負荷率50%・ΔT=1.25K（5×0.5²）", () => {
+    const { rippleRise, rippleUsage, lifeHours } = estimateElectrolyticLife({
+      ratedLife: 5000,
+      ratedTemp: 105,
+      ambientTemp: 65,
+      rippleCurrent: 1,
+      ratedRipple: 1,
+      coreRise: 5,
+      freqCoeff: 2,
+    });
+    expect(rippleUsage).toBeCloseTo(50, 10);
+    expect(rippleRise).toBeCloseTo(1.25, 10);
+    expect(lifeHours).toBeCloseTo(73360.32345637369, 4);
+  });
+
+  it("kf 省略は 1.0 と同義（既存呼び出しの互換）", () => {
+    const args = { ratedLife: 5000, ratedTemp: 105, ambientTemp: 65, rippleCurrent: 0.5, ratedRipple: 1, coreRise: 5 };
+    expect(estimateElectrolyticLife(args)).toEqual(estimateElectrolyticLife({ ...args, freqCoeff: 1 }));
+  });
+
+  it("補正後の許容リプルを超えると総合判定が ng になる（寿命が足りていても定格違反）", () => {
+    // kf=0.5（低周波で許容が半減）・Ir=0.6A → 負荷率120%。周囲温度は低く寿命は十分。
+    const r = computeCapacitor({ ...ELEC, ambientTemp: 40, rippleCurrent: 0.6, freqCoeff: 0.5, requiredLife: 8760 });
+    expect(itemValue(r, "リプル電流負荷率（周波数補正後）")).toBeCloseTo(120, 8);
+    expect(itemValue(r, "寿命充足率（要求÷推定）")).toBeLessThan(90);
+    expect(r.verdict).toBe("ng");
+    expect(hasNote(r, "周波数補正係数")).toBe(true);
+  });
+
+  it("バリデーション: 周波数補正係数 0 は弾く（ゼロ割り防止）", () => {
+    expect(computeCapacitor({ ...ELEC, freqCoeff: 0 }).ok).toBe(false);
   });
 });

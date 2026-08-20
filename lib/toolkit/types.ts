@@ -34,8 +34,11 @@ export interface FieldSpec {
   /** 入力欄の下に出す補足（前提条件・よくある値など）。 */
   help?: string;
   options?: FieldOption[];
-  /** 指定 select フィールドが特定値のときだけ表示・検証する。 */
-  showIf?: { key: string; equals: string };
+  /**
+   * 指定 select フィールドが特定値のときだけ表示・検証する。
+   * `equals` に配列を渡すと「そのいずれか」で表示（例: 交流の回路方式すべてで力率を出す）。
+   */
+  showIf?: { key: string; equals: string | readonly string[] };
 }
 
 export interface FieldError {
@@ -144,7 +147,9 @@ export type ValidateResult = { ok: true; input: ValidatedInput } | { ok: false; 
  */
 export function isFieldVisible(spec: FieldSpec, values: Record<string, number | string>): boolean {
   if (spec.showIf === undefined) return true;
-  return values[spec.showIf.key] === spec.showIf.equals;
+  const actual = values[spec.showIf.key];
+  const want = spec.showIf.equals;
+  return typeof want === "string" ? actual === want : want.includes(actual as string);
 }
 
 /**
