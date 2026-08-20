@@ -8,13 +8,10 @@
  * 公開鍵未設定（toolkit-config.ts）の間はゲート非作動＝全モジュール無料（fail-open）。
  */
 
-import { type LicensePayload, verifyLicense } from "../../../lib/license/license.js";
+import type { LicensePayload } from "../../../lib/license/license.js";
+import { type ApplyLicenseResult, createLicenseGate } from "../license-gate.js";
 import type { StorageLike } from "../store.js";
-import {
-  TOOLKIT_MONETIZATION,
-  type ToolkitMonetizationConfig,
-  toolkitMonetizationConfigured,
-} from "./toolkit-config.js";
+import { TOOLKIT_MONETIZATION, type ToolkitMonetizationConfig } from "./toolkit-config.js";
 
 /** 計算条件・メモ・計算書ヘッダの保存先。 */
 export const TOOLKIT_STATE_STORAGE_KEY = "denken:toolkit";
@@ -126,21 +123,23 @@ export function importToolkitStateJson(json: string): ToolkitState | null {
 }
 
 // ---- ライセンス解錠（sku="toolkit"）----
+//
+// 検証・キャッシュ・保存の手順は商品共通のため license-gate.ts に集約し、
+// ここは「ツールキット向けの名前」を与える薄い層に留める（帳票ツールも同じ形）。
 
-/** 検証済みツールキットライセンスの payload（未解錠なら null）。セッション内キャッシュ。 */
-let _toolkitPayload: LicensePayload | null = null;
+const gate = createLicenseGate("toolkit", TOOLKIT_LICENSE_STORAGE_KEY, TOOLKIT_MONETIZATION);
 
 export function toolkitUnlocked(): boolean {
-  return _toolkitPayload !== null;
+  return gate.unlocked();
 }
 
 export function toolkitInfo(): LicensePayload | null {
-  return _toolkitPayload;
+  return gate.info();
 }
 
 /** 機能ゲートが作動中か（収益化が設定済み かつ 未解錠）。 */
 export function toolkitLocked(cfg: ToolkitMonetizationConfig = TOOLKIT_MONETIZATION): boolean {
-  return toolkitMonetizationConfigured(cfg) && _toolkitPayload === null;
+  return gate.locked(cfg);
 }
 
 /** 指定 tier のモジュールが使える状態か。 */
@@ -151,54 +150,33 @@ export function toolkitTierAvailable(
   return tier === "free" || !toolkitLocked(cfg);
 }
 
-/** 起動時に保存済みライセンスを再検証してキャッシュを温める（entitlements.ts と同じ方針）。 */
-export async function initToolkitEntitlements(
+/** 起動時に保存済みライセンスを再検証してキャッシュを温める。 */
+export function initToolkitEntitlements(
   storage: StorageLike,
   nowMs: number = Date.now(),
   cfg: ToolkitMonetizationConfig = TOOLKIT_MONETIZATION,
 ): Promise<boolean> {
-  _toolkitPayload = null;
-  const pub = cfg.publicKeyJwk;
-  if (pub === null || !toolkitMonetizationConfigured(cfg)) return false;
-  const key = storage.getItem(TOOLKIT_LICENSE_STORAGE_KEY)?.trim() ?? "";
-  if (key === "") return false;
-  const res = await verifyLicense(key, pub, nowMs, "toolkit");
-  if (res.ok) _toolkitPayload = res.payload;
-  return res.ok;
+  return gate.init(storage, nowMs, cfg);
 }
 
-export type ApplyToolkitLicenseResult = { ok: true; payload: LicensePayload } | { ok: false; reason: string };
+export type ApplyToolkitLicenseResult = ApplyLicenseResult;
 
 /** 入力されたライセンスキーを検証し、有効なら保存して解錠する。 */
-export async function applyToolkitLicenseKey(
+export function applyToolkitLicenseKey(
   storage: StorageLike,
   key: string,
   nowMs: number = Date.now(),
   cfg: ToolkitMonetizationConfig = TOOLKIT_MONETIZATION,
 ): Promise<ApplyToolkitLicenseResult> {
-  const pub = cfg.publicKeyJwk;
-  if (pub === null) return { ok: false, reason: "現在は販売準備中のためライセンスを登録できません" };
-  const trimmed = key.trim();
-  if (trimmed === "") return { ok: false, reason: "ライセンスキーを入力してください" };
-  const res = await verifyLicense(trimmed, pub, nowMs, "toolkit");
-  if (!res.ok) return res;
-  // 保存はベストエフォート（quota 超過でもこのセッションは解錠する。entitlements.ts と同じ）。
-  try {
-    storage.setItem(TOOLKIT_LICENSE_STORAGE_KEY, trimmed);
-  } catch {
-    // 次回起動では無料枠に戻るが、キーの再入力で復帰できる。
-  }
-  _toolkitPayload = res.payload;
-  return res;
+  return gate.apply(storage, key, nowMs, cfg);
 }
 
 /** ライセンスを削除して無料枠に戻す。 */
 export function clearToolkitLicense(storage: StorageLike): void {
-  storage.setItem(TOOLKIT_LICENSE_STORAGE_KEY, "");
-  _toolkitPayload = null;
+  gate.clear(storage);
 }
 
 /** テスト用: モジュール内キャッシュを初期化する。アプリ本体からは呼ばない。 */
 export function __resetToolkitEntitlementsForTest(): void {
-  _toolkitPayload = null;
+  gate.__resetForTest();
 }

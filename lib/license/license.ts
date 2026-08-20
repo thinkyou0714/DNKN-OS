@@ -32,10 +32,11 @@ export interface LicenseJwk {
 
 /**
  * 発行可能な sku の一覧。
- *  - "pro":     学習アプリの Pro プラン（既定）。
- *  - "toolkit": 電気設計計算ツールキットの有料版（web/toolkit.html）。
+ *  - "pro":       学習アプリの Pro プラン（既定）。
+ *  - "toolkit":   電気設計計算ツールキットの有料版（web/toolkit.html）。
+ *  - "sheetdiff": 帳票変更点抽出ツールの有料版（web/sheet-diff.html）。
  */
-export const KNOWN_SKUS = ["pro", "toolkit"] as const;
+export const KNOWN_SKUS = ["pro", "toolkit", "sheetdiff"] as const;
 
 /** ライセンスの中身。exp 省略時は買い切り（無期限）。 */
 export interface LicensePayload {

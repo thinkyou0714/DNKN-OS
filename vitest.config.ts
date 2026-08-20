@@ -17,8 +17,14 @@ export default defineConfig({
       // 評価できないため除外する。これらは tests/web から間接的にしか到達せず、
       // include に残すと 0% ファイルとして全体率を不当に押し下げる。
       include: ["lib/**/*.ts", "web/src/**/*.ts"],
-      // toolkit/ui は設計計算ツールキットの DOM glue（state/ui/views と同じ理由で除外）。
-      exclude: ["web/src/state/**", "web/src/ui/**", "web/src/views/**", "web/src/toolkit/ui/**"],
+      // toolkit/ui・sheet-diff/ui は別商品ページの DOM glue（state/ui/views と同じ理由で除外）。
+      exclude: [
+        "web/src/state/**",
+        "web/src/ui/**",
+        "web/src/views/**",
+        "web/src/toolkit/ui/**",
+        "web/src/sheet-diff/ui/**",
+      ],
       // 実測値を整数へ切り捨てた回帰防止フロア。値を上げるのは歓迎、下げる場合は理由をPRに記すこと。
       // 計測範囲が lib のみ → lib + web ロジック層（web/src の DOM glue を除く）へ拡大したため、
       // 床値も新しい実測に合わせて再設定した（#75/#87）。

@@ -186,9 +186,18 @@ describe("web/sw.js — stale-while-revalidate と SRI 原子ペア", () => {
     expect(await updated?.clone().text()).toBe("from-network");
   });
 
-  it("SRI 原子ペア（index.html / dist/app.js / toolkit.html / dist/toolkit.js / ルート）はキャッシュヒット時に裏差し替えしない", async () => {
-    const cache = await precache(["./", "./index.html", "./dist/app.js", "./toolkit.html", "./dist/toolkit.js"]);
-    for (const path of ["/", "/index.html", "/dist/app.js", "/toolkit.html", "/dist/toolkit.js"]) {
+  it("SRI 原子ペア（3ページ分の HTML×JS とルート）はキャッシュヒット時に裏差し替えしない", async () => {
+    const assets = [
+      "./",
+      "./index.html",
+      "./dist/app.js",
+      "./toolkit.html",
+      "./dist/toolkit.js",
+      "./sheet-diff.html",
+      "./dist/sheet-diff.js",
+    ];
+    const cache = await precache(assets);
+    for (const path of assets.map((a) => a.replace(/^\./, ""))) {
       const res = await harness.dispatchFetch(`${ORIGIN}${path}`);
       expect((await res.text()).startsWith("precached:")).toBe(true);
     }
@@ -197,6 +206,9 @@ describe("web/sw.js — stale-while-revalidate と SRI 原子ペア", () => {
     expect(harness.fetchCalls).toEqual([]);
     expect(await (await cache.match(`${ORIGIN}/dist/app.js`))?.clone().text()).toBe("precached:./dist/app.js");
     expect(await (await cache.match(`${ORIGIN}/dist/toolkit.js`))?.clone().text()).toBe("precached:./dist/toolkit.js");
+    expect(await (await cache.match(`${ORIGIN}/dist/sheet-diff.js`))?.clone().text()).toBe(
+      "precached:./dist/sheet-diff.js",
+    );
   });
 
   it("非 ok 応答はキャッシュに保存しない（キャッシュ汚染防止）", async () => {

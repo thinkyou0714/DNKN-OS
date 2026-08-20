@@ -141,9 +141,11 @@ async function main() {
   const sourcemapFile = join(ROOT, "web/dist/app.js.map");
   const problemsFile = join(ROOT, "web/problems.json");
   const toolkitOutfile = join(ROOT, "web/dist/toolkit.js");
+  const sheetDiffOutfile = join(ROOT, "web/dist/sheet-diff.js");
 
   await runBuild(join(ROOT, "web/src/app.ts"), outfile);
   await runBuild(join(ROOT, "web/src/toolkit/ui/main.ts"), toolkitOutfile);
+  await runBuild(join(ROOT, "web/src/sheet-diff/ui/main.ts"), sheetDiffOutfile);
 
   // sourcemap の sources が空でないことを検証する。
   if (existsSync(sourcemapFile)) {
@@ -165,6 +167,7 @@ async function main() {
     ["app.js", outfile],
     ["app.js.map", sourcemapFile],
     ["toolkit.js", toolkitOutfile],
+    ["sheet-diff.js", sheetDiffOutfile],
     ["problems.json", problemsFile],
   ] as [string, string][]) {
     if (existsSync(path)) {
@@ -173,7 +176,7 @@ async function main() {
     }
   }
 
-  console.error("web バンドルを web/dist/app.js・web/dist/toolkit.js に出力しました。");
+  console.error("web バンドルを web/dist/{app,toolkit,sheet-diff}.js に出力しました。");
   if (reportFiles.length > 0) {
     console.error("\nビルド生成物サイズ:");
     printSizeReport(reportFiles);
@@ -183,6 +186,7 @@ async function main() {
   // 各 HTML は対応するバンドルのハッシュで個別に注入する（index.html↔app.js / toolkit.html↔toolkit.js）。
   injectSri(outfile, join(ROOT, "web/index.html"));
   injectSri(toolkitOutfile, join(ROOT, "web/toolkit.html"));
+  injectSri(sheetDiffOutfile, join(ROOT, "web/sheet-diff.html"));
 
   // --- SW バージョン自動更新（II-187）---
   // sw.js がプリキャッシュする全アセットの内容を版数ハッシュに含める（Codex#1 指摘の根本対応）。
@@ -192,9 +196,11 @@ async function main() {
   const cachedAssetPaths = [
     outfile, // web/dist/app.js
     join(ROOT, "web/index.html"),
-    // 設計計算ツールキット（SRI 原子ペア第2組。sw.js の ASSETS と一致させる）。
+    // 設計計算ツールキット・帳票変更点抽出ツール（SRI 原子ペア第2・第3組。sw.js の ASSETS と一致させる）。
     toolkitOutfile, // web/dist/toolkit.js
     join(ROOT, "web/toolkit.html"),
+    sheetDiffOutfile, // web/dist/sheet-diff.js
+    join(ROOT, "web/sheet-diff.html"),
     join(ROOT, "web/problems.json"),
     // 分割ロード: マニフェスト＋科目別シャードもプリキャッシュ対象なので版数ハッシュに含める。
     // どれか1つでも内容が変われば sw.js のバイトが変わり、SW 更新→キャッシュ一括切替が走る。
@@ -209,9 +215,9 @@ async function main() {
   }
   const shortHash = versionHash.digest("hex").slice(0, 8);
   // SW_MAJOR は SW キャッシュ世代の単一の真実。web/sw.js の版数注記（設計計算ツールキット=v23）と
-  // 整合させる。以前は "v20" がここにハードコードされ、v21 を出荷しても CACHE が v20 の
+  // 整合させる（v24 = 帳票変更点抽出ツール）。以前は "v20" がここにハードコードされ、v21 を出荷しても CACHE が v20 の
   // まま据え置かれていた（SW-01）。
-  const SW_MAJOR = "v23";
+  const SW_MAJOR = "v24";
   const swVersion = `${SW_MAJOR}-${shortHash}`;
 
   const swJsPath = join(ROOT, "web/sw.js");
@@ -229,14 +235,19 @@ async function main() {
   }
 
   // --- バンドルサイズ予算チェック（II-188）---
-  // app.js / toolkit.js とも同じ上限を適用する（超過はどちらでも CI 失敗）。
+  // 各バンドルに同じ上限を適用する（どれか1つでも超過したら CI 失敗）。
   const limitKb = Number(process.env.BUNDLE_SIZE_LIMIT_KB ?? "500");
-  const appSizeKb = readFileSync(outfile, "utf-8").length / 1024;
-  const toolkitSizeKb = existsSync(toolkitOutfile) ? readFileSync(toolkitOutfile, "utf-8").length / 1024 : 0;
-  const budgetLine = `バンドルサイズ: app ${appSizeKb.toFixed(1)} KB ／ toolkit ${toolkitSizeKb.toFixed(1)} KB / 上限 各 ${limitKb} KB`;
+  const sizeKb = (path: string): number => (existsSync(path) ? readFileSync(path, "utf-8").length / 1024 : 0);
+  const bundles: Array<[string, number]> = [
+    ["app", sizeKb(outfile)],
+    ["toolkit", sizeKb(toolkitOutfile)],
+    ["sheet-diff", sizeKb(sheetDiffOutfile)],
+  ];
+  const budgetLine = `バンドルサイズ: ${bundles.map(([n, kb]) => `${n} ${kb.toFixed(1)} KB`).join(" ／ ")} / 上限 各 ${limitKb} KB`;
   const summaryPath = process.env.GITHUB_STEP_SUMMARY;
-  if (appSizeKb > limitKb || toolkitSizeKb > limitKb) {
-    const msg = `⚠️  バンドルサイズ予算超過: app ${appSizeKb.toFixed(1)} KB / toolkit ${toolkitSizeKb.toFixed(1)} KB > ${limitKb} KB`;
+  const over = bundles.filter(([, kb]) => kb > limitKb);
+  if (over.length > 0) {
+    const msg = `⚠️  バンドルサイズ予算超過: ${over.map(([n, kb]) => `${n} ${kb.toFixed(1)} KB`).join(" / ")} > ${limitKb} KB`;
     console.error(msg);
     if (summaryPath) {
       appendFileSync(summaryPath, `\n## バンドルバジェット\n\n${budgetLine} — **OVER BUDGET**\n`);

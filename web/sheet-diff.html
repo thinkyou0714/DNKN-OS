@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
-      content="電気設計計算ツールキット — ディレーティング・熱・電圧降下・基板パターンの定型設計計算を「根拠解説」と計算書出力つきで。入力データはブラウザ内でのみ処理されます。"
+      content="帳票変更点抽出ツール — 部品表・端子表などの設計帳票をキー列で突合し、セル単位の変更点を抽出。帳票はブラウザ内でのみ処理され外部に送信されません。"
     />
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self';"
     />
-    <title>電気設計計算ツールキット — DENKEN-OS</title>
+    <title>帳票変更点抽出ツール — DENKEN-OS</title>
     <link rel="icon" type="image/svg+xml" href="./icon.svg" />
     <meta name="theme-color" content="#1f1d19" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#a84b26" media="(prefers-color-scheme: light)" />
@@ -144,56 +144,99 @@
       .toast.show { opacity: 1; }
 
       /* ===== 計算書（印刷）: 画面では非表示。printing-sheet クラスが付いた印刷
-         （計算書ボタン経由）だけ #tk-print が紙面になる。素の Ctrl+P は通常画面を印刷する。 ===== */
-      #tk-print { display: none; }
+         （計算書ボタン経由）だけ #sd-print が紙面になる。素の Ctrl+P は通常画面を印刷する。 ===== */
+      #sd-print { display: none; }
       @media print {
         @page { size: A4; margin: 18mm; }
         body.printing-sheet { background: #fff; color: #000; max-width: none; padding: 0; }
-        body.printing-sheet > *:not(#tk-print) { display: none !important; }
-        body.printing-sheet #tk-print { display: block !important; font-size: 10.5pt; }
-        #tk-print h1 { font-size: 14pt; border-bottom: 2px solid #000; padding-bottom: 4pt; color: #000; }
-        #tk-print table { width: 100%; border-collapse: collapse; margin: 8pt 0; }
-        #tk-print th, #tk-print td { border: 1px solid #000; padding: 3pt 6pt; text-align: left; font-weight: 400; }
-        #tk-print th { background: #eee; width: 34%; }
-        #tk-print .print-meta { display: flex; justify-content: space-between; gap: 8pt; }
-        #tk-print .print-disclaimer { font-size: 8pt; margin-top: 10pt; }
-        #tk-print .print-notes { font-size: 8.5pt; }
+        body.printing-sheet > *:not(#sd-print) { display: none !important; }
+        body.printing-sheet #sd-print { display: block !important; font-size: 10.5pt; }
+        #sd-print h1 { font-size: 14pt; border-bottom: 2px solid #000; padding-bottom: 4pt; color: #000; }
+        #sd-print table { width: 100%; border-collapse: collapse; margin: 8pt 0; }
+        #sd-print th, #sd-print td { border: 1px solid #000; padding: 3pt 6pt; text-align: left; font-weight: 400; }
+        #sd-print th { background: #eee; width: 34%; }
+        #sd-print .print-meta { display: flex; justify-content: space-between; gap: 8pt; }
+        #sd-print .print-disclaimer { font-size: 8pt; margin-top: 10pt; }
+        #sd-print .print-notes { font-size: 8.5pt; }
       }
+
+      /* ===== 帳票差分の表示 ===== */
+      .drop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+      .drop {
+        border: 2px dashed var(--border-strong); border-radius: var(--r-md); padding: 16px;
+        background: var(--surface-2); text-align: center;
+      }
+      .drop.filled { border-style: solid; border-color: var(--ok-border); background: var(--ok-soft); }
+      .drop h3 { margin: 0 0 8px; }
+      .drop .file-meta { font-size: .8125rem; color: var(--muted); margin-top: 6px; }
+      .drop textarea { width: 100%; min-height: 90px; margin-top: 8px; font-family: var(--font-mono); font-size: .75rem; }
+      .col-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+      .col-chip {
+        font: inherit; font-size: .8125rem; padding: 4px 12px; cursor: pointer; border-radius: var(--r-pill);
+        color: var(--text); background: var(--surface); border: 1px solid var(--border-strong);
+      }
+      .col-chip[aria-pressed="true"] { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+      .map-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 6px 0; font-size: .875rem; }
+      .map-row select { width: auto; min-width: 160px; }
+      .diff-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: .8125rem; }
+      .diff-table th, .diff-table td {
+        border: 1px solid var(--border); padding: 5px 8px; text-align: left; vertical-align: top;
+      }
+      .diff-table th { background: var(--surface-2); font-weight: 700; white-space: nowrap; }
+      .diff-table td.before { color: var(--ng); text-decoration: line-through; }
+      .diff-table td.after { color: var(--ok); font-weight: 700; }
+      .table-scroll { overflow-x: auto; }
+      .kind {
+        display: inline-block; padding: 1px 10px; border-radius: var(--r-pill); font-size: .75rem; white-space: nowrap;
+      }
+      .kind.changed { color: var(--warn); background: var(--warn-soft); border: 1px solid var(--warn-border); }
+      .kind.added { color: var(--ok); background: var(--ok-soft); border: 1px solid var(--ok-border); }
+      .kind.removed { color: var(--ng); background: var(--ng-soft); border: 1px solid var(--ng-border); }
+      .kind.info { color: var(--muted); background: var(--surface-2); border: 1px solid var(--border-strong); }
+      .stat-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0; }
+      .stat {
+        background: var(--surface-2); border-radius: var(--r-sm); padding: 8px 16px; min-width: 96px; text-align: center;
+      }
+      .stat .n { font: 700 1.5rem/1.2 var(--font-serif); color: var(--text-strong); font-variant-numeric: tabular-nums; }
+      .stat .l { font-size: .75rem; color: var(--muted); }
     </style>
   </head>
   <body>
     <header class="site-header">
       <div class="brand-row">
-        <h1>電気設計計算ツールキット</h1>
+        <h1>帳票変更点抽出ツール</h1>
         <span class="brand-by">by DENKEN-OS</span>
       </div>
-      <p class="mod-desc">ディレーティング・熱・電圧降下・基板パターンの定型設計計算を、「なぜその式・係数なのか」の根拠解説と計算書出力つきで。</p>
-      <span class="privacy-note">🔒 入力データはお使いのブラウザ内でのみ処理され、外部に送信されません</span>
+      <p class="mod-desc">
+        部品表・端子表などの設計帳票を<strong>キー列で突合</strong>し、「どの品番の・どの欄が・何から何に変わったか」をセル単位で出します。
+        行を並べ替えただけの差分は出しません。
+      </p>
+      <span class="privacy-note">🔒 帳票はお使いのブラウザ内でのみ処理され、外部に送信されません（内容は保存もしません）</span>
     </header>
 
-    <nav id="tk-nav" class="tk-nav" role="tablist" aria-label="計算モジュール"></nav>
-    <main id="tk-main"></main>
-
-    <section id="tk-sheet" class="card" aria-label="計算書と保存">
-      <h2>計算書・データ管理</h2>
-      <div class="sheet-grid" id="tk-sheet-grid"></div>
-      <div class="btn-row" id="tk-data-row"></div>
-      <p class="status-line">計算条件とメモはこの端末（ブラウザの localStorage）にのみ保存されます。JSON 書き出しでバックアップできます。</p>
+    <section class="card" aria-label="帳票の読み込み">
+      <h2>1. 旧版・新版の帳票を読み込む</h2>
+      <p class="mod-desc">CSV / TSV に対応（Excel は「CSV UTF-8」または通常の CSV で保存）。Shift_JIS も自動判定します。</p>
+      <div class="drop-grid" id="sd-inputs"></div>
     </section>
 
-    <section id="tk-license" class="card" aria-label="ライセンス"></section>
+    <section class="card" id="sd-settings" aria-label="突合の設定"></section>
+
+    <section class="card" id="sd-result" aria-label="変更点"></section>
+
+    <section class="card" id="sd-license" aria-label="ライセンス"></section>
 
     <footer>
       <p class="mod-desc">
-        姉妹ツール: <a href="./sheet-diff.html">帳票変更点抽出ツール</a> ／ 学習アプリ <a href="./index.html">DENKEN-OS</a>
+        姉妹ツール: <a href="./toolkit.html">電気設計計算ツールキット</a> ／ 学習アプリ <a href="./index.html">DENKEN-OS</a>
       </p>
-      <p class="disclaimer" id="tk-disclaimer"></p>
+      <p class="disclaimer" id="sd-disclaimer"></p>
     </footer>
 
-    <div id="tk-print"></div>
-    <div id="tk-toast" class="toast" role="status" aria-live="polite"></div>
+    <div id="sd-print"></div>
+    <div id="sd-toast" class="toast" role="status" aria-live="polite"></div>
 
     <noscript><p>このツールの実行には JavaScript が必要です。</p></noscript>
-    <script type="module" src="./dist/toolkit.js" integrity="sha384-sYae52QWGHu0PdXEPizr3UwLud5EC0dB6MqzpkTEbf1UW5XMmXBdmKchcwYZCUcH" crossorigin="anonymous"></script>
+    <script type="module" src="./dist/sheet-diff.js" integrity="sha384-cxsTbOnPij1mOWZgzuQG6/ONaf8mpBrhbMTZdKcWecuHVuwYgOsKka+T8jX03MWv" crossorigin="anonymous"></script>
   </body>
 </html>
