@@ -60,8 +60,17 @@ function main(): void {
     const a = argv[i];
     if (a === "--id" && argv[i + 1] !== undefined) ids.push(argv[++i] as string);
     else if (a === "--topic" && argv[i + 1] !== undefined) topic = argv[++i] as string;
-    else if (a === "--limit" && argv[i + 1] !== undefined) limit = Math.max(1, Number(argv[++i]) || 10);
-    else if (a === "--out" && argv[i + 1] !== undefined) outDir = argv[++i] as string;
+    else if (a === "--limit" && argv[i + 1] !== undefined) {
+      // 不正値を既定 10 へ黙って倒すと「指定したのに無視された」ことに気付けないため、
+      // license-issue.ts と同じく検証して日本語エラーで停止する。
+      const raw = argv[++i] as string;
+      const n = Number(raw);
+      if (!Number.isInteger(n) || n < 1) {
+        console.error(`--limit は 1 以上の整数で指定してください（受領値: ${raw}）`);
+        process.exit(1);
+      }
+      limit = n;
+    } else if (a === "--out" && argv[i + 1] !== undefined) outDir = argv[++i] as string;
   }
 
   const problems = JSON.parse(readFileSync("web/problems.json", "utf8")) as WebProblem[];

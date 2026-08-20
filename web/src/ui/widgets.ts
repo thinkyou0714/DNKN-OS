@@ -38,9 +38,11 @@ export function solutionNode(p: Problem, label: string): HTMLElement {
     h("strong", {}, label),
     h("ol", {}, ...p.solution.map((s) => h("li", { html: safeHtml(formatMath(s)) }))),
     h("p", { class: "src" }, sourceText(p)),
+    // noprint: 問題＋解説を印刷したときに操作ボタンが紙面へ出ないようにする
+    // （印刷除外は .chips 単位で効くため、単独の .chip には明示が要る）。
     h(
       "button",
-      { class: "chip", type: "button", onclick: () => openSlideOverlay(p) },
+      { class: "chip noprint", type: "button", onclick: () => openSlideOverlay(p) },
       "🎞 スライドで解き直す（解く流れを1枚ずつ）",
     ),
   );

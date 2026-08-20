@@ -428,9 +428,10 @@
       .slides-dots i.on { background: var(--accent); }
       .slides-tools { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-2); }
       /* 解法スライドの印刷（1スライド=1ページ・A4横）。画面では常に非表示で、
-         printing-slides クラスが付いた印刷時だけ .slides-print が紙面になる。 */
+         printing-slides クラスが付いた印刷時だけ .slides-print が紙面になる。
+         用紙設定（@page: A4 横）はセレクタで絞れず文書全体に効くため、ここには置かず
+         slide-print.ts がスライド印刷のあいだだけ動的に差し込む（通常の問題印刷は縦のまま）。 */
       .slides-print { display: none; }
-      @page { size: A4 landscape; margin: 12mm; }
       @media print {
         body.printing-slides > :not(.slides-print) { display: none !important; }
         body.printing-slides { max-width: none; padding: 0; background: #fff; color: #111; }
@@ -840,8 +841,9 @@
       /* ================= 印刷 ================= */
       /* 操作系を隠し、問題文・図・解説をきれいに出力する。 */
       @media print {
+        /* .noprint は「紙面に出したくない操作系」の汎用クラス（単独のボタン等に付ける）。 */
         nav, header .stats, .demo, footer, .primary, .rate, .answers, .toast, .toolbar, .composer, .chips,
-        .mascot, .quests, .confetti, .xpfloat, .kbdhelp { display: none !important; }
+        .mascot, .quests, .confetti, .xpfloat, .kbdhelp, .noprint { display: none !important; }
         body { max-width: none; padding: 0; color: #000; background: #fff; }
         .card, .solution, .stat, .exam-review, figure.figure { box-shadow: none; border-color: #bbb; break-inside: avoid; }
         .skeleton::after { display: none; }
@@ -886,9 +888,11 @@
 
     <footer>
       オフライン対応 PWA。学習記録はこの端末内（localStorage）にのみ保存されます。<br />
-      復習は FSRS（最新の間隔反復アルゴリズム）。コード=MIT / 問題データ=CC-BY-SA-4.0。
+      復習は FSRS（最新の間隔反復アルゴリズム）。コード=MIT / 問題データ=CC-BY-SA-4.0。<br />
+      姉妹ツール: <a href="./toolkit.html">電気設計計算ツールキット</a>（ディレーティング・熱・電圧降下・パターン幅）／
+      <a href="./sheet-diff.html">帳票変更点抽出ツール</a>（部品表・端子表の差分）
     </footer>
 
-    <script type="module" src="./dist/app.js" integrity="sha384-9vxlZSHYKo1C4LYK9pgNnqliFolqmGBOYZIMwog+fW/xNrZYrIKkajL/LMclEGKo" crossorigin="anonymous"></script>
+    <script type="module" src="./dist/app.js" integrity="sha384-jzNY46zEOFoRudnHt49A8/toXwyWXbIM/Z4IUEnt4y9UdJi4J3f8JUJrREievYEi" crossorigin="anonymous"></script>
   </body>
 </html>

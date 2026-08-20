@@ -70,15 +70,12 @@ function printSizeReport(files: Array<{ name: string; raw: number; gzip: number 
   console.error(sep);
 }
 
-async function main() {
-  const outfile = join(ROOT, "web/dist/app.js");
-  const sourcemapFile = join(ROOT, "web/dist/app.js.map");
-  const problemsFile = join(ROOT, "web/problems.json");
-
+/** esbuild を実行し、失敗時はエラー内容を出して終了する（app/toolkit の2エントリで共用）。 */
+async function runBuild(entry: string, outfile: string): Promise<void> {
   let result: Awaited<ReturnType<typeof build>>;
   try {
     result = await build({
-      entryPoints: [join(ROOT, "web/src/app.ts")],
+      entryPoints: [entry],
       bundle: true,
       format: "esm",
       target: "es2022",
@@ -114,6 +111,41 @@ async function main() {
     }
     process.exit(1);
   }
+}
+
+/** バンドルの SHA-384 を対応する HTML の SRI プレースホルダ/既存値へ注入する（冪等）。 */
+function injectSri(bundlePath: string, htmlPath: string): void {
+  // 存在チェック→読み取りの2段構え（TOCTOU: CodeQL js/file-system-race）を避け、
+  // 読み取り1回に寄せて HTML が無い構成では黙ってスキップする。
+  let htmlContent: string;
+  try {
+    htmlContent = readFileSync(htmlPath, "utf-8");
+  } catch {
+    return;
+  }
+  const sha384 = createHash("sha384").update(readFileSync(bundlePath, "utf-8")).digest("base64");
+  const integrityValue = `sha384-${sha384}`;
+  const newHtml = htmlContent.replace(/__SRI_HASH__|sha384-[A-Za-z0-9+/=]+/g, integrityValue);
+  if (newHtml !== htmlContent) {
+    writeFileSync(htmlPath, newHtml, "utf-8");
+    console.error(
+      `SRI ハッシュを ${htmlPath.slice(ROOT.length + 1)} に注入しました: ${integrityValue.slice(0, 20)}...`,
+    );
+  } else {
+    console.error(`${htmlPath.slice(ROOT.length + 1)} に SRI 注入箇所が見つかりません（スキップ）。`);
+  }
+}
+
+async function main() {
+  const outfile = join(ROOT, "web/dist/app.js");
+  const sourcemapFile = join(ROOT, "web/dist/app.js.map");
+  const problemsFile = join(ROOT, "web/problems.json");
+  const toolkitOutfile = join(ROOT, "web/dist/toolkit.js");
+  const sheetDiffOutfile = join(ROOT, "web/dist/sheet-diff.js");
+
+  await runBuild(join(ROOT, "web/src/app.ts"), outfile);
+  await runBuild(join(ROOT, "web/src/toolkit/ui/main.ts"), toolkitOutfile);
+  await runBuild(join(ROOT, "web/src/sheet-diff/ui/main.ts"), sheetDiffOutfile);
 
   // sourcemap の sources が空でないことを検証する。
   if (existsSync(sourcemapFile)) {
@@ -134,6 +166,8 @@ async function main() {
   for (const [label, path] of [
     ["app.js", outfile],
     ["app.js.map", sourcemapFile],
+    ["toolkit.js", toolkitOutfile],
+    ["sheet-diff.js", sheetDiffOutfile],
     ["problems.json", problemsFile],
   ] as [string, string][]) {
     if (existsSync(path)) {
@@ -142,29 +176,17 @@ async function main() {
     }
   }
 
-  console.error("web バンドルを web/dist/app.js に出力しました。");
+  console.error("web バンドルを web/dist/{app,toolkit,sheet-diff}.js に出力しました。");
   if (reportFiles.length > 0) {
     console.error("\nビルド生成物サイズ:");
     printSizeReport(reportFiles);
   }
 
-  // --- SRI ハッシュ計算・index.html への注入（RG7）---
-  const appJsContent = readFileSync(outfile, "utf-8");
-  const sha384 = createHash("sha384").update(appJsContent).digest("base64");
-  const integrityValue = `sha384-${sha384}`;
-
-  const indexHtmlPath = join(ROOT, "web/index.html");
-  if (existsSync(indexHtmlPath)) {
-    const htmlContent = readFileSync(indexHtmlPath, "utf-8");
-    // __SRI_HASH__ プレースホルダ、または既注入の sha384-... 値の両方を置換（冪等）。
-    const newHtml = htmlContent.replace(/__SRI_HASH__|sha384-[A-Za-z0-9+/=]+/g, integrityValue);
-    if (newHtml !== htmlContent) {
-      writeFileSync(indexHtmlPath, newHtml, "utf-8");
-      console.error(`SRI ハッシュを web/index.html に注入しました: ${integrityValue.slice(0, 20)}...`);
-    } else {
-      console.error("web/index.html に SRI 注入箇所が見つかりません（スキップ）。");
-    }
-  }
+  // --- SRI ハッシュ計算・HTML への注入（RG7）---
+  // 各 HTML は対応するバンドルのハッシュで個別に注入する（index.html↔app.js / toolkit.html↔toolkit.js）。
+  injectSri(outfile, join(ROOT, "web/index.html"));
+  injectSri(toolkitOutfile, join(ROOT, "web/toolkit.html"));
+  injectSri(sheetDiffOutfile, join(ROOT, "web/sheet-diff.html"));
 
   // --- SW バージョン自動更新（II-187）---
   // sw.js がプリキャッシュする全アセットの内容を版数ハッシュに含める（Codex#1 指摘の根本対応）。
@@ -174,6 +196,11 @@ async function main() {
   const cachedAssetPaths = [
     outfile, // web/dist/app.js
     join(ROOT, "web/index.html"),
+    // 設計計算ツールキット・帳票変更点抽出ツール（SRI 原子ペア第2・第3組。sw.js の ASSETS と一致させる）。
+    toolkitOutfile, // web/dist/toolkit.js
+    join(ROOT, "web/toolkit.html"),
+    sheetDiffOutfile, // web/dist/sheet-diff.js
+    join(ROOT, "web/sheet-diff.html"),
     join(ROOT, "web/problems.json"),
     // 分割ロード: マニフェスト＋科目別シャードもプリキャッシュ対象なので版数ハッシュに含める。
     // どれか1つでも内容が変われば sw.js のバイトが変わり、SW 更新→キャッシュ一括切替が走る。
@@ -187,10 +214,10 @@ async function main() {
     if (existsSync(p)) versionHash.update(readFileSync(p, "utf-8"));
   }
   const shortHash = versionHash.digest("hex").slice(0, 8);
-  // SW_MAJOR は SW キャッシュ世代の単一の真実。web/sw.js の版数注記（SW堅牢化第2弾=v22）と
-  // 整合させる。以前は "v20" がここにハードコードされ、v21 を出荷しても CACHE が v20 の
+  // SW_MAJOR は SW キャッシュ世代の単一の真実。web/sw.js の版数注記（設計計算ツールキット=v23）と
+  // 整合させる（v24 = 帳票変更点抽出ツール）。以前は "v20" がここにハードコードされ、v21 を出荷しても CACHE が v20 の
   // まま据え置かれていた（SW-01）。
-  const SW_MAJOR = "v22";
+  const SW_MAJOR = "v24";
   const swVersion = `${SW_MAJOR}-${shortHash}`;
 
   const swJsPath = join(ROOT, "web/sw.js");
@@ -208,12 +235,19 @@ async function main() {
   }
 
   // --- バンドルサイズ予算チェック（II-188）---
+  // 各バンドルに同じ上限を適用する（どれか1つでも超過したら CI 失敗）。
   const limitKb = Number(process.env.BUNDLE_SIZE_LIMIT_KB ?? "500");
-  const appSizeKb = appJsContent.length / 1024;
-  const budgetLine = `バンドルサイズ: ${appSizeKb.toFixed(1)} KB / 上限 ${limitKb} KB`;
+  const sizeKb = (path: string): number => (existsSync(path) ? readFileSync(path, "utf-8").length / 1024 : 0);
+  const bundles: Array<[string, number]> = [
+    ["app", sizeKb(outfile)],
+    ["toolkit", sizeKb(toolkitOutfile)],
+    ["sheet-diff", sizeKb(sheetDiffOutfile)],
+  ];
+  const budgetLine = `バンドルサイズ: ${bundles.map(([n, kb]) => `${n} ${kb.toFixed(1)} KB`).join(" ／ ")} / 上限 各 ${limitKb} KB`;
   const summaryPath = process.env.GITHUB_STEP_SUMMARY;
-  if (appSizeKb > limitKb) {
-    const msg = `⚠️  バンドルサイズ予算超過: ${appSizeKb.toFixed(1)} KB > ${limitKb} KB`;
+  const over = bundles.filter(([, kb]) => kb > limitKb);
+  if (over.length > 0) {
+    const msg = `⚠️  バンドルサイズ予算超過: ${over.map(([n, kb]) => `${n} ${kb.toFixed(1)} KB`).join(" / ")} > ${limitKb} KB`;
     console.error(msg);
     if (summaryPath) {
       appendFileSync(summaryPath, `\n## バンドルバジェット\n\n${budgetLine} — **OVER BUDGET**\n`);

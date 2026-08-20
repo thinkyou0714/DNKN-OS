@@ -37,8 +37,9 @@ export const MONETIZATION: MonetizationConfig = {
  * 貼り付けられた公開鍵 JWK の形状検証。手作業転記のため、切り詰め・欠損・
  * 秘密鍵（d 成分）の誤貼付をここで検出する。不正なら「未設定」として全ゲートを
  * 開いたままにする（fail-open: 正規購入キーが全滅する事故より安全側）。
+ * ツールキット（toolkit-config.ts）も同じ検証を使う。
  */
-function isValidPublicJwk(jwk: LicenseJwk): boolean {
+export function isValidPublicJwk(jwk: LicenseJwk): boolean {
   return (
     jwk.kty === "EC" &&
     jwk.crv === "P-256" &&
