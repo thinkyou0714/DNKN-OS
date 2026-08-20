@@ -48,10 +48,30 @@ function pageNode(p: Problem, slide: SolutionSlide, no: number, total: number): 
   return page;
 }
 
+/**
+ * 用紙設定 `@page` はクラスやセレクタで絞り込めない（常に文書全体に効く）ため、
+ * スタイルシート自体をスライド印刷のあいだだけ差し込む。静的 CSS に置くと
+ * 問題・解説の通常印刷まで A4 横になってしまう（回帰）。
+ */
+const PAGE_RULE_ID = "slides-page-rule";
+
+function addLandscapePageRule(): void {
+  if (document.getElementById(PAGE_RULE_ID) !== null) return;
+  const style = document.createElement("style");
+  style.id = PAGE_RULE_ID;
+  style.textContent = "@page { size: A4 landscape; margin: 12mm; }";
+  document.head.append(style);
+}
+
+function removeLandscapePageRule(): void {
+  document.getElementById(PAGE_RULE_ID)?.remove();
+}
+
 /** 解法スライドを印刷する（PDF保存はブラウザの印刷ダイアログから）。 */
 export function printSlides(p: Problem): void {
   // 前回の afterprint が来なかった場合の残骸をまず掃除する（冪等な開始）。
   for (const stale of Array.from(document.querySelectorAll(".slides-print"))) stale.remove();
+  removeLandscapePageRule();
   const deck = buildSolutionSlides(p);
   const total = deck.slides.length;
   const container = h(
@@ -62,10 +82,12 @@ export function printSlides(p: Problem): void {
   const cleanup = (): void => {
     container.remove();
     document.body.classList.remove("printing-slides");
+    removeLandscapePageRule();
     window.removeEventListener("afterprint", cleanup);
   };
   document.body.append(container);
   document.body.classList.add("printing-slides");
+  addLandscapePageRule();
   window.addEventListener("afterprint", cleanup);
   window.print();
 }
