@@ -47,6 +47,18 @@ docs/
     └── 01〜12                 各自動化領域のタスク仕様
 ```
 
+## 収益化（Monetization）— 設計・調査パッケージ
+
+課金基盤（Next.js SaaS + Supabase Auth + Stripe サブスク、**休眠/flip 可能**）の**調査＋設計**一式は
+[`monetization/`](monetization/README.md) にまとめてある（実装本体は次段）。
+
+- [`monetization/README.md`](monetization/README.md) … 索引・方針
+- [`monetization/00-base-decision.md`](monetization/00-base-decision.md) … 基点=`origin/main`・ベースライン健全性・分岐棚卸し
+- [`monetization/RESEARCH-2026-07.md`](monetization/RESEARCH-2026-07.md) … 収益化 深堀調査 100 アイデア（採点・出典つき）
+- [`monetization/ARCHITECTURE.md`](monetization/ARCHITECTURE.md) … 休眠/flip 可能な目標構成
+- [`monetization/goals/GOALS.md`](monetization/goals/GOALS.md) … 実装タスク T01–T20（Codex `/goal` spec）
+- [`monetization/HUMAN-TASKS.md`](monetization/HUMAN-TASKS.md) … 収益化フェーズの人間タスク（法務・アカウント・価格判断）
+
 ## 自動化パイプライン全体図（II-198）
 
 生成→検証→配信→集計→改善の循環ループ。
