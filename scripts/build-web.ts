@@ -215,9 +215,9 @@ async function main() {
   }
   const shortHash = versionHash.digest("hex").slice(0, 8);
   // SW_MAJOR は SW キャッシュ世代の単一の真実。web/sw.js の版数注記（設計計算ツールキット=v23）と
-  // 整合させる（v24 = 帳票変更点抽出ツール）。以前は "v20" がここにハードコードされ、v21 を出荷しても CACHE が v20 の
+  // 整合させる（v25 = ツールキット第4弾＋xlsx 直読み）。以前は "v20" がここにハードコードされ、v21 を出荷しても CACHE が v20 の
   // まま据え置かれていた（SW-01）。
-  const SW_MAJOR = "v24";
+  const SW_MAJOR = "v25";
   const swVersion = `${SW_MAJOR}-${shortHash}`;
 
   const swJsPath = join(ROOT, "web/sw.js");
