@@ -13,6 +13,7 @@
 import { diffSheets, type SheetDiff } from "../../../../lib/sheet-diff/diff.js";
 import { decodeSheetBytes, type ParsedTable, parseDelimited } from "../../../../lib/sheet-diff/parse.js";
 import { diffRows, formatDiffCsv, summarizeDiff, summaryLine } from "../../../../lib/sheet-diff/report.js";
+import { looksLikeZip, readXlsxSheet } from "../../../../lib/sheet-diff/xlsx.js";
 import { $req, h } from "../../ui/dom.js";
 import { SHEET_DIFF_MONETIZATION } from "../sheet-diff-config.js";
 import {
@@ -63,8 +64,7 @@ function persist(): void {
 
 // ---- 1. 読み込み ----
 
-function setSheet(side: "old" | "new", text: string, fileName: string, encoding: string): void {
-  const table = parseDelimited(text);
+function setTable(side: "old" | "new", table: ParsedTable, fileName: string, encoding: string): void {
   if (table.header.length === 0) {
     toast("ヘッダ行が読み取れませんでした（1行目を列名にしてください）");
     return;
@@ -73,6 +73,33 @@ function setSheet(side: "old" | "new", text: string, fileName: string, encoding:
   renderInputs();
   renderSettings();
   renderResult();
+}
+
+function setSheet(side: "old" | "new", text: string, fileName: string, encoding: string): void {
+  setTable(side, parseDelimited(text), fileName, encoding);
+}
+
+/**
+ * 読み込んだファイルを xlsx / CSV のどちらとしても扱えるようにする。
+ * 現場で「CSV に保存し直す」一手間が最大の離脱要因になるため、Excel をそのまま受ける。
+ */
+async function loadFile(side: "old" | "new", file: File): Promise<void> {
+  const bytes = new Uint8Array(await file.arrayBuffer());
+  if (looksLikeZip(bytes)) {
+    const res = await readXlsxSheet(bytes);
+    if (!res.ok) {
+      toast(res.error);
+      return;
+    }
+    const sheetLabel = res.sheet.sheetNames[res.sheet.sheetIndex] ?? "先頭シート";
+    setTable(side, res.sheet.table, `${file.name}［${sheetLabel}］`, "xlsx");
+    if (res.sheet.sheetNames.length > 1) {
+      toast(`先頭シート「${sheetLabel}」を読み込みました（${res.sheet.sheetNames.length} シート中）`);
+    }
+    return;
+  }
+  const { text, encoding } = decodeSheetBytes(bytes);
+  setSheet(side, text, file.name, encoding);
 }
 
 function renderInputs(): void {
@@ -85,16 +112,14 @@ function renderInputs(): void {
 
     const fileInput = h("input", {
       type: "file",
-      accept: ".csv,.tsv,.txt,text/csv,text/tab-separated-values,text/plain",
+      accept:
+        ".xlsx,.csv,.tsv,.txt,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv,text/tab-separated-values,text/plain",
       hidden: true,
     }) as HTMLInputElement;
     fileInput.addEventListener("change", () => {
       const file = fileInput.files?.[0];
       if (!file) return;
-      void file.arrayBuffer().then((buf) => {
-        const { text, encoding } = decodeSheetBytes(new Uint8Array(buf));
-        setSheet(side, text, file.name, encoding);
-      });
+      void loadFile(side, file).catch(() => toast("ファイルを読み込めませんでした"));
       fileInput.value = "";
     });
     box.append(fileInput, h("button", { class: "btn", onclick: () => fileInput.click() }, "ファイルを選ぶ"));
